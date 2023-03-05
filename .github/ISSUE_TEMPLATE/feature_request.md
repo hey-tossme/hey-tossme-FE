@@ -1,16 +1,9 @@
 ---
-name: feature_request.md
-about: Describe this issue template's purpose here.
-title: ''
-labels: ''
-
----
-
----
 name: Feature request
 about: Suggest an idea for this project
 title: ''
 labels: ''
+assignees: ''
 
 ---
 
