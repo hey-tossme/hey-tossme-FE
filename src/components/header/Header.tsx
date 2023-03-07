@@ -4,7 +4,7 @@ import { InfoContainer } from "./InfoContainer";
 
 export default function Header() {
     return (
-        <header className="wrapper">
+        <header className="header-wrapper">
             <CategoryContainer />
             <InfoContainer />
         </header>
