@@ -1,0 +1,61 @@
+.main-top-card-item {
+    list-style: none;
+    width: 240px;
+    display: flex;
+    justify-content: center;
+    margin: 0 14px;
+    border: 1px solid $color-gray-200;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+
+    .main-top-card-item-inner {
+        padding: 16px;
+
+        .main-top-card-img {
+            width: 208px;
+            height: 140px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .main-top-card-item-contents {
+            .main-top-card-item-inner-top {
+                display: flex;
+                justify-content: space-between;
+
+                .main-top-card-item-title {
+                    font-size: $font-card-title;
+                    font-weight: 700;
+                    color: $color-gray-800;
+                    margin-bottom: 12px;
+                }
+
+                .main-top-card-item-book-mark-btn {
+                    line-height: 1.8;
+                    color: $color-primary;
+                }
+            }
+
+            .main-top-card-item-price {
+                font-size: $font-card-sub-title;
+                font-weight: 400;
+                color: $color-gray-800;
+                margin-bottom: 16px;
+            }
+
+            .main-top-card-item-date {
+                font-size: $font-card-desc;
+                font-weight: 400;
+                color: $color-dark;
+                margin-bottom: 12px;
+            }
+
+            .main-top-card-item-place {
+                font-size: $font-card-desc;
+                font-weight: 400;
+                color: $color-gray-800;
+            }
+        }
+    }
+}

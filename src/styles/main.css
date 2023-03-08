@@ -133,10 +133,89 @@ table {
 }
 
 * {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Noto Sans KR", sans-serif !important;
 }
 
-.test-btn {
-  background-color: #ec7357;
-  border: none;
+.main-top-wrapper {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+.main-top-wrapper .main-top-contents {
+  margin-right: 240px;
+  display: flex;
+  align-items: center;
+}
+.main-top-wrapper .main-top-contents .main-top-area-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #333333;
+}
+.main-top-wrapper .main-top-contents .main-top-area-desc {
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #333333;
+}
+
+.main-top-card-item {
+  list-style: none;
+  width: 240px;
+  display: flex;
+  justify-content: center;
+  margin: 0 14px;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+.main-top-card-item .main-top-card-item-inner {
+  padding: 16px;
+}
+.main-top-card-item .main-top-card-item-inner .main-top-card-img {
+  width: 208px;
+  height: 140px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.main-top-card-item .main-top-card-item-inner .main-top-card-item-contents .main-top-card-item-inner-top {
+  display: flex;
+  justify-content: space-between;
+}
+.main-top-card-item .main-top-card-item-inner .main-top-card-item-contents .main-top-card-item-inner-top .main-top-card-item-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 12px;
+}
+.main-top-card-item .main-top-card-item-inner .main-top-card-item-contents .main-top-card-item-inner-top .main-top-card-item-book-mark-btn {
+  line-height: 1.8;
+  color: #ec7357;
+}
+.main-top-card-item .main-top-card-item-inner .main-top-card-item-contents .main-top-card-item-price {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  margin-bottom: 16px;
+}
+.main-top-card-item .main-top-card-item-inner .main-top-card-item-contents .main-top-card-item-date {
+  font-size: 12px;
+  font-weight: 400;
+  color: #754f44;
+  margin-bottom: 12px;
+}
+.main-top-card-item .main-top-card-item-inner .main-top-card-item-contents .main-top-card-item-place {
+  font-size: 12px;
+  font-weight: 400;
+  color: #333333;
+}
+
+.main-top-card-area {
+  position: relative;
+  overflow: hidden;
+  width: 528px;
+}
+.main-top-card-area .main-top-card-track {
+  display: flex;
+  transform: translate(0, 0);
 }/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,24 @@
+.main-top-wrapper {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+
+    .main-top-contents {
+        margin-right: 240px;
+        display: flex;
+        align-items: center;
+
+        .main-top-area-title {
+            font-size: $font-main-title;
+            font-weight: 700;
+            color: $color-gray-800;
+        }
+
+        .main-top-area-desc {
+            margin-top: 8px;
+            font-size: $font-main-desc;
+            font-weight: 400;
+            color: $color-gray-800;
+        }
+    }
+}
