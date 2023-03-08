@@ -86,7 +86,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 
@@ -132,6 +131,14 @@ table {
   border-spacing: 0;
 }
 
+button {
+  margin: 0;
+  padding: 0;
+  background-color: inherit;
+  outline: 0;
+  border: 0;
+}
+
 * {
   font-family: "Noto Sans KR", sans-serif;
 }
@@ -139,4 +146,124 @@ table {
 .test-btn {
   background-color: #ec7357;
   border: none;
+}
+
+@font-face {
+  font-family: "SBAggroB";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.wrapper {
+  @apply dark:bg-color-gray-800 flex items-center justify-between;
+  width: 100vw;
+  height: 120px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.wrapper .category-container {
+  @apply flex items-center gap-[56px];
+}
+.wrapper .category-container .logo-wrapper {
+  margin-left: 44px;
+}
+.wrapper .category-container .logo-wrapper .logo-btn {
+  @apply dark:text-white flex gap-[2px] items-center h-[120px];
+  text-shadow: 0px 4px 4px rgba(46, 46, 46, 0.2);
+  font-size: 30px;
+  font-family: "SBAggroB";
+  color: #333333;
+}
+.wrapper .category-container .logo-wrapper .logo-btn .ball {
+  @apply inline-block relative;
+  font-family: "SBAggroB";
+  color: #ec7357;
+}
+.wrapper .category-container .logo-wrapper .logo-btn .shadow {
+  @apply hidden absolute w-[28px] h-[5px] bottom-0;
+  left: calc(50% - 14px);
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.wrapper .category-container .logo-wrapper .logo-btn:hover .ball {
+  animation: bounce 1s linear infinite;
+}
+.wrapper .category-container .logo-wrapper .logo-btn:hover .shadow {
+  display: inline-block;
+  animation: shadow 1s infinite;
+}
+@keyframes bounce {
+  0% {
+    top: 0px;
+  }
+  20% {
+    top: -20px;
+  }
+  60% {
+    top: -30px;
+  }
+  68% {
+    top: -20px;
+  }
+  95% {
+    top: -3px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+@keyframes shadow {
+  0% {
+    transform: scale(1);
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  20% {
+    transform: scale(0.8);
+    background-color: rgba(0, 0, 0, 0.15);
+    animation-timing-function: ease-out;
+  }
+  60% {
+    transform: scale(0.2);
+    background-color: rgba(0, 0, 0, 0.1);
+    animation-timing-function: ease-in;
+  }
+  68% {
+    transform: scale(0.3);
+    background-color: rgba(0, 0, 0, 0.15);
+    animation-timing-function: ease-out;
+  }
+  95% {
+    transform: scale(0.9);
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+.wrapper .category-container .header-tab {
+  display: block;
+  @apply relative dark:text-white top-[-4px];
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.wrapper .info-container {
+  @apply flex gap-[28px] items-center mr-[32px];
+}
+.wrapper .info-container .header-btn {
+  @apply flex justify-center items-center w-[100px] h-[36px] rounded-[8px];
+  font-size: 16px;
+}
+.wrapper .info-container .btn-fill {
+  background-color: #ec7357;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
+  color: white;
+  @apply dark:text-color-gray-800;
+}
+.wrapper .info-container .btn-not-fill {
+  border: 1px solid #ec7357;
+  background-color: white;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
+  color: #ec7357;
+  @apply dark:bg-color-gray-800;
 }/*# sourceMappingURL=main.css.map */

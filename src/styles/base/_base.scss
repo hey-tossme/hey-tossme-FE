@@ -6,3 +6,16 @@
     background-color: #ec7357;
     border: none;
 }
+
+@mixin btn-fill {
+    background-color: $color-primary;
+    box-shadow : 0px 2px 4px rgba(51, 51, 51, 0.25);
+    color: white;
+}
+
+@mixin btn-not-fill {
+    border: 1px solid $color-primary;
+    background-color: white;
+    box-shadow : 0px 2px 4px rgba(51, 51, 51, 0.25);
+    color: $color-primary;
+}
