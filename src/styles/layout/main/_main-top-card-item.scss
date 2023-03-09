@@ -1,5 +1,4 @@
 .main-top-card-item {
-    list-style: none;
     width: 240px;
     display: flex;
     justify-content: center;
@@ -11,6 +10,7 @@
 
     .main-top-card-item-inner {
         padding: 16px;
+        width: 240px;
 
         .main-top-card-img {
             width: 208px;
@@ -27,34 +27,34 @@
                 .main-top-card-item-title {
                     font-size: $font-card-title;
                     font-weight: 700;
-                    color: $color-gray-800;
                     margin-bottom: 12px;
                 }
 
                 .main-top-card-item-book-mark-btn {
-                    line-height: 1.8;
-                    color: $color-primary;
+                    margin-top: 6px;
+
+                    .book-mark-btn-icons {
+                        color: $color-primary;
+                    }
                 }
             }
 
             .main-top-card-item-price {
                 font-size: $font-card-sub-title;
                 font-weight: 400;
-                color: $color-gray-800;
                 margin-bottom: 16px;
             }
 
             .main-top-card-item-date {
                 font-size: $font-card-desc;
                 font-weight: 400;
-                color: $color-dark;
                 margin-bottom: 12px;
+                @include dark-mode-date;
             }
 
             .main-top-card-item-place {
                 font-size: $font-card-desc;
                 font-weight: 400;
-                color: $color-gray-800;
             }
         }
     }

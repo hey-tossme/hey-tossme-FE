@@ -1,0 +1,24 @@
+.main-bottom-chat-item-seller {
+    display: flex;
+    margin: 12px;
+
+    .main-chat-profile {
+        margin-right: 8px;
+        @include chat-profile;
+    }
+
+    .main-chat-item-right {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        .main-chat-item-name {
+            font-size: $font-chat-desc;
+            margin-bottom: 8px;
+        }
+
+        .main-chat-item-content {
+            @include chat-reception;
+        }
+    }
+}

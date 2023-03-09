@@ -1,24 +1,25 @@
-.main-top-wrapper {
-    height: 300px;
-    margin-top: 80px;
+.main-bottom-wrapper {
+    margin-top: 120px;
     display: flex;
     justify-content: center;
     @include dark-mode-text;
 
-    .main-top-contents {
-        margin-right: 240px;
+    .main-bottom-contents {
+        margin-left: 232px;
         display: flex;
         align-items: center;
 
-        .main-top-area-title {
+        .main-bottom-area-title {
             font-size: $font-main-title;
             font-weight: 800;
+            text-align: right;
+            margin-bottom: 16px;
         }
 
-        .main-top-area-desc {
-            margin-bottom: 16px;
+        .main-bottom-area-desc {
             font-size: $font-main-desc;
             font-weight: 400;
+            text-align: right;
         }
     }
 }

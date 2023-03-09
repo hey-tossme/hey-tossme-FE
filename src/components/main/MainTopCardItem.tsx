@@ -1,13 +1,10 @@
-import React from 'react';
-import { BsFillBookmarkFill } from 'react-icons/bs';
-import { ICardItem } from './Main.interface';
+import React from "react";
+import { BsFillBookmarkFill } from "react-icons/bs";
+import { ICardItem } from "./Main.interface";
 
 export default function MainTopCardItem({ item }: ICardItem) {
     return (
-        <div
-            className="main-top-card-item"
-            id={`main-top-card` + item.id.toString()}
-        >
+        <div className="main-top-card-item">
             <div className="main-top-card-item-inner">
                 <img
                     src={item.img}

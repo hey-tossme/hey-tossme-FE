@@ -10,3 +10,7 @@ export interface ICard {
 export interface ICardItem {
     item: ICard;
 }
+
+export interface IContents {
+    contents: string;
+}
