@@ -154,40 +154,42 @@ button {
   font-weight: normal;
   font-style: normal;
 }
-.wrapper {
+.header-wrapper {
   @apply dark:bg-color-gray-800 flex items-center justify-between;
+  position: fixed;
   width: 100vw;
   height: 120px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 10000;
 }
-.wrapper .category-container {
+.header-wrapper .category-container {
   @apply flex items-center gap-[56px];
 }
-.wrapper .category-container .logo-wrapper {
+.header-wrapper .category-container .logo-wrapper {
   margin-left: 44px;
 }
-.wrapper .category-container .logo-wrapper .logo-btn {
+.header-wrapper .category-container .logo-wrapper .logo-btn {
   @apply dark:text-white flex gap-[2px] items-center h-[120px];
   text-shadow: 0px 4px 4px rgba(46, 46, 46, 0.2);
   font-size: 30px;
   font-family: "SBAggroB";
   color: #333333;
 }
-.wrapper .category-container .logo-wrapper .logo-btn .ball {
+.header-wrapper .category-container .logo-wrapper .logo-btn .ball {
   @apply inline-block relative;
   font-family: "SBAggroB";
   color: #ec7357;
 }
-.wrapper .category-container .logo-wrapper .logo-btn .shadow {
+.header-wrapper .category-container .logo-wrapper .logo-btn .shadow {
   @apply hidden absolute w-[28px] h-[5px] bottom-0;
   left: calc(50% - 14px);
   border-radius: 100%;
   background-color: rgba(0, 0, 0, 0.2);
 }
-.wrapper .category-container .logo-wrapper .logo-btn:hover .ball {
+.header-wrapper .category-container .logo-wrapper .logo-btn:hover .ball {
   animation: bounce 1s linear infinite;
 }
-.wrapper .category-container .logo-wrapper .logo-btn:hover .shadow {
+.header-wrapper .category-container .logo-wrapper .logo-btn:hover .shadow {
   display: inline-block;
   animation: shadow 1s infinite;
 }
@@ -240,30 +242,78 @@ button {
     background-color: rgba(0, 0, 0, 0.2);
   }
 }
-.wrapper .category-container .header-tab {
+.header-wrapper .category-container .header-tab {
   display: block;
   @apply relative dark:text-white top-[-4px];
   font-size: 24px;
   font-weight: 700;
   cursor: pointer;
 }
-.wrapper .info-container {
+.header-wrapper .info-container {
   @apply flex gap-[28px] items-center mr-[32px];
 }
-.wrapper .info-container .header-btn {
+.header-wrapper .info-container .notify-group {
+  @apply relative;
+}
+.header-wrapper .info-container .notify-group .new-notify {
+  @apply absolute top-[1px] right-[2px];
+  width: 12px;
+  height: 12px;
+  background-color: #ec7357;
+  border-radius: 100%;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+.header-wrapper .info-container .header-btn {
   @apply flex justify-center items-center w-[100px] h-[36px] rounded-[8px];
   font-size: 16px;
 }
-.wrapper .info-container .btn-fill {
+.header-wrapper .info-container .btn-fill {
   background-color: #ec7357;
   box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
   color: white;
   @apply dark:text-color-gray-800;
 }
-.wrapper .info-container .btn-not-fill {
+.header-wrapper .info-container .btn-not-fill {
   border: 1px solid #ec7357;
   background-color: white;
   box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
   color: #ec7357;
   @apply dark:bg-color-gray-800;
+}
+
+.notify-common-wrapper {
+  @apply relative top-[120px] flex justify-center w-full py-[70px];
+}
+.notify-common-wrapper .notify-wrapper {
+  @apply flex flex-col gap-[50px];
+}
+.notify-common-wrapper .notify-wrapper .title {
+  @apply text-[24px] font-semibold mb-[18px];
+}
+.notify-common-wrapper .notify-wrapper .notify-list {
+  @apply flex flex-col gap-[12px];
+}
+.notify-common-wrapper .notify-wrapper .notify-list .notify-item {
+  @apply relative flex flex-col justify-center gap-[12px];
+  width: 660px;
+  height: 108px;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+}
+.notify-common-wrapper .notify-wrapper .notify-list .notify-item .delete-btn {
+  @apply absolute flex top-0 right-0 mt-[12px] mr-[12px];
+}
+.notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group {
+  @apply flex items-center gap-[16px] mx-[32px];
+}
+.notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group .notify-text {
+  @apply text-[16px] dark:text-white;
+  color: #333333;
+  line-height: 20px;
+}
+.notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group .notify-text .title {
+  @apply font-semibold text-[16px] dark:text-white;
+}
+.notify-common-wrapper .notify-wrapper .existing .notify-list .notify-item .notify-text-group .notify-text {
+  color: #a6a6a6;
 }/*# sourceMappingURL=main.css.map */
