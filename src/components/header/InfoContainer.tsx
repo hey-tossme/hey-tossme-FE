@@ -50,7 +50,7 @@ export function InfoContainer() {
                     </Link>
                 </div>
             )}
-            <div className="cursor-pointer" onClick={handleToggleDarkMode}>
+            <div className="theme-toggle-btn cursor-pointer" onClick={handleToggleDarkMode}>
                 {!dark ? (
                     <FaRegMoon size="32px" color="#333333" />
                 ) : (
