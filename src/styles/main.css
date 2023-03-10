@@ -151,10 +151,12 @@ body {
 }
 
 .main-top-wrapper {
-  height: 300px;
-  margin-top: 80px;
+  position: relative;
+  height: 500px;
+  padding-top: 200px;
   display: flex;
   justify-content: center;
+  z-index: 9999;
   @apply dark:text-white;
   color: #333333;
 }
@@ -377,8 +379,9 @@ body {
   font-style: normal;
 }
 .header-wrapper {
-  @apply dark:bg-color-gray-800 flex items-center justify-between;
+  @apply bg-white dark:bg-color-gray-800 flex items-center justify-between;
   position: fixed;
+  top: 0;
   width: 100%;
   height: 120px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
