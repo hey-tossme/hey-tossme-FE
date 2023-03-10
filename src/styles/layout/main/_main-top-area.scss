@@ -1,8 +1,10 @@
 .main-top-wrapper {
-    height: 300px;
-    margin-top: 80px;
+    position: relative;
+    height: 500px;
+    padding-top: 200px;
     display: flex;
     justify-content: center;
+    z-index: 9999;
     @include dark-mode-text;
 
     .main-top-contents {

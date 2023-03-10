@@ -1,0 +1,60 @@
+.notify-common-wrapper {
+    @apply relative top-[120px] flex justify-center w-full py-[70px];
+
+    .notify-wrapper {
+        @apply flex flex-col gap-[50px];
+
+        .title {
+            @apply text-[24px] font-semibold mb-[18px];
+        }
+
+        .notify-list {
+            @apply flex flex-col gap-[12px];
+            
+            .notify-item {
+                @apply relative flex flex-col justify-center gap-[12px];
+                width: 660px;
+                height: 108px;
+                border: 1px solid $color-gray-200;
+                border-radius: 8px;
+    
+                .delete-btn {
+                    @apply absolute flex top-0 right-0 mt-[12px] mr-[12px];
+                }
+    
+                .notify-text-group {
+                    @apply flex items-center gap-[16px] mx-[32px];
+    
+                    .notify-text {
+                        @apply text-[16px]  dark:text-white;
+                        color: $color-gray-800;
+                        line-height: 20px;
+
+                        .title {
+                            @apply font-semibold text-[16px] dark:text-white;
+                        }
+                    }
+                }    
+            }
+        }
+
+
+        .existing {
+            .notify-list {
+                .notify-item {
+                    .notify-text-group {
+                        .notify-text {
+                            color: $color-gray-400;
+                            @apply dark:text-gray-400;
+                            
+                            .title {
+                                @apply dark:text-gray-400;
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+    }
+}
+
