@@ -530,7 +530,7 @@ body {
   @apply flex items-center gap-[16px] mx-[32px];
 }
 .notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group .notify-text {
-  @apply text-[16px] dark:text-white;
+  @apply text-[16px];
   color: #333333;
   line-height: 20px;
 }

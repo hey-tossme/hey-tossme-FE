@@ -26,7 +26,7 @@
                     @apply flex items-center gap-[16px] mx-[32px];
     
                     .notify-text {
-                        @apply text-[16px] dark:text-white;
+                        @apply text-[16px];
                         color: $color-gray-800;
                         line-height: 20px;
 
