@@ -1,21 +1,62 @@
 * {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
-@mixin btns-fill {
-    background-color: #ec7357;
-    border: none;
+body {
+    @apply dark:bg-color-gray-800;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 120px;
 }
 
+// 버튼
 @mixin btn-fill {
     background-color: $color-primary;
-    box-shadow : 0px 2px 4px rgba(51, 51, 51, 0.25);
+    box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
     color: white;
 }
 
 @mixin btn-not-fill {
     border: 1px solid $color-primary;
     background-color: white;
-    box-shadow : 0px 2px 4px rgba(51, 51, 51, 0.25);
+    box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
     color: $color-primary;
+}
+
+// 다크 모드
+@mixin dark-mode-text {
+    @apply dark:text-white;
+    color: $color-gray-800;
+}
+
+@mixin dark-mode-date {
+    @apply dark:text-secondary;
+    color: $color-dark;
+}
+
+// 채팅
+@mixin chat-profile {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+@mixin chat-reception {
+    background-color: $color-primary;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    max-width: 300px;
+    font-weight: 400;
+    font-size: $font-chat-desc;
+}
+
+@mixin chat-dispatch {
+    background-color: $color-gray-200;
+    color: $color-gray-800;
+    padding: 8px;
+    border-radius: 4px;
+    max-width: 300px;
+    font-weight: 400;
+    font-size: $font-chat-desc;
 }

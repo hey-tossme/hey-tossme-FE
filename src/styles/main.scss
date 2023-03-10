@@ -2,11 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './abstracts/variables';
-@import './base/reset';
-@import './base/base';
+@import "./abstracts/variables";
+@import "./base/reset";
+@import "./base/base";
 
-@import './layout/login/login-form';
-@import './layout/main/main-container';
+@import "./layout/login/login-form";
+
+@import "./layout/main/main-top-area";
+@import "./layout/main/main-top-card-item";
+@import "./layout/main/main-top-card-wrapper";
+@import "./layout/main/main-bottom-area";
+@import "./layout/main/main-bottom-chat-wrapper";
+@import "./layout/main/main-bottom-chat-buyer-item";
+@import "./layout/main/main-bottom-chat-seller-item";
+
 @import "./layout/header/header";
+
 @import "./layout/notify/notify";
