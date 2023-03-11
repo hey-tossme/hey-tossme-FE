@@ -42,10 +42,12 @@
 
             a {
                 .login-btn {
-                    @include btn-fill;
                     width: 172px;
                     height: 100%;
                     border-radius: 8px;
+                    font-size: $font-btns;
+                    @apply dark:text-color-gray-800;
+                    @include btn-fill;
                 }
 
                 .kakao-btn {
@@ -60,11 +62,10 @@
         .login-form-bottom {
             display: flex;
             justify-content: space-between;
-            color: $color-gray-600;
 
             .go-to-sign-up,
             .go-to-find-pw {
-                color: $color-gray-600;
+                @include dark-mode-text;
             }
         }
     }

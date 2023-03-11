@@ -190,7 +190,7 @@ body {
   border: none;
   border-radius: 12px;
   background-color: #f2f2f2;
-  box-shadow: inset 0.2rem 0.2rem 0.5rem #dbdbdb;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(136, 136, 136, 0.25);
   color: #333333;
   width: 360px;
 }
@@ -199,7 +199,7 @@ body {
 .login-form-container .login-form-wrapper .pw-box .email-box-input:focus,
 .login-form-container .login-form-wrapper .pw-box .pw-box-input:focus {
   outline: none;
-  box-shadow: 0.3rem 0.3rem 0.6rem #dbdbdb, -0.2rem -0.2rem 0.5rem white;
+  box-shadow: 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
 }
 .login-form-container .login-form-wrapper .email-box .email-box-input::placeholder,
 .login-form-container .login-form-wrapper .email-box .pw-box-input::placeholder,
@@ -207,18 +207,33 @@ body {
 .login-form-container .login-form-wrapper .pw-box .pw-box-input::placeholder {
   color: #a6a6a6;
 }
+.login-form-container .login-form-wrapper .email-box .email-box-input:read-only,
+.login-form-container .login-form-wrapper .email-box .pw-box-input:read-only,
+.login-form-container .login-form-wrapper .pw-box .email-box-input:read-only,
+.login-form-container .login-form-wrapper .pw-box .pw-box-input:read-only {
+  background-color: #dbdbdb;
+}
 .login-form-container .login-form-wrapper .login-form-btn-area {
   display: flex;
   justify-content: space-between;
   margin-bottom: 32px;
 }
 .login-form-container .login-form-wrapper .login-form-btn-area a .login-btn {
-  background-color: #ec7357;
-  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
-  color: white;
   width: 172px;
   height: 100%;
   border-radius: 8px;
+  font-size: 16px;
+  @apply dark:text-color-gray-800;
+  background-color: #ec7357;
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+  color: white;
+}
+.login-form-container .login-form-wrapper .login-form-btn-area a .login-btn:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.login-form-container .login-form-wrapper .login-form-btn-area a .login-btn:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
 }
 .login-form-container .login-form-wrapper .login-form-btn-area a .kakao-btn {
   width: 172px;
@@ -229,41 +244,352 @@ body {
 .login-form-container .login-form-wrapper .login-form-bottom {
   display: flex;
   justify-content: space-between;
-  color: #6e6e6e;
 }
 .login-form-container .login-form-wrapper .login-form-bottom .go-to-sign-up,
 .login-form-container .login-form-wrapper .login-form-bottom .go-to-find-pw {
-  color: #6e6e6e;
+  @apply dark:text-white;
+  color: #333333;
 }
 
-.sign-up-form-container {
-  padding-top: 200px;
-  margin-top: 120px;
+@keyframes vibrate {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 .sign-up-form-container .sign-up-form-wrapper {
   padding-top: 200px;
   margin-top: 120px;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner {
   display: flex;
   justify-content: center;
 }
-.sign-up-form-container .sign-up-form-wrapper .sign-up-form-left {
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-left {
   display: flex;
   align-items: center;
   margin-right: 80px;
 }
-.sign-up-form-container .sign-up-form-wrapper .sign-up-form-left .profile-select-form {
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right {
   position: relative;
 }
-.sign-up-form-container .sign-up-form-wrapper .sign-up-form-left .profile-select-form:hover > .plus-badge {
-  background-color: #ec7357;
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .error-msg-area {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: -40px;
+  right: 0;
+  animation: vibrate 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 }
-.sign-up-form-container .sign-up-form-wrapper .sign-up-form-left .profile-select-form .profile-select-form-img {
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .error-msg-area .error-msg-content {
+  @apply dark:text-secondary;
+  color: #754f44;
+  font-weight: 300;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box {
+  width: 320px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .email-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .code-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .pw-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .pw-recheck-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .name-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .email-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .code-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .pw-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .pw-recheck-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .name-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .email-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .code-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .pw-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .pw-recheck-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .name-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .email-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .code-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .pw-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .pw-recheck-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .name-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .email-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .code-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .pw-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .pw-recheck-box-icon,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .name-box-icon {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  color: #a6a6a6;
+  font-size: 22px;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .email-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .code-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .email-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .code-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .email-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .code-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .email-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .code-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .email-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .code-box-input {
+  width: 100%;
+  height: 52px;
+  padding-left: 48px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f2f2f2;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(136, 136, 136, 0.25);
+  color: #333333;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .email-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .code-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .email-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .code-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .email-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .code-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .email-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .code-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .email-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .code-box-input:focus {
+  outline: none;
+  box-shadow: 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .email-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .code-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .email-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .code-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .email-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .code-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .email-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .code-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .email-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .code-box-input::placeholder {
+  color: #a6a6a6;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .email-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .code-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .email-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .code-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .email-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .code-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .email-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .code-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .email-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .code-box-input:read-only {
+  background-color: #dbdbdb;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .pw-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .pw-recheck-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .name-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .pw-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .pw-recheck-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .name-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .pw-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .pw-recheck-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .name-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .pw-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .pw-recheck-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .name-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .pw-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .pw-recheck-box-input,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .name-box-input {
+  width: 100%;
+  height: 52px;
+  padding-left: 48px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f2f2f2;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(136, 136, 136, 0.25);
+  color: #333333;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .pw-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .pw-recheck-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .name-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .pw-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .pw-recheck-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .name-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .pw-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .pw-recheck-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .name-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .pw-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .pw-recheck-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .name-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .pw-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .pw-recheck-box-input:focus,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .name-box-input:focus {
+  outline: none;
+  box-shadow: 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .pw-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .pw-recheck-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .name-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .pw-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .pw-recheck-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .name-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .pw-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .pw-recheck-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .name-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .pw-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .pw-recheck-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .name-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .pw-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .pw-recheck-box-input::placeholder,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .name-box-input::placeholder {
+  color: #a6a6a6;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .pw-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .pw-recheck-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .name-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .pw-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .pw-recheck-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .name-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .pw-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .pw-recheck-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .name-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .pw-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .pw-recheck-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .name-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .pw-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .pw-recheck-box-input:read-only,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .name-box-input:read-only {
+  background-color: #dbdbdb;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .send-email-code,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .resend-email-code,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .send-email-code,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .resend-email-code,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .send-email-code,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .resend-email-code,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .send-email-code,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .resend-email-code,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .send-email-code,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .resend-email-code {
+  margin-left: 16px;
+  width: 80px;
+  border-radius: 8px;
+  font-size: 16px;
+  @apply dark:text-color-gray-800;
+  background-color: #ec7357;
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+  color: white;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .send-email-code:active,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .resend-email-code:active,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .send-email-code:active,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .resend-email-code:active,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .send-email-code:active,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .resend-email-code:active,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .send-email-code:active,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .resend-email-code:active,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .send-email-code:active,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .resend-email-code:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .send-email-code:disabled,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .resend-email-code:disabled,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .send-email-code:disabled,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box .resend-email-code:disabled,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .send-email-code:disabled,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-box .resend-email-code:disabled,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .send-email-code:disabled,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .pw-recheck-box .resend-email-code:disabled,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .send-email-code:disabled,
+.sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .name-box .resend-email-code:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
+}
+.sign-up-form-container .sign-up-btn-area {
+  display: flex;
+  justify-content: center;
+}
+.sign-up-form-container .sign-up-btn-area .sign-up-btn {
+  width: 552px;
+  height: 52px;
+  border-radius: 8px;
+  font-size: 16px;
+  @apply dark:text-color-gray-800;
+  background-color: #ec7357;
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+  color: white;
+}
+.sign-up-form-container .sign-up-btn-area .sign-up-btn:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.sign-up-form-container .sign-up-btn-area .sign-up-btn:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+}
+.modal-background .modal-container {
+  position: fixed;
+  width: 400px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  @apply dark:bg-color-gray-800;
+  @apply dark:text-white;
+  color: #333333;
+}
+.modal-background .modal-container .modal-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.modal-background .modal-container .modal-wrapper .modal-contents {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-background .modal-container .modal-wrapper .close-modal-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.modal-background .modal-container .modal-wrapper .close-modal-btn .close-modal-btn-icon {
+  font-size: 20px;
+}
+
+.profile-select-form {
+  position: relative;
+}
+.profile-select-form:hover > .plus-badge {
+  background-color: #ec7357;
+  transition: 0.4s;
+}
+.profile-select-form .profile-select-form-img {
   width: 150px;
   height: 150px;
   cursor: pointer;
   border-radius: 50%;
 }
-.sign-up-form-container .sign-up-form-wrapper .sign-up-form-left .profile-select-form .plus-badge {
+.profile-select-form .plus-badge {
   width: 42px;
   height: 42px;
   position: absolute;
@@ -275,170 +601,39 @@ body {
   justify-content: center;
   align-items: center;
 }
-.sign-up-form-container .sign-up-form-wrapper .sign-up-form-left .profile-select-form .plus-badge .plus-badge-icon {
+.profile-select-form .plus-badge .plus-badge-icon {
   color: white;
   font-size: 20px;
   font-weight: 800;
 }
-.sign-up-form-container .sign-up-form-wrapper .email-box,
-.sign-up-form-container .sign-up-form-wrapper .code-box,
-.sign-up-form-container .sign-up-form-wrapper .pw-box,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box,
-.sign-up-form-container .sign-up-form-wrapper .name-box {
-  position: relative;
+
+.code-timer {
+  position: absolute;
+  right: 88px;
+  top: 16px;
+  color: #a6a6a6;
+}
+
+.code-comfirm-box {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   margin-bottom: 32px;
 }
-.sign-up-form-container .sign-up-form-wrapper .email-box .email-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .email-box .code-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .email-box .pw-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .email-box .pw-recheck-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .email-box .name-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .code-box .email-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .code-box .code-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .code-box .pw-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .code-box .pw-recheck-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .code-box .name-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .email-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .code-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .pw-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .pw-recheck-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .name-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .email-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .code-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .pw-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .pw-recheck-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .name-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .name-box .email-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .name-box .code-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .name-box .pw-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .name-box .pw-recheck-box-icon,
-.sign-up-form-container .sign-up-form-wrapper .name-box .name-box-icon {
-  position: absolute;
-  top: 16px;
-  left: 12px;
-  color: #a6a6a6;
-  font-size: 22px;
-}
-.sign-up-form-container .sign-up-form-wrapper .email-box .email-box-input,
-.sign-up-form-container .sign-up-form-wrapper .email-box .code-box-input,
-.sign-up-form-container .sign-up-form-wrapper .code-box .email-box-input,
-.sign-up-form-container .sign-up-form-wrapper .code-box .code-box-input,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .email-box-input,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .code-box-input,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .email-box-input,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .code-box-input,
-.sign-up-form-container .sign-up-form-wrapper .name-box .email-box-input,
-.sign-up-form-container .sign-up-form-wrapper .name-box .code-box-input {
-  width: 268px;
-  height: 52px;
-  padding-left: 48px;
-  border: none;
-  border-radius: 12px;
-  background-color: #f2f2f2;
-  box-shadow: inset 0.2rem 0.2rem 0.5rem #dbdbdb;
-  color: #333333;
-}
-.sign-up-form-container .sign-up-form-wrapper .email-box .email-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .email-box .code-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .code-box .email-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .code-box .code-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .email-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .code-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .email-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .code-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .name-box .email-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .name-box .code-box-input:focus {
-  outline: none;
-  box-shadow: 0.3rem 0.3rem 0.6rem #dbdbdb, -0.2rem -0.2rem 0.5rem white;
-}
-.sign-up-form-container .sign-up-form-wrapper .email-box .email-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .email-box .code-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .code-box .email-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .code-box .code-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .email-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .code-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .email-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .code-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .name-box .email-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .name-box .code-box-input::placeholder {
-  color: #a6a6a6;
-}
-.sign-up-form-container .sign-up-form-wrapper .email-box .pw-box-input,
-.sign-up-form-container .sign-up-form-wrapper .email-box .pw-recheck-box-input,
-.sign-up-form-container .sign-up-form-wrapper .email-box .name-box-input,
-.sign-up-form-container .sign-up-form-wrapper .code-box .pw-box-input,
-.sign-up-form-container .sign-up-form-wrapper .code-box .pw-recheck-box-input,
-.sign-up-form-container .sign-up-form-wrapper .code-box .name-box-input,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .pw-box-input,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .pw-recheck-box-input,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .name-box-input,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .pw-box-input,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .pw-recheck-box-input,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .name-box-input,
-.sign-up-form-container .sign-up-form-wrapper .name-box .pw-box-input,
-.sign-up-form-container .sign-up-form-wrapper .name-box .pw-recheck-box-input,
-.sign-up-form-container .sign-up-form-wrapper .name-box .name-box-input {
-  width: 360px;
-  height: 52px;
-  padding-left: 48px;
-  border: none;
-  border-radius: 12px;
-  background-color: #f2f2f2;
-  box-shadow: inset 0.2rem 0.2rem 0.5rem #dbdbdb;
-  color: #333333;
-}
-.sign-up-form-container .sign-up-form-wrapper .email-box .pw-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .email-box .pw-recheck-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .email-box .name-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .code-box .pw-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .code-box .pw-recheck-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .code-box .name-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .pw-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .pw-recheck-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .name-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .pw-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .pw-recheck-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .name-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .name-box .pw-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .name-box .pw-recheck-box-input:focus,
-.sign-up-form-container .sign-up-form-wrapper .name-box .name-box-input:focus {
-  outline: none;
-  box-shadow: 0.3rem 0.3rem 0.6rem #dbdbdb, -0.2rem -0.2rem 0.5rem white;
-}
-.sign-up-form-container .sign-up-form-wrapper .email-box .pw-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .email-box .pw-recheck-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .email-box .name-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .code-box .pw-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .code-box .pw-recheck-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .code-box .name-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .pw-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .pw-recheck-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .name-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .pw-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .pw-recheck-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .name-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .name-box .pw-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .name-box .pw-recheck-box-input::placeholder,
-.sign-up-form-container .sign-up-form-wrapper .name-box .name-box-input::placeholder {
-  color: #a6a6a6;
-}
-.sign-up-form-container .sign-up-form-wrapper .email-box .send-email-code,
-.sign-up-form-container .sign-up-form-wrapper .email-box .check-email-code,
-.sign-up-form-container .sign-up-form-wrapper .code-box .send-email-code,
-.sign-up-form-container .sign-up-form-wrapper .code-box .check-email-code,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .send-email-code,
-.sign-up-form-container .sign-up-form-wrapper .pw-box .check-email-code,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .send-email-code,
-.sign-up-form-container .sign-up-form-wrapper .pw-recheck-box .check-email-code,
-.sign-up-form-container .sign-up-form-wrapper .name-box .send-email-code,
-.sign-up-form-container .sign-up-form-wrapper .name-box .check-email-code {
-  width: 80px;
+.code-comfirm-box .check-email-code {
+  width: 100%;
   border-radius: 8px;
+  height: 52px;
+  @apply dark:text-color-gray-800;
   background-color: #ec7357;
-  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
   color: white;
+}
+.code-comfirm-box .check-email-code:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.code-comfirm-box .check-email-code:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
 }
 
 .main-top-wrapper {
@@ -720,9 +915,16 @@ body {
 }
 .header-wrapper .info-container .btn-fill {
   background-color: #ec7357;
-  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
   color: white;
   @apply dark:text-color-gray-800;
+}
+.header-wrapper .info-container .btn-fill:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.header-wrapper .info-container .btn-fill:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
 }
 .header-wrapper .info-container .btn-not-fill {
   border: 1px solid #ec7357;
@@ -730,6 +932,9 @@ body {
   box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
   color: #ec7357;
   @apply dark:bg-color-gray-800;
+}
+.header-wrapper .info-container .btn-not-fill:active {
+  box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(136, 136, 136, 0.25);
 }
 
 .logo-btn {

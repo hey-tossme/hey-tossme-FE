@@ -1,90 +1,115 @@
-.sign-up-form-container {
-    padding-top: 200px;
-    margin-top: 120px;
+@keyframes vibrate {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
 
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.sign-up-form-container {
     .sign-up-form-wrapper {
         padding-top: 200px;
         margin-top: 120px;
-        display: flex;
-        justify-content: center;
 
-        .sign-up-form-left {
+        .sign-up-form-inner {
             display: flex;
-            align-items: center;
-            margin-right: 80px;
+            justify-content: center;
 
-            .profile-select-form {
+            .sign-up-form-left {
+                display: flex;
+                align-items: center;
+                margin-right: 80px;
+            }
+
+            .sign-up-form-right {
                 position: relative;
 
-                &:hover > .plus-badge {
-                    background-color: $color-primary;
-                }
-
-                .profile-select-form-img {
-                    width: 150px;
-                    height: 150px;
-                    cursor: pointer;
-                    border-radius: 50%;
-                }
-
-                .plus-badge {
-                    width: 42px;
-                    height: 42px;
+                .error-msg-area {
                     position: absolute;
-                    top: 0;
-                    right: 0;
-                    background-color: $color-gray-400;
-                    border-radius: 50%;
                     display: flex;
                     justify-content: center;
-                    align-items: center;
+                    top: -40px;
+                    right: 0;
+                    animation: vibrate 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 
-                    .plus-badge-icon {
-                        color: white;
-                        font-size: 20px;
-                        font-weight: 800;
+                    .error-msg-content {
+                        @include dark-mode-date;
+                        font-weight: 300;
+                    }
+                }
+
+                .email-box,
+                .code-box,
+                .pw-box,
+                .pw-recheck-box,
+                .name-box {
+                    width: 320px;
+                    position: relative;
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 32px;
+
+                    .email-box-icon,
+                    .code-box-icon,
+                    .pw-box-icon,
+                    .pw-recheck-box-icon,
+                    .name-box-icon {
+                        @include input-icon;
+                    }
+
+                    .email-box-input,
+                    .code-box-input {
+                        width: 100%;
+                        @include input-box;
+                    }
+
+                    .pw-box-input,
+                    .pw-recheck-box-input,
+                    .name-box-input {
+                        width: 100%;
+                        @include input-box;
+                    }
+
+                    .send-email-code,
+                    .resend-email-code {
+                        margin-left: 16px;
+                        width: 80px;
+                        border-radius: 8px;
+                        font-size: $font-btns;
+                        @apply dark:text-color-gray-800;
+                        @include btn-fill;
                     }
                 }
             }
         }
+    }
 
-        .email-box,
-        .code-box,
-        .pw-box,
-        .pw-recheck-box,
-        .name-box {
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 32px;
+    .sign-up-btn-area {
+        display: flex;
+        justify-content: center;
 
-            .email-box-icon,
-            .code-box-icon,
-            .pw-box-icon,
-            .pw-recheck-box-icon,
-            .name-box-icon {
-                @include input-icon;
-            }
-
-            .email-box-input,
-            .code-box-input {
-                width: 268px;
-                @include input-box;
-            }
-
-            .pw-box-input,
-            .pw-recheck-box-input,
-            .name-box-input {
-                width: 360px;
-                @include input-box;
-            }
-
-            .send-email-code,
-            .check-email-code {
-                width: 80px;
-                border-radius: 8px;
-                @include btn-fill;
-            }
+        .sign-up-btn {
+            width: 552px;
+            height: 52px;
+            border-radius: 8px;
+            font-size: $font-btns;
+            @apply dark:text-color-gray-800;
+            @include btn-fill;
         }
     }
 }
