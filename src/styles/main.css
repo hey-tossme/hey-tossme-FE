@@ -164,26 +164,29 @@ body {
   display: flex;
   justify-content: center;
 }
-.login-form-container .login-form-wrapper .email-box,
-.login-form-container .login-form-wrapper .pw-box {
+.login-form-container .login-form-wrapper .login-form-inner {
+  width: 320px;
+}
+.login-form-container .login-form-wrapper .login-form-inner .email-box,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box {
   position: relative;
   display: flex;
   margin-bottom: 32px;
 }
-.login-form-container .login-form-wrapper .email-box .email-box-icon,
-.login-form-container .login-form-wrapper .email-box .pw-box-icon,
-.login-form-container .login-form-wrapper .pw-box .email-box-icon,
-.login-form-container .login-form-wrapper .pw-box .pw-box-icon {
+.login-form-container .login-form-wrapper .login-form-inner .email-box .email-box-icon,
+.login-form-container .login-form-wrapper .login-form-inner .email-box .pw-box-icon,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box .email-box-icon,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box .pw-box-icon {
   position: absolute;
   top: 16px;
   left: 12px;
   color: #a6a6a6;
   font-size: 22px;
 }
-.login-form-container .login-form-wrapper .email-box .email-box-input,
-.login-form-container .login-form-wrapper .email-box .pw-box-input,
-.login-form-container .login-form-wrapper .pw-box .email-box-input,
-.login-form-container .login-form-wrapper .pw-box .pw-box-input {
+.login-form-container .login-form-wrapper .login-form-inner .email-box .email-box-input,
+.login-form-container .login-form-wrapper .login-form-inner .email-box .pw-box-input,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box .email-box-input,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box .pw-box-input {
   height: 52px;
   padding-left: 48px;
   border: none;
@@ -191,34 +194,34 @@ body {
   background-color: #f2f2f2;
   box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(136, 136, 136, 0.25);
   color: #333333;
-  width: 360px;
+  width: 320px;
 }
-.login-form-container .login-form-wrapper .email-box .email-box-input:focus,
-.login-form-container .login-form-wrapper .email-box .pw-box-input:focus,
-.login-form-container .login-form-wrapper .pw-box .email-box-input:focus,
-.login-form-container .login-form-wrapper .pw-box .pw-box-input:focus {
+.login-form-container .login-form-wrapper .login-form-inner .email-box .email-box-input:focus,
+.login-form-container .login-form-wrapper .login-form-inner .email-box .pw-box-input:focus,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box .email-box-input:focus,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box .pw-box-input:focus {
   outline: none;
   box-shadow: 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
 }
-.login-form-container .login-form-wrapper .email-box .email-box-input::placeholder,
-.login-form-container .login-form-wrapper .email-box .pw-box-input::placeholder,
-.login-form-container .login-form-wrapper .pw-box .email-box-input::placeholder,
-.login-form-container .login-form-wrapper .pw-box .pw-box-input::placeholder {
+.login-form-container .login-form-wrapper .login-form-inner .email-box .email-box-input::placeholder,
+.login-form-container .login-form-wrapper .login-form-inner .email-box .pw-box-input::placeholder,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box .email-box-input::placeholder,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box .pw-box-input::placeholder {
   color: #a6a6a6;
 }
-.login-form-container .login-form-wrapper .email-box .email-box-input:read-only,
-.login-form-container .login-form-wrapper .email-box .pw-box-input:read-only,
-.login-form-container .login-form-wrapper .pw-box .email-box-input:read-only,
-.login-form-container .login-form-wrapper .pw-box .pw-box-input:read-only {
+.login-form-container .login-form-wrapper .login-form-inner .email-box .email-box-input:read-only,
+.login-form-container .login-form-wrapper .login-form-inner .email-box .pw-box-input:read-only,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box .email-box-input:read-only,
+.login-form-container .login-form-wrapper .login-form-inner .pw-box .pw-box-input:read-only {
   background-color: #dbdbdb;
 }
-.login-form-container .login-form-wrapper .login-form-btn-area {
+.login-form-container .login-form-wrapper .login-form-inner .login-form-btn-area {
   display: flex;
   justify-content: space-between;
   margin-bottom: 32px;
 }
-.login-form-container .login-form-wrapper .login-form-btn-area a .login-btn {
-  width: 172px;
+.login-form-container .login-form-wrapper .login-form-inner .login-form-btn-area a .login-btn {
+  width: 128px;
   height: 100%;
   border-radius: 8px;
   font-size: 16px;
@@ -227,25 +230,25 @@ body {
   box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
   color: white;
 }
-.login-form-container .login-form-wrapper .login-form-btn-area a .login-btn:active {
+.login-form-container .login-form-wrapper .login-form-inner .login-form-btn-area a .login-btn:active {
   box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
 }
-.login-form-container .login-form-wrapper .login-form-btn-area a .login-btn:disabled {
+.login-form-container .login-form-wrapper .login-form-inner .login-form-btn-area a .login-btn:disabled {
   background-color: #a6a6a6;
   box-shadow: none;
 }
-.login-form-container .login-form-wrapper .login-form-btn-area a .kakao-btn {
+.login-form-container .login-form-wrapper .login-form-inner .login-form-btn-area a .kakao-btn {
   width: 172px;
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
   cursor: pointer;
 }
-.login-form-container .login-form-wrapper .login-form-bottom {
+.login-form-container .login-form-wrapper .login-form-inner .login-form-bottom {
   display: flex;
   justify-content: space-between;
 }
-.login-form-container .login-form-wrapper .login-form-bottom .go-to-sign-up,
-.login-form-container .login-form-wrapper .login-form-bottom .go-to-find-pw {
+.login-form-container .login-form-wrapper .login-form-inner .login-form-bottom .go-to-sign-up,
+.login-form-container .login-form-wrapper .login-form-inner .login-form-bottom .go-to-find-pw {
   @apply dark:text-white;
   color: #333333;
 }
