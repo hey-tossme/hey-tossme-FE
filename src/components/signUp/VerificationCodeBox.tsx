@@ -7,6 +7,7 @@ export default function VerificationCodeBox({
     setConfirm,
     showModal,
 }: IConfirmController) {
+    const [code, setCode] = useState<string>("");
     const [active, setActive] = useState<boolean>(true);
     const [minute, setMinute] = useState<number>(2);
     const [second, setSecond] = useState<number>(59);
@@ -21,6 +22,7 @@ export default function VerificationCodeBox({
     const timerReset = () => {
         showModal();
         setTimer(179);
+        setActive(true);
     };
 
     useEffect(() => {
@@ -44,7 +46,13 @@ export default function VerificationCodeBox({
         <>
             <div className="code-box">
                 <HiOutlineShieldCheck className="code-box-icon" />
-                <input type="text" className="code-box-input" placeholder="인증 코드" />
+                <input
+                    type="text"
+                    className="code-box-input"
+                    placeholder="인증 코드"
+                    onChange={(e) => setCode(e.target.value)}
+                    disabled={active ? false : true}
+                />
                 <div className="code-timer">
                     {active ? `${padStart(minute)} : ${padStart(second)}` : "만료"}
                 </div>
@@ -53,7 +61,11 @@ export default function VerificationCodeBox({
                 </button>
             </div>
             <div className="code-comfirm-box">
-                <button className="check-email-code" onClick={() => setConfirm(true)}>
+                <button
+                    className="check-email-code"
+                    onClick={() => setConfirm(true)}
+                    disabled={code === "" ? true : false}
+                >
                     확인
                 </button>
             </div>

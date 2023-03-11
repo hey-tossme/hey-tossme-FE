@@ -24,7 +24,6 @@
 .sign-up-form-container {
     .sign-up-form-wrapper {
         padding-top: 200px;
-        margin-top: 120px;
 
         .sign-up-form-inner {
             display: flex;
@@ -43,13 +42,14 @@
                     position: absolute;
                     display: flex;
                     justify-content: center;
-                    top: -40px;
+                    top: -32px;
                     right: 0;
                     animation: vibrate 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 
                     .error-msg-content {
                         @include dark-mode-date;
-                        font-weight: 300;
+                        font-weight: 400;
+                        font-size: 12px;
                     }
                 }
 

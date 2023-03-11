@@ -152,7 +152,6 @@ body {
 
 .login-form-container {
   padding-top: 200px;
-  margin-top: 120px;
 }
 .login-form-container .login-form-title {
   display: flex;
@@ -267,7 +266,6 @@ body {
 }
 .sign-up-form-container .sign-up-form-wrapper {
   padding-top: 200px;
-  margin-top: 120px;
 }
 .sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner {
   display: flex;
@@ -285,14 +283,15 @@ body {
   position: absolute;
   display: flex;
   justify-content: center;
-  top: -40px;
+  top: -32px;
   right: 0;
   animation: vibrate 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 }
 .sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .error-msg-area .error-msg-content {
   @apply dark:text-secondary;
   color: #754f44;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 12px;
 }
 .sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box,
 .sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .code-box,
@@ -607,10 +606,14 @@ body {
   font-weight: 800;
 }
 
+.code-box-input {
+  padding-right: 76px;
+}
+
 .code-timer {
   position: absolute;
   right: 88px;
-  top: 16px;
+  top: 18px;
   color: #a6a6a6;
 }
 
@@ -632,6 +635,176 @@ body {
   box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
 }
 .code-comfirm-box .check-email-code:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
+}
+
+.find-pw-form-container {
+  padding-top: 200px;
+}
+.find-pw-form-container .find-pw-form-title {
+  display: flex;
+  justify-content: center;
+}
+.find-pw-form-container .find-pw-form-desc {
+  text-align: center;
+  margin-bottom: 32px;
+  color: #a6a6a6;
+}
+.find-pw-form-container .find-pw-form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.find-pw-form-container .find-pw-form-wrapper .email-box,
+.find-pw-form-container .find-pw-form-wrapper .code-box {
+  width: 320px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.find-pw-form-container .find-pw-form-wrapper .email-box .email-box-icon,
+.find-pw-form-container .find-pw-form-wrapper .email-box .code-box-icon,
+.find-pw-form-container .find-pw-form-wrapper .code-box .email-box-icon,
+.find-pw-form-container .find-pw-form-wrapper .code-box .code-box-icon {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  color: #a6a6a6;
+  font-size: 22px;
+}
+.find-pw-form-container .find-pw-form-wrapper .email-box .email-box-input,
+.find-pw-form-container .find-pw-form-wrapper .email-box .code-box-input,
+.find-pw-form-container .find-pw-form-wrapper .code-box .email-box-input,
+.find-pw-form-container .find-pw-form-wrapper .code-box .code-box-input {
+  width: 100%;
+  height: 52px;
+  padding-left: 48px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f2f2f2;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(136, 136, 136, 0.25);
+  color: #333333;
+}
+.find-pw-form-container .find-pw-form-wrapper .email-box .email-box-input:focus,
+.find-pw-form-container .find-pw-form-wrapper .email-box .code-box-input:focus,
+.find-pw-form-container .find-pw-form-wrapper .code-box .email-box-input:focus,
+.find-pw-form-container .find-pw-form-wrapper .code-box .code-box-input:focus {
+  outline: none;
+  box-shadow: 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+}
+.find-pw-form-container .find-pw-form-wrapper .email-box .email-box-input::placeholder,
+.find-pw-form-container .find-pw-form-wrapper .email-box .code-box-input::placeholder,
+.find-pw-form-container .find-pw-form-wrapper .code-box .email-box-input::placeholder,
+.find-pw-form-container .find-pw-form-wrapper .code-box .code-box-input::placeholder {
+  color: #a6a6a6;
+}
+.find-pw-form-container .find-pw-form-wrapper .email-box .email-box-input:read-only,
+.find-pw-form-container .find-pw-form-wrapper .email-box .code-box-input:read-only,
+.find-pw-form-container .find-pw-form-wrapper .code-box .email-box-input:read-only,
+.find-pw-form-container .find-pw-form-wrapper .code-box .code-box-input:read-only {
+  background-color: #dbdbdb;
+}
+.find-pw-form-container .find-pw-form-wrapper .email-box .send-email-code,
+.find-pw-form-container .find-pw-form-wrapper .email-box .resend-email-code,
+.find-pw-form-container .find-pw-form-wrapper .code-box .send-email-code,
+.find-pw-form-container .find-pw-form-wrapper .code-box .resend-email-code {
+  margin-left: 16px;
+  width: 80px;
+  border-radius: 8px;
+  font-size: 16px;
+  @apply dark:text-color-gray-800;
+  background-color: #ec7357;
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+  color: white;
+}
+.find-pw-form-container .find-pw-form-wrapper .email-box .send-email-code:active,
+.find-pw-form-container .find-pw-form-wrapper .email-box .resend-email-code:active,
+.find-pw-form-container .find-pw-form-wrapper .code-box .send-email-code:active,
+.find-pw-form-container .find-pw-form-wrapper .code-box .resend-email-code:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.find-pw-form-container .find-pw-form-wrapper .email-box .send-email-code:disabled,
+.find-pw-form-container .find-pw-form-wrapper .email-box .resend-email-code:disabled,
+.find-pw-form-container .find-pw-form-wrapper .code-box .send-email-code:disabled,
+.find-pw-form-container .find-pw-form-wrapper .code-box .resend-email-code:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
+}
+
+.pw-box,
+.pw-recheck-box {
+  width: 320px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.pw-box .pw-box-icon,
+.pw-box .pw-recheck-box-icon,
+.pw-recheck-box .pw-box-icon,
+.pw-recheck-box .pw-recheck-box-icon {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  color: #a6a6a6;
+  font-size: 22px;
+}
+.pw-box .pw-box-input,
+.pw-box .pw-recheck-box-input,
+.pw-box .name-box-input,
+.pw-recheck-box .pw-box-input,
+.pw-recheck-box .pw-recheck-box-input,
+.pw-recheck-box .name-box-input {
+  width: 100%;
+  height: 52px;
+  padding-left: 48px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f2f2f2;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(136, 136, 136, 0.25);
+  color: #333333;
+}
+.pw-box .pw-box-input:focus,
+.pw-box .pw-recheck-box-input:focus,
+.pw-box .name-box-input:focus,
+.pw-recheck-box .pw-box-input:focus,
+.pw-recheck-box .pw-recheck-box-input:focus,
+.pw-recheck-box .name-box-input:focus {
+  outline: none;
+  box-shadow: 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+}
+.pw-box .pw-box-input::placeholder,
+.pw-box .pw-recheck-box-input::placeholder,
+.pw-box .name-box-input::placeholder,
+.pw-recheck-box .pw-box-input::placeholder,
+.pw-recheck-box .pw-recheck-box-input::placeholder,
+.pw-recheck-box .name-box-input::placeholder {
+  color: #a6a6a6;
+}
+.pw-box .pw-box-input:read-only,
+.pw-box .pw-recheck-box-input:read-only,
+.pw-box .name-box-input:read-only,
+.pw-recheck-box .pw-box-input:read-only,
+.pw-recheck-box .pw-recheck-box-input:read-only,
+.pw-recheck-box .name-box-input:read-only {
+  background-color: #dbdbdb;
+}
+
+.confirm-pw-btn {
+  width: 100%;
+  height: 52px;
+  border-radius: 8px;
+  font-size: 16px;
+  @apply dark:text-color-gray-800;
+  background-color: #ec7357;
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+  color: white;
+}
+.confirm-pw-btn:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.confirm-pw-btn:disabled {
   background-color: #a6a6a6;
   box-shadow: none;
 }

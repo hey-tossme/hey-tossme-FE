@@ -2,12 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import ProfileImageSelect from "./ProfileImageSelect";
 import VerificationCodeBox from "./VerificationCodeBox";
 import CodeConfirmModal from "./CodeConfirmModal";
-import {
-    HiOutlineMail,
-    HiOutlineLockClosed,
-    HiOutlineIdentification,
-    HiOutlineSpeakerphone,
-} from "react-icons/hi";
+import { HiOutlineMail, HiOutlineLockClosed, HiOutlineIdentification } from "react-icons/hi";
 import { removeWhitespace, validateEmail, validatePassword } from "../../hooks/regex";
 
 export default function SignUpForm() {
@@ -30,15 +25,18 @@ export default function SignUpForm() {
         setErrorMessage(validateEmail(changedEmail) ? "" : "이메일을 확인해 주세요.");
     };
 
-    const handleChangePassword = (password: string) => {
-        const changedPassword = removeWhitespace(password);
-        setRegisterPassword(changedPassword);
-        setErrorMessage(
-            validatePassword(changedPassword)
-                ? ""
-                : "문자와 숫자 조합으로 8글자 이상 입력해 주세요."
-        );
-    };
+    const handleChangePassword = useCallback(
+        (password: string) => {
+            const changedPassword = removeWhitespace(password);
+            setRegisterPassword(changedPassword);
+            setErrorMessage(
+                validatePassword(changedPassword)
+                    ? ""
+                    : "문자와 숫자 조합으로 8글자 이상 입력해 주세요."
+            );
+        },
+        [registerPassword]
+    );
 
     const handleChangeUserName = (name: string) => {
         const userName = removeWhitespace(name);

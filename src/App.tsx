@@ -17,7 +17,6 @@ export default function App() {
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
                 <Route path="/findpw" element={<FindPassword />}></Route>
-                <Route path="/changepw" element={<ChangePassword />}></Route>
                 <Route path="/notify" element={<Notify />}></Route>
             </Routes>
         </BrowserRouter>
