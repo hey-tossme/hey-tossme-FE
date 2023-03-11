@@ -1,0 +1,90 @@
+.sign-up-form-container {
+    padding-top: 200px;
+    margin-top: 120px;
+
+    .sign-up-form-wrapper {
+        padding-top: 200px;
+        margin-top: 120px;
+        display: flex;
+        justify-content: center;
+
+        .sign-up-form-left {
+            display: flex;
+            align-items: center;
+            margin-right: 80px;
+
+            .profile-select-form {
+                position: relative;
+
+                &:hover > .plus-badge {
+                    background-color: $color-primary;
+                }
+
+                .profile-select-form-img {
+                    width: 150px;
+                    height: 150px;
+                    cursor: pointer;
+                    border-radius: 50%;
+                }
+
+                .plus-badge {
+                    width: 42px;
+                    height: 42px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    background-color: $color-gray-400;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .plus-badge-icon {
+                        color: white;
+                        font-size: 20px;
+                        font-weight: 800;
+                    }
+                }
+            }
+        }
+
+        .email-box,
+        .code-box,
+        .pw-box,
+        .pw-recheck-box,
+        .name-box {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 32px;
+
+            .email-box-icon,
+            .code-box-icon,
+            .pw-box-icon,
+            .pw-recheck-box-icon,
+            .name-box-icon {
+                @include input-icon;
+            }
+
+            .email-box-input,
+            .code-box-input {
+                width: 268px;
+                @include input-box;
+            }
+
+            .pw-box-input,
+            .pw-recheck-box-input,
+            .name-box-input {
+                width: 360px;
+                @include input-box;
+            }
+
+            .send-email-code,
+            .check-email-code {
+                width: 80px;
+                border-radius: 8px;
+                @include btn-fill;
+            }
+        }
+    }
+}
