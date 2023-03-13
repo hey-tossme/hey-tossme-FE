@@ -1,0 +1,76 @@
+@font-face {
+    font-family: "SBAggroB";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
+        format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.header-wrapper {
+    @apply bg-white dark:bg-color-gray-800 flex items-center justify-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 120px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 10000;
+
+    .category-container {
+        @apply flex items-center gap-[56px];
+
+        .logo-wrapper {
+            margin-left: 44px;
+        }
+
+        .header-tab {
+            display: block;
+            @apply relative dark:text-white top-[-4px];
+            color: $color-gray-800;
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+
+    .info-container {
+        @apply flex gap-[28px] items-center mr-[32px];
+
+        .notify-group {
+            @apply relative;
+
+            .new-notify {
+                @apply absolute top-[1px] right-[2px];
+                width: 12px;
+                height: 12px;
+                background-color: $color-primary;
+                border-radius: 100%;
+                box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        .theme-toggle-btn {
+            transition: transform 0.3s;
+            transform: rotate(0deg);
+        }
+
+        .theme-toggle-btn:active {
+            transition: 0.3s;
+            transform: rotate(45deg);
+        }
+
+        .header-btn {
+            @apply flex justify-center items-center w-[100px] h-[36px] rounded-[8px];
+            font-size: $font-btns;
+        }
+
+        .btn-fill {
+            @include btn-fill;
+            @apply dark:text-color-gray-800;
+        }
+
+        .btn-not-fill {
+            @include btn-not-fill;
+            @apply dark:bg-color-gray-800;
+        }
+    }
+}

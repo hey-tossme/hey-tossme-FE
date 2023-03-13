@@ -1,0 +1,82 @@
+.logo-btn {
+    @apply dark:text-white flex gap-[2px] items-center h-[120px];
+    text-shadow: 0px 4px 4px rgba(46, 46, 46, 0.2);
+    font-size: $font-logo;
+    font-family: "SBAggroB";
+    color: $color-gray-800;
+
+    .ball {
+        @apply inline-block relative;
+        font-family: "SBAggroB";
+        color: $color-primary;
+    }
+
+    .shadow {
+        @apply hidden absolute w-[28px] h-[5px] bottom-0;
+        left: calc(50% - 14px);
+        border-radius: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+.logo-btn:hover {
+    .ball {
+        animation: bounce 1s linear infinite;
+    }
+
+    .shadow {
+        display: inline-block;
+        animation: shadow 1s infinite;
+    }
+
+    @keyframes bounce {
+        0% {
+            top: 0px;
+        }
+        20% {
+            top: -20px;
+        }
+        60% {
+            top: -30px;
+        }
+        68% {
+            top: -20px;
+        }
+        95% {
+            top: -3px;
+        }
+        100% {
+            top: 0px;
+        }
+    }
+
+    @keyframes shadow {
+        0% {
+            transform: scale(1);
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        20% {
+            transform: scale(0.8);
+            background-color: rgba(0, 0, 0, 0.15);
+            animation-timing-function: ease-out;
+        }
+        60% {
+            transform: scale(0.2);
+            background-color: rgba(0, 0, 0, 0.1);
+            animation-timing-function: ease-in;
+        }
+        68% {
+            transform: scale(0.3);
+            background-color: rgba(0, 0, 0, 0.15);
+            animation-timing-function: ease-out;
+        }
+        95% {
+            transform: scale(0.9);
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        100% {
+            transform: scale(1);
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    }
+}

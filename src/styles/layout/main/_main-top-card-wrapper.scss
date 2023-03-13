@@ -1,0 +1,10 @@
+.main-top-card-area {
+    position: relative;
+    overflow: hidden;
+    width: 528px;
+
+    .main-top-card-track {
+        display: flex;
+        transform: translate(0, 0);
+    }
+}
