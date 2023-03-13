@@ -28,13 +28,13 @@ export function InfoContainer() {
 
     const handleToggleDarkMode = () => {
         if (localStorage.getItem("theme") === "dark") {
-            dispatch(setIsDark({ dark: true }));
+            dispatch(setIsDark({ dark: false }));
             localStorage.removeItem("theme");
             document.documentElement.classList.remove("dark");
             setDark(false);
         } else {
             document.documentElement.classList.add("dark");
-            dispatch(setIsDark({ dark: false }));
+            dispatch(setIsDark({ dark: true }));
             localStorage.setItem("theme", "dark");
             setDark(true);
         }
