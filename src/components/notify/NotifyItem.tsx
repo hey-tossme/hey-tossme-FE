@@ -34,7 +34,7 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
         dispatch(updateReadList(item));
     };
 
-    console.log(!dark.dark);
+    // console.log(dark.dark);
 
     return (
         <Link
@@ -47,7 +47,7 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
         >
             <div onClick={handleRead} className="notify-item">
                 <div onClick={handleDelete} className="delete-btn">
-                    {!dark.dark ? (
+                    {dark.dark ? (
                         <FiX size="20px" color="#ffffff" />
                     ) : (
                         <FiX size="20px" color="#333333" />
@@ -55,8 +55,8 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
                 </div>
                 <div className="notify-text-group">
                     <div className="notify-icon">
-                        {!isRead && !dark.dark && <FaRegBell size="20px" color="#ffffff" />}
-                        {!isRead && dark.dark && <FaRegBell size="20px" color="#333333" />}
+                        {!isRead && dark.dark && <FaRegBell size="20px" color="#ffffff" />}
+                        {!isRead && !dark.dark && <FaRegBell size="20px" color="#333333" />}
                         {isRead && <FaRegBell size="20px" color="#A6A6A6" />}
                     </div>
                     {item.type === "transaction" && (
