@@ -1,0 +1,56 @@
+@keyframes btnOpacity {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(00%);
+    }
+}
+
+.fixed-btns-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 32px;
+    margin-bottom: 32px;
+
+    .fixed-btns-wrapper {
+        width: 60px;
+
+        .btns-item {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: $drop-shadow;
+            transition: 0.2s;
+            animation: btnOpacity 0.4s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                transform: scale(1.1);
+                transition: 0.2s;
+            }
+
+            &.go-to-chat-btn,
+            &.plus-btn {
+                background-color: $color-primary;
+            }
+
+            &.go-to-write-btn {
+                background-color: $color-secondary;
+                margin-bottom: 12px;
+            }
+
+            .go-to-write-btn-icon,
+            .go-to-chat-btn-icon,
+            .plus-btn-icon {
+                font-size: 28px;
+                color: $color-gray-800;
+            }
+        }
+    }
+}

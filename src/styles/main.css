@@ -240,7 +240,7 @@ body {
 .login-form-container .login-form-wrapper .login-form-inner .login-form-btn-area a .kakao-btn {
   width: 172px;
   border-radius: 8px;
-  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.5);
   cursor: pointer;
 }
 .login-form-container .login-form-wrapper .login-form-inner .login-form-bottom {
@@ -1032,6 +1032,55 @@ body {
   max-width: 300px;
   font-weight: 400;
   font-size: 16px;
+}
+
+@keyframes btnOpacity {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+.fixed-btns-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 32px;
+  margin-bottom: 32px;
+}
+.fixed-btns-container .fixed-btns-wrapper {
+  width: 60px;
+}
+.fixed-btns-container .fixed-btns-wrapper .btns-item {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.5);
+  transition: 0.2s;
+  animation: btnOpacity 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fixed-btns-container .fixed-btns-wrapper .btns-item:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+.fixed-btns-container .fixed-btns-wrapper .btns-item.go-to-chat-btn, .fixed-btns-container .fixed-btns-wrapper .btns-item.plus-btn {
+  background-color: #ec7357;
+}
+.fixed-btns-container .fixed-btns-wrapper .btns-item.go-to-write-btn {
+  background-color: #fdd692;
+  margin-bottom: 12px;
+}
+.fixed-btns-container .fixed-btns-wrapper .btns-item .go-to-write-btn-icon,
+.fixed-btns-container .fixed-btns-wrapper .btns-item .go-to-chat-btn-icon,
+.fixed-btns-container .fixed-btns-wrapper .btns-item .plus-btn-icon {
+  font-size: 28px;
+  color: #333333;
 }
 
 @font-face {
