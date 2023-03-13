@@ -1,0 +1,75 @@
+.login-form-container {
+    padding-top: 200px;
+
+    .login-form-title {
+        display: flex;
+        justify-content: center;
+
+        .login-form-title-inner {
+            .login-form-desc {
+                text-align: center;
+            }
+        }
+    }
+
+    .login-form-wrapper {
+        display: flex;
+        justify-content: center;
+
+        .login-form-inner {
+            width: 320px;
+
+            .email-box,
+            .pw-box {
+                position: relative;
+                display: flex;
+                margin-bottom: 32px;
+
+                .email-box-icon,
+                .pw-box-icon {
+                    @include input-icon;
+                }
+
+                .email-box-input,
+                .pw-box-input {
+                    @include input-box;
+                    width: 320px;
+                }
+            }
+
+            .login-form-btn-area {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 32px;
+
+                a {
+                    .login-btn {
+                        width: 128px;
+                        height: 100%;
+                        border-radius: 8px;
+                        font-size: $font-btns;
+                        @apply dark:text-color-gray-800;
+                        @include btn-fill;
+                    }
+
+                    .kakao-btn {
+                        width: 172px;
+                        border-radius: 8px;
+                        box-shadow: $drop-shadow;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .login-form-bottom {
+                display: flex;
+                justify-content: space-between;
+
+                .go-to-sign-up,
+                .go-to-find-pw {
+                    @include dark-mode-text;
+                }
+            }
+        }
+    }
+}

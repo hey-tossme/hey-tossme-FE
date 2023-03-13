@@ -12,8 +12,19 @@ body {
 // 버튼
 @mixin btn-fill {
     background-color: $color-primary;
-    box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
+    box-shadow: inset 0.2rem 0.2rem 1rem $color-primary-light,
+        inset -0.2rem -0.2rem 1rem $color-primary-dark, $shadow;
     color: white;
+
+    &:active {
+        box-shadow: inset 0.2rem 0.2rem 1rem $color-primary-dark,
+            inset -0.2rem -0.2rem 1rem$color-primary-light;
+    }
+
+    &:disabled {
+        background-color: $color-gray-400;
+        box-shadow: none;
+    }
 }
 
 @mixin btn-not-fill {
@@ -21,6 +32,10 @@ body {
     background-color: white;
     box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
     color: $color-primary;
+
+    &:active {
+        box-shadow: $inner-shadow;
+    }
 }
 
 // 다크 모드
@@ -59,4 +74,36 @@ body {
     max-width: 300px;
     font-weight: 400;
     font-size: $font-chat-desc;
+}
+
+// input
+@mixin input-icon {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    color: $color-gray-400;
+    font-size: 22px;
+}
+
+@mixin input-box {
+    height: 52px;
+    padding-left: 48px;
+    border: none;
+    border-radius: 12px;
+    background-color: $color-gray-100;
+    box-shadow: $inner-shadow;
+    color: $color-gray-800;
+
+    &:focus {
+        outline: none;
+        box-shadow: $shadow;
+    }
+
+    &::placeholder {
+        color: $color-gray-400;
+    }
+
+    &:read-only {
+        background-color: $color-gray-200;
+    }
 }
