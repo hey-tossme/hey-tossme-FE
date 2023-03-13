@@ -6,4 +6,9 @@ export interface IBtnState {
 export interface IChatState {
     chatOpen: boolean;
     setChatOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    openChatState: boolean;
+}
+
+export interface IOpenChatState {
+    openChatState: boolean;
 }

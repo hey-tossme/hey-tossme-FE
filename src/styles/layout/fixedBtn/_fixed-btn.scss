@@ -1,11 +1,20 @@
-@keyframes btnOpacity {
+@keyframes btnSlide {
     from {
         opacity: 0;
         transform: translateY(100%);
     }
     to {
         opacity: 1;
-        transform: translateY(00%);
+        transform: translateY(0%);
+    }
+}
+
+@keyframes btnOpacity {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
     }
 }
 
@@ -25,7 +34,6 @@
             border-radius: 50%;
             box-shadow: $drop-shadow;
             transition: 0.2s;
-            animation: btnOpacity 0.4s;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,6 +51,7 @@
             &.go-to-write-btn {
                 background-color: $color-secondary;
                 margin-bottom: 12px;
+                animation: btnSlide 0.4s;
             }
 
             .go-to-write-btn-icon,
@@ -50,6 +59,7 @@
             .plus-btn-icon {
                 font-size: 28px;
                 color: $color-gray-800;
+                animation: btnOpacity 0.4s;
             }
         }
     }
