@@ -1,0 +1,71 @@
+@keyframes scrollAction {
+    from {
+        transform: translateY(50%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.chatting-list-container {
+    width: 480px;
+    height: 600px;
+    position: relative;
+    background-color: $color-gray-100;
+    @apply dark:bg-color-gray-700;
+    border-radius: 32px;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+    }
+
+    .close-chatting-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 12px;
+        margin-right: 12px;
+        font-size: $font-btns-larger;
+        @include dark-mode-text;
+    }
+
+    .go-to-prev-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 12px;
+        margin-left: 12px;
+        font-size: $font-btns-larger;
+        @include dark-mode-text;
+    }
+
+    .chatting-list-item-wrapper {
+        margin-top: 80px;
+    }
+
+    .scroll-box {
+        position: fixed;
+        bottom: 64px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: $color-gray-400;
+        @apply dark:bg-color-gray-700;
+        box-shadow: $drop-shadow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: scrollAction 0.8s alternate infinite;
+        opacity: 0.8;
+
+        .scroll-icon {
+            font-size: $font-btns-larger;
+            @include dark-mode-text;
+        }
+    }
+}

@@ -543,7 +543,7 @@ body {
   bottom: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.8);
-  z-index: 99999;
+  z-index: 12000;
 }
 .modal-background .modal-container {
   position: fixed;
@@ -819,7 +819,7 @@ body {
   padding-top: 200px;
   display: flex;
   justify-content: center;
-  z-index: 9999;
+  z-index: 1;
   @apply dark:text-white;
   color: #333333;
 }
@@ -1091,6 +1091,124 @@ body {
   font-size: 28px;
   color: #333333;
   animation: btnOpacity 0.4s;
+}
+
+@keyframes openChatting {
+  from {
+    transform-origin: bottom right;
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  to {
+    transform-origin: bottom right;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.chatting-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 32px;
+  margin-bottom: 32px;
+  z-index: 10000;
+  animation: openChatting 0.8s;
+}
+
+@keyframes scrollAction {
+  from {
+    transform: translateY(50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.chatting-list-container {
+  width: 480px;
+  height: 600px;
+  position: relative;
+  background-color: #f2f2f2;
+  @apply dark:bg-color-gray-700;
+  border-radius: 32px;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.chatting-list-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+.chatting-list-container .close-chatting-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 12px;
+  margin-right: 12px;
+  font-size: 20px;
+  @apply dark:text-white;
+  color: #333333;
+}
+.chatting-list-container .go-to-prev-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 12px;
+  margin-left: 12px;
+  font-size: 20px;
+  @apply dark:text-white;
+  color: #333333;
+}
+.chatting-list-container .chatting-list-item-wrapper {
+  margin-top: 80px;
+}
+.chatting-list-container .scroll-box {
+  position: fixed;
+  bottom: 64px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #a6a6a6;
+  @apply dark:bg-color-gray-700;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scrollAction 0.8s alternate infinite;
+  opacity: 0.8;
+}
+.chatting-list-container .scroll-box .scroll-icon {
+  font-size: 20px;
+  @apply dark:text-white;
+  color: #333333;
+}
+
+.chatting-list-item {
+  width: 400px;
+  height: 100px;
+  border-radius: 24px;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.5);
+  background-color: white;
+  @apply dark:bg-color-gray-800;
+  @apply dark:text-white;
+  color: #333333;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+.chatting-list-item .chatting-list-img {
+  width: 60px;
+  height: 60px;
+  margin: 0 16px;
+  border-radius: 50%;
+}
+.chatting-list-item .chatting-list-content .chatting-list-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.chatting-list-item .chatting-list-content .chatting-list-recent-msg {
+  font-size: 16px;
 }
 
 @font-face {

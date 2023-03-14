@@ -2,8 +2,9 @@ import React from "react";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setCloseChat, setLeaveChat } from "../../store/modules/chat";
 import { IoChevronBackOutline, IoClose } from "react-icons/io5";
+import { ChattingInfoState } from "./FixedChatting.interface";
 
-export default function ChattingRoom() {
+export default function ChattingRoom({ chattingInfo, setChattingInfo }: ChattingInfoState) {
     const dispatch = useAppDispatch();
 
     return (
@@ -17,6 +18,7 @@ export default function ChattingRoom() {
                         <IoClose className="close-chatting-btn-icon" />
                     </button>
                 </div>
+                미래에 멋진 채팅방이 될 예정
             </div>
         </>
     );
