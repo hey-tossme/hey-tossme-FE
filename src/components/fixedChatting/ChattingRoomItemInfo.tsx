@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { commaNums } from "../../hooks/commaNums";
 import { date } from "../../hooks/date";
 import ChattingRoomBtnArea from "./ChattingRoomBtnArea";
+import { customNullItemImg } from "../../hooks/customImgNull";
 import { ItemInfo } from "./FixedChatting.interface";
 
 export default function ChattingRoomItemInfo({ item }: ItemInfo) {
@@ -16,7 +17,11 @@ export default function ChattingRoomItemInfo({ item }: ItemInfo) {
 
     return (
         <div className="item-info-container">
-            <img src={item.item.imageUrl} alt={item.item.title} className="item-info-img" />
+            <img
+                src={customNullItemImg(item.item.imageUrl)}
+                alt={item.item.title}
+                className="item-info-img"
+            />
             <div className="item-info-content">
                 <div className="item-info-content-inner">
                     <div className="item-info-title">{item.item.title}</div>

@@ -15,6 +15,7 @@ export const chatSlice = createSlice({
         },
         setCloseChat(state) {
             state.openChat = false;
+            state.enterChat = false;
             console.log("채팅창 닫힘");
         },
         setEnterChat(state) {
