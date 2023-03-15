@@ -229,6 +229,7 @@ body {
   background-color: #ec7357;
   box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
   color: white;
+  @apply dark:text-color-gray-800;
 }
 .login-form-container .login-form-wrapper .login-form-inner .login-form-btn-area a .login-btn:active {
   box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
@@ -488,6 +489,7 @@ body {
   background-color: #ec7357;
   box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
   color: white;
+  @apply dark:text-color-gray-800;
 }
 .sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .send-email-code:active,
 .sign-up-form-container .sign-up-form-wrapper .sign-up-form-inner .sign-up-form-right .email-box .resend-email-code:active,
@@ -527,6 +529,7 @@ body {
   background-color: #ec7357;
   box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
   color: white;
+  @apply dark:text-color-gray-800;
 }
 .sign-up-form-container .sign-up-btn-area .sign-up-btn:active {
   box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
@@ -634,6 +637,7 @@ body {
   background-color: #ec7357;
   box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
   color: white;
+  @apply dark:text-color-gray-800;
 }
 .code-comfirm-box .check-email-code:active {
   box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
@@ -721,6 +725,7 @@ body {
   background-color: #ec7357;
   box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
   color: white;
+  @apply dark:text-color-gray-800;
 }
 .find-pw-form-container .find-pw-form-wrapper .email-box .send-email-code:active,
 .find-pw-form-container .find-pw-form-wrapper .email-box .resend-email-code:active,
@@ -804,6 +809,7 @@ body {
   background-color: #ec7357;
   box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
   color: white;
+  @apply dark:text-color-gray-800;
 }
 .confirm-pw-btn:active {
   box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
@@ -975,28 +981,28 @@ body {
   margin: 0 4px;
 }
 
-.main-bottom-chat-item-buyer {
+.main-bottom-chat-item-send {
   display: flex;
   margin: 12px;
 }
-.main-bottom-chat-item-buyer .main-chat-profile {
+.main-bottom-chat-item-send .main-chat-profile {
   margin-left: 8px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
 }
-.main-bottom-chat-item-buyer .main-chat-item-left {
+.main-bottom-chat-item-send .main-chat-item-left {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: right;
 }
-.main-bottom-chat-item-buyer .main-chat-item-left .main-chat-item-name {
+.main-bottom-chat-item-send .main-chat-item-left .main-chat-item-name {
   font-size: 16px;
   margin-bottom: 8px;
   text-align: right;
 }
-.main-bottom-chat-item-buyer .main-chat-item-left .main-chat-item-content {
+.main-bottom-chat-item-send .main-chat-item-left .main-chat-item-content {
   background-color: #dbdbdb;
   color: #333333;
   padding: 8px;
@@ -1006,26 +1012,26 @@ body {
   font-size: 16px;
 }
 
-.main-bottom-chat-item-seller {
+.main-bottom-chat-item-receive {
   display: flex;
   margin: 12px;
 }
-.main-bottom-chat-item-seller .main-chat-profile {
+.main-bottom-chat-item-receive .main-chat-profile {
   margin-right: 8px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
 }
-.main-bottom-chat-item-seller .main-chat-item-right {
+.main-bottom-chat-item-receive .main-chat-item-right {
   width: 100%;
   display: flex;
   align-items: center;
 }
-.main-bottom-chat-item-seller .main-chat-item-right .main-chat-item-name {
+.main-bottom-chat-item-receive .main-chat-item-right .main-chat-item-name {
   font-size: 16px;
   margin-bottom: 8px;
 }
-.main-bottom-chat-item-seller .main-chat-item-right .main-chat-item-content {
+.main-bottom-chat-item-receive .main-chat-item-right .main-chat-item-content {
   background-color: #ec7357;
   color: white;
   padding: 8px;
@@ -1183,6 +1189,14 @@ body {
   color: #333333;
 }
 
+@keyframes chattingItem {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .chatting-list-item {
   width: 400px;
   height: 100px;
@@ -1195,6 +1209,8 @@ body {
   margin-bottom: 16px;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  animation: chattingItem 0.8s;
 }
 .chatting-list-item .chatting-list-img {
   width: 60px;
@@ -1209,6 +1225,80 @@ body {
 }
 .chatting-list-item .chatting-list-content .chatting-list-recent-msg {
   font-size: 16px;
+}
+
+.item-info-container {
+  position: relative;
+  margin-top: 48px;
+  width: 400px;
+  height: 120px;
+  background-color: white;
+  @apply dark:bg-color-gray-800;
+  @apply dark:text-white;
+  color: #333333;
+  border-radius: 24px;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.5);
+  display: flex;
+  align-items: center;
+}
+.item-info-container .item-info-img {
+  width: 100px;
+  height: 88px;
+  margin: 0 16px;
+  border-radius: 16px;
+}
+.item-info-container .item-info-content .item-info-content-inner .item-info-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.item-info-container .item-info-content .item-info-content-inner .item-info-price,
+.item-info-container .item-info-content .item-info-content-inner .item-info-due-time {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.item-info-btn-area {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+.item-info-btn-area .confirmed-btn,
+.item-info-btn-area .account-btn {
+  width: 68px;
+  height: 28px;
+  border-radius: 8px;
+  font-size: 12px;
+  background-color: #ec7357;
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+  color: white;
+  @apply dark:text-color-gray-800;
+}
+.item-info-btn-area .confirmed-btn:active,
+.item-info-btn-area .account-btn:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.item-info-btn-area .confirmed-btn:disabled,
+.item-info-btn-area .account-btn:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
+}
+
+.chat-box-container {
+  width: 400px;
+  height: 352px;
+  margin-top: 16px;
+  background-color: white;
+  @apply dark:bg-color-gray-800;
+  @apply dark:text-white;
+  color: #333333;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.5);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
 }
 
 @font-face {
@@ -1270,6 +1360,7 @@ body {
   background-color: #ec7357;
   box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
   color: white;
+  @apply dark:text-color-gray-800;
   @apply dark:text-color-gray-800;
 }
 .header-wrapper .info-container .btn-fill:active {

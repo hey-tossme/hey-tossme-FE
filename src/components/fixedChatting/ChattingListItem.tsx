@@ -1,20 +1,21 @@
 import React from "react";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setEnterChat } from "../../store/modules/chat";
-import profileImg from "../../assets/images/profile-user.png";
-import { ChattingItem } from "./FixedChatting.interface";
+import { customNullImg } from "../../hooks/customImgNull";
+import { chatIdInfo } from "./FixedChatting.interface";
 
-export default function ChattingListItem({ item }: ChattingItem) {
+export default function ChattingListItem({ item, chatId, setChatId }: chatIdInfo) {
     const USER_ID = 1; // 임시 정보
     const dispatch = useAppDispatch();
 
-    const customNullImg = (src: string) => {
-        return src ? src : profileImg;
+    const openChatRoom = () => {
+        setChatId(item.id);
+        dispatch(setEnterChat());
     };
 
     return (
         <>
-            <div className="chatting-list-item" onClick={() => dispatch(setEnterChat())}>
+            <div className="chatting-list-item" onClick={openChatRoom}>
                 {USER_ID === item.buyer.id ? (
                     <>
                         <img

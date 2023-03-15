@@ -6,7 +6,12 @@ import { ChattingInfoState } from "./FixedChatting.interface";
 import { IoClose } from "react-icons/io5";
 import { CgScrollV } from "react-icons/cg";
 
-export default function ChattingList({ chattingInfo, setChattingInfo }: ChattingInfoState) {
+export default function ChattingList({
+    chattingInfo,
+    setChattingInfo,
+    chatId,
+    setChatId,
+}: ChattingInfoState) {
     const dispatch = useAppDispatch();
 
     const ITEM_HEIGHT = 100;
@@ -28,7 +33,12 @@ export default function ChattingList({ chattingInfo, setChattingInfo }: Chatting
                     }}
                 >
                     {chattingInfo.map((item) => (
-                        <ChattingListItem item={item} key={item.id} />
+                        <ChattingListItem
+                            item={item}
+                            key={item.id}
+                            chatId={chatId}
+                            setChatId={setChatId}
+                        />
                     ))}
                 </div>
                 {LENGTH > 4 ? (

@@ -1,0 +1,12 @@
+.chat-box-container {
+    width: 400px;
+    height: 352px;
+    margin-top: 16px;
+    background-color: white;
+    @apply dark:bg-color-gray-800;
+    @include dark-mode-text;
+    box-shadow: $drop-shadow;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+}
