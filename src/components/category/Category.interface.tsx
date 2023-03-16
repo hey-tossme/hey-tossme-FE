@@ -28,6 +28,7 @@ export interface LocationSelectItemProps {
 }
 
 export interface cardItemProps {
+    id: number;
     title: string;
     price: number;
     endDate: string;

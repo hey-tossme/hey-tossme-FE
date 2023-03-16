@@ -4,13 +4,14 @@ import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { cardItemProps } from "./Category.interface";
 import { commaNums } from "../../hooks/commaNums";
-import { date } from "../../hooks/date";
+import axios from "axios";
 
-export default function CardItem({ title, price, endDate, address }: cardItemProps) {
+export default function CardItem({ id, title, price, endDate, address }: cardItemProps) {
     const [bookmark, setBookmark] = useState<boolean>();
 
     const handleSetBookmark = () => {
         bookmark ? setBookmark(false) : setBookmark(true);
+        axios.post("/posts", { itemId: id });
     };
 
     return (

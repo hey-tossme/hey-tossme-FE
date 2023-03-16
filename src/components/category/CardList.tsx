@@ -19,6 +19,7 @@ export default function CardList() {
                         return (
                             <CardItem
                                 key={item.id}
+                                id={item.id}
                                 title={item.title}
                                 price={item.price}
                                 endDate={item.dueTime}
