@@ -19,6 +19,7 @@
 }
 
 .fixed-btns-container {
+    z-index: 10000;
     position: fixed;
     bottom: 0;
     right: 0;
