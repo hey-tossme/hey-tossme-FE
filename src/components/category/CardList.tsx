@@ -20,6 +20,7 @@ export default function CardList() {
                             <CardItem
                                 key={item.id}
                                 id={item.id}
+                                img={item.image_url}
                                 title={item.title}
                                 price={item.price}
                                 endDate={item.dueTime}
