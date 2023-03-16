@@ -1,0 +1,92 @@
+.location-select-area {
+    @apply dark:bg-dark-bg-color;
+    display: none;
+    position: absolute;
+    top: 52px;
+    width: 792px;
+    height: 240px;
+    background-color: rgba($color: #ffffff, $alpha: 0.8);
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    overflow: hidden;
+
+    .location-list {
+        display: flex;
+        flex-direction: column;
+        width: 264px;
+        height: 240px;
+        overflow-x: visible;
+        overflow-y: scroll;
+        border-right: 1px solid $color-gray-200;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        .location-item {
+            @include dark-mode-text;
+            position: relative;
+            padding: 16px;
+            transition: 0.3s;
+            cursor: pointer;
+
+            .select-btn {
+                @include dark-mode-text;
+                display: none;
+                position: absolute;
+                top: 50%;
+                right: 16px;
+                width: 12px;
+                height: 12px;
+                transform: translateY(-50%);
+            }
+
+            .select-text {
+                @apply dark:bg-color-gray-800 dark:text-[#dbdbdb];
+                display: none;
+                position: absolute;
+                top: 50%;
+                right: 16px;
+                padding: 4px;
+                transform: translateY(-50%);
+                font-size: 10px;
+                border-radius: 4px;
+                background-color: $color-gray-200;
+                color: white;
+            } 
+
+            &.active {
+                @apply dark:bg-[#6e6e6e];
+                color: $color-primary;
+                background-color: $color-gray-100;
+
+                .select-btn {
+                    display: block;
+                }
+            }
+        }  
+
+        .location-item:hover {
+            color: $color-primary;
+
+            .select-btn {
+                display: block;
+            }
+
+            .select-text {
+                display: block;
+            }
+        }
+    }
+
+    .location-list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .second {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 264px;
+    }
+
+}

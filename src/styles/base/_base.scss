@@ -108,3 +108,24 @@ body {
         background-color: $color-gray-200;
     }
 }
+
+// 북마크 버튼
+@mixin bookmark-btn-not-fill {
+    @apply dark:text-white;
+    width: 16px;
+    height: 16px;
+    color: $color-gray-800;
+}
+
+@mixin bookmark-btn-fill {
+    width: 16px;
+    height: 16px;
+    color: $color-primary;
+}
+
+// 말줄임 텍스트 1줄 
+@mixin ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
