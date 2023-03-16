@@ -7,6 +7,8 @@ import { RiGalleryFill } from "react-icons/ri";
 import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore.hook";
 import { resetData, setSearchData } from "../../store/modules/search";
+import { setSearchResult } from "../../store/modules/searchResult";
+import axios from "axios";
 
 export default function CategoryBar() {
     const params = useParams();
@@ -16,11 +18,21 @@ export default function CategoryBar() {
 
     useEffect(() => {
         console.log(searchData);
+        const { region, category, startDue, endDue, keyword } = searchData;
+        const PRODUCTS_URL = "../../../public/data/product.json";
 
-        // 상품 조회 GET API 요청
-        // 전체보기, 카테고리 분류로 보기, 마감임박된 것만 보기 세개로 나눠야함
-        // axios.get("https://localhost:8080/items",
-        // {{region : `${sido_area} ${sigun_area}`, due : duedate, searchTitle : keyword, category : category}})
+        axios
+            .get(PRODUCTS_URL, {
+                params: {
+                    category: category,
+                    region: region,
+                    startDue: startDue,
+                    endDue: endDue,
+                    searchTitle: keyword,
+                    size: 8,
+                },
+            })
+            .then((res) => dispatch(setSearchResult(res.data.data)));
     }, [searchData]);
 
     useEffect(() => {
@@ -28,6 +40,13 @@ export default function CategoryBar() {
     }, [params.category]);
 
     useEffect(() => {
+        const inputs = document.querySelectorAll(".item-input");
+        inputs.forEach((item) => {
+            const input = item as HTMLInputElement;
+            input.innerText = "";
+        });
+        dispatch(resetData());
+
         currentCategory &&
             dispatch(
                 setSearchData({
@@ -62,13 +81,6 @@ export default function CategoryBar() {
                 })
             );
         }
-
-        const inputs = document.querySelectorAll(".item-input");
-        inputs.forEach((item) => {
-            const input = item as HTMLInputElement;
-            input.innerText = "";
-        });
-        dispatch(resetData());
 
         const list = document.querySelectorAll("a.tab-menu");
         const target = currentCategory
