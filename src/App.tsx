@@ -12,6 +12,7 @@ export default function App() {
     return (
         <BrowserRouter>
             <Header />
+            <FixedBtn />
             <Routes>
                 <Route path="/" element={<Main />}></Route>
                 <Route path="/login" element={<Login />}></Route>
@@ -19,7 +20,6 @@ export default function App() {
                 <Route path="/findpw" element={<FindPassword />}></Route>
                 <Route path="/notify" element={<Notify />}></Route>
             </Routes>
-            <FixedBtn />
         </BrowserRouter>
     );
 }

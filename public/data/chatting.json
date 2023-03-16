@@ -1,0 +1,245 @@
+{
+    "message": "successfully create chatroom",
+    "data": [
+        {
+            "id": 1,
+            "buyer": {
+                "id": 1,
+                "email": "mainmirror14@gmail.com",
+                "name": "박주경",
+                "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
+                "socialType": null,
+                "status": "NORMAL",
+                "account": "000-000-000001",
+                "bankName": "토스뱅크"
+            },
+            "seller": {
+                "id": 2,
+                "email": "test@naver.com",
+                "name": "신짱구",
+                "imageURL": null,
+                "socialType": null,
+                "status": "NORMAL",
+                "account": "000-000-000000",
+                "bankName": "신한"
+            },
+            "item": {
+                "id": 1,
+                "seller": {
+                    "id": 2,
+                    "email": "test@naver.com",
+                    "name": "신짱구",
+                    "imageURL": null,
+                    "socialType": null,
+                    "status": "NORMAL",
+                    "account": "000-000-000000",
+                    "bankName": "신한"
+                },
+                "category": "hotel",
+                "title": "롯데 호텔 제주",
+                "contents": "양도합니다",
+                "price": 498000,
+                "createdAt": "2023-03-14T14:59:23.361741",
+                "dueTime": "2024-05-10T17:00:00",
+                "latitude": 36.6157,
+                "longitude": 127.475,
+                "imageUrl": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdGVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                "status": "SALE"
+            },
+            "lastMessage": "입금해 주세요",
+            "accountTransferStatus": false
+        },
+        {
+            "id": 7,
+            "buyer": {
+                "id": 2,
+                "email": "test@naver.com",
+                "name": "신짱구",
+                "imageURL": null,
+                "socialType": null,
+                "status": "NORMAL",
+                "account": "000-000-000000",
+                "bankName": "신한"
+            },
+            "seller": {
+                "id": 1,
+                "email": "mainmirror14@gmail.com",
+                "name": "박주경",
+                "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
+                "socialType": null,
+                "status": "NORMAL",
+                "account": "000-000-000001",
+                "bankName": "토스뱅크"
+            },
+            "item": {
+                "id": 1,
+                "seller": {
+                    "id": 1,
+                    "email": "mainmirror14@gmail.com",
+                    "name": "박주경",
+                    "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
+                    "socialType": null,
+                    "status": "NORMAL",
+                    "account": "000-000-000001",
+                    "bankName": "토스뱅크"
+                },
+                "category": "restaurant",
+                "title": "메이필드 디너 2인",
+                "contents": null,
+                "price": 100000,
+                "createdAt": "2023-03-14T14:59:23.361741",
+                "dueTime": "2024-05-10T17:00:00",
+                "latitude": 36.6157,
+                "longitude": 127.475,
+                "imageUrl": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGlubmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                "status": "SALE"
+            },
+            "lastMessage": "네고 가능한가요?",
+            "accountTransferStatus": false
+        },
+        {
+            "id": 29,
+            "buyer": {
+                "id": 2,
+                "email": "test@naver.com",
+                "name": "신짱구",
+                "imageURL": null,
+                "socialType": null,
+                "status": "NORMAL",
+                "account": "000-000-000000",
+                "bankName": "신한"
+            },
+            "seller": {
+                "id": 1,
+                "email": "mainmirror14@gmail.com",
+                "name": "박주경",
+                "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
+                "socialType": null,
+                "status": "NORMAL",
+                "account": "000-000-000001",
+                "bankName": "토스뱅크"
+            },
+            "item": {
+                "id": 1,
+                "seller": {
+                    "id": 1,
+                    "email": "mainmirror14@gmail.com",
+                    "name": "박주경",
+                    "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
+                    "socialType": null,
+                    "status": "NORMAL",
+                    "account": "000-000-000001",
+                    "bankName": "토스뱅크"
+                },
+                "category": "hair",
+                "title": "대전 유라헤어",
+                "contents": null,
+                "price": 80000,
+                "createdAt": "2023-03-14T14:59:23.361741",
+                "dueTime": "2024-05-10T17:00:00",
+                "latitude": 36.6157,
+                "longitude": 127.475,
+                "imageUrl": null,
+                "status": "SALE"
+            },
+            "lastMessage": "내용이 없습니다",
+            "accountTransferStatus": false
+        },
+        {
+            "id": 37,
+            "buyer": {
+                "id": 2,
+                "email": "test@naver.com",
+                "name": "맹구",
+                "imageURL": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMDNfMTc3/MDAxNTc4MDUwOTc5Mjkz.53foc2K793cQned5VD-mHS0LMvgf5YGtadk09ElulBAg.o3WemJa6S_nawhNga5MGaeJHOxFMbCXrPrd_JoPLpckg.JPEG.minsuk2468/3.jpg?type=w800",
+                "socialType": null,
+                "status": "NORMAL",
+                "account": "000-000-000000",
+                "bankName": "신한"
+            },
+            "seller": {
+                "id": 1,
+                "email": "mainmirror14@gmail.com",
+                "name": "박주경",
+                "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
+                "socialType": null,
+                "status": "NORMAL",
+                "account": "000-000-000001",
+                "bankName": "토스뱅크"
+            },
+            "item": {
+                "id": 1,
+                "seller": {
+                    "id": 1,
+                    "email": "mainmirror14@gmail.com",
+                    "name": "박주경",
+                    "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
+                    "socialType": null,
+                    "status": "NORMAL",
+                    "account": "000-000-000001",
+                    "bankName": "토스뱅크"
+                },
+                "category": "restaurant",
+                "title": "메이필드 디너 2인",
+                "contents": null,
+                "price": 100000,
+                "createdAt": "2023-03-14T14:59:23.361741",
+                "dueTime": "2024-05-10T17:00:00",
+                "latitude": 36.6157,
+                "longitude": 127.475,
+                "imageUrl": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGlubmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                "status": "SALE"
+            },
+            "lastMessage": "네고 가능한가요?",
+            "accountTransferStatus": false
+        },
+        {
+            "id": 71,
+            "buyer": {
+                "id": 2,
+                "email": "test@naver.com",
+                "name": "맹구",
+                "imageURL": "https://mblogthumb-phinf.pstatic.net/MjAyMDAxMDNfMTc3/MDAxNTc4MDUwOTc5Mjkz.53foc2K793cQned5VD-mHS0LMvgf5YGtadk09ElulBAg.o3WemJa6S_nawhNga5MGaeJHOxFMbCXrPrd_JoPLpckg.JPEG.minsuk2468/3.jpg?type=w800",
+                "socialType": null,
+                "status": "NORMAL",
+                "account": "000-000-000000",
+                "bankName": "신한"
+            },
+            "seller": {
+                "id": 1,
+                "email": "mainmirror14@gmail.com",
+                "name": "박주경",
+                "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
+                "socialType": null,
+                "status": "NORMAL",
+                "account": "000-000-000001",
+                "bankName": "토스뱅크"
+            },
+            "item": {
+                "id": 1,
+                "seller": {
+                    "id": 1,
+                    "email": "mainmirror14@gmail.com",
+                    "name": "박주경",
+                    "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
+                    "socialType": null,
+                    "status": "NORMAL",
+                    "account": "000-000-000001",
+                    "bankName": "토스뱅크"
+                },
+                "category": "restaurant",
+                "title": "메이필드 디너 2인",
+                "contents": null,
+                "price": 100000,
+                "createdAt": "2023-03-14T14:59:23.361741",
+                "dueTime": "2024-05-10T17:00:00",
+                "latitude": 36.6157,
+                "longitude": 127.475,
+                "imageUrl": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGlubmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                "status": "SALE"
+            },
+            "lastMessage": "네고 가능한가요?",
+            "accountTransferStatus": false
+        }
+    ]
+}

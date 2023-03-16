@@ -4,7 +4,7 @@
     padding-top: 200px;
     display: flex;
     justify-content: center;
-    z-index: 9999;
+    z-index: 1;
     @include dark-mode-text;
 
     .main-top-contents {

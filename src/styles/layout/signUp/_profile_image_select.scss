@@ -1,7 +1,7 @@
 .profile-select-form {
     position: relative;
 
-    &:hover > .plus-badge {
+    &:hover .plus-badge {
         background-color: $color-primary;
         transition: 0.4s;
     }
@@ -24,6 +24,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
 
         .plus-badge-icon {
             color: white;

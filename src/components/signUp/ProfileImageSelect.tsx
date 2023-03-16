@@ -26,6 +26,11 @@ export default function ProfileImageSelect({
     return (
         <form method="post" className="profile-select-form">
             <label htmlFor="choose-file">
+                {imageSrc ? null : (
+                    <div className="plus-badge">
+                        <HiOutlinePlus className="plus-badge-icon" />
+                    </div>
+                )}
                 <img
                     src={imageSrc ? imageSrc : profile}
                     alt="profile-image"
@@ -40,11 +45,6 @@ export default function ProfileImageSelect({
                 className="hidden"
                 onChange={(e) => onUpload(e)}
             />
-            {imageSrc ? null : (
-                <div className="plus-badge">
-                    <HiOutlinePlus className="plus-badge-icon" />
-                </div>
-            )}
         </form>
     );
 }
