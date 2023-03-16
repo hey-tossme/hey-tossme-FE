@@ -6,17 +6,15 @@ import { FaHome } from "react-icons/fa";
 import { RiGalleryFill } from "react-icons/ri";
 import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore.hook";
-import { setSearchData } from "../../store/modules/search";
+import { resetData, setSearchData } from "../../store/modules/search";
 
 export default function CategoryBar() {
     const params = useParams();
+    const [currentCategory, setCurrentCategory] = useState<string | null>();
     const dispatch = useAppDispatch();
-    const [currentCategory, setCurrentCategory] = useState<string>();
     const searchData = useAppSelector((state) => state.search);
-    const isDark = useAppSelector((state) => state.dark);
 
     useEffect(() => {
-        const { category, sido_area, sigun_area, duedate, keyword, deadline } = searchData;
         console.log(searchData);
 
         // 상품 조회 GET API 요청
@@ -33,10 +31,44 @@ export default function CategoryBar() {
         currentCategory &&
             dispatch(
                 setSearchData({
-                    deadline: currentCategory === "deadline" ? true : false,
-                    category: currentCategory === "deadline" ? undefined : currentCategory,
+                    category: currentCategory === "deadline" ? null : currentCategory,
                 })
             );
+
+        if (currentCategory === "deadline") {
+            const today = new Date();
+            const endDate = new Date(today);
+            endDate.setDate(today.getDate() + 3);
+
+            const year = today.getFullYear();
+            const month =
+                today.getMonth() + 1 < 10
+                    ? "0" + Number(today.getMonth() + 1)
+                    : today.getMonth() + 1;
+            const targetDate = today.getDate() < 10 ? "0" + today.getDate() : today.getDate();
+
+            const endDateYear = endDate.getFullYear();
+            const endDateMonth =
+                endDate.getMonth() + 1 < 10
+                    ? "0" + Number(endDate.getMonth() + 1)
+                    : endDate.getMonth() + 1;
+            const endTargetDate =
+                endDate.getDate() < 10 ? "0" + endDate.getDate() : endDate.getDate();
+
+            dispatch(
+                setSearchData({
+                    startDue: `${year}-${month}-${targetDate}`,
+                    endDue: `${endDateYear}-${endDateMonth}-${endTargetDate}`,
+                })
+            );
+        }
+
+        const inputs = document.querySelectorAll(".item-input");
+        inputs.forEach((item) => {
+            const input = item as HTMLInputElement;
+            input.innerText = "";
+        });
+        dispatch(resetData());
 
         const list = document.querySelectorAll("a.tab-menu");
         const target = currentCategory
@@ -54,7 +86,7 @@ export default function CategoryBar() {
         const targetText = target?.childNodes[0].childNodes[1] as HTMLSpanElement;
         targetIcon.classList.add("active");
         targetText.classList.add("active");
-    }, [currentCategory, isDark]);
+    }, [currentCategory]);
 
     return (
         <div className="category-bar-group">

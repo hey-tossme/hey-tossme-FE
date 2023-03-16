@@ -2,12 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { searchStateProps } from "../../components/category/Category.interface";
 
 const initialState: searchStateProps = {
-    category: "",
-    keyword: "",
-    sido_area: "",
-    sigun_area: "",
-    duedate: "",
-    deadline: false,
+    category: null,
+    keyword: null,
+    region: null,
+    startDue: null,
+    endDue: null,
 };
 
 export const searchSlice = createSlice({

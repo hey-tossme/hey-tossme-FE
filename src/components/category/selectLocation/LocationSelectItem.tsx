@@ -19,7 +19,7 @@ export default function LocationSelectItem({ region, sigun }: LocationSelectItem
         locationSelectBox.style.display = "none";
         locationInput.value = `${region} ${sigun}`;
 
-        dispatch(setSearchData({ sigun_area: sigun, sido_area: region }));
+        dispatch(setSearchData({ region: `${region} ${sigun}` }));
     };
 
     return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import DatePicker, { CalendarContainer } from "react-datepicker";
@@ -8,10 +8,12 @@ import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getMonth";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setSearchData } from "../../store/modules/search";
+import { useParams } from "react-router";
 
 export default function CustomDatepicker() {
-    const [startDate, setStartDate] = useState<Date>();
+    const [startDate, setStartDate] = useState<Date | null>();
     const dispatch = useAppDispatch();
+    const params = useParams();
 
     const handleSetPeriod = (date: Date) => {
         setStartDate(date);
@@ -20,9 +22,14 @@ export default function CustomDatepicker() {
             const month =
                 date.getMonth() + 1 < 10 ? "0" + Number(date.getMonth() + 1) : date.getMonth() + 1;
             const targetDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-            dispatch(setSearchData({ duedate: `${year}-${month}-${targetDate}` }));
+            dispatch(setSearchData({ endDue: `${year}-${month}-${targetDate}`, startDue: null }));
         }
     };
+
+    useEffect(() => {
+        setStartDate(null);
+    }, [params.category]);
+
     return (
         <DatePicker
             locale={ko}

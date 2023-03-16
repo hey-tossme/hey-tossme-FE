@@ -1,10 +1,9 @@
 export interface searchStateProps {
-    category: string;
-    keyword: string;
-    sido_area: string;
-    sigun_area: string;
-    duedate: string;
-    deadline: false;
+    category: string | null;
+    keyword: string | null;
+    region: string | null;
+    startDue: string | null;
+    endDue: string | null;
 }
 
 export interface sidoDataType {
