@@ -9,7 +9,7 @@
 
 .chatting-list-container {
     width: 480px;
-    height: 600px;
+    height: 80vh;
     position: relative;
     background-color: $color-gray-100;
     @apply dark:bg-color-gray-700;
@@ -45,7 +45,7 @@
     }
 
     .chatting-list-item-wrapper {
-        margin-top: 80px;
+        margin-top: 40px;
     }
 
     .scroll-box {
