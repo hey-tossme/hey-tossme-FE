@@ -551,7 +551,7 @@ body {
 .modal-background .modal-container {
   position: fixed;
   width: 400px;
-  height: 100px;
+  height: 150px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -565,12 +565,31 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
-}
-.modal-background .modal-container .modal-wrapper .modal-contents {
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.modal-background .modal-container .modal-wrapper .modal-contents .account-confirm-btn {
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #ec7357;
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+  color: white;
+  @apply dark:text-color-gray-800;
+}
+.modal-background .modal-container .modal-wrapper .modal-contents .account-confirm-btn:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.modal-background .modal-container .modal-wrapper .modal-contents .account-confirm-btn:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
 }
 .modal-background .modal-container .modal-wrapper .close-modal-btn {
   position: absolute;
@@ -1132,7 +1151,7 @@ body {
 }
 .chatting-list-container {
   width: 480px;
-  height: 600px;
+  height: 80vh;
   position: relative;
   background-color: #f2f2f2;
   @apply dark:bg-color-gray-700;
@@ -1167,7 +1186,7 @@ body {
   color: #333333;
 }
 .chatting-list-container .chatting-list-item-wrapper {
-  margin-top: 80px;
+  margin-top: 40px;
 }
 .chatting-list-container .scroll-box {
   position: fixed;
@@ -1232,7 +1251,7 @@ body {
   position: relative;
   margin-top: 48px;
   width: 400px;
-  height: 120px;
+  height: 15vh;
   background-color: white;
   @apply dark:bg-color-gray-800;
   @apply dark:text-white;
@@ -1244,7 +1263,7 @@ body {
 }
 .item-info-container .item-info-img {
   width: 100px;
-  height: 88px;
+  height: 12vh;
   margin: 0 16px;
   border-radius: 16px;
 }
@@ -1290,7 +1309,7 @@ body {
 
 .chat-box-container {
   width: 400px;
-  height: 328px;
+  height: 44vh;
   margin: 16px 0;
   background-color: white;
   @apply dark:bg-color-gray-800;

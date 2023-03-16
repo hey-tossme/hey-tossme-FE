@@ -16,7 +16,7 @@ export default function ChattingList({
 
     const ITEM_HEIGHT = 100;
     const ITEM_MARGIN = 8;
-    const PADDING_TOP = 80;
+    const PADDING_TOP = 40;
     const LENGTH = chattingInfo.length;
     const MAX_HEIGHT = LENGTH * (ITEM_HEIGHT + ITEM_MARGIN) + PADDING_TOP;
 
