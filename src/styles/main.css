@@ -1959,10 +1959,8 @@ body {
   font-weight: bold;
 }
 .card-list-wrapper .card-list .card-item .item-info-area .item-info-header .bookmark-btn {
-  @apply dark:text-white;
-  width: 16px;
-  height: 16px;
-  color: #333333;
+  color: #ec7357;
+  cursor: pointer;
 }
 .card-list-wrapper .card-list .card-item .item-info-area .item-info-price {
   @apply dark:text-white;
@@ -1997,6 +1995,7 @@ body {
   border-radius: 8px;
   border: 1px solid #ec7357;
   color: #ec7357;
+  cursor: pointer;
 }
 .pagination-wrapper .pagination.active {
   background-color: #ec7357;

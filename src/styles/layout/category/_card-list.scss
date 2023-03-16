@@ -46,7 +46,9 @@
                     }
 
                     .bookmark-btn {
-                        @include bookmark-btn-not-fill;
+                        color: $color-primary;
+                        cursor: pointer;
+                        
                     }
                 }
 
