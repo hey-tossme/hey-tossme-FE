@@ -40,7 +40,7 @@ export default function FindPasswordForm() {
                             type="text"
                             className="email-box-input"
                             placeholder="이메일"
-                            readOnly={codeActive ? true : false}
+                            readOnly={confirm ? true : false}
                             onChange={(e) => handleChangeEmail(e.target.value)}
                         />
                         {codeActive ? null : (

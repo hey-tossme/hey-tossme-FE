@@ -1,0 +1,16 @@
+.item-info-btn-area {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-bottom: 16px;
+
+    .confirmed-btn,
+    .account-btn {
+        width: 68px;
+        height: 28px;
+        border-radius: 8px;
+        font-size: $font-btns-smaller;
+        @include btn-fill;
+    }
+}

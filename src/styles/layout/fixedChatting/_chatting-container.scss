@@ -1,0 +1,22 @@
+@keyframes openChatting {
+    from {
+        transform-origin: bottom right;
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+    to {
+        transform-origin: bottom right;
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.chatting-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 32px;
+    margin-bottom: 32px;
+    z-index: 10000;
+    animation: openChatting 0.8s;
+}

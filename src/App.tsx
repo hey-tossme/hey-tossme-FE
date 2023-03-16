@@ -13,6 +13,7 @@ export default function App() {
     return (
         <BrowserRouter>
             <Header />
+            <FixedBtn />
             <Routes>
                 <Route path="/" element={<Main />}></Route>
                 <Route path="/login" element={<Login />}></Route>
@@ -22,7 +23,6 @@ export default function App() {
                 <Route path="/category" element={<Category />}></Route>
                 <Route path="/category/:category" element={<Category />}></Route>
             </Routes>
-            <FixedBtn />
         </BrowserRouter>
     );
 }

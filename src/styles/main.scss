@@ -7,6 +7,7 @@
 @import "./base/base";
 
 @import "./layout/login/login-form";
+
 @import "./layout/signUp/sign-up-form";
 @import "./layout/signUp/code_confirm_modal";
 @import "./layout/signUp/profile_image_select";
@@ -22,6 +23,15 @@
 @import "./layout/main/main-bottom-chat-wrapper";
 @import "./layout/main/main-bottom-chat-buyer-item";
 @import "./layout/main/main-bottom-chat-seller-item";
+
+@import "./layout/fixedBtn/fixed-btn";
+@import "./layout/fixedChatting/chatting-container";
+@import "./layout/fixedChatting/chatting-list";
+@import "./layout/fixedChatting/chatting-list-item";
+
+@import "./layout/fixedChatting/chatting-room-item-info";
+@import "./layout/fixedChatting/chatting-room-btn-area";
+@import "./layout/fixedChatting/chatting-room-chat-box";
 
 @import "./layout/header/header";
 @import "./layout/header/logo-button";
