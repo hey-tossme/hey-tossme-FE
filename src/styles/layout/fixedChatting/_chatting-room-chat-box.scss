@@ -1,7 +1,7 @@
 .chat-box-container {
     width: 400px;
     height: 44vh;
-    margin: 16px 0;
+    margin: 2vh 0;
     background-color: white;
     @apply dark:bg-color-gray-800;
     @include dark-mode-text;

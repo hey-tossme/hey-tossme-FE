@@ -10,6 +10,7 @@
 .chatting-list-container {
     width: 480px;
     height: 80vh;
+    min-height: 400px;
     position: relative;
     background-color: $color-gray-100;
     @apply dark:bg-color-gray-700;

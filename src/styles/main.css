@@ -1152,6 +1152,7 @@ body {
 .chatting-list-container {
   width: 480px;
   height: 80vh;
+  min-height: 400px;
   position: relative;
   background-color: #f2f2f2;
   @apply dark:bg-color-gray-700;
@@ -1249,9 +1250,10 @@ body {
 
 .item-info-container {
   position: relative;
-  margin-top: 48px;
+  margin-top: 6vh;
   width: 400px;
   height: 15vh;
+  min-height: 80px;
   background-color: white;
   @apply dark:bg-color-gray-800;
   @apply dark:text-white;
@@ -1264,6 +1266,7 @@ body {
 .item-info-container .item-info-img {
   width: 100px;
   height: 12vh;
+  min-height: 72px;
   margin: 0 16px;
   border-radius: 16px;
 }
@@ -1272,11 +1275,14 @@ body {
   font-weight: 600;
   margin-bottom: 8px;
 }
-.item-info-container .item-info-content .item-info-content-inner .item-info-price,
-.item-info-container .item-info-content .item-info-content-inner .item-info-due-time {
+.item-info-container .item-info-content .item-info-content-inner .item-info-price {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 8px;
+}
+.item-info-container .item-info-content .item-info-content-inner .item-info-due-time {
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .item-info-btn-area {
@@ -1284,7 +1290,7 @@ body {
   bottom: 0;
   right: 0;
   margin-right: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 2vh;
 }
 .item-info-btn-area .confirmed-btn,
 .item-info-btn-area .account-btn {
@@ -1310,7 +1316,7 @@ body {
 .chat-box-container {
   width: 400px;
   height: 44vh;
-  margin: 16px 0;
+  margin: 2vh 0;
   background-color: white;
   @apply dark:bg-color-gray-800;
   @apply dark:text-white;
