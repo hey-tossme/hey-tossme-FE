@@ -1375,6 +1375,151 @@ body {
   box-shadow: none;
 }
 
+.user-info-container {
+  padding-top: 200px;
+  display: flex;
+  justify-content: center;
+}
+.user-info-container .user-info-content {
+  margin-left: 24px;
+  position: relative;
+}
+.user-info-container .user-info-content .secession-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  width: 94px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  @apply dark:text-color-gray-800;
+  border: 1px solid #ec7357;
+  background-color: white;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
+  color: #ec7357;
+}
+.user-info-container .user-info-content .secession-btn:active {
+  box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(136, 136, 136, 0.25);
+}
+.user-info-container .user-info-content .user-info-name {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  @apply dark:text-white;
+  color: #333333;
+}
+.user-info-container .user-info-content .user-info-email {
+  font-size: 24px;
+  @apply dark:text-white;
+  color: #333333;
+}
+
+.user-account-check-container {
+  width: 420px;
+}
+.user-account-check-container .user-account-check {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+.user-account-check-container .user-account-check .user-account-check-icon {
+  margin-right: 4px;
+}
+.user-account-check-container .user-account {
+  display: flex;
+}
+.user-account-check-container .user-account .text-bold {
+  margin: 0 4px;
+  font-weight: 600;
+}
+.user-account-check-container .flex {
+  display: flex;
+  justify-content: space-between;
+}
+.user-account-check-container .flex .input-box {
+  position: relative;
+  display: flex;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.5);
+  background-color: white;
+  border-radius: 8px;
+  margin-right: 12px;
+  margin-top: 24px;
+}
+.user-account-check-container .flex .input-box .bank-list-select-box .bank-list-select {
+  display: flex;
+  align-items: center;
+  width: 126px;
+  height: 44px;
+  padding-left: 12px;
+  font-size: 14px;
+  color: #333333;
+  cursor: pointer;
+}
+.user-account-check-container .flex .input-box .bank-list-select-box .bank-list-select-icon {
+  position: absolute;
+  top: 14px;
+  left: 106px;
+  cursor: pointer;
+  color: #333333;
+}
+.user-account-check-container .flex .input-box .bank-list-select-option-wrapper {
+  position: absolute;
+  top: 52px;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.5);
+  border-radius: 8px;
+  padding: 8px;
+  width: 126px;
+  height: 300px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.user-account-check-container .flex .input-box .bank-list-select-option-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+.user-account-check-container .flex .input-box .bank-list-select-option-wrapper .bank-list-select-option {
+  cursor: pointer;
+  margin: 4px 0;
+  padding: 4px;
+  font-size: 14px;
+}
+.user-account-check-container .flex .input-box .bank-list-select-option-wrapper .bank-list-select-option:hover {
+  background-color: #dbdbdb;
+  padding: 4px;
+  border-radius: 4px;
+}
+.user-account-check-container .flex .input-box .account-form {
+  border-left: 1px solid #dbdbdb;
+  padding-left: 12px;
+  font-size: 14px;
+  color: #333333;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.user-account-check-container .flex .account-submit-btn {
+  margin-top: 24px;
+  width: 70px;
+  height: 44px;
+  border-radius: 8px;
+  font-size: 16px;
+  @apply dark:text-color-gray-800;
+  background-color: #ec7357;
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+  color: white;
+  @apply dark:text-color-gray-800;
+}
+.user-account-check-container .flex .account-submit-btn:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.user-account-check-container .flex .account-submit-btn:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
+}
+
 @font-face {
   font-family: "SBAggroB";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff") format("woff");

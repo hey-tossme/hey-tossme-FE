@@ -17,7 +17,7 @@ export default function ProfileImageSelect({
 
         return new Promise<void>((resolve) => {
             reader.onload = () => {
-                setImageSrc(reader.result || null);
+                setImageSrc(reader.result);
                 resolve();
             };
         });
