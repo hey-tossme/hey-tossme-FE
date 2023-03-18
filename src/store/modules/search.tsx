@@ -7,6 +7,8 @@ const initialState: searchStateProps = {
     region: null,
     startDue: null,
     endDue: null,
+    size: 8,
+    pageNum: 1,
 };
 
 export const searchSlice = createSlice({
