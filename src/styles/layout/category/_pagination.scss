@@ -1,0 +1,20 @@
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    .pagination {
+        @apply dark:bg-color-gray-800 dark:text-white;
+        padding: 16px 20px;
+        border-radius: 8px;
+        border: 1px solid $color-primary;
+        color: $color-primary;
+        cursor: pointer;
+
+        &.active {
+            background-color: $color-primary;
+            color: white;
+        }
+    }
+}

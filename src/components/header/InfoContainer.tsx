@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
+import axios from "axios";
+import { setList } from "../../store/modules/notify";
+import { NotifyType } from "../../components/notify/Notify.interface";
 import { setIsDark } from "../../store/modules/dark";
 import { FaRegMoon, FaRegBell } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
@@ -10,16 +13,31 @@ import HeaderButton from "./HeaderButton";
 export function InfoContainer() {
     const dispatch = useAppDispatch();
     const notify = useAppSelector((state) => state.notify);
+    const [notifyList, setNotifyList] = useState<Array<NotifyType>>();
     const [isRead, setIsRead] = useState<boolean>();
     const [dark, setDark] = useState(false);
     const [isLogin, setIsLogin] = useState(true);
 
     useEffect(() => {
+        try {
+            axios.get("/data/notification.json").then((res) => {
+                setNotifyList(res.data.data);
+            });
+        } catch (err) {
+            console.log("error");
+        }
+
         if (localStorage.getItem("theme") === "dark") {
             document.documentElement.classList.add("dark");
             setDark(true);
         }
     }, []);
+
+    useEffect(() => {
+        if (notifyList) {
+            dispatch(setList(notifyList));
+        }
+    }, [notifyList]);
 
     useEffect(() => {
         const newNotify = notify.filter((item) => item.readOrNot === false);
@@ -28,13 +46,13 @@ export function InfoContainer() {
 
     const handleToggleDarkMode = () => {
         if (localStorage.getItem("theme") === "dark") {
-            dispatch(setIsDark({ dark: true }));
+            dispatch(setIsDark({ dark: false }));
             localStorage.removeItem("theme");
             document.documentElement.classList.remove("dark");
             setDark(false);
         } else {
             document.documentElement.classList.add("dark");
-            dispatch(setIsDark({ dark: false }));
+            dispatch(setIsDark({ dark: true }));
             localStorage.setItem("theme", "dark");
             setDark(true);
         }

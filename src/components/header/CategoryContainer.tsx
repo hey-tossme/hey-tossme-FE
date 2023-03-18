@@ -8,7 +8,7 @@ export function CategoryContainer() {
             <div className="logo-wrapper">
                 <LogoButton />
             </div>
-            <Link to="/items">
+            <Link to="/category">
                 <div className="header-tab">카테고리</div>
             </Link>
         </div>

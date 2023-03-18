@@ -5,6 +5,16 @@ import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
 import kakaoBtn from "../../assets/images/kakao_login_large_narrow.png";
 
 export default function LoginForm() {
+    const test = () => {
+        alert("이벤트 확인");
+    };
+
+    const pressEnterKey = (e: any) => {
+        if (e.key === "Enter") {
+            test();
+        }
+    };
+
     return (
         <>
             <div className="login-form-container">
@@ -21,11 +31,18 @@ export default function LoginForm() {
                         </div>
                         <div className="pw-box">
                             <HiOutlineLockClosed className="pw-box-icon" />
-                            <input type="text" className="pw-box-input" placeholder="비밀번호" />
+                            <input
+                                type="text"
+                                className="pw-box-input"
+                                placeholder="비밀번호"
+                                onKeyDown={pressEnterKey}
+                            />
                         </div>
                         <div className="login-form-btn-area">
                             <Link to="/">
-                                <button className="login-btn">로그인</button>
+                                <button className="login-btn" onClick={test}>
+                                    로그인
+                                </button>
                             </Link>
                             <Link to="/">
                                 <img src={kakaoBtn} alt="카카오로 시작하기" className="kakao-btn" />
