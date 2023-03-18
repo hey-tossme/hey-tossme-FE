@@ -3,6 +3,7 @@ import notify from "./modules/notify";
 import dark from "./modules/dark";
 import search from "./modules/search";
 import chat from "./modules/chat";
+import searchResult from "./modules/searchResult";
 
 const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
         dark: dark,
         search: search,
         chat: chat,
+        searchResult: searchResult,
     },
 
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),

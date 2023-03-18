@@ -4,6 +4,8 @@ export interface searchStateProps {
     region: string | null;
     startDue: string | null;
     endDue: string | null;
+    size: number;
+    pageNum: number | null;
 }
 
 export interface sidoDataType {
@@ -23,4 +25,13 @@ export interface sigunDataType {
 export interface LocationSelectItemProps {
     region: string;
     sigun: string;
+}
+
+export interface cardItemProps {
+    id: number;
+    img: string;
+    title: string;
+    price: number;
+    endDate: string;
+    address: string;
 }

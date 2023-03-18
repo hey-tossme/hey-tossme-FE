@@ -1961,6 +1961,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 180px;
   font-size: 24px;
   font-weight: bold;
 }
