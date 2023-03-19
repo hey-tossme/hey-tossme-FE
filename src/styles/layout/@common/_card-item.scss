@@ -1,0 +1,62 @@
+.card-item {
+    @include dark-mode-text;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    width: 240px;
+    height: 289px;
+    border-radius: 8px;
+    border: 1px solid $color-gray-200;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+
+    .item-img {
+        width: 208px;
+        height: 140px;
+        border-radius: 8px;
+    }
+
+    .item-info-area {
+        display: flex;
+        flex-direction: column;
+
+        .item-info-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+
+            .item-info-title {
+                @include dark-mode-text;
+                @include ellipsis;
+                width: 180px;
+                font-size: $font-card-title;
+                font-weight: bold;
+            }
+
+            .bookmark-btn {
+                color: $color-primary;
+                cursor: pointer;
+            }
+        }
+
+        .item-info-price {
+            @include dark-mode-text;
+            font-size: $font-card-sub-title;
+            margin-bottom: 16px;
+        }
+
+        .item-info-duedate {
+            @apply dark:text-light;
+            font-size: $font-card-desc;
+            color: $color-dark;
+            margin-bottom: 4px;
+        }
+
+        .item-info-address {
+            @include dark-mode-text;
+            @include ellipsis;
+            font-size: $font-card-desc;
+        }
+    }
+}

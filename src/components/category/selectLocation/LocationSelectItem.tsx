@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { LocationSelectItemProps } from "../Category.interface";
+import { LocationSelectItemProps } from "../_Category.interface";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/configureStore.hook";
 import { setSearchData } from "../../../store/modules/search";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GetUserAccount } from "./MyPage.interface";
+import { GetUserAccount } from "./_MyPage.interface";
 import { BsCreditCardFill, BsFillCaretDownFill } from "react-icons/bs";
 
 export default function UserAccount({ getUserAccountInfo, bank, account }: GetUserAccount) {

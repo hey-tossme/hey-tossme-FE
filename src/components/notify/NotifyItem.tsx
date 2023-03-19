@@ -5,7 +5,7 @@ import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore
 import { deleteList, updateReadList } from "../../store/modules/notify";
 import { FiX } from "react-icons/fi";
 import { FaRegBell } from "react-icons/fa";
-import { NotifyItemProps } from "./Notify.interface";
+import { NotifyItemProps } from "./_Notify.interface";
 
 export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     const dispatch = useAppDispatch();
@@ -13,7 +13,7 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     const handleDelete = async () => {
         // x 버튼 클릭시 알림 삭제하기
         try {
-            const res = await axios.delete(`/data/notification.json?id=${item.id}`);
+            const res = await axios.delete(`/fakeData/notification.json?id=${item.id}`);
             console.log(res);
         } catch (err) {
             console.log("error");
@@ -24,7 +24,7 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     const handleRead = async () => {
         // 알림 item 클릭시 읽음 처리 readOrNot: true 로 수정
         try {
-            const res = await axios.patch(`/data/notification.json?id=${item.id}`, {
+            const res = await axios.patch(`/fakeData/notification.json?id=${item.id}`, {
                 readOrNot: true,
             });
             console.log(res);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LogoButton from "../header/LogoButton";
+import LogoButton from "../@common/logo/LogoButton";
 import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
 import kakaoBtn from "../../assets/images/kakao_login_large_narrow.png";
 

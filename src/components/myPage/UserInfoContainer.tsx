@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProfileImageSelect from "../signUp/ProfileImageSelect";
 import UserAccount from "./UserAccount";
-import { UserInfo } from "./MyPage.interface";
+import { UserInfo } from "./_MyPage.interface";
 
 export default function UserInfoContainer() {
     const [files, setFiles] = useState<File | null>(null);
     const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
     const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
-    const USER_URL = "/data/userinfo.json";
+    const USER_URL = "/fakeData/userinfo.json";
 
     const getUserInfo = () => {
         axios.get(USER_URL).then((res) => {

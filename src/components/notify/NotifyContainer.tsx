@@ -1,6 +1,6 @@
 import React from "react";
 import NotifyList from "./NotifyList";
-import { NotifyContainerProps } from "./Notify.interface";
+import { NotifyContainerProps } from "./_Notify.interface";
 
 export default function NotifyContainer({ isRead, list }: NotifyContainerProps) {
     return (

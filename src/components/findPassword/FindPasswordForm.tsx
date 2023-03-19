@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import LogoButton from "../header/LogoButton";
-import VerificationCodeBox from "../signUp/VerificationCodeBox";
-import CodeConfirmModal from "../signUp/CodeConfirmModal";
+import { useSelector, useDispatch } from "react-redux";
 import ChangePasswordForm from "./ChangePasswordForm";
+import VerificationCodeBox from "../signUp/VerificationCodeBox";
+import LogoButton from "../@common/logo/LogoButton";
+import CodeConfirmModal from "../@common/modal/CodeConfirmModal";
+import ModalPortal from "../@common/modal/portal/ModalPortal";
+import { setModalOpen } from "../../store/modules/modal";
 import { HiOutlineMail } from "react-icons/hi";
-import { removeWhitespace, validateEmail, validatePassword } from "../../hooks/regex";
+import { removeWhitespace, validateEmail } from "../../utils/regex";
 
 export default function FindPasswordForm() {
+    const modalOpen = useSelector((state: any) => state.modal.modalOpen);
+    const dispatch = useDispatch();
     const [codeActive, setCodeActive] = useState<boolean>(false);
     const [confirm, setConfirm] = useState<boolean>(false);
     const [registerEmail, setRegisterEmail] = useState<string>("");
     const [errorMessage, setErrorMessage] = useState<string>("비밀번호를 변경할 수 있습니다.");
-    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     const handleChangeEmail = (email: string) => {
         const changedEmail = removeWhitespace(email);
@@ -19,8 +23,7 @@ export default function FindPasswordForm() {
     };
 
     const showModal = () => {
-        document.body.style.overflow = "hidden";
-        setModalOpen(true);
+        dispatch(setModalOpen());
         setCodeActive(true);
     };
 
@@ -72,7 +75,9 @@ export default function FindPasswordForm() {
                 </div>
             </div>
             {modalOpen ? (
-                <CodeConfirmModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+                <ModalPortal>
+                    <CodeConfirmModal />
+                </ModalPortal>
             ) : null}
         </div>
     );

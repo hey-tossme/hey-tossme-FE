@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
 import axios from "axios";
 import { setList } from "../../store/modules/notify";
-import { NotifyType } from "../../components/notify/Notify.interface";
+import { NotifyType } from "../notify/_Notify.interface";
 import { setIsDark } from "../../store/modules/dark";
 import { FaRegMoon, FaRegBell } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
@@ -20,7 +20,7 @@ export function InfoContainer() {
 
     useEffect(() => {
         try {
-            axios.get("/data/notification.json").then((res) => {
+            axios.get("/fakeData/notification.json").then((res) => {
                 setNotifyList(res.data.data);
             });
         } catch (err) {

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
-import { HiOutlineMail, HiOutlineLockClosed, HiOutlineIdentification } from "react-icons/hi";
-import { removeWhitespace, validateEmail, validatePassword } from "../../hooks/regex";
-import { IErrorMsg } from "./FindPassword.interface";
+import { HiOutlineLockClosed } from "react-icons/hi";
+import { removeWhitespace, validatePassword } from "../../utils/regex";
+import { IErrorMsg } from "./_FindPassword.interface";
 
 export default function ChangePasswordForm({ errorMessage, setErrorMessage }: IErrorMsg) {
     const [registerPassword, setRegisterPassword] = useState<string>("");

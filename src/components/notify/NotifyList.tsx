@@ -1,5 +1,5 @@
 import React from "react";
-import { NotifyListProps } from "./Notify.interface";
+import { NotifyListProps } from "./_Notify.interface";
 import NotifyItem from "./NotifyItem";
 
 export default function NotifyList({ isRead, list }: NotifyListProps) {

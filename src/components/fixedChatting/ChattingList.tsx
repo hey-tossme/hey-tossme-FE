@@ -2,7 +2,7 @@ import React from "react";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setCloseChat } from "../../store/modules/chat";
 import ChattingListItem from "./ChattingListItem";
-import { ChattingInfoState } from "./FixedChatting.interface";
+import { ChattingInfoState } from "./_FixedChatting.interface";
 import { IoClose } from "react-icons/io5";
 import { CgScrollV } from "react-icons/cg";
 

@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { cardItemProps } from "./Category.interface";
+import { cardItemProps } from "../../category/_Category.interface";
 import axios from "axios";
-import { commaNums } from "../../hooks/commaNums";
-import { customNullItemImg } from "../../hooks/customImgNull";
+import { commaNums } from "../../../utils/commaNums";
+import { customNullItemImg } from "../../../utils/customImgNull";
 
 export default function CardItem({ id, img, title, price, endDate, address }: cardItemProps) {
     const [bookmark, setBookmark] = useState<boolean>();

@@ -1,5 +1,5 @@
 import React from "react";
-import { HeaderProps } from "./Header.interface";
+import { HeaderProps } from "./_Header.interface";
 import { CategoryContainer } from "./CategoryContainer";
 import { InfoContainer } from "./InfoContainer";
 

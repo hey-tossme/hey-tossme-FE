@@ -1,8 +1,8 @@
 import React from "react";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setEnterChat } from "../../store/modules/chat";
-import { customNullImg } from "../../hooks/customImgNull";
-import { chatIdInfo } from "./FixedChatting.interface";
+import { customNullImg } from "../../utils/customImgNull";
+import { chatIdInfo } from "./_FixedChatting.interface";
 
 export default function ChattingListItem({ item, chatId, setChatId }: chatIdInfo) {
     const USER_ID = 1; // 임시 정보

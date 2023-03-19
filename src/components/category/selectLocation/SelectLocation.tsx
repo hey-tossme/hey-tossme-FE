@@ -1,7 +1,7 @@
 import React from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import LocationItem from "./LocationItem";
-import { sidoDataType } from "../Category.interface";
+import { sidoDataType } from "../_Category.interface";
 
 export default function SelectLocation() {
     const sidoData: Array<sidoDataType> = [
