@@ -4,8 +4,7 @@ import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { cardItemProps } from "../../category/_Category.interface";
 import axios from "axios";
-import { commaNums } from "../../../utils/commaNums";
-import { customNullItemImg } from "../../../utils/customImgNull";
+import { customNullItemImg, commaNums } from "../../../hooks/utils";
 
 export default function CardItem({ id, img, title, price, endDate, address }: cardItemProps) {
     const [bookmark, setBookmark] = useState<boolean>();

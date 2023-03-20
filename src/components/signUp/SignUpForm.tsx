@@ -6,7 +6,7 @@ import CodeConfirmModal from "../@common/modal/CodeConfirmModal";
 import ModalPortal from "../@common/modal/portal/ModalPortal";
 import { setModalOpen } from "../../store/modules/modal";
 import { HiOutlineMail, HiOutlineLockClosed, HiOutlineIdentification } from "react-icons/hi";
-import { removeWhitespace, validateEmail, validatePassword } from "../../utils/regex";
+import { removeWhitespace, validateEmail, validatePassword } from "../../hooks/regex";
 
 export default function SignUpForm() {
     const modalOpen = useSelector((state: any) => state.modal.modalOpen);

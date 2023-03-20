@@ -1,17 +1,25 @@
 import React from "react";
+import { customNullItemImg, commaNums, date } from "../../hooks/utils";
+import { ItemType } from "./_MyPage.interface";
 
-export default function MyBookingCard() {
+export default function MyBookingCard({ item }: ItemType) {
     return (
         <div className="booking-card-item">
-            <img src="/" alt="/" className="booking-card-img" />
+            <img
+                src={customNullItemImg(item.image_url)}
+                alt={item.title}
+                className="booking-card-img"
+            />
             <div className="booking-card-contents">
                 <div className="booking-card-info">
-                    <div className="booking-card title">제주도 풀빌라</div>
-                    <div className="booking-card-price">얼마</div>
-                    <div className="booking-card-date">며칠</div>
+                    <div className="booking-card-title">{item.title}</div>
+                    <div className="booking-card-price">{commaNums(item.price)} 원</div>
+                    <div className="booking-card-date">{item.dueTime}</div>
                     <div className="booking-card-place">장소</div>
                 </div>
-                <button className="go-to-detail">상세보기</button>
+                <div className="booking-card-btn-area">
+                    <button className="go-to-detail">상세보기</button>
+                </div>
             </div>
         </div>
     );

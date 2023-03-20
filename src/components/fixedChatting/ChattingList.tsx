@@ -18,6 +18,7 @@ export default function ChattingList({
     const ITEM_MARGIN = 8;
     const PADDING_TOP = 40;
     const LENGTH = chattingInfo.length;
+    const SCROLL_LENGTH = 4;
     const MAX_HEIGHT = LENGTH * (ITEM_HEIGHT + ITEM_MARGIN) + PADDING_TOP;
 
     return (
@@ -41,7 +42,7 @@ export default function ChattingList({
                         />
                     ))}
                 </div>
-                {LENGTH > 4 ? (
+                {LENGTH > SCROLL_LENGTH ? (
                     <div className="scroll-box">
                         <CgScrollV className="scroll-icon" />
                     </div>

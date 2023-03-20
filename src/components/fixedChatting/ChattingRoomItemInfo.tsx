@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { commaNums } from "../../utils/commaNums";
-import { date } from "../../utils/date";
 import ChattingRoomBtnArea from "./ChattingRoomBtnArea";
-import { customNullItemImg } from "../../utils/customImgNull";
+import { customNullItemImg, commaNums, date } from "../../hooks/utils";
 import { ItemInfo } from "./_FixedChatting.interface";
 
 export default function ChattingRoomItemInfo({ item }: ItemInfo) {

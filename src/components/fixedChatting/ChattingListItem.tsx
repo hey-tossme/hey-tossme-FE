@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setEnterChat } from "../../store/modules/chat";
-import { customNullImg } from "../../utils/customImgNull";
+import { customNullImg } from "../../hooks/utils";
 import { chatIdInfo } from "./_FixedChatting.interface";
 
 export default function ChattingListItem({ item, chatId, setChatId }: chatIdInfo) {

@@ -1677,6 +1677,63 @@ body {
   justify-content: center;
 }
 
+.booking-card-item {
+  display: flex;
+  width: 800px;
+  height: 180px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.5);
+  margin-bottom: 40px;
+  padding: 20px;
+}
+.booking-card-item .booking-card-img {
+  width: 208px;
+  height: 140px;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+.booking-card-item .booking-card-contents {
+  display: flex;
+  width: 532px;
+  justify-content: space-between;
+}
+.booking-card-item .booking-card-contents .booking-card-info .booking-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.booking-card-item .booking-card-contents .booking-card-info .booking-card-price,
+.booking-card-item .booking-card-contents .booking-card-info .booking-card-date,
+.booking-card-item .booking-card-contents .booking-card-info .booking-card-place {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.booking-card-item .booking-card-contents .booking-card-info .booking-card-date {
+  color: #754f44;
+}
+.booking-card-item .booking-card-contents .booking-card-btn-area {
+  display: flex;
+  align-items: end;
+}
+.booking-card-item .booking-card-contents .booking-card-btn-area .go-to-detail {
+  width: 100px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 16px;
+  @apply dark:text-color-gray-800;
+  background-color: #ec7357;
+  box-shadow: inset 0.2rem 0.2rem 1rem #ff7d5e, inset -0.2rem -0.2rem 1rem #bd5d46, 0.3rem 0.3rem 0.6rem rgba(173, 173, 173, 0.25), -0.2rem -0.2rem 0.5rem rgba(128, 128, 128, 0.25);
+  color: white;
+  @apply dark:text-color-gray-800;
+}
+.booking-card-item .booking-card-contents .booking-card-btn-area .go-to-detail:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem #bd5d46, inset -0.2rem -0.2rem 1rem #ff7d5e;
+}
+.booking-card-item .booking-card-contents .booking-card-btn-area .go-to-detail:disabled {
+  background-color: #a6a6a6;
+  box-shadow: none;
+}
+
 @font-face {
   font-family: "SBAggroB";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff") format("woff");

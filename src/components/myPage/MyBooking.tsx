@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import MyBookingCard from "./MyBookingCard";
+import { ItemInfo } from "./_MyPage.interface";
 
 export default function MyBooking() {
-    return <MyBookingCard />;
+    const [itemList, setItemList] = useState<ItemInfo[]>([]);
+    const PRODUCT_URL = "/fakeData/product.json";
+
+    const getBookingList = () => {
+        axios.get(PRODUCT_URL).then((res) => {
+            const response = res.data;
+            setItemList(response.data.content);
+        });
+    };
+
+    useEffect(() => {
+        getBookingList();
+        console.log(itemList);
+    }, []);
+
+    return (
+        <>
+            <div className="booking-item-list-wrapper">
+                {itemList.map((item) => (
+                    <MyBookingCard item={item} key={item.id} />
+                ))}
+            </div>
+        </>
+    );
 }
