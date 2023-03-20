@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { GetUserAccount } from "./_MyPage.interface";
 import { BsCreditCardFill, BsFillCaretDownFill } from "react-icons/bs";
 
 export default function UserAccount({ getUserAccountInfo, bank, account }: GetUserAccount) {
-    const optionBoxRef = useRef<HTMLDivElement>(null);
+    const componentRef = useRef<HTMLDivElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
     const [userAccount, setUserAccount] = useState<boolean>(!getUserAccountInfo);
     const [userBankName, setUserBankName] = useState<string>("");
     const [showList, setShowList] = useState<boolean>(false);
@@ -35,6 +36,17 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
         setShowList(false);
         setUserBankName(item);
     };
+
+    useEffect(() => {
+        const outsideClick: EventListenerOrEventListenerObject = (e: Event) => {
+            const current = componentRef.current as HTMLDivElement;
+            if (componentRef.current && !current.contains(e.target as Node)) setShowList(false);
+        };
+        document.addEventListener("mousedown", outsideClick);
+        return () => {
+            document.removeEventListener("mousedown", outsideClick);
+        };
+    }, [componentRef]);
 
     return (
         <div className="user-account-check-container">
@@ -69,7 +81,7 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
                                 <BsFillCaretDownFill className="bank-list-select-icon" />
                             </div>
                             {showList ? (
-                                <div className="bank-list-select-option-wrapper">
+                                <div className="bank-list-select-option-wrapper" ref={componentRef}>
                                     {bankList.map((item) => (
                                         <div
                                             className="bank-list-select-option"

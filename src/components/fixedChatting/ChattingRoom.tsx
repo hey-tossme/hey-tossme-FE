@@ -16,7 +16,7 @@ export default function ChattingRoom({ chattingInfo, setChattingInfo }: Chatting
         chattingInfo.map((data) => {
             data.id === chatId ? setItem(data) : null;
         });
-    }, [chatId]);
+    });
 
     return (
         <div className="chatting-room-container">

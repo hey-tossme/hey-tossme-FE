@@ -36,9 +36,9 @@ export default function DetailInfoHeader({ item }: detailInfoProps) {
 
     const openChatRoom = () => {
         dispatch(setEnterChat());
+        dispatch(setOpenChat());
         // 추후 교체
         dispatch(setChatId(item.id));
-        dispatch(setOpenChat());
         console.log(chatId);
     };
 
