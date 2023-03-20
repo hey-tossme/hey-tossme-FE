@@ -25,6 +25,7 @@ export default function CardList() {
                                 price={item.price}
                                 endDate={item.dueTime}
                                 address=""
+                                status={item.status}
                             />
                         );
                     })}

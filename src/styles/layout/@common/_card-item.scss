@@ -1,6 +1,7 @@
 .card-item {
     @include dark-mode-text;
     display: flex;
+    position: relative;
     flex-direction: column;
     gap: 8px;
     padding: 16px;
@@ -9,6 +10,18 @@
     border-radius: 8px;
     border: 1px solid $color-gray-200;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+
+    .sold-out-label {
+        position: absolute;
+        background-color: $color-primary;
+        padding: 8px 12px;
+        top: 8px;
+        right: 8px;
+        border-radius: 8px;
+        color: white;
+        @apply dark:text-color-gray-800;
+        box-shadow: $drop-shadow;
+    }
 
     .item-img {
         width: 208px;

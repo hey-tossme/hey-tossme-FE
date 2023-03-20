@@ -14,7 +14,7 @@ export default function MyBookingCard({ item }: ItemType) {
                 <div className="booking-card-info">
                     <div className="booking-card-title">{item.title}</div>
                     <div className="booking-card-price">{commaNums(item.price)} 원</div>
-                    <div className="booking-card-date">{item.dueTime}</div>
+                    <div className="booking-card-date">{date(item.dueTime)}</div>
                     <div className="booking-card-place">장소</div>
                 </div>
                 <div className="booking-card-btn-area">

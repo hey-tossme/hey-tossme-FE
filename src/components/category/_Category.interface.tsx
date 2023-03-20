@@ -34,4 +34,5 @@ export interface cardItemProps {
     price: number;
     endDate: string;
     address: string;
+    status: string;
 }

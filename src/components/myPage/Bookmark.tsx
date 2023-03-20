@@ -39,6 +39,7 @@ export default function Bookmark() {
                         price={item.price}
                         endDate={item.dueTime}
                         address=""
+                        status={item.status}
                     />
                 ))}
             </div>

@@ -4,9 +4,17 @@ import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { cardItemProps } from "../../category/_Category.interface";
 import axios from "axios";
-import { customNullItemImg, commaNums } from "../../../hooks/utils";
+import { customNullItemImg, commaNums, date } from "../../../hooks/utils";
 
-export default function CardItem({ id, img, title, price, endDate, address }: cardItemProps) {
+export default function CardItem({
+    id,
+    img,
+    title,
+    price,
+    endDate,
+    address,
+    status,
+}: cardItemProps) {
     const [bookmark, setBookmark] = useState<boolean>();
 
     const handleSetBookmark = () => {
@@ -16,6 +24,7 @@ export default function CardItem({ id, img, title, price, endDate, address }: ca
 
     return (
         <div className="card-item">
+            {status === "done" ? <div className="sold-out-label">판매 완료</div> : null}
             <div className="item-img-area">
                 <img className="item-img" src={customNullItemImg(img)} alt="card-image"></img>
             </div>
@@ -33,7 +42,7 @@ export default function CardItem({ id, img, title, price, endDate, address }: ca
                     </div>
                 </div>
                 <p className="item-info-price">{commaNums(price)}원</p>
-                <p className="item-info-duedate">{endDate.split(" ")[0]}</p>
+                <p className="item-info-duedate">{date(endDate)}</p>
                 <p className="item-info-address">제주특별자치도 제주시 공항로 2</p>
             </div>
         </div>
