@@ -27,7 +27,15 @@ export default function ChattingRoomItemInfo({ item }: ItemInfo) {
                     <div className="item-info-due-time">{date(item.item.dueTime)}</div>
                 </div>
             </div>
-            {userState ? <ChattingRoomBtnArea item={item} /> : null}
+            {userState ? (
+                <ChattingRoomBtnArea item={item} />
+            ) : item.item.status === "DONE" ? (
+                <div className="item-info-btn-area">
+                    <button className="confirmed-btn" disabled>
+                        거래 완료
+                    </button>
+                </div>
+            ) : null}
         </div>
     );
 }

@@ -25,15 +25,19 @@ export default function ChattingRoomBtnArea({ item }: ItemInfo) {
         <>
             <div className="item-info-btn-area">
                 {accountTransferStatus ? (
-                    !tradeStatus ? (
-                        <button className="confirmed-btn" onClick={showModal}>
-                            거래 확정
-                        </button>
-                    ) : (
+                    tradeStatus ? (
                         <button className="confirmed-btn" disabled>
                             거래 완료
                         </button>
+                    ) : (
+                        <button className="confirmed-btn" onClick={showModal}>
+                            거래 확정
+                        </button>
                     )
+                ) : item.item.status === "DONE" ? (
+                    <button className="confirmed-btn" disabled>
+                        거래 완료
+                    </button>
                 ) : (
                     <button className="account-btn" onClick={handleTransferStatus}>
                         계좌 전달

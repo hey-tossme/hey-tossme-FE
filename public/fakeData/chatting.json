@@ -44,7 +44,7 @@
                 "latitude": 36.6157,
                 "longitude": 127.475,
                 "imageUrl": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdGVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-                "status": "SALE"
+                "status": "DONE"
             },
             "lastMessage": "입금해 주세요",
             "accountTransferStatus": false
@@ -236,7 +236,7 @@
                 "latitude": 36.6157,
                 "longitude": 127.475,
                 "imageUrl": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGlubmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-                "status": "SALE"
+                "status": "DONE"
             },
             "lastMessage": "네고 가능한가요?",
             "accountTransferStatus": false
