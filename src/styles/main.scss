@@ -6,10 +6,13 @@
 @import "./base/reset";
 @import "./base/base";
 
+@import "./layout/@common/logo-button";
+@import "./layout/@common/card-item";
+@import "./layout/@common/modal";
+
 @import "./layout/login/login-form";
 
 @import "./layout/signUp/sign-up-form";
-@import "./layout/signUp/code_confirm_modal";
 @import "./layout/signUp/profile_image_select";
 @import "./layout/signUp/verification_code_box";
 
@@ -33,8 +36,12 @@
 @import "./layout/fixedChatting/chatting-room-btn-area";
 @import "./layout/fixedChatting/chatting-room-chat-box";
 
+@import "./layout/myPage/user-info-container";
+@import "./layout/myPage/user-account";
+@import "./layout/myPage/sub-tab";
+@import "./layout/myPage/my-booking-card";
+
 @import "./layout/header/header";
-@import "./layout/header/logo-button";
 
 @import "./layout/notify/notify";
 

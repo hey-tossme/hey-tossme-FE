@@ -4,6 +4,7 @@
 
     .main-chat-profile {
         margin-left: 8px;
+        object-fit: cover;
         @include chat-profile;
     }
 

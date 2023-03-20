@@ -1,20 +1,19 @@
 import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { setModalClose } from "../../../store/modules/modal";
 import { HiOutlineX } from "react-icons/hi";
-import { IModalController } from "./SignUp.interface";
 
-export default function CodeConfirmModal({ setModalOpen }: IModalController) {
+export default function CodeConfirmModal() {
+    const dispatch = useDispatch();
     const modalRef = useRef<HTMLDivElement>(null);
 
     const closeModal = () => {
-        document.body.style.overflow = "unset";
-        setModalOpen(false);
+        dispatch(setModalClose());
     };
 
-    // 영역 밖 클릭
     const modalOutSideClick = (e: any) => {
         if (modalRef.current === e.target) {
-            document.body.style.overflow = "unset";
-            setModalOpen(false);
+            closeModal();
         }
     };
 

@@ -1,20 +1,25 @@
 import React, { useRef } from "react";
 import { HiOutlineX } from "react-icons/hi";
-import { IModalController } from "../signUp/SignUp.interface";
+import { useDispatch } from "react-redux";
+import { setModalClose } from "../../../store/modules/modal";
+import { ITradeModal } from "../../fixedChatting/_FixedChatting.interface";
 
-export default function AccountConfirmedModal({ setModalOpen }: IModalController) {
+export default function AccountConfirmedModal({ setTradeStatus }: ITradeModal) {
+    const dispatch = useDispatch();
     const modalRef = useRef<HTMLDivElement>(null);
 
     const closeModal = () => {
-        document.body.style.overflow = "unset";
-        setModalOpen(false);
+        dispatch(setModalClose());
     };
 
-    // 영역 밖 클릭
+    const handleTradeStatus = () => {
+        closeModal();
+        setTradeStatus(true);
+    };
+
     const modalOutSideClick = (e: any) => {
         if (modalRef.current === e.target) {
-            document.body.style.overflow = "unset";
-            setModalOpen(false);
+            closeModal();
         }
     };
 
@@ -27,7 +32,7 @@ export default function AccountConfirmedModal({ setModalOpen }: IModalController
                     </button>
                     <div className="modal-contents">
                         <div className="modal-desc">확인 버튼을 클릭하면 거래가 확정됩니다.</div>
-                        <button className="account-confirm-btn" onClick={closeModal}>
+                        <button className="account-confirm-btn" onClick={handleTradeStatus}>
                             확인
                         </button>
                     </div>

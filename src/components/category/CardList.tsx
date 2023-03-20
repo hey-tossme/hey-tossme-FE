@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import CardItem from "./CardItem";
+import CardItem from "../@common/product/CardItem";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
 
 export default function CardList() {

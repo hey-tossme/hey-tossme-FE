@@ -1,6 +1,6 @@
 import React from "react";
-import { IMessageListInfo } from "./FixedChatting.interface";
-import { customNullImg } from "../../hooks/customImgNull";
+import { IMessageListInfo } from "./_FixedChatting.interface";
+import { customNullImg } from "../../hooks/utils";
 
 export default function ChattingRoomReceiveMsg({ message }: IMessageListInfo) {
     return (

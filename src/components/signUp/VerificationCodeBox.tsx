@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { HiOutlineShieldCheck } from "react-icons/hi";
-import { IConfirmController } from "./SignUp.interface";
+import { IConfirmController } from "./_SignUp.interface";
 
 export default function VerificationCodeBox({
     confirm,

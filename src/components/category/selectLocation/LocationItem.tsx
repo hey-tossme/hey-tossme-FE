@@ -1,6 +1,6 @@
 import React from "react";
 import { BsCaretRightFill } from "react-icons/bs";
-import { LocationItemProps, sigunDataType } from "../Category.interface";
+import { LocationItemProps, sigunDataType } from "../_Category.interface";
 import LocationSelectItem from "./LocationSelectItem";
 
 export default function LocationItem({ region }: LocationItemProps) {

@@ -1,0 +1,109 @@
+.user-account-check-container {
+    width: 420px;
+
+    .user-account-check {
+        display: flex;
+        margin-top: 20px;
+        margin-bottom: 8px;
+
+        .user-account-check-icon {
+            margin-right: 4px;
+        }
+    }
+
+    .user-account {
+        display: flex;
+
+        .text-bold {
+            margin: 0 4px;
+            font-weight: 600;
+        }
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+
+        .input-box {
+            position: relative;
+            display: flex;
+            box-shadow: $drop-shadow;
+            background-color: white;
+            border-radius: 8px;
+            margin-right: 12px;
+            margin-top: 24px;
+
+            .bank-list-select-box {
+                .bank-list-select {
+                    display: flex;
+                    align-items: center;
+                    width: 126px;
+                    height: 44px;
+                    padding-left: 12px;
+                    font-size: $font-placeholder;
+                    color: $color-gray-800;
+                    cursor: pointer;
+                }
+
+                .bank-list-select-icon {
+                    position: absolute;
+                    top: 14px;
+                    left: 106px;
+                    cursor: pointer;
+                    color: $color-gray-800;
+                }
+            }
+
+            .bank-list-select-option-wrapper {
+                position: absolute;
+                top: 52px;
+                box-shadow: $drop-shadow;
+                background-color: white;
+                border-radius: 8px;
+                padding: 8px;
+                width: 126px;
+                height: 300px;
+                overflow-y: scroll;
+                -ms-overflow-style: none; /* IE and Edge */
+                scrollbar-width: none; /* Firefox */
+                z-index: 2;
+
+                &::-webkit-scrollbar {
+                    display: none; /* Chrome, Safari, Opera*/
+                }
+
+                .bank-list-select-option {
+                    cursor: pointer;
+                    margin: 4px 0;
+                    padding: 4px;
+                    font-size: $font-placeholder;
+
+                    &:hover {
+                        background-color: $color-gray-200;
+                        padding: 4px;
+                        border-radius: 4px;
+                    }
+                }
+            }
+
+            .account-form {
+                border-left: 1px solid $color-gray-200;
+                padding-left: 12px;
+                font-size: $font-placeholder;
+                color: $color-gray-800;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+        }
+
+        .account-submit-btn {
+            margin-top: 24px;
+            width: 70px;
+            height: 44px;
+            border-radius: 8px;
+            font-size: $font-btns;
+            @apply dark:text-color-gray-800;
+            @include btn-fill;
+        }
+    }
+}

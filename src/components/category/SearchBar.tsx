@@ -14,7 +14,7 @@ export default function SearchBar() {
     const handleGetSearchResult = () => {
         console.log(searchData);
         const { region, category, startDue, endDue, keyword } = searchData;
-        const PRODUCTS_URL = "../../../public/data/product.json";
+        const PRODUCTS_URL = "/fakeData/product.json";
 
         axios
             .get(PRODUCTS_URL, {

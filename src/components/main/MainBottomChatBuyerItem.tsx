@@ -1,6 +1,6 @@
 import React from "react";
 import profile from "../../assets/images/man.png";
-import { IContents } from "./Main.interface";
+import { IContents } from "./_Main.interface";
 
 export default function MainBottomChatBuyerItem({ contents }: IContents) {
     return (

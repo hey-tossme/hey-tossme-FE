@@ -1,11 +1,16 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import ProfileImageSelect from "./ProfileImageSelect";
 import VerificationCodeBox from "./VerificationCodeBox";
-import CodeConfirmModal from "./CodeConfirmModal";
+import CodeConfirmModal from "../@common/modal/CodeConfirmModal";
+import ModalPortal from "../@common/modal/portal/ModalPortal";
+import { setModalOpen } from "../../store/modules/modal";
 import { HiOutlineMail, HiOutlineLockClosed, HiOutlineIdentification } from "react-icons/hi";
 import { removeWhitespace, validateEmail, validatePassword } from "../../hooks/regex";
 
 export default function SignUpForm() {
+    const modalOpen = useSelector((state: any) => state.modal.modalOpen);
+    const dispatch = useDispatch();
     const [files, setFiles] = useState<File | null>(null);
     const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
     const [codeActive, setCodeActive] = useState<boolean>(false);
@@ -17,7 +22,6 @@ export default function SignUpForm() {
     const [registerUserName, setRegisterUserName] = useState<string>("");
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [disabled, setDisabled] = useState<boolean>(false);
-    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     const handleChangeEmail = (email: string) => {
         const changedEmail = removeWhitespace(email);
@@ -60,8 +64,7 @@ export default function SignUpForm() {
     );
 
     const showModal = () => {
-        document.body.style.overflow = "hidden";
-        setModalOpen(true);
+        dispatch(setModalOpen());
         setCodeActive(true);
     };
 
@@ -155,7 +158,9 @@ export default function SignUpForm() {
                 </button>
             </div>
             {modalOpen ? (
-                <CodeConfirmModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+                <ModalPortal>
+                    <CodeConfirmModal />
+                </ModalPortal>
             ) : null}
         </div>
     );
