@@ -33,7 +33,7 @@ export default function Keywords() {
             </div>
             <div className="keywords-tag-container">
                 {keywordList.map((keyword) => (
-                    <KeywordsTag keyword={keyword} />
+                    <KeywordsTag keyword={keyword} key={keyword.id} />
                 ))}
             </div>
         </div>

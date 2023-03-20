@@ -23,16 +23,7 @@ export default function MyProducts() {
         <div className="my-products-card-wrapper">
             <div className="my-products-card-list">
                 {itemList.map((item) => (
-                    <CardItem
-                        key={item.id}
-                        id={item.id}
-                        img={item.image_url}
-                        title={item.title}
-                        price={item.price}
-                        endDate={item.dueTime}
-                        address=""
-                        status={item.status}
-                    />
+                    <CardItem key={item.id} item={item} />
                 ))}
             </div>
         </div>
