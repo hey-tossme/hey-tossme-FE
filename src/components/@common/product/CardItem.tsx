@@ -6,7 +6,8 @@ import { cardItemProps } from "../../category/_Category.interface";
 import axios from "axios";
 import { customNullItemImg, commaNums } from "../../../hooks/utils";
 
-export default function CardItem({ id, img, title, price, endDate, address }: cardItemProps) {
+export default function CardItem({ item }: cardItemProps) {
+    const { id, img, title, price, dueTime, address } = item;
     const [bookmark, setBookmark] = useState<boolean>();
 
     const handleSetBookmark = () => {
@@ -21,7 +22,7 @@ export default function CardItem({ id, img, title, price, endDate, address }: ca
             </div>
             <div className="item-info-area">
                 <div className="item-info-header">
-                    <Link to="/detail/id">
+                    <Link to={`/detail/${id}`} state={{ item: item }}>
                         <p className="item-info-title">{title}</p>
                     </Link>
                     <div onClick={handleSetBookmark} className="bookmark-btn-wrapper">
@@ -33,7 +34,7 @@ export default function CardItem({ id, img, title, price, endDate, address }: ca
                     </div>
                 </div>
                 <p className="item-info-price">{commaNums(price)}원</p>
-                <p className="item-info-duedate">{endDate.split(" ")[0]}</p>
+                <p className="item-info-duedate">{dueTime.split(" ")[0]}</p>
                 <p className="item-info-address">제주특별자치도 제주시 공항로 2</p>
             </div>
         </div>
