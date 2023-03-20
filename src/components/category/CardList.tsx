@@ -16,17 +16,7 @@ export default function CardList() {
             <div className="card-list">
                 {cardList &&
                     cardList.map((item) => {
-                        return (
-                            <CardItem
-                                key={item.id}
-                                id={item.id}
-                                img={item.image_url}
-                                title={item.title}
-                                price={item.price}
-                                endDate={item.dueTime}
-                                address=""
-                            />
-                        );
+                        return <CardItem key={item.id} list={item} />;
                     })}
             </div>
         </div>
