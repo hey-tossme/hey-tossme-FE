@@ -1,19 +1,13 @@
 import React from "react";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
-import { setCloseChat } from "../../store/modules/chat";
+import { setCloseChat, setChatId } from "../../store/modules/chat";
 import ChattingListItem from "./ChattingListItem";
 import { ChattingInfoState } from "./_FixedChatting.interface";
 import { IoClose } from "react-icons/io5";
 import { CgScrollV } from "react-icons/cg";
 
-export default function ChattingList({
-    chattingInfo,
-    setChattingInfo,
-    chatId,
-    setChatId,
-}: ChattingInfoState) {
+export default function ChattingList({ chattingInfo, setChattingInfo }: ChattingInfoState) {
     const dispatch = useAppDispatch();
-
     const ITEM_HEIGHT = 100;
     const ITEM_MARGIN = 8;
     const PADDING_TOP = 40;
@@ -34,12 +28,7 @@ export default function ChattingList({
                     }}
                 >
                     {chattingInfo.map((item) => (
-                        <ChattingListItem
-                            item={item}
-                            key={item.id}
-                            chatId={chatId}
-                            setChatId={setChatId}
-                        />
+                        <ChattingListItem item={item} key={item.id} />
                     ))}
                 </div>
                 {LENGTH > SCROLL_LENGTH ? (

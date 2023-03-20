@@ -50,7 +50,7 @@
             "accountTransferStatus": false
         },
         {
-            "id": 7,
+            "id": 2,
             "buyer": {
                 "id": 2,
                 "email": "test@naver.com",
@@ -98,7 +98,7 @@
             "accountTransferStatus": false
         },
         {
-            "id": 29,
+            "id": 3,
             "buyer": {
                 "id": 2,
                 "email": "test@naver.com",
@@ -146,7 +146,7 @@
             "accountTransferStatus": false
         },
         {
-            "id": 37,
+            "id": 4,
             "buyer": {
                 "id": 2,
                 "email": "test@naver.com",
@@ -194,7 +194,7 @@
             "accountTransferStatus": false
         },
         {
-            "id": 71,
+            "id": 5,
             "buyer": {
                 "id": 2,
                 "email": "test@naver.com",
