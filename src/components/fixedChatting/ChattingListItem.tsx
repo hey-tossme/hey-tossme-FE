@@ -1,15 +1,15 @@
 import React from "react";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
-import { setEnterChat } from "../../store/modules/chat";
+import { setEnterChat, setChatId } from "../../store/modules/chat";
 import { customNullImg } from "../../hooks/utils";
-import { chatIdInfo } from "./_FixedChatting.interface";
+import { ItemInfo } from "./_FixedChatting.interface";
 
-export default function ChattingListItem({ item, chatId, setChatId }: chatIdInfo) {
+export default function ChattingListItem({ item }: ItemInfo) {
     const USER_ID = 1; // 임시 정보
     const dispatch = useAppDispatch();
 
     const openChatRoom = () => {
-        setChatId(item.id);
+        dispatch(setChatId(item.id));
         dispatch(setEnterChat());
     };
 

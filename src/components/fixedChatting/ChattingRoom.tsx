@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setCloseChat, setLeaveChat } from "../../store/modules/chat";
 import { IoChevronBackOutline, IoClose } from "react-icons/io5";
@@ -6,19 +7,15 @@ import ChattingRoomItemInfo from "./ChattingRoomItemInfo";
 import ChattingRoomChatBox from "./ChattingRoomChatBox";
 import { ChattingInfoState, IChattingInfo } from "./_FixedChatting.interface";
 
-export default function ChattingRoom({
-    chattingInfo,
-    setChattingInfo,
-    chatId,
-    setChatId,
-}: ChattingInfoState) {
-    const dispatch = useAppDispatch();
+export default function ChattingRoom({ chattingInfo, setChattingInfo }: ChattingInfoState) {
     const [item, setItem] = useState<IChattingInfo | null>(null);
+    const chatId = useSelector((state: any) => state.chat.chatId);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        {
-            chattingInfo.map((chat) => (chat.id === chatId ? setItem(chat) : null));
-        }
+        chattingInfo.map((data) => {
+            data.id === chatId ? setItem(data) : null;
+        });
     }, [chatId]);
 
     return (

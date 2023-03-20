@@ -1,5 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { setOpenChat, setEnterChat, setChatId } from "../../store/modules/chat";
 import { detailInfoProps } from "./_detail.interface";
 import { customNullImg } from "../../hooks/utils";
 import { Link } from "react-router-dom";
@@ -7,6 +10,8 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 export default function DetailInfoHeader({ item }: detailInfoProps) {
+    const dispatch = useAppDispatch();
+    const chatId = useSelector((state: any) => state.chat.chatId);
     const [userInfo, setUserInfo] = useState({ name: "신짱구", imageUrl: "" });
 
     useEffect(() => {
@@ -29,12 +34,20 @@ export default function DetailInfoHeader({ item }: detailInfoProps) {
         axios.delete("");
     };
 
+    const openChatRoom = () => {
+        dispatch(setEnterChat());
+        // 추후 교체
+        dispatch(setChatId(item.id));
+        dispatch(setOpenChat());
+        console.log(chatId);
+    };
+
     return (
         <div className="detail-info-header-area">
             <div className="user-group">
                 <img className="user-img" src={customNullImg(userInfo.imageUrl)} alt="user-image" />
                 <h2 className="user-name">{userInfo.name}</h2>
-                <button className="chat-btn" type="button">
+                <button className="chat-btn" type="button" onClick={openChatRoom}>
                     채팅하기
                 </button>
             </div>

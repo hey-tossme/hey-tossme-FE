@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { GetUserAccount } from "./_MyPage.interface";
 import { BsCreditCardFill, BsFillCaretDownFill } from "react-icons/bs";
 
 export default function UserAccount({ getUserAccountInfo, bank, account }: GetUserAccount) {
+    const optionBoxRef = useRef<HTMLDivElement>(null);
     const [userAccount, setUserAccount] = useState<boolean>(!getUserAccountInfo);
     const [userBankName, setUserBankName] = useState<string>("");
     const [showList, setShowList] = useState<boolean>(false);
@@ -54,7 +55,10 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
                 <>
                     <div className="flex">
                         <div className="input-box">
-                            <div className="bank-list-select-box" onClick={() => setShowList(true)}>
+                            <div
+                                className="bank-list-select-box"
+                                onClick={() => setShowList(!showList)}
+                            >
                                 <input
                                     className="bank-list-select"
                                     type="text"
