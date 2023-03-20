@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import DetailImg from "../components/detail/DetailImg";
 import DetailInfoBody from "../components/detail/DetailInfoBody";
 import DetailInfoHeader from "../components/detail/DetailInfoHeader";
-import DetailMap from "../components/detail/DetailMap";
+// import DetailMap from "../components/detail/DetailMap";
 import DetailRecommend from "../components/detail/DetailRecommend";
 import { detailLocationProps } from "../components/detail/_detail.interface";
 
