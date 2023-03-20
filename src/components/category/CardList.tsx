@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import CardItem from "./CardItem";
+import CardItem from "../@common/product/CardItem";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
 
 export default function CardList() {
@@ -16,17 +16,7 @@ export default function CardList() {
             <div className="card-list">
                 {cardList &&
                     cardList.map((item) => {
-                        return (
-                            <CardItem
-                                key={item.id}
-                                id={item.id}
-                                img={item.image_url}
-                                title={item.title}
-                                price={item.price}
-                                endDate={item.dueTime}
-                                address=""
-                            />
-                        );
+                        return <CardItem key={item.id} item={item} />;
                     })}
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { searchStateProps } from "../../components/category/Category.interface";
+import { searchStateProps } from "../../components/category/_Category.interface";
 
 const initialState: searchStateProps = {
     category: null,

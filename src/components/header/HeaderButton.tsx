@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { HeaderButtonProps } from "./Header.interface";
+import { HeaderButtonProps } from "./_Header.interface";
 
 export default function HeaderButton({ text, filled }: HeaderButtonProps) {
     const [typeUrl, setTypeUrl] = useState<string>();
@@ -21,11 +21,7 @@ export default function HeaderButton({ text, filled }: HeaderButtonProps) {
 
     return (
         <Link to={typeUrl ? typeUrl : "/"}>
-            <button
-                className={
-                    filled ? "header-btn btn-fill" : "header-btn btn-not-fill"
-                }
-            >
+            <button className={filled ? "header-btn btn-fill" : "header-btn btn-not-fill"}>
                 {text}
             </button>
         </Link>

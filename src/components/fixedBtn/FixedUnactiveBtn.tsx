@@ -1,5 +1,5 @@
 import React from "react";
-import { IBtnState } from "./FixedBtn.interface";
+import { IBtnState } from "./_FixedBtn.interface";
 import { TbPlus } from "react-icons/tb";
 
 export default function FixedUnactiveBtn({ btnState, setBtnState }: IBtnState) {

@@ -9,6 +9,7 @@ import getMonth from "date-fns/getMonth";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setSearchData } from "../../store/modules/search";
 import { useParams } from "react-router";
+import { calendarContainerProps, renderCustomHeaderProps } from "./_Category.interface";
 
 export default function CustomDatepicker() {
     const [startDate, setStartDate] = useState<Date | null>();
@@ -40,28 +41,32 @@ export default function CustomDatepicker() {
             placeholderText="예약일자를 선택해주세요."
             selected={startDate}
             onChange={handleSetPeriod}
-            calendarContainer={({ className, children }) => {
+            calendarContainer={({ className, children }: calendarContainerProps) => {
                 return (
-                    <div className="mt-[6px] pt-[4px]">
+                    <div className="calendar-container">
                         <CalendarContainer className={className}>
                             <div style={{ position: "relative" }}>{children}</div>
                         </CalendarContainer>
                     </div>
                 );
             }}
-            renderCustomHeader={({ date, decreaseMonth, increaseMonth }) => (
-                <div className="flex gap-[40px] items-center justify-center pt-[12px] pb-[8px]">
+            renderCustomHeader={({
+                date,
+                decreaseMonth,
+                increaseMonth,
+            }: renderCustomHeaderProps) => (
+                <div className="custom-header">
                     <div onClick={decreaseMonth}>
-                        <MdKeyboardArrowLeft className="relative top-[1px] w-[30px] h-[30px] text-white" />
+                        <MdKeyboardArrowLeft className="prev-btn" />
                     </div>
-                    <div className="text-[16px] font-semibold text-white">
+                    <div className="current">
                         {getYear(date)}.
                         {getMonth(date) < 9
                             ? "0" + Number(getMonth(date) + 1)
                             : Number(getMonth(date) + 1)}
                     </div>
                     <div onClick={increaseMonth}>
-                        <MdKeyboardArrowRight className="relative top-[1px] w-[30px] h-[30px] text-white" />
+                        <MdKeyboardArrowRight className="next-btn" />
                     </div>
                 </div>
             )}

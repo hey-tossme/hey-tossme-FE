@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LogoButton from "./LogoButton";
+import LogoButton from "../@common/logo/LogoButton";
 
 export function CategoryContainer() {
     return (

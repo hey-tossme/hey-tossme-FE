@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { commaNums } from "../../hooks/commaNums";
-import { date } from "../../hooks/date";
 import ChattingRoomBtnArea from "./ChattingRoomBtnArea";
-import { customNullItemImg } from "../../hooks/customImgNull";
-import { ItemInfo } from "./FixedChatting.interface";
+import { customNullItemImg, commaNums, date } from "../../hooks/utils";
+import { ItemInfo } from "./_FixedChatting.interface";
 
 export default function ChattingRoomItemInfo({ item }: ItemInfo) {
     const [userState, setUserState] = useState<boolean>(false);
@@ -29,7 +27,15 @@ export default function ChattingRoomItemInfo({ item }: ItemInfo) {
                     <div className="item-info-due-time">{date(item.item.dueTime)}</div>
                 </div>
             </div>
-            {userState ? <ChattingRoomBtnArea item={item} /> : null}
+            {userState ? (
+                <ChattingRoomBtnArea item={item} />
+            ) : item.item.status === "DONE" ? (
+                <div className="item-info-btn-area">
+                    <button className="confirmed-btn" disabled>
+                        거래 완료
+                    </button>
+                </div>
+            ) : null}
         </div>
     );
 }

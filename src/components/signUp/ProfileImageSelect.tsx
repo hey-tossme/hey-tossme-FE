@@ -1,7 +1,7 @@
 import React from "react";
 import profile from "../../assets/images/profile-user.png";
 import { HiOutlinePlus } from "react-icons/hi";
-import { IProfileFiles } from "./SignUp.interface";
+import { IProfileFiles } from "./_SignUp.interface";
 
 export default function ProfileImageSelect({
     files,
@@ -17,7 +17,7 @@ export default function ProfileImageSelect({
 
         return new Promise<void>((resolve) => {
             reader.onload = () => {
-                setImageSrc(reader.result || null);
+                setImageSrc(reader.result);
                 resolve();
             };
         });

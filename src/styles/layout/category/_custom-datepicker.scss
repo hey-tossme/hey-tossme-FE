@@ -1,0 +1,19 @@
+.calender-container {
+    @apply mt-[6px] pt-[4px];
+}
+
+.custom-header {
+    @apply flex gap-[40px] items-center justify-center pt-[12px] pb-[8px];
+
+    .prev-btn {
+        @apply relative top-[1px] w-[30px] h-[30px] text-white;
+    }
+
+    .current {
+        @apply text-[16px] font-semibold text-white;
+    }
+
+    .next-btn {
+        @apply relative top-[1px] w-[30px] h-[30px] text-white;
+    }
+}

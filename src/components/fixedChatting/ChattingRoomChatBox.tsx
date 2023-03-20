@@ -2,7 +2,7 @@ import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import axios from "axios";
 import ChattingRoomSendMsg from "./ChattingRoomSendMsg";
 import ChattingRoomReceiveMsg from "./ChattingRoomReceiveMsg";
-import { IMessageInfo } from "./FixedChatting.interface";
+import { IMessageInfo } from "./_FixedChatting.interface";
 
 export default function ChattingRoomChatBox() {
     const [messageList, setMessageList] = useState<IMessageInfo[]>([]);
@@ -14,7 +14,7 @@ export default function ChattingRoomChatBox() {
     const MAX_HEIGHT = LENGTH * (ITEM_HEIGHT + ITEM_MARGIN);
 
     const USER_ID = 1; // 임시 정보
-    const MESSAGE_URL = "/data/message.json";
+    const MESSAGE_URL = "/fakeData/message.json";
 
     const getChattingListInfo = () => {
         axios.get(MESSAGE_URL).then((res) => {

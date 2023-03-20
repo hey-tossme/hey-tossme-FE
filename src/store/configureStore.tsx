@@ -4,14 +4,16 @@ import dark from "./modules/dark";
 import search from "./modules/search";
 import chat from "./modules/chat";
 import searchResult from "./modules/searchResult";
+import modal from "./modules/modal";
 
 const store = configureStore({
     reducer: {
         notify: notify,
         dark: dark,
         search: search,
-        chat: chat,
         searchResult: searchResult,
+        chat: chat,
+        modal: modal,
     },
 
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),

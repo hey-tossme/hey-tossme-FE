@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NotifyContainer from "../components/notify/NotifyContainer";
-import { NotifyType } from "../components/notify/Notify.interface";
+import { NotifyType } from "../components/notify/_Notify.interface";
 import { useAppDispatch, useAppSelector } from "../store/hooks/configureStore.hook";
 
 export default function Notify() {

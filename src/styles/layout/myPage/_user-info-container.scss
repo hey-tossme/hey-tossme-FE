@@ -1,0 +1,38 @@
+.user-info-container {
+    padding-top: 200px;
+    display: flex;
+    justify-content: center;
+
+    .user-info-content {
+        margin-left: 24px;
+        position: relative;
+
+        .secession-btn {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            right: 0;
+            width: 94px;
+            height: 40px;
+            border-radius: 8px;
+            font-size: $font-btns;
+            cursor: pointer;
+            @apply dark:bg-color-gray-800;
+            @include btn-not-fill;
+        }
+
+        .user-info-name {
+            font-size: $font-main-title;
+            font-weight: 700;
+            margin-bottom: 12px;
+            @include dark-mode-text;
+        }
+
+        .user-info-email {
+            font-size: $font-main-desc;
+            @include dark-mode-text;
+        }
+    }
+}
