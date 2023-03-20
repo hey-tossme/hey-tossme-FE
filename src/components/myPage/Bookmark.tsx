@@ -31,16 +31,7 @@ export default function Bookmark() {
                 }}
             >
                 {itemList.map((item) => (
-                    <CardItem
-                        key={item.id}
-                        id={item.id}
-                        img={item.image_url}
-                        title={item.title}
-                        price={item.price}
-                        endDate={item.dueTime}
-                        address=""
-                        status={item.status}
-                    />
+                    <CardItem item={item} key={item.id} />
                 ))}
             </div>
         </div>

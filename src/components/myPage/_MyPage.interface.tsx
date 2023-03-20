@@ -12,17 +12,11 @@ export interface UserInfo {
 
 export interface ItemInfo {
     id: number;
-    itemId: number;
-    userId: number;
-    category: string;
+    img: string;
     title: string;
-    contents: string;
     price: number;
-    createdAt: string;
     dueTime: string;
-    latitude: number;
-    longtitude: number;
-    image_url: string;
+    address: string;
     status: string;
 }
 
