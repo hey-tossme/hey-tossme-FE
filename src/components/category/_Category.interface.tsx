@@ -40,6 +40,7 @@ export interface listProps {
     price: number;
     dueTime: string;
     address: string;
+    status: string;
 }
 
 export interface calendarContainerProps {

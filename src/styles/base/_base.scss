@@ -119,7 +119,7 @@ body {
     color: $color-primary;
 }
 
-// 말줄임 텍스트 1줄 
+// 말줄임 텍스트 1줄
 @mixin ellipsis {
     white-space: nowrap;
     overflow: hidden;

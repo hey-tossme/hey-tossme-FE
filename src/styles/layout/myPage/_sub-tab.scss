@@ -1,7 +1,15 @@
 .tab-wrapper {
-    margin-top: 40px;
+    margin: 40px 0;
     display: flex;
     justify-content: center;
+
+    .tab-lifted {
+        @apply dark:text-white;
+
+        &.tab-active {
+            @apply dark:text-color-gray-800;
+        }
+    }
 }
 
 .tab-content-wrapper {

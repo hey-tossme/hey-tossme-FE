@@ -30,6 +30,15 @@ export interface ItemType {
     item: ItemInfo;
 }
 
+export interface KeywordInfo {
+    id: number;
+    keyword: string;
+}
+
+export interface KeywordType {
+    keyword: KeywordInfo;
+}
+
 export interface GetUserAccount {
     getUserAccountInfo: () => boolean;
     bank: string;

@@ -6,6 +6,8 @@
     box-shadow: $drop-shadow;
     margin-bottom: 40px;
     padding: 20px;
+    border: 1px solid $color-gray-200;
+    @include dark-mode-text;
 
     .booking-card-img {
         width: 208px;
@@ -34,6 +36,7 @@
             }
 
             .booking-card-date {
+                @apply dark:text-light;
                 color: $color-dark;
             }
         }
