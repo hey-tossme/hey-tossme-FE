@@ -16,7 +16,7 @@ export default function CardList() {
             <div className="card-list">
                 {cardList &&
                     cardList.map((item) => {
-                        return <CardItem key={item.id} list={item} />;
+                        return <CardItem key={item.id} item={item} />;
                     })}
             </div>
         </div>
