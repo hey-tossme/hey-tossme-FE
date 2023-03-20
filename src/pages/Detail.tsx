@@ -16,7 +16,7 @@ export default function Detail() {
             <DetailImg url={state.item.imageUrl} />
             <DetailInfoHeader item={state.item} />
             <DetailInfoBody item={state.item} />
-<!--             <DetailMap item={state.item} /> -->
+            {/* <DetailMap item={state.item} /> */}
             <DetailRecommend category={state.item.category} />
         </div>
     );
