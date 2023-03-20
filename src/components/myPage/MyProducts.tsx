@@ -1,6 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import CardItem from "../@common/product/CardItem";
+import { ItemInfo } from "./_MyPage.interface";
 
 export default function MyProducts() {
-    return <div>MyProducts</div>;
+    const [itemList, setItemList] = useState<ItemInfo[]>([]);
+    const PRODUCT_URL = "/fakeData/product.json";
+
+    const getBookingList = () => {
+        axios.get(PRODUCT_URL).then((res) => {
+            const response = res.data;
+            setItemList(response.data.content);
+        });
+    };
+
+    useEffect(() => {
+        getBookingList();
+        console.log(itemList);
+    }, []);
+
+    return (
+        <div className="my-products-card-wrapper">
+            <div className="my-products-card-list">
+                {itemList.map((item) => (
+                    <CardItem
+                        key={item.id}
+                        id={item.id}
+                        img={item.image_url}
+                        title={item.title}
+                        price={item.price}
+                        endDate={item.dueTime}
+                        address=""
+                    />
+                ))}
+            </div>
+        </div>
+    );
 }
