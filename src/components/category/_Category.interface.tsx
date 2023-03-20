@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface searchStateProps {
     category: string | null;
     keyword: string | null;
@@ -9,17 +11,17 @@ export interface searchStateProps {
 }
 
 export interface sidoDataType {
-    id: number;
-    name: string;
+    readonly id: number;
+    readonly name: string;
+}
+
+export interface sigunDataType {
+    readonly id: number;
+    readonly name: string;
 }
 
 export interface LocationItemProps {
     region: string;
-}
-
-export interface sigunDataType {
-    id: number;
-    name: string;
 }
 
 export interface LocationSelectItemProps {
@@ -28,11 +30,26 @@ export interface LocationSelectItemProps {
 }
 
 export interface cardItemProps {
+    item: listProps;
+}
+
+export interface listProps {
     id: number;
     img: string;
     title: string;
     price: number;
-    endDate: string;
+    dueTime: string;
     address: string;
     status: string;
+}
+
+export interface calendarContainerProps {
+    className: "string";
+    children: ReactNode;
+}
+
+export interface renderCustomHeaderProps {
+    date: Date;
+    decreaseMonth: () => void;
+    increaseMonth: () => void;
 }

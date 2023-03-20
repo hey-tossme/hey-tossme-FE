@@ -1,0 +1,16 @@
+.detail-map-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 776px;
+    gap: 24px;
+
+    .map-title {
+        font-size: $font-detail-desc;
+        font-weight: 600;
+    }
+
+    .address {
+        font-size: $font-detail-desc;
+    }
+}
