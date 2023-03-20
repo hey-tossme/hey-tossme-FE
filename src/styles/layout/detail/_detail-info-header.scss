@@ -1,0 +1,43 @@
+.detail-info-header-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 776px;
+
+    .user-group {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .user-img {
+            width: 56px;
+            height: 56px;
+        }
+
+        .user-name {
+            @include dark-mode-text;
+            font-size: $font-detail-sub-title;
+            font-weight: 600;
+        }
+
+        .chat-btn {
+            @include btn-fill;
+            width: 100px;
+            height: 36px;
+            border-radius: 8px;
+        }
+    }
+
+    .action-group {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        .action-icon {
+            width: 32px;
+            height: 32px;
+            @include dark-mode-text;
+        }
+    }
+}

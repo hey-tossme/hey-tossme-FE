@@ -12,22 +12,25 @@ export interface UserInfo {
 
 export interface ItemInfo {
     id: number;
-    itemId: number;
-    userId: number;
-    category: string;
+    img: string;
     title: string;
-    contents: string;
     price: number;
-    createdAt: string;
     dueTime: string;
-    latitude: number;
-    longtitude: number;
-    image_url: string;
+    address: string;
     status: string;
 }
 
 export interface ItemType {
     item: ItemInfo;
+}
+
+export interface KeywordInfo {
+    id: number;
+    keyword: string;
+}
+
+export interface KeywordType {
+    keyword: KeywordInfo;
 }
 
 export interface GetUserAccount {

@@ -40,6 +40,10 @@
 @import "./layout/myPage/user-account";
 @import "./layout/myPage/sub-tab";
 @import "./layout/myPage/my-booking-card";
+@import "./layout/myPage/my-products";
+@import "./layout/myPage/bookmark";
+@import "./layout/myPage/keywords";
+@import "./layout/myPage/keywords-tag";
 
 @import "./layout/header/header";
 
@@ -50,5 +54,12 @@
 @import "./layout/category/select-location";
 @import "./layout/category/select-period";
 @import "./layout/category/datepicker";
+@import "./layout/category/custom-datepicker";
 @import "./layout/category/card-list";
 @import "./layout/category/pagination";
+
+@import "./layout/detail/detail";
+@import "./layout/detail/detail-info-header";
+@import "./layout/detail/detail-info-body";
+@import "./layout/detail/detail-map";
+@import "./layout/detail/detail-recommend";

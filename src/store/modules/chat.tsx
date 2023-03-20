@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: { openChat: boolean; enterChat: boolean } = {
+const initialState: { openChat: boolean; enterChat: boolean; chatId: number } = {
     openChat: false,
     enterChat: false,
+    chatId: -1,
 };
 
 export const chatSlice = createSlice({
@@ -26,8 +27,12 @@ export const chatSlice = createSlice({
             state.enterChat = false;
             console.log("채팅방 나옴");
         },
+        setChatId(state, action) {
+            state.chatId = action.payload;
+        },
     },
 });
 
-export const { setOpenChat, setCloseChat, setEnterChat, setLeaveChat } = chatSlice.actions;
+export const { setOpenChat, setCloseChat, setEnterChat, setLeaveChat, setChatId } =
+    chatSlice.actions;
 export default chatSlice.reducer;

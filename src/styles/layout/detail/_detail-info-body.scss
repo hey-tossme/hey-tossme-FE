@@ -1,0 +1,54 @@
+.detail-info-body-area {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    gap: 4px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    width: 776px;
+
+    .info-title-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: inherit;
+
+        .info-title {
+            @include dark-mode-text;
+            @include ellipsis;
+            margin-bottom: 12px;
+            font-size: $font-detail-title;
+            font-weight: bold;
+        }
+
+        .bookmark-btn-not-fill {
+            width: 32px;
+            height: 32px;
+            @include bookmark-btn-not-fill;
+        }
+
+        .bookmark-btn-fill {
+            width: 32px;
+            height: 32px;
+            @include bookmark-btn-fill;
+        }
+    }
+
+    .info-price {
+        @include dark-mode-text;
+        font-size: $font-detail-desc;
+        margin-bottom: 12px;
+    }
+
+    .info-date {
+        @apply dark:text-light;
+        margin-bottom: 36px;
+        font-size: $font-detail-desc;
+        color: $color-dark;
+    }
+
+    .info-desc {
+        @include dark-mode-text;
+        font-size: $font-detail-desc;
+    }
+}

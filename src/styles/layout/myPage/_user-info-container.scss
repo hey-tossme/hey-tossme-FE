@@ -19,7 +19,7 @@
             border-radius: 8px;
             font-size: $font-btns;
             cursor: pointer;
-            @apply dark:text-color-gray-800;
+            @apply dark:bg-color-gray-800;
             @include btn-not-fill;
         }
 

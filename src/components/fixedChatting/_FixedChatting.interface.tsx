@@ -42,14 +42,6 @@ export interface IMessageInfo {
 export interface ChattingInfoState {
     chattingInfo: IChattingInfo[];
     setChattingInfo: React.Dispatch<React.SetStateAction<IChattingInfo[]>>;
-    chatId: number;
-    setChatId: React.Dispatch<React.SetStateAction<number>>;
-}
-
-export interface chatIdInfo {
-    item: IChattingInfo;
-    chatId: number;
-    setChatId: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface ItemInfo {
