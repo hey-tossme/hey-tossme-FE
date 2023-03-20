@@ -6,11 +6,13 @@
     gap: 24px;
 
     .map-title {
+        @include dark-mode-text;
         font-size: $font-detail-desc;
         font-weight: 600;
     }
 
     .address {
+        @include dark-mode-text;
         font-size: $font-detail-desc;
     }
 }

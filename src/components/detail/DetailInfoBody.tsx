@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { detailInfoProps } from "./_detail.interface";
-import { commaNums } from "../../hooks/utils";
+import { commaNums, date } from "../../hooks/utils";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 
 export default function DetailInfoBody({ item }: detailInfoProps) {
@@ -25,7 +25,7 @@ export default function DetailInfoBody({ item }: detailInfoProps) {
                 </div>
             </div>
             <div className="info-price">{`${commaNums(item.price)}원`}</div>
-            <div className="info-date">{`예약일자 ${item.dueTime.split(" ")[0]}`}</div>
+            <div className="info-date">{`예약일자 ${date(item.dueTime)}`}</div>
             <div className="info-desc">{item.contents}</div>
         </div>
     );
