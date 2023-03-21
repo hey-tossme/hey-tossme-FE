@@ -1735,7 +1735,7 @@ body {
 }
 .booking-card-item .booking-card-contents .booking-card-btn-area {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 .booking-card-item .booking-card-contents .booking-card-btn-area .go-to-detail {
   width: 100px;
@@ -2480,10 +2480,14 @@ body {
   gap: 24px;
 }
 .detail-map-wrapper .map-title {
+  @apply dark:text-white;
+  color: #333333;
   font-size: 24px;
   font-weight: 600;
 }
 .detail-map-wrapper .address {
+  @apply dark:text-white;
+  color: #333333;
   font-size: 24px;
 }
 
@@ -2496,6 +2500,8 @@ body {
   gap: 24px;
 }
 .detail-category-wrapper .category-title {
+  @apply dark:text-white;
+  color: #333333;
   font-size: 24px;
   font-weight: 600;
 }
