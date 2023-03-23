@@ -5,4 +5,5 @@ declare module "*.gif";
 
 interface Window {
     kakao: any;
+    daum: any;
 }
