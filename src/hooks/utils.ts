@@ -1,7 +1,7 @@
 import profileImg from "../assets/images/profile-user.png";
 import itemImg from "../assets/images/default-image.png";
 
-export const commaNums = (num: number) => {
+export const commaNums = (num: Number) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
