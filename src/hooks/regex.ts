@@ -13,3 +13,8 @@ export const removeWhitespace = (text: string) => {
     const regex = /\s/g;
     return text.replace(regex, "");
 };
+
+export const validateTime = (time: string) => {
+    const regex = /^(0[1-9]|1[0-2]|):(0[1-9]|[0-5][0-9])$/;
+    return regex.test(time);
+};
