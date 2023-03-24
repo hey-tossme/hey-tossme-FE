@@ -1,0 +1,47 @@
+.write-wrapper {
+    @apply dark:bg-color-gray-800;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 120px;
+    padding: 98px 0;
+    background-color: white;
+
+    .write-info-item {
+        @include dark-mode-text;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 23px 0 23px 20px;
+        width: 776px;
+        height: 78px;
+        font-size: 24px;
+        border-bottom: 1px solid $color-gray-200;
+
+        &::placeholder {
+            @apply dark:text-color-gray-100;
+            color: $color-gray-500;
+        }
+
+        &.textarea-box {
+            @apply dark:bg-color-gray-800;
+            @include dark-mode-text;
+            height: 300px;
+            outline: 0;
+        }
+    }
+
+    .enroll-btn {
+        @include btn-fill;
+        display: flex;
+        margin-top:96px;
+        align-items: center;
+        justify-content: center;
+        width: 240px;
+        height: 54px;
+        border-radius: 8px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+}

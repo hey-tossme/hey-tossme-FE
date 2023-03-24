@@ -1,0 +1,89 @@
+.date-select-wrapper {
+    display: flex;
+    gap: 8px;
+    width: 776px;
+
+    .date-select-box {
+        width: 450px;
+
+        .date-select-item {
+            width: 450px;
+        }
+    }
+
+    .mor-afn-toggle-box {
+        position: relative;
+        padding: 0 12px;
+        width: 120px;
+
+        .toggle-input-area {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            width: 120px;
+
+            .toggle-input {
+                padding-left: 4px;
+                width: 60px;
+            }
+
+            .down-btn {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        .toggle-list {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            bottom: -130px;
+            width: inherit;
+            border-radius: 8px;
+            box-shadow: 0px 2px 4px rgba(51, 51, 51, 0.25);
+            overflow: hidden;
+            
+            .toggle-item {
+                @apply dark:bg-color-gray-700;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px 0;
+
+                &:first-child {
+                    border-bottom: 1px solid $color-gray-100;
+                }
+            }
+        }
+    }
+
+    .time-input-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 0 12px;
+        width: 190px;
+    
+        .time-input-item {
+            text-align: center;
+            width: 100px;
+            letter-spacing: 2px;
+
+            &::placeholder {
+                @apply dark:text-white;
+                color: $color-gray-500;
+            }
+        }
+    }
+}
+
+.error-message {
+    display: flex;
+    justify-content: end;
+    margin-top: 16px;
+    width: 776px;
+    color: $color-gray-500;
+}
