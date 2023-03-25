@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MyBookingCard from "./MyBookingCard";
+import Pagination from "../@common/product/Pagination";
 import { ItemInfo } from "./_MyPage.interface";
 
 export default function MyBooking() {
@@ -26,6 +27,7 @@ export default function MyBooking() {
                     <MyBookingCard item={item} key={item.id} />
                 ))}
             </div>
+            <Pagination />
         </>
     );
 }

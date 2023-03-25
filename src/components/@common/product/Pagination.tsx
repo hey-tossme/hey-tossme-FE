@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore.hook";
-import { setSearchData } from "../../store/modules/search";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks/configureStore.hook";
+import { setSearchData } from "../../../store/modules/search";
 
 export default function Pagination() {
     const dispatch = useAppDispatch();

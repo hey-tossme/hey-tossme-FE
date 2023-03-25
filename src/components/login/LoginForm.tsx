@@ -6,7 +6,7 @@ import OauthKakao from "./OauthKakao";
 
 export default function LoginForm() {
     const test = () => {
-        alert("이벤트 확인");
+        localStorage.setItem("token", "testaaaaaaaabbbbbbbb");
     };
 
     const pressEnterKey = (e: any) => {
