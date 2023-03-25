@@ -1,12 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import MainTopCardItem from "./MainTopCardItem";
 
-import hotel from "../../assets/cards/hotel.jpg";
-import dinner from "../../assets/cards/dinner.jpg";
-import hair from "../../assets/cards/hair.jpg";
-import golf from "../../assets/cards/golf.jpg";
-import concert from "../../assets/cards/concert.jpg";
-
 export default function MainTopCardWrapper() {
     const cards = [
         {
@@ -15,7 +9,7 @@ export default function MainTopCardWrapper() {
             price: "498,000",
             date: "2023-03-06",
             place: "제주특별자치도 제주시 공항로 2",
-            img: hotel,
+            img: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         },
         {
             id: 1,
@@ -23,7 +17,7 @@ export default function MainTopCardWrapper() {
             price: "100,000",
             date: "날짜 무관",
             place: "서울특별시 용산구 한강대로 405",
-            img: dinner,
+            img: "https://images.unsplash.com/photo-1601118964938-228a89955311?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZGlubmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         },
         {
             id: 2,
@@ -31,7 +25,7 @@ export default function MainTopCardWrapper() {
             price: "80,000",
             date: "2023-03-20 오후 2시",
             place: "대전광역시 동구 중앙로 215",
-            img: hair,
+            img: "https://images.unsplash.com/photo-1621770504632-a601605021a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGFpcnNob3B8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
         },
         {
             id: 3,
@@ -39,7 +33,7 @@ export default function MainTopCardWrapper() {
             price: "600,000",
             date: "2023-04-12 오후 1시",
             place: "경상남도 김해시 김해대로 2232",
-            img: golf,
+            img: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Z29sZnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
         },
         {
             id: 4,
@@ -47,7 +41,7 @@ export default function MainTopCardWrapper() {
             price: "187,000",
             date: "2023-05-26",
             place: "서울특별시 송파구 올림픽로 424",
-            img: concert,
+            img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29uY2VydHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
         },
     ];
 
