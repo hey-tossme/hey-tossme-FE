@@ -1,6 +1,6 @@
 import React from "react";
-import { useAppDispatch } from "../../../store/hooks/configureStore.hook";
-import { setOpenChat } from "../../../store/modules/chat";
+import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { setOpenChat } from "../../store/modules/chat";
 import { TbPencilMinus, TbMessageCircle } from "react-icons/tb";
 import { useNavigate } from "react-router";
 

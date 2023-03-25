@@ -5,6 +5,7 @@ import search from "./modules/search";
 import chat from "./modules/chat";
 import searchResult from "./modules/searchResult";
 import modal from "./modules/modal";
+import token from "./modules/token";
 
 const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
         searchResult: searchResult,
         chat: chat,
         modal: modal,
+        token: token,
     },
 
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),

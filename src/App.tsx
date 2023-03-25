@@ -4,7 +4,7 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 import OauthRedirect from "./pages/OauthRedirect";
 import Header from "./components/header/Header";
-import FixedBtn from "./components/findPassword/fixedBtn/FixedBtn";
+import FixedBtn from "./components/fixedBtn/FixedBtn";
 import SignUp from "./pages/SignUp";
 import FindPassword from "./pages/FindPassword";
 import MyPage from "./pages/MyPage";
