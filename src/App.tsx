@@ -30,6 +30,7 @@ export default function App() {
                 <Route path="/category/:category" element={<Category />}></Route>
                 <Route path="/detail/:id" element={<Detail />}></Route>
                 <Route path="/write" element={<Write />}></Route>
+                <Route path="/edit/:id" element={<Write />}></Route>
             </Routes>
         </BrowserRouter>
     );

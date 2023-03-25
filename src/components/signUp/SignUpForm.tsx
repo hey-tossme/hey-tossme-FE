@@ -7,6 +7,7 @@ import ModalPortal from "../@common/modal/portal/ModalPortal";
 import { setModalOpen } from "../../store/modules/modal";
 import { HiOutlineMail, HiOutlineLockClosed, HiOutlineIdentification } from "react-icons/hi";
 import { removeWhitespace, validateEmail, validatePassword } from "../../hooks/regex";
+import { requestSignUp } from "../../api/auth/auth";
 
 export default function SignUpForm() {
     const modalOpen = useSelector((state: any) => state.modal.modalOpen);
@@ -73,6 +74,10 @@ export default function SignUpForm() {
             !(registerEmail && registerPassword && registerUserName && !errorMessage && confirm)
         );
     }, [registerEmail, registerPassword, registerUserName, errorMessage, confirm]);
+
+    const registerSignUp = () => {
+        requestSignUp(registerEmail, registerPassword, registerUserName, null);
+    };
 
     return (
         <div className="sign-up-form-container">
@@ -153,7 +158,7 @@ export default function SignUpForm() {
                 </div>
             </div>
             <div className="sign-up-btn-area">
-                <button className="sign-up-btn" disabled={disabled}>
+                <button className="sign-up-btn" disabled={disabled} onClick={registerSignUp}>
                     가입하기
                 </button>
             </div>
