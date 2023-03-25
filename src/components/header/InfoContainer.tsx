@@ -9,14 +9,26 @@ import { setIsDark } from "../../store/modules/dark";
 import { FaRegMoon, FaRegBell } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
 import HeaderButton from "./HeaderButton";
+import { firebaseApp } from "../../firebase";
 
 export function InfoContainer() {
     const dispatch = useAppDispatch();
     const notify = useAppSelector((state) => state.notify);
     const [notifyList, setNotifyList] = useState<Array<NotifyType>>();
-    const [isRead, setIsRead] = useState<boolean>();
     const [dark, setDark] = useState(false);
     const [isLogin, setIsLogin] = useState(true);
+    const firebaseMessaging = firebaseApp.messaging();
+
+    firebaseMessaging.onMessage((payload: any) => {
+        const title = payload.notification.title;
+        const options = {
+            body: payload.notification.body,
+        };
+        console.log("Message received. title : ", title, "options : ", options);
+        navigator.serviceWorker.ready.then((registration) => {
+            registration.showNotification(title, options);
+        });
+    });
 
     useEffect(() => {
         try {
@@ -39,10 +51,10 @@ export function InfoContainer() {
         }
     }, [notifyList]);
 
-    useEffect(() => {
-        const newNotify = notify.filter((item) => item.readOrNot === false);
-        newNotify && newNotify.length ? setIsRead(false) : setIsRead(true);
-    }, [notify]);
+    // useEffect(() => {
+    //     const newNotify = notify.filter((item) => item.readOrNot === false);
+    //     newNotify && newNotify.length ? setIsRead(false) : setIsRead(true);
+    // }, [notify]);
 
     const handleToggleDarkMode = () => {
         if (localStorage.getItem("theme") === "dark") {
@@ -63,7 +75,6 @@ export function InfoContainer() {
             {isLogin && (
                 <div className="notify-group">
                     <Link to="/notify">
-                        {!isRead && <div className="new-notify"></div>}
                         <FaRegBell size="32px" color={!dark ? "#333333" : "#ffffff"} />
                     </Link>
                 </div>
