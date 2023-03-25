@@ -1,6 +1,15 @@
-.bookmark-card-list {
-    display: grid;
-    grid-template-columns: repeat(4, 240px);
-    grid-template-rows: repeat(2, 289px);
-    gap: 24px 28px;
+.bookmark-card-container {
+    display: flex;
+    justify-content: center;
+
+    .bookmark-card-wrapper {
+        margin-bottom: 40px;
+
+        .bookmark-card-list {
+            display: grid;
+            grid-template-columns: repeat(4, 240px);
+            grid-template-rows: repeat(2, 289px);
+            gap: 24px 28px;
+        }
+    }
 }

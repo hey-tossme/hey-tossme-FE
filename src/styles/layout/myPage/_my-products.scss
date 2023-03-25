@@ -1,6 +1,12 @@
-.my-products-card-list {
-    display: grid;
-    grid-template-columns: repeat(4, 240px);
-    grid-template-rows: repeat(2, 289px);
-    gap: 24px 28px;
+.my-products-card-container {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+
+    .my-products-card-list {
+        display: grid;
+        grid-template-columns: repeat(4, 240px);
+        grid-template-rows: repeat(2, 289px);
+        gap: 24px 28px;
+    }
 }
