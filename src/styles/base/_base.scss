@@ -113,10 +113,12 @@ body {
 @mixin bookmark-btn-not-fill {
     @apply dark:text-white;
     color: $color-gray-800;
+    cursor: pointer;
 }
 
 @mixin bookmark-btn-fill {
     color: $color-primary;
+    cursor: pointer;
 }
 
 // 말줄임 텍스트 1줄

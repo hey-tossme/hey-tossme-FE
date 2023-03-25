@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LogoButton from "../@common/logo/LogoButton";
 import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
-import kakaoBtn from "../../assets/images/kakao_login_large_narrow.png";
+import OauthKakao from "./OauthKakao";
 
 export default function LoginForm() {
     const test = () => {
-        alert("이벤트 확인");
+        localStorage.setItem("token", "testaaaaaaaabbbbbbbb");
     };
 
     const pressEnterKey = (e: any) => {
@@ -44,9 +44,7 @@ export default function LoginForm() {
                                     로그인
                                 </button>
                             </Link>
-                            <Link to="/">
-                                <img src={kakaoBtn} alt="카카오로 시작하기" className="kakao-btn" />
-                            </Link>
+                            <OauthKakao />
                         </div>
                         <div className="login-form-bottom">
                             <Link to="/signup">

@@ -6,3 +6,7 @@ export interface HeaderButtonProps {
     text: string;
     filled: boolean;
 }
+
+export interface LoginType {
+    isLogin: boolean;
+}

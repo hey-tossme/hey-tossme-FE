@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
@@ -10,6 +11,17 @@ import { NotifyItemProps } from "./_Notify.interface";
 export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     const dispatch = useAppDispatch();
     const dark = useAppSelector((state) => state.dark);
+    const [targetItem, setTargetItem] = useState<any>();
+
+    useEffect(() => {
+        axios.get("../../../public/fakeData/product.json").then((res) => {
+            const itemId = item.itemId;
+            const productList = res.data.data.content;
+            const target = productList.filter((item: any) => item.id === itemId);
+            setTargetItem(target[0]);
+        });
+    }, []);
+
     const handleDelete = async () => {
         // x 버튼 클릭시 알림 삭제하기
         try {
@@ -35,15 +47,12 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     };
 
     // console.log(dark.dark);
+    console.log(targetItem);
 
     return (
         <Link
-            to={
-                item.type !== "transaction"
-                    ? // ? `/items/${item.itemId}`
-                      "/notify"
-                    : "/notify"
-            }
+            to={item.type !== "transaction" ? `/detail/${item.itemId}` : "/notify"}
+            state={item.type !== "transaction" && targetItem && { item: targetItem }}
         >
             <div onClick={handleRead} className="notify-item">
                 <div onClick={handleDelete} className="delete-btn">
