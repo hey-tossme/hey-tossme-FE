@@ -28,6 +28,8 @@
         width: 208px;
         height: 140px;
         border-radius: 8px;
+        object-fit: cover;
+        margin-bottom: 4px;
     }
 
     .item-info-area {
@@ -38,7 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            padding-bottom: 12px;
 
             .item-info-title {
                 @include dark-mode-text;
@@ -57,14 +59,14 @@
         .item-info-price {
             @include dark-mode-text;
             font-size: $font-card-sub-title;
-            margin-bottom: 16px;
+            padding-bottom: 12px;
         }
 
         .item-info-duedate {
             @apply dark:text-light;
             font-size: $font-card-desc;
             color: $color-dark;
-            margin-bottom: 4px;
+            margin-bottom: 12px;
         }
 
         .item-info-address {

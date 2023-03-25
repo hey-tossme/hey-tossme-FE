@@ -12,11 +12,12 @@ export interface UserInfo {
 
 export interface ItemInfo {
     id: number;
-    img: string;
+    imageUrl: string;
     title: string;
     price: number;
     dueTime: string;
     address: string;
+    addressDetail: string;
     status: string;
 }
 

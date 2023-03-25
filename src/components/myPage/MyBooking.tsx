@@ -22,10 +22,12 @@ export default function MyBooking() {
 
     return (
         <>
-            <div className="booking-item-list-wrapper">
-                {itemList.map((item) => (
-                    <MyBookingCard item={item} key={item.id} />
-                ))}
+            <div className="booking-item-list-container">
+                <div className="booking-item-list-wrapper">
+                    {itemList.map((item) => (
+                        <MyBookingCard item={item} key={item.id} />
+                    ))}
+                </div>
             </div>
             <Pagination />
         </>
