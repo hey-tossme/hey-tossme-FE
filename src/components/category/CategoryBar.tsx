@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore
 import { resetData, setSearchData } from "../../store/modules/search";
 import { setSearchResult } from "../../store/modules/searchResult";
 import axios from "axios";
+import { dashDate } from "../../hooks/utils";
 
 export default function CategoryBar() {
     const params = useParams();
@@ -59,25 +60,10 @@ export default function CategoryBar() {
             const endDate = new Date(today);
             endDate.setDate(today.getDate() + 3);
 
-            const year = today.getFullYear();
-            const month =
-                today.getMonth() + 1 < 10
-                    ? "0" + Number(today.getMonth() + 1)
-                    : today.getMonth() + 1;
-            const targetDate = today.getDate() < 10 ? "0" + today.getDate() : today.getDate();
-
-            const endDateYear = endDate.getFullYear();
-            const endDateMonth =
-                endDate.getMonth() + 1 < 10
-                    ? "0" + Number(endDate.getMonth() + 1)
-                    : endDate.getMonth() + 1;
-            const endTargetDate =
-                endDate.getDate() < 10 ? "0" + endDate.getDate() : endDate.getDate();
-
             dispatch(
                 setSearchData({
-                    startDue: `${year}-${month}-${targetDate}`,
-                    endDue: `${endDateYear}-${endDateMonth}-${endTargetDate}`,
+                    startDue: dashDate(today),
+                    endDue: dashDate(endDate),
                 })
             );
         }

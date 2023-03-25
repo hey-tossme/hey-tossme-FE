@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CardItem from "../@common/product/CardItem";
+import Pagination from "../@common/product/Pagination";
 import { ItemInfo } from "./_MyPage.interface";
 
 export default function MyProducts() {
@@ -20,12 +21,17 @@ export default function MyProducts() {
     }, []);
 
     return (
-        <div className="my-products-card-wrapper">
-            <div className="my-products-card-list">
-                {itemList.map((item) => (
-                    <CardItem key={item.id} item={item} />
-                ))}
+        <>
+            <div className="my-products-card-container">
+                <div className="my-products-card-wrapper">
+                    <div className="my-products-card-list">
+                        {itemList.map((item) => (
+                            <CardItem key={item.id} item={item} />
+                        ))}
+                    </div>
+                </div>
             </div>
-        </div>
+            <Pagination />
+        </>
     );
 }

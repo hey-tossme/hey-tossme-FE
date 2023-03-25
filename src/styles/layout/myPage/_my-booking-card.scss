@@ -1,57 +1,62 @@
-.booking-card-item {
+.booking-item-list-container {
     display: flex;
-    width: 800px;
-    height: 180px;
-    border-radius: 8px;
-    box-shadow: $drop-shadow;
-    margin-bottom: 40px;
-    padding: 20px;
-    border: 1px solid $color-gray-200;
-    @include dark-mode-text;
+    justify-content: center;
 
-    .booking-card-img {
-        width: 208px;
-        height: 140px;
-        border-radius: 8px;
-        margin-right: 20px;
-    }
-
-    .booking-card-contents {
+    .booking-card-item {
         display: flex;
-        width: 532px;
-        justify-content: space-between;
+        width: 800px;
+        height: 180px;
+        border-radius: 8px;
+        box-shadow: $drop-shadow;
+        margin-bottom: 40px;
+        padding: 20px;
+        border: 1px solid $color-gray-200;
+        @include dark-mode-text;
 
-        .booking-card-info {
-            .booking-card-title {
-                font-size: $font-card-title;
-                font-weight: 700;
-                margin-bottom: 12px;
-            }
-
-            .booking-card-price,
-            .booking-card-date,
-            .booking-card-place {
-                font-size: $font-card-sub-title;
-                margin-bottom: 12px;
-            }
-
-            .booking-card-date {
-                @apply dark:text-light;
-                color: $color-dark;
-            }
+        .booking-card-img {
+            width: 208px;
+            height: 140px;
+            border-radius: 8px;
+            margin-right: 20px;
         }
 
-        .booking-card-btn-area {
+        .booking-card-contents {
             display: flex;
-            align-items: flex-end;
+            width: 532px;
+            justify-content: space-between;
 
-            .go-to-detail {
-                width: 100px;
-                height: 36px;
-                border-radius: 8px;
-                font-size: $font-btns;
-                @apply dark:text-color-gray-800;
-                @include btn-fill;
+            .booking-card-info {
+                .booking-card-title {
+                    font-size: $font-card-title;
+                    font-weight: 700;
+                    margin-bottom: 12px;
+                }
+
+                .booking-card-price,
+                .booking-card-date,
+                .booking-card-place {
+                    font-size: $font-card-sub-title;
+                    margin-bottom: 12px;
+                }
+
+                .booking-card-date {
+                    @apply dark:text-light;
+                    color: $color-dark;
+                }
+            }
+
+            .booking-card-btn-area {
+                display: flex;
+                align-items: flex-end;
+
+                .go-to-detail {
+                    width: 100px;
+                    height: 36px;
+                    border-radius: 8px;
+                    font-size: $font-btns;
+                    @apply dark:text-color-gray-800;
+                    @include btn-fill;
+                }
             }
         }
     }

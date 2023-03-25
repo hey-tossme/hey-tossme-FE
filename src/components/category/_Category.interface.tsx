@@ -35,7 +35,7 @@ export interface cardItemProps {
 
 export interface listProps {
     id: number;
-    img: string;
+    imageUrl: string;
     title: string;
     price: number;
     dueTime: string;

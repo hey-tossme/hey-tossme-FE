@@ -22,19 +22,21 @@ export default function Keywords() {
 
     return (
         <div className="keywords-container">
-            <div className="keywords-form-box">
-                <HiOutlineTag className="keywords-form-icon" />
-                <input
-                    type="text"
-                    className="keywords-input"
-                    placeholder="관심 키워드를 등록해 보세요."
-                />
-                <button className="keywords-btn">등록하기</button>
-            </div>
-            <div className="keywords-tag-container">
-                {keywordList.map((keyword) => (
-                    <KeywordsTag keyword={keyword} key={keyword.id} />
-                ))}
+            <div className="keyword-form-wrapper">
+                <div className="keywords-form-box">
+                    <HiOutlineTag className="keywords-form-icon" />
+                    <input
+                        type="text"
+                        className="keywords-input"
+                        placeholder="관심 키워드를 등록해 보세요."
+                    />
+                    <button className="keywords-btn">등록하기</button>
+                </div>
+                <div className="keywords-tag-container">
+                    {keywordList.map((keyword) => (
+                        <KeywordsTag keyword={keyword} key={keyword.id} />
+                    ))}
+                </div>
             </div>
         </div>
     );
