@@ -1,0 +1,21 @@
+.address-input-box {
+    position: relative;
+
+    .detail-address-input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        padding: 23px 0 23px 20px;
+        height: 78px;
+        font-size: 24px;
+        transform: translateY(-50%);
+
+        &::placeholder {
+            @apply dark:text-color-gray-100;
+            color: $color-gray-500;
+        }
+    }
+}

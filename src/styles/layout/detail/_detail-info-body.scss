@@ -24,7 +24,7 @@
         .bookmark-btn-not-fill {
             width: 32px;
             height: 32px;
-            @include bookmark-btn-not-fill;
+            color: $color-primary;
         }
 
         .bookmark-btn-fill {
