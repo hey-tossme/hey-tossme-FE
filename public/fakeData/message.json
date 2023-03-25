@@ -13,7 +13,7 @@
                 "account": "000-000-000001",
                 "bankName": "토스뱅크"
             },
-            "message": "Hi from1"
+            "message": "사고 싶은데 네고 가능한가요?"
         },
         {
             "id": 2,
@@ -27,77 +27,7 @@
                 "account": "000-000-000000",
                 "bankName": "신한"
             },
-            "message": "Hi from2"
-        },
-        {
-            "id": 3,
-            "sender": {
-                "id": 2,
-                "email": "test@naver.com",
-                "name": "신짱구",
-                "imageURL": null,
-                "socialType": null,
-                "status": "NORMAL",
-                "account": "000-000-000000",
-                "bankName": "신한"
-            },
-            "message": "how much that item?"
-        },
-        {
-            "id": 4,
-            "sender": {
-                "id": 1,
-                "email": "mainmirror14@gmail.com",
-                "name": "박주경",
-                "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
-                "socialType": null,
-                "status": "NORMAL",
-                "account": "000-000-000001",
-                "bankName": "토스뱅크"
-            },
-            "message": "it's 20 boxes"
-        },
-        {
-            "id": 5,
-            "sender": {
-                "id": 1,
-                "email": "mainmirror14@gmail.com",
-                "name": "박주경",
-                "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
-                "socialType": null,
-                "status": "NORMAL",
-                "account": "000-000-000001",
-                "bankName": "토스뱅크"
-            },
-            "message": "test message"
-        },
-        {
-            "id": 6,
-            "sender": {
-                "id": 1,
-                "email": "mainmirror14@gmail.com",
-                "name": "박주경",
-                "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
-                "socialType": null,
-                "status": "NORMAL",
-                "account": "000-000-000001",
-                "bankName": "토스뱅크"
-            },
-            "message": "test message"
-        },
-        {
-            "id": 7,
-            "sender": {
-                "id": 1,
-                "email": "mainmirror14@gmail.com",
-                "name": "박주경",
-                "imageURL": "https://i.pinimg.com/originals/53/7e/f5/537ef59499259ba707068742f91a10f8.jpg",
-                "socialType": null,
-                "status": "NORMAL",
-                "account": "000-000-000001",
-                "bankName": "토스뱅크"
-            },
-            "message": "test message"
+            "message": "네고 안 됩니다"
         }
     ]
 }

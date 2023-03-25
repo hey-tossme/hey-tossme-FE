@@ -1,5 +1,6 @@
 .keywords-container {
-    width: 516px;
+    display: flex;
+    justify-content: center;
 
     .keywords-form-box {
         display: flex;
@@ -9,7 +10,7 @@
         .keywords-form-icon {
             position: absolute;
             top: 12px;
-            left: 12px;
+            left: 52px;
             @apply dark:text-white;
         }
 
@@ -18,7 +19,7 @@
             height: 40px;
             box-shadow: $drop-shadow;
             border-radius: 8px;
-            padding-left: 40px;
+            padding-left: 36px;
             font-size: $font-placeholder;
             background-color: white;
             @apply dark:bg-color-gray-700;
@@ -37,6 +38,7 @@
     }
 
     .keywords-tag-container {
+        width: 600px;
         margin-top: 40px;
         display: flex;
         justify-content: center;
