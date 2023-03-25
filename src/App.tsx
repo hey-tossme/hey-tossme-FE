@@ -12,8 +12,14 @@ import Notify from "./pages/Notify";
 import Category from "./pages/Category";
 import Detail from "./pages/Detail";
 import Write from "./pages/Write";
+import sendFCMTokenFuc from "./utils/fcm";
+import { useEffect } from "react";
 
 export default function App() {
+    useEffect(() => {
+        sendFCMTokenFuc(), [];
+    });
+
     return (
         <BrowserRouter>
             <Header />
