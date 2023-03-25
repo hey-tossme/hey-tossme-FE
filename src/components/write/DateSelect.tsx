@@ -10,6 +10,7 @@ export default function DateSelect({ date, setDate, time, setTime }: DateSelectP
     const [error, setError] = useState<string>();
     const componentRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const timeRef = useRef<HTMLInputElement>(null);
     const MORN_AFN_LIST = ["오전", "오후"];
 
     const handleShowList = () => {
@@ -22,34 +23,60 @@ export default function DateSelect({ date, setDate, time, setTime }: DateSelectP
         setToggle(target.innerText);
     };
 
-    const handleSetTime = (e: React.FocusEvent) => {
-        const target = e.target as HTMLInputElement;
-        const toggleInput = inputRef.current as HTMLInputElement;
+    // const handleSetTime = (e: React.FocusEvent) => {
+    //     const target = e.target as HTMLInputElement;
+    //     const toggleInput = inputRef.current as HTMLInputElement;
 
-        if (validateTime(target.value)) {
-            setError("");
-            const input = target.value;
-            const hour = input && input.split(":")[0];
-            const min = input && input.split(":")[1];
+    //     if (validateTime(target.value)) {
+    //         setError("");
+    //         const input = target.value;
+    //         const hour = input && input.split(":")[0];
+    //         const min = input && input.split(":")[1];
 
-            if (toggleInput.value === "오후") {
-                if (Number(hour) === 12) {
-                    setTime(`${Number(hour)}-${min}`);
-                } else {
-                    setTime(`${Number(hour) + 12}-${min}`);
-                }
-            } else if (toggleInput.value === "오전") {
-                if (Number(hour) === 12) {
-                    setTime(`00-${min}`);
-                } else {
-                    setTime(`${Number(hour)}-${min}`);
-                }
+    //         if (toggleInput.value === "오후") {
+    //             if (Number(hour) === 12) {
+    //                 setTime(`${Number(hour)}-${min}`);
+    //             } else {
+    //                 setTime(`${Number(hour) + 12}-${min}`);
+    //             }
+    //         } else if (toggleInput.value === "오전") {
+    //             if (Number(hour) === 12) {
+    //                 setTime(`00-${min}`);
+    //             } else {
+    //                 setTime(`${Number(hour)}-${min}`);
+    //             }
+    //         }
+    //     } else {
+    //         target.value !== "" && setError("00:00 형식에 맞게 다시 입력해 주세요.");
+    //         target.value = "";
+    //         setTime(null);
+    //     }
+    // };
+
+    const handlePhoneChange = (e: any) => {
+        const value = timeRef.current!.value.replace(/\D+/g, "");
+        const timeLength = 4;
+
+        let result;
+        result = "";
+
+        for (let i = 0; i < value.length && i < timeLength; i++) {
+            switch (i) {
+                case 2:
+                    result += ":";
+                    break;
+
+                default:
+                    break;
             }
-        } else {
-            target.value !== "" && setError("00:00 형식에 맞게 다시 입력해 주세요.");
-            target.value = "";
-            setTime(null);
+
+            result += value[i];
         }
+
+        timeRef.current!.value = result;
+
+        setTime(e.target.value);
+        setError(validateTime(e.target.value) ? "" : "올바른 시간 양식이 아닙니다.");
     };
 
     useEffect(() => {
@@ -86,14 +113,14 @@ export default function DateSelect({ date, setDate, time, setTime }: DateSelectP
                     <CustomDatepicker date={date} setDate={setDate} />
                 </div>
                 <div className="write-info-item mor-afn-toggle-box">
-                    <div className="toggle-input-area">
+                    <div className="toggle-input-area" onClick={handleShowList}>
                         <input
                             className="toggle-input"
                             type="text"
                             value={toggle}
                             readOnly
-                            onClick={handleShowList}
                             ref={inputRef}
+                            style={{ cursor: "pointer" }}
                         />
                         <RxTriangleDown className="down-btn" />
                     </div>
@@ -117,7 +144,8 @@ export default function DateSelect({ date, setDate, time, setTime }: DateSelectP
                         className="time-input-item"
                         type="text"
                         placeholder="00:00"
-                        onBlur={handleSetTime}
+                        onChange={handlePhoneChange}
+                        ref={timeRef}
                     />
                 </div>
             </div>

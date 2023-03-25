@@ -16,7 +16,7 @@ export default function DetailInfoBody({ item }: detailInfoProps) {
         <div className="detail-info-body-area">
             <div className="info-title-group">
                 <div className="info-title">{item.title}</div>
-                <div onClick={handleSetBookmark}>
+                <div onClick={handleSetBookmark} style={{ cursor: "pointer" }}>
                     {bookmark ? (
                         <BsBookmarkFill className="bookmark-btn-fill" />
                     ) : (
