@@ -7,7 +7,7 @@ import axios from "axios";
 import { customNullItemImg, commaNums, date } from "../../../hooks/utils";
 
 export default function CardItem({ item }: cardItemProps) {
-    const { id, img, title, price, dueTime, address, status } = item;
+    const { id, imageUrl, title, price, dueTime, address, status } = item;
     const [bookmark, setBookmark] = useState<boolean>();
     const bookmarkRef = useRef<HTMLDivElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
@@ -41,7 +41,7 @@ export default function CardItem({ item }: cardItemProps) {
         <div ref={cardRef} className="card-item">
             {status === "done" ? <div className="sold-out-label">판매 완료</div> : null}
             <div className="item-img-area">
-                <img className="item-img" src={customNullItemImg(img)} alt="card-image"></img>
+                <img className="item-img" src={customNullItemImg(imageUrl)} alt="card-image"></img>
             </div>
             <div className="item-info-area">
                 <div className="item-info-header">
