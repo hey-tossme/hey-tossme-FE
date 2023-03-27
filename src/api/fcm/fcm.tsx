@@ -1,4 +1,4 @@
-import { firebaseApp } from "../firebase";
+import { firebaseApp } from "../../firebase";
 
 export default function sendFCMTokenFuc() {
     const firebaseMessaging = firebaseApp.messaging();
