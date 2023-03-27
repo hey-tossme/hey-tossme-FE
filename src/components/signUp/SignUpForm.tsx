@@ -1,19 +1,17 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import ProfileImageSelect from "./ProfileImageSelect";
 import VerificationCodeBox from "./VerificationCodeBox";
 import CodeConfirmModal from "../@common/modal/CodeConfirmModal";
 import ModalPortal from "../@common/modal/portal/ModalPortal";
 import { setModalOpen } from "../../store/modules/modal";
 import { HiOutlineMail, HiOutlineLockClosed, HiOutlineIdentification } from "react-icons/hi";
 import { removeWhitespace, validateEmail, validatePassword } from "../../hooks/regex";
-import { requestSignUp } from "../../api/auth/auth";
+import { requestSignUp, sendEmail } from "../../api/auth/auth";
 
 export default function SignUpForm() {
     const modalOpen = useSelector((state: any) => state.modal.modalOpen);
     const dispatch = useDispatch();
-    const [files, setFiles] = useState<File | null>(null);
-    const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
     const [codeActive, setCodeActive] = useState<boolean>(false);
     const [confirm, setConfirm] = useState<boolean>(false);
     const [registerEmail, setRegisterEmail] = useState<string>("");
@@ -76,21 +74,18 @@ export default function SignUpForm() {
     }, [registerEmail, registerPassword, registerUserName, errorMessage, confirm]);
 
     const registerSignUp = () => {
-        requestSignUp(registerEmail, registerPassword, registerUserName, null);
+        requestSignUp(registerEmail, registerPassword, registerUserName);
+    };
+
+    const sendRegisterEmail = () => {
+        sendEmail(registerEmail);
+        showModal();
     };
 
     return (
         <div className="sign-up-form-container">
             <div className="sign-up-form-wrapper">
                 <div className="sign-up-form-inner">
-                    <div className="sign-up-form-left">
-                        <ProfileImageSelect
-                            files={files}
-                            setFiles={setFiles}
-                            imageSrc={imageSrc}
-                            setImageSrc={setImageSrc}
-                        />
-                    </div>
                     <div className="sign-up-form-right">
                         {errorMessage ? (
                             <div className="error-msg-area">
@@ -109,7 +104,7 @@ export default function SignUpForm() {
                             {codeActive ? null : (
                                 <button
                                     className="send-email-code"
-                                    onClick={showModal}
+                                    onClick={sendRegisterEmail}
                                     disabled={!validateEmail(registerEmail)}
                                 >
                                     인증
@@ -158,9 +153,11 @@ export default function SignUpForm() {
                 </div>
             </div>
             <div className="sign-up-btn-area">
-                <button className="sign-up-btn" disabled={disabled} onClick={registerSignUp}>
-                    가입하기
-                </button>
+                <Link to="/login">
+                    <button className="sign-up-btn" disabled={disabled} onClick={registerSignUp}>
+                        가입하기
+                    </button>
+                </Link>
             </div>
             {modalOpen ? (
                 <ModalPortal>

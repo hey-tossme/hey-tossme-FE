@@ -1,13 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import spinner from "../assets/images/loading-icon.gif";
+import { requestKakaoLogin } from "../api/auth/auth";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../store/hooks/configureStore.hook";
+import { setLogin } from "../store/modules/user";
 
 export default function OauthRedirect() {
-    const [code, setCode] = useState<string | null>("");
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     let authorization = new URL(window.location.href).searchParams.get("code");
 
+    const handleKakaoLogin = async () => {
+        try {
+            let result = authorization && (await requestKakaoLogin(authorization));
+            dispatch(
+                setLogin({
+                    token: `bearer ${result.token}`,
+                    id: result.data.id,
+                    account: result.data.account,
+                })
+            );
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
-        setCode(authorization);
-        console.log(code);
+        handleKakaoLogin();
     }, []);
 
     return (
