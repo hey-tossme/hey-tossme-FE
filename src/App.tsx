@@ -12,7 +12,7 @@ import Notify from "./pages/Notify";
 import Category from "./pages/Category";
 import Detail from "./pages/Detail";
 import Write from "./pages/Write";
-import sendFCMTokenFuc from "./utils/fcm";
+import sendFCMTokenFuc from "./api/fcm/fcm";
 import { useEffect } from "react";
 
 export default function App() {
