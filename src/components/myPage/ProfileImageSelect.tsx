@@ -2,7 +2,7 @@ import React from "react";
 import profile from "../../assets/images/profile-user.png";
 import imageCompression from "browser-image-compression";
 import { HiOutlinePlus } from "react-icons/hi";
-import { IProfileFiles } from "./_SignUp.interface";
+import { IProfileFiles } from "../signUp/_SignUp.interface";
 
 export default function ProfileImageSelect({
     files,
@@ -31,11 +31,9 @@ export default function ProfileImageSelect({
     return (
         <form method="post" className="profile-select-form">
             <label htmlFor="choose-file">
-                {imageSrc ? null : (
-                    <div className="plus-badge">
-                        <HiOutlinePlus className="plus-badge-icon" />
-                    </div>
-                )}
+                <div className="plus-badge">
+                    <HiOutlinePlus className="plus-badge-icon" />
+                </div>
                 <img
                     src={imageSrc ? imageSrc : profile}
                     alt="profile-image"

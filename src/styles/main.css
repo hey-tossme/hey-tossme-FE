@@ -755,7 +755,7 @@ body {
   justify-content: center;
 }
 .sign-up-form-container .sign-up-btn-area .sign-up-btn {
-  width: 552px;
+  width: 320px;
   height: 52px;
   border-radius: 8px;
   font-size: 16px;
@@ -775,6 +775,7 @@ body {
 
 .profile-select-form {
   position: relative;
+  margin-right: 32px;
 }
 .profile-select-form:hover .plus-badge {
   background-color: #ec7357;

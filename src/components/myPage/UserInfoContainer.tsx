@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ProfileImageSelect from "../signUp/ProfileImageSelect";
+import ProfileImageSelect from "./ProfileImageSelect";
 import UserAccount from "./UserAccount";
 import { UserInfo } from "./_MyPage.interface";
 
@@ -33,7 +33,7 @@ export default function UserInfoContainer() {
                     <ProfileImageSelect
                         files={files}
                         setFiles={setFiles}
-                        imageSrc={userInfo.imageUrl ? userInfo.imageUrl : imageSrc}
+                        imageSrc={imageSrc ? imageSrc : userInfo.imageUrl}
                         setImageSrc={setImageSrc}
                     />
                     <div className="user-info-content">
