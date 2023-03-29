@@ -2075,7 +2075,6 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
   width: 264px;
   height: 52px;
   padding: 16px 16px 16px 0;
@@ -2099,6 +2098,11 @@ body {
 .search-bar-group .search-bar-list .search-bar-item .item-input {
   @apply dark:text-white;
   color: #333333;
+}
+.search-bar-group .search-bar-list .search-bar-item .close-btn {
+  width: 20px;
+  height: 20px;
+  color: #a6a6a6;
 }
 .search-bar-group .search-bar-list .search-bar-item:not(:last-child) {
   border-right: 1px solid #dbdbdb;
