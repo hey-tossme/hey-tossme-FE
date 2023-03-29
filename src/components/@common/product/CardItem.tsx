@@ -1,10 +1,11 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { cardItemProps } from "../../category/_Category.interface";
-import axios from "axios";
 import { customNullItemImg, commaNums, date } from "../../../hooks/utils";
+import { useAppSelector } from "../../../store/hooks/configureStore.hook";
+import { setBookmarkState } from "../../../api/bookmark/bookmark";
 
 export default function CardItem({ item }: cardItemProps) {
     const { id, imageUrl, title, price, dueTime, address, status } = item;
@@ -12,13 +13,13 @@ export default function CardItem({ item }: cardItemProps) {
     const bookmarkRef = useRef<HTMLDivElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
+    const user = useAppSelector((state) => state.user);
 
     useEffect(() => {
         const bookMarkClick: EventListenerOrEventListenerObject = (e: Event) => {
             const current = bookmarkRef.current as HTMLDivElement;
             if (bookmarkRef.current && current.contains(e.target as Node)) {
                 handleSetBookmark();
-                console.log(bookmark);
             } else {
                 const cardCurrent = cardRef.current as HTMLDivElement;
                 if (cardCurrent && cardCurrent.contains(e.target as Node)) {
@@ -34,7 +35,9 @@ export default function CardItem({ item }: cardItemProps) {
 
     const handleSetBookmark = () => {
         bookmark ? setBookmark(false) : setBookmark(true);
-        axios.post("/posts", { itemId: id });
+        setBookmarkState(user.token, id).then((response) => {
+            console.log(response);
+        });
     };
 
     return (
