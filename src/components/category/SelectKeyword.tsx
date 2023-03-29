@@ -1,15 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
-import { setSearchData } from "../../store/modules/search";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { setItems } from "../../store/modules/search";
 
 export default function SelectKeyword() {
     const dispatch = useAppDispatch();
-
     const handleGetKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTimeout(() => {
-            dispatch(setSearchData({ keyword: e.target.value }));
+            dispatch(setItems({ searchTitle: e.target.value }));
         }, 500);
     };
 

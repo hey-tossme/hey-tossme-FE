@@ -3,15 +3,8 @@ import { BsCaretRightFill } from "react-icons/bs";
 import { LocationItemProps, sigunDataType } from "../_Category.interface";
 import LocationSelectItem from "./LocationSelectItem";
 
-export default function LocationItem({ region }: LocationItemProps) {
-    const sigunData: Array<sigunDataType> = [
-        { id: 1, name: "금정구" },
-        { id: 2, name: "동래구" },
-        { id: 3, name: "연제구" },
-        { id: 4, name: "수영구" },
-        { id: 5, name: "남구" },
-        { id: 6, name: "중구" },
-    ];
+export default function LocationItem({ region, locationList }: LocationItemProps) {
+    const sigunList = locationList[region];
 
     const handleShowSecondList = (e: React.MouseEvent) => {
         const list = document.querySelectorAll(".second");
@@ -42,8 +35,8 @@ export default function LocationItem({ region }: LocationItemProps) {
                 <BsCaretRightFill className="select-btn" />
             </div>
             <div className="location-list second">
-                {sigunData.map((item, index) => {
-                    return <LocationSelectItem key={index} region={region} sigun={item.name} />;
+                {sigunList.map((item: string, index: number) => {
+                    return <LocationSelectItem key={index} region={region} sigun={item} />;
                 })}
             </div>
         </>
