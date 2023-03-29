@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LogoButton from "../@common/logo/LogoButton";
 import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
@@ -7,16 +7,37 @@ import { requestLogin } from "../../api/auth/auth";
 import { useNavigate } from "react-router-dom";
 import { setLogin } from "../../store/modules/user";
 import { useAppDispatch } from "../../store/configureStore";
+import { firebaseApp } from "../../firebase";
 
 export default function LoginForm() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [fcmToken, setFcmToken] = useState<string>("");
+
+    useEffect(() => {
+        const firebaseMessaging = firebaseApp.messaging();
+
+        firebaseMessaging
+            .requestPermission()
+            .then(() => {
+                return firebaseMessaging.getToken(firebaseMessaging, {
+                    vapidKey:
+                        "BIniR9YstJOEKxIflD9vEUdGjNi7Z3_h1k5gXduQVNNxq-_i0BH-vTTWGcFRBPmxxA9yhvPRNs9xmVbdBHdeDkE",
+                });
+            })
+            .then(function (token: any) {
+                setFcmToken(token);
+            })
+            .catch(function (error: any) {
+                console.log("FCM Error : ", error);
+            });
+    }, []);
 
     const handleLoginSubmit = async () => {
         try {
-            let result = await requestLogin(email, password);
+            let result: any = await requestLogin(email, password, fcmToken);
             console.log(result);
             dispatch(
                 setLogin({

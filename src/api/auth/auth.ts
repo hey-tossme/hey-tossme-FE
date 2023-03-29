@@ -33,13 +33,14 @@ export const mailValidate = (email: string, code: string) => {
     });
 };
 
-export const requestLogin = async (email: string, password: string) => {
+export const requestLogin = async (email: string, password: string, fcmToken: string) => {
     return await customAxios({
         method: "POST",
         url: "/v2/members/signin",
         data: {
             email: email,
             password: password,
+            fcmToken: fcmToken,
         },
     });
 };
