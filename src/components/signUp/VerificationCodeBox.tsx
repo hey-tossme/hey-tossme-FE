@@ -8,6 +8,8 @@ export default function VerificationCodeBox({
     setConfirm,
     showModal,
     registerEmail,
+    defaultEvent,
+    confirmCode,
 }: IConfirmController) {
     const [code, setCode] = useState<string>("");
     const [active, setActive] = useState<boolean>(true);
@@ -22,14 +24,14 @@ export default function VerificationCodeBox({
     };
 
     const resendEmail = () => {
-        sendEmail(registerEmail);
+        defaultEvent(registerEmail);
         showModal();
         setTimer(179);
         setActive(true);
     };
 
     const confileCode = async () => {
-        const result = await mailValidate(registerEmail, code);
+        const result = await confirmCode(registerEmail, code);
         if (result.message === "successfully authorized") {
             setConfirm(true);
         }

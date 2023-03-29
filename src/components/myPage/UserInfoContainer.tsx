@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import ProfileImageSelect from "./ProfileImageSelect";
 import UserAccount from "./UserAccount";
 import { UserInfo } from "./_MyPage.interface";
-import { customAxios } from "../../api/customAxios";
+import { getCurrentUserInfo } from "../../api/user/user";
 
 export default function UserInfoContainer() {
+    const token = useAppSelector((state) => state.user.token);
     const [files, setFiles] = useState<File | null>(null);
     const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
     const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
@@ -18,13 +20,14 @@ export default function UserInfoContainer() {
         });
     };
 
-    // const requestUserInfo = async () => {
-    //     const res = await customAxios.get("/v1/members");
-    //     console.log(res);
-    // };
+    const userInfoTest = async () => {
+        const result = await getCurrentUserInfo(token);
+        console.log(result, "result");
+    };
 
     useEffect(() => {
         getUserInfo();
+        userInfoTest();
     }, []);
 
     const getUserAccountInfo = () => {

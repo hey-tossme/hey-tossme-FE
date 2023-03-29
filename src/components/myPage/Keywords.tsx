@@ -3,8 +3,11 @@ import axios from "axios";
 import KeywordsTag from "./KeywordsTag";
 import { KeywordInfo } from "./_MyPage.interface";
 import { HiOutlineTag } from "react-icons/hi";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
+import { getKeywords } from "../../api/user/user";
 
 export default function Keywords() {
+    const token = useAppSelector((state) => state.user.token);
     const [keywordList, setKeywordList] = useState<KeywordInfo[]>([]);
     const KEYWORD_URL = "/fakeData/keywords.json";
 
@@ -15,9 +18,14 @@ export default function Keywords() {
         });
     };
 
+    const getUserKeyword = async () => {
+        const result = await getKeywords(token);
+        console.log(result);
+    };
+
     useEffect(() => {
         getKeywordList();
-        console.log(keywordList);
+        getUserKeyword();
     }, []);
 
     return (

@@ -1,15 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore.hook";
 import { setOpenChat, setEnterChat, setChatId } from "../../store/modules/chat";
 import { detailInfoProps } from "./_detail.interface";
 import { customNullImg } from "../../hooks/utils";
 import { Link } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { getMakeRoomsAxios } from "../../api/chat/chat";
 
 export default function DetailInfoHeader({ item }: detailInfoProps) {
+    const token = useAppSelector((state) => state.user.token);
     const dispatch = useAppDispatch();
     const chatId = useSelector((state: any) => state.chat.chatId);
     const [userInfo, setUserInfo] = useState({ name: "신짱구", imageUrl: "" });
@@ -34,7 +36,9 @@ export default function DetailInfoHeader({ item }: detailInfoProps) {
         axios.delete("");
     };
 
-    const openChatRoom = () => {
+    const openChatRoom = async () => {
+        const result = await getMakeRoomsAxios(item.id, token);
+        console.log(result);
         dispatch(setEnterChat());
         dispatch(setOpenChat());
         // 추후 교체

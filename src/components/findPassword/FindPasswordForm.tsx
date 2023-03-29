@@ -8,6 +8,7 @@ import ModalPortal from "../@common/modal/portal/ModalPortal";
 import { setModalOpen } from "../../store/modules/modal";
 import { HiOutlineMail } from "react-icons/hi";
 import { removeWhitespace, validateEmail } from "../../hooks/regex";
+import { requestResetPassword, requestResetCheck } from "../../api/auth/auth";
 
 export default function FindPasswordForm() {
     const modalOpen = useSelector((state: any) => state.modal.modalOpen);
@@ -25,6 +26,7 @@ export default function FindPasswordForm() {
     const showModal = () => {
         dispatch(setModalOpen());
         setCodeActive(true);
+        requestResetPassword(registerEmail);
     };
 
     return (
@@ -68,6 +70,9 @@ export default function FindPasswordForm() {
                                     confirm={confirm}
                                     setConfirm={setConfirm}
                                     showModal={showModal}
+                                    registerEmail={registerEmail}
+                                    defaultEvent={requestResetPassword}
+                                    confirmCode={requestResetCheck}
                                 />
                             ) : null}
                         </>
