@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
-import axios from "axios";
-import { setList } from "../../store/modules/notify";
-import { NotifyType } from "../notify/_Notify.interface";
 import { setIsDark } from "../../store/modules/dark";
 import { FaRegMoon, FaRegBell } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
@@ -12,18 +9,18 @@ import HeaderButton from "./HeaderButton";
 import { firebaseApp } from "../../firebase";
 
 export function InfoContainer() {
+    const firebaseMessaging = firebaseApp.messaging();
     const dispatch = useAppDispatch();
-    const notify = useAppSelector((state) => state.notify);
-    const [notifyList, setNotifyList] = useState<Array<NotifyType>>();
+    const user = useAppSelector((state) => state.user);
     const [dark, setDark] = useState(false);
     const [isLogin, setIsLogin] = useState(true);
-    const firebaseMessaging = firebaseApp.messaging();
 
     firebaseMessaging.onMessage((payload: any) => {
-        const title = payload.notification.title;
+        const title = payload.data.title;
         const options = {
-            body: payload.notification.body,
+            body: payload.data.body,
         };
+
         console.log("Message received. title : ", title, "options : ", options);
         navigator.serviceWorker.ready.then((registration) => {
             registration.showNotification(title, options);
@@ -31,14 +28,6 @@ export function InfoContainer() {
     });
 
     useEffect(() => {
-        try {
-            axios.get("/fakeData/notification.json").then((res) => {
-                setNotifyList(res.data.data);
-            });
-        } catch (err) {
-            console.log("error");
-        }
-
         if (localStorage.getItem("theme") === "dark") {
             document.documentElement.classList.add("dark");
             setDark(true);
@@ -46,15 +35,8 @@ export function InfoContainer() {
     }, []);
 
     useEffect(() => {
-        if (notifyList) {
-            dispatch(setList(notifyList));
-        }
-    }, [notifyList]);
-
-    // useEffect(() => {
-    //     const newNotify = notify.filter((item) => item.readOrNot === false);
-    //     newNotify && newNotify.length ? setIsRead(false) : setIsRead(true);
-    // }, [notify]);
+        !user.token ? setIsLogin(false) : setIsLogin(true);
+    }, [user]);
 
     const handleToggleDarkMode = () => {
         if (localStorage.getItem("theme") === "dark") {

@@ -3,26 +3,24 @@ import { searchStateProps } from "../../components/category/_Category.interface"
 
 const initialState: searchStateProps = {
     category: null,
-    keyword: null,
+    searchTitle: null,
     region: null,
     startDue: null,
     endDue: null,
-    size: 8,
-    pageNum: 1,
 };
 
 export const searchSlice = createSlice({
     name: "search",
     initialState,
     reducers: {
-        setSearchData: (state, action) => {
+        setItems: (state, action) => {
             return { ...state, ...action.payload };
         },
-        resetData: (state) => {
+        resetItems: (state) => {
             return initialState;
         },
     },
 });
 
 export default searchSlice.reducer;
-export const { setSearchData, resetData } = searchSlice.actions;
+export const { setItems, resetItems } = searchSlice.actions;

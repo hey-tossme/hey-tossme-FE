@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/configureStore.hook";
-import { setSearchData } from "../../../store/modules/search";
+import { PaginationProps } from "../../category/_Category.interface";
 
-export default function Pagination() {
-    const dispatch = useAppDispatch();
-    const searchResult = useAppSelector((state) => state.searchResult);
+export default function Pagination({ page, setPage, items }: PaginationProps) {
     const [totalPageNums, setTotalPageNums] = useState<Array<any>>();
 
     useEffect(() => {
-        const totalCount = searchResult.content.length;
-        const totalPageNums = Math.ceil(totalCount / 8);
-        const arr = new Array(totalPageNums).fill("");
-        setTotalPageNums(arr);
-    }, [searchResult]);
+        if (items) {
+            const totalCount = items.length;
+            const totalPageNums = Math.ceil(totalCount / 8);
+            const arr = new Array(totalPageNums).fill("");
+            setTotalPageNums(arr);
+        }
+    }, [items]);
 
     const handleSetPage = (e: React.MouseEvent) => {
         const targetPage = e.target as HTMLDivElement;
@@ -24,7 +24,8 @@ export default function Pagination() {
         });
 
         targetPage.classList.add("active");
-        dispatch(setSearchData({ pageNum: Number(targetPage.innerText) }));
+
+        setPage(Number(targetPage.innerText));
     };
 
     return (

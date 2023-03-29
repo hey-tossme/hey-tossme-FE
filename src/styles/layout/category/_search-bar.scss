@@ -19,7 +19,6 @@
             position: relative;
             display: flex;
             align-items: center;
-            gap: 12px;
             width: 264px;
             height: 52px;
             padding: 16px 16px 16px 0;
@@ -43,6 +42,13 @@
 
             .item-input {
                 @include dark-mode-text;
+
+            }
+
+            .close-btn {
+                width: 20px;
+                height: 20px;
+                color: $color-gray-400;
             }
         }
 

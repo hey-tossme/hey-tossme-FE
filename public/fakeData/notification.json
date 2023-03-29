@@ -2,24 +2,24 @@
     "message" : "successfully get notification list",
     "data" : [
         {
-            "id" : 3,
-            "itemId" : 2,
+            "id" : 1,
+            "itemId" : 1,
             "type" : "bookmark",
             "title" : "제주도 풀빌라",
             "readOrNot" : false,
             "createAt" : "2023-03-03 05:15:07.191726"
         },
         {
-            "id" : 4,
-            "itemId" : 3,
+            "id" : 2,
+            "itemId" : 2,
             "type" : "transaction",
             "title" : "제주도 풀빌라",
             "readOrNot" : false,
             "createAt" : "2023-03-03 05:15:07.191726"
         },
         {
-            "id" : 5,
-            "itemId" : 3,
+            "id" : 3,
+            "itemId" : 2,
             "type" : "keyword",
             "title" : "제주도 풀빌라",
             "readOrNot" : false,

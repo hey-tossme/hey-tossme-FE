@@ -3,13 +3,18 @@ import { useState } from "react";
 import { detailInfoProps } from "./_detail.interface";
 import { commaNums, date } from "../../hooks/utils";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
+import { setBookmarkState } from "../../api/bookmark/bookmark";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
 
 export default function DetailInfoBody({ item }: detailInfoProps) {
     const [bookmark, setBookmark] = useState<boolean>();
+    const user = useAppSelector((state) => state.user);
 
     const handleSetBookmark = () => {
         bookmark ? setBookmark(false) : setBookmark(true);
-        // axios.post("/posts", { itemId: id });
+        setBookmarkState(user.token, item.id).then((response) => {
+            console.log(response);
+        });
     };
 
     return (
