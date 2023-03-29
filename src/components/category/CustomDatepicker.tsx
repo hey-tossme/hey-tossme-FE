@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { forwardRef, useEffect } from "react";
 import { useState } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import DatePicker, { CalendarContainer } from "react-datepicker";
@@ -6,30 +6,29 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
 import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getMonth";
-import { useAppDispatch } from "../../store/hooks/configureStore.hook";
-import { setSearchData } from "../../store/modules/search";
-import { useParams } from "react-router";
 import { calendarContainerProps, renderCustomHeaderProps } from "./_Category.interface";
+import { dashDate } from "../../hooks/utils";
+import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { setItems } from "../../store/modules/search";
 
 export default function CustomDatepicker() {
-    const [startDate, setStartDate] = useState<Date | null>();
     const dispatch = useAppDispatch();
-    const params = useParams();
+    const [startDate, setStartDate] = useState<Date | null>();
+
+    useEffect(() => {
+        setStartDate(null);
+    }, []);
+
+    useEffect(() => {
+        startDate === null && dispatch(setItems({ endDue: null }));
+    }, [startDate]);
 
     const handleSetPeriod = (date: Date) => {
         setStartDate(date);
         if (date) {
-            const year = date.getFullYear();
-            const month =
-                date.getMonth() + 1 < 10 ? "0" + Number(date.getMonth() + 1) : date.getMonth() + 1;
-            const targetDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-            dispatch(setSearchData({ endDue: `${year}-${month}-${targetDate}`, startDue: null }));
+            dispatch(setItems({ startDue: null, endDue: dashDate(date) }));
         }
     };
-
-    useEffect(() => {
-        setStartDate(null);
-    }, [params.category]);
 
     return (
         <DatePicker

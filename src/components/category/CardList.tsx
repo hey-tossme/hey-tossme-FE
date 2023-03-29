@@ -2,20 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CardItem from "../@common/product/CardItem";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
+import { CardListProps, listProps } from "./_Category.interface";
 
-export default function CardList() {
-    const searchResult = useAppSelector((state) => state.searchResult);
-    const [cardList, setCardList] = useState<Array<any> | null>();
-
-    useEffect(() => {
-        setCardList(searchResult.content);
-    }, [searchResult]);
-
+export default function CardList({ items }: CardListProps) {
     return (
         <div className="card-list-wrapper">
             <div className="card-list">
-                {cardList &&
-                    cardList.map((item) => {
+                {items &&
+                    items.map((item) => {
                         return <CardItem key={item.id} item={item} />;
                     })}
             </div>

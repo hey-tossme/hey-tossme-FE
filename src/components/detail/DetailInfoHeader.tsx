@@ -13,20 +13,13 @@ import { getMakeRoomsAxios } from "../../api/chat/chat";
 export default function DetailInfoHeader({ item }: detailInfoProps) {
     const token = useAppSelector((state) => state.user.token);
     const dispatch = useAppDispatch();
+    const user = useAppSelector((state) => state.user);
     const chatId = useSelector((state: any) => state.chat.chatId);
-    const [userInfo, setUserInfo] = useState({ name: "신짱구", imageUrl: "" });
+    const [userInfo, setUserInfo] = useState({ name: "", imageUrl: "" });
 
     useEffect(() => {
-        axios
-            .get("/members", {
-                headers: {
-                    Authorization: `accessToken`,
-                },
-            })
-            .then((res) => {
-                setUserInfo(res.data);
-            });
-    }, []);
+        setUserInfo({ name: item.seller.name, imageUrl: item.seller.imageUrl });
+    }, [item]);
 
     const handleEditItem = () => {
         axios.patch("");

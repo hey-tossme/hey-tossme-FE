@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router";
 import DetailImg from "../components/detail/DetailImg";
 import DetailInfoBody from "../components/detail/DetailInfoBody";

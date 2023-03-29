@@ -14,14 +14,9 @@ import Category from "./pages/Category";
 import Detail from "./pages/Detail";
 import Write from "./pages/Write";
 import "./styles/main.css";
-import sendFCMTokenFuc from "./api/fcm/fcm";
 
 export default function App() {
     const getLoginState = useAppSelector((state) => state.user.token);
-
-    useEffect(() => {
-        sendFCMTokenFuc(), [];
-    });
 
     return (
         <BrowserRouter>

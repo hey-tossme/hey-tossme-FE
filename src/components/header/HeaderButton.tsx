@@ -19,7 +19,7 @@ export default function HeaderButton({ text, filled }: HeaderButtonProps) {
         if (text === "회원가입") setTypeUrl(BUTTON_TYPE.signup);
         if (text === "마이페이지") setTypeUrl(BUTTON_TYPE.mypage);
         if (text === "로그아웃") setTypeUrl(BUTTON_TYPE.logout);
-    }, []);
+    }, [text]);
 
     return (
         <Link to={typeUrl ? typeUrl : "/"}>

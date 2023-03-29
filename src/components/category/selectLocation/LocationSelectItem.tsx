@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { LocationSelectItemProps } from "../_Category.interface";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/configureStore.hook";
-import { setSearchData } from "../../../store/modules/search";
+import { setItems } from "../../../store/modules/search";
 
 export default function LocationSelectItem({ region, sigun }: LocationSelectItemProps) {
     const dispatch = useAppDispatch();
@@ -19,7 +19,7 @@ export default function LocationSelectItem({ region, sigun }: LocationSelectItem
         locationSelectBox.style.display = "none";
         locationInput.value = `${region} ${sigun}`;
 
-        dispatch(setSearchData({ region: `${region} ${sigun}` }));
+        dispatch(setItems({ region: `${region} ${sigun}` }));
     };
 
     return (
