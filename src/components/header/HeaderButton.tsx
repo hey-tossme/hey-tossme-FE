@@ -1,9 +1,11 @@
 import React from "react";
+import { useAppSelector } from "../../store/configureStore";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HeaderButtonProps } from "./_Header.interface";
 
 export default function HeaderButton({ text, filled }: HeaderButtonProps) {
+    const id = useAppSelector((state: any) => state.user.id);
     const [typeUrl, setTypeUrl] = useState<string>();
     const BUTTON_TYPE = {
         login: "/login",
