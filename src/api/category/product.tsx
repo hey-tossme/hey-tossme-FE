@@ -1,4 +1,3 @@
-import { searchStateProps } from "../../components/category/_Category.interface";
 import customAxios from "../customAxios";
 
 export const getProductList = async (items: any, pageNum: Number, size: Number) => {
