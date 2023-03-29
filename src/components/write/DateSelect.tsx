@@ -23,36 +23,6 @@ export default function DateSelect({ date, setDate, time, setTime }: DateSelectP
         setToggle(target.innerText);
     };
 
-    // const handleSetTime = (e: React.FocusEvent) => {
-    //     const target = e.target as HTMLInputElement;
-    //     const toggleInput = inputRef.current as HTMLInputElement;
-
-    //     if (validateTime(target.value)) {
-    //         setError("");
-    //         const input = target.value;
-    //         const hour = input && input.split(":")[0];
-    //         const min = input && input.split(":")[1];
-
-    //         if (toggleInput.value === "오후") {
-    //             if (Number(hour) === 12) {
-    //                 setTime(`${Number(hour)}-${min}`);
-    //             } else {
-    //                 setTime(`${Number(hour) + 12}-${min}`);
-    //             }
-    //         } else if (toggleInput.value === "오전") {
-    //             if (Number(hour) === 12) {
-    //                 setTime(`00-${min}`);
-    //             } else {
-    //                 setTime(`${Number(hour)}-${min}`);
-    //             }
-    //         }
-    //     } else {
-    //         target.value !== "" && setError("00:00 형식에 맞게 다시 입력해 주세요.");
-    //         target.value = "";
-    //         setTime(null);
-    //     }
-    // };
-
     const handlePhoneChange = (e: any) => {
         const value = timeRef.current!.value.replace(/\D+/g, "");
         const timeLength = 4;
