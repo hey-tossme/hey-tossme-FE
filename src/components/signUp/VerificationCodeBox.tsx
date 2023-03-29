@@ -28,8 +28,11 @@ export default function VerificationCodeBox({
         setActive(true);
     };
 
-    const confileCode = () => {
-        mailValidate(registerEmail, code, setConfirm);
+    const confileCode = async () => {
+        const result = await mailValidate(registerEmail, code);
+        if (result.message === "successfully authorized") {
+            setConfirm(true);
+        }
     };
 
     useEffect(() => {

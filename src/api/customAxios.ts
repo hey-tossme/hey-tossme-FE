@@ -8,6 +8,7 @@ const customAxios: AxiosInstance = axios.create({
 customAxios.interceptors.request.use(
     (config) => {
         //요청을 보내기 전에 수행할 로직
+        console.log(config);
         return config;
     },
     (error) => {
@@ -22,6 +23,7 @@ customAxios.interceptors.response.use(
     (response) => {
         //응답에 대한 로직 작성
         const res = response.data;
+        console.log(res);
         return res;
     },
 

@@ -4,7 +4,6 @@ import { BsCreditCardFill, BsFillCaretDownFill } from "react-icons/bs";
 
 export default function UserAccount({ getUserAccountInfo, bank, account }: GetUserAccount) {
     const componentRef = useRef<HTMLDivElement>(null);
-    const inputRef = useRef<HTMLInputElement>(null);
     const [userAccount, setUserAccount] = useState<boolean>(!getUserAccountInfo);
     const [userBankName, setUserBankName] = useState<string>("");
     const [showList, setShowList] = useState<boolean>(false);

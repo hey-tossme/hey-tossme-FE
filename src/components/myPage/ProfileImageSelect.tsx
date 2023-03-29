@@ -1,8 +1,10 @@
 import React from "react";
+import { requestUploadImg } from "../../api/@common/image";
 import profile from "../../assets/images/profile-user.png";
 import imageCompression from "browser-image-compression";
 import { HiOutlinePlus } from "react-icons/hi";
 import { IProfileFiles } from "../signUp/_SignUp.interface";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
 
 export default function ProfileImageSelect({
     files,
@@ -10,6 +12,7 @@ export default function ProfileImageSelect({
     imageSrc,
     setImageSrc,
 }: IProfileFiles) {
+    const token = useAppSelector((state: any) => state.user.token);
     const handleFileOnChange = async (e: any) => {
         let file = e.target.files[0];
         const options = {
@@ -23,6 +26,9 @@ export default function ProfileImageSelect({
             promise.then((result) => {
                 setImageSrc(result);
             });
+            const imgFrm = new FormData();
+            imgFrm.append("file", compressedFile);
+            requestUploadImg(token, imgFrm);
         } catch (error) {
             console.log(error);
         }
