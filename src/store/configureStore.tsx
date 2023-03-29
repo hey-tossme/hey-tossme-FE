@@ -9,7 +9,6 @@ import notify from "./modules/notify";
 import dark from "./modules/dark";
 import search from "./modules/search";
 import chat from "./modules/chat";
-import searchResult from "./modules/searchResult";
 import modal from "./modules/modal";
 import userSlice from "./modules/user";
 
@@ -17,7 +16,6 @@ const reducers = combineReducers({
     notify: notify,
     dark: dark,
     search: search,
-    searchResult: searchResult,
     chat: chat,
     modal: modal,
     user: userSlice.reducer,
