@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore.hook";
 import { setOpenChat, setEnterChat, setChatId } from "../../store/modules/chat";
 import { detailInfoProps } from "./_detail.interface";
 import { customNullImg } from "../../hooks/utils";
@@ -11,20 +11,13 @@ import { RiDeleteBinLine } from "react-icons/ri";
 
 export default function DetailInfoHeader({ item }: detailInfoProps) {
     const dispatch = useAppDispatch();
+    const user = useAppSelector((state) => state.user);
     const chatId = useSelector((state: any) => state.chat.chatId);
-    const [userInfo, setUserInfo] = useState({ name: "신짱구", imageUrl: "" });
+    const [userInfo, setUserInfo] = useState({ name: "", imageUrl: "" });
 
     useEffect(() => {
-        axios
-            .get("/members", {
-                headers: {
-                    Authorization: `accessToken`,
-                },
-            })
-            .then((res) => {
-                setUserInfo(res.data);
-            });
-    }, []);
+        setUserInfo({ name: item.seller.name, imageUrl: item.seller.imageUrl });
+    }, [item]);
 
     const handleEditItem = () => {
         axios.patch("");
