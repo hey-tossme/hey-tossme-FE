@@ -22,8 +22,8 @@ export const sendEmail = (email: string) => {
     });
 };
 
-export const mailValidate = (email: string, code: string) => {
-    customAxios({
+export const mailValidate = async (email: string, code: string) => {
+    return await customAxios({
         method: "POST",
         url: "/v2/mail/validate",
         data: {

@@ -1,17 +1,13 @@
 import customAxios from "../customAxios";
-import { useAppSelector } from "../../store/hooks/configureStore.hook";
 
-const token = useAppSelector((state: any) => state.user.token);
-
-// export const requestUploadImg = (frm) => {
-//     customAxios({
-//         method: "POST",
-//         url: "/v2/members",
-//         headers: {
-//             "Content-Type": "multipart/form-data",
-//             Authorization: token,
-//         },
-//         data: {
-//         },
-//     });
-// };
+export const requestUploadImg = (token: string, frm: FormData) => {
+    customAxios({
+        method: "POST",
+        url: "/v1/image",
+        headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: token,
+        },
+        data: frm,
+    });
+};
