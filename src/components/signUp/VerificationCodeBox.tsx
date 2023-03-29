@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { HiOutlineShieldCheck } from "react-icons/hi";
+import { sendEmail, mailValidate } from "../../api/auth/auth";
 import { IConfirmController } from "./_SignUp.interface";
 
 export default function VerificationCodeBox({
     confirm,
     setConfirm,
     showModal,
+    registerEmail,
 }: IConfirmController) {
     const [code, setCode] = useState<string>("");
     const [active, setActive] = useState<boolean>(true);
@@ -19,10 +21,15 @@ export default function VerificationCodeBox({
         return nums.toString().padStart(SIZE, "0");
     };
 
-    const timerReset = () => {
+    const resendEmail = () => {
+        sendEmail(registerEmail);
         showModal();
         setTimer(179);
         setActive(true);
+    };
+
+    const confileCode = () => {
+        mailValidate(registerEmail, code, setConfirm);
     };
 
     useEffect(() => {
@@ -56,14 +63,14 @@ export default function VerificationCodeBox({
                 <div className="code-timer">
                     {active ? `${padStart(minute)} : ${padStart(second)}` : "만료"}
                 </div>
-                <button className="resend-email-code" onClick={timerReset}>
+                <button className="resend-email-code" onClick={resendEmail}>
                     재전송
                 </button>
             </div>
             <div className="code-comfirm-box">
                 <button
                     className="check-email-code"
-                    onClick={() => setConfirm(true)}
+                    onClick={confileCode}
                     disabled={code === "" ? true : false}
                 >
                     확인

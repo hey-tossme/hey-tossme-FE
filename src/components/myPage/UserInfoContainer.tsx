@@ -3,6 +3,7 @@ import axios from "axios";
 import ProfileImageSelect from "./ProfileImageSelect";
 import UserAccount from "./UserAccount";
 import { UserInfo } from "./_MyPage.interface";
+import { customAxios } from "../../api/customAxios";
 
 export default function UserInfoContainer() {
     const [files, setFiles] = useState<File | null>(null);
@@ -16,6 +17,11 @@ export default function UserInfoContainer() {
             setUserInfo(response.data);
         });
     };
+
+    // const requestUserInfo = async () => {
+    //     const res = await customAxios.get("/v1/members");
+    //     console.log(res);
+    // };
 
     useEffect(() => {
         getUserInfo();

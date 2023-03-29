@@ -6,18 +6,21 @@ const initialState: { token: string; id: number; account: string } = {
     account: "",
 };
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
         setLogin(state, action) {
-            return { ...state, ...action.payload };
-        },
-        setLogout(state) {
-            return initialState;
+            state.token = action.payload.token;
+            state.id = action.payload.id;
+            state.account = action.payload.account;
         },
     },
 });
 
-export const { setLogin, setLogout } = userSlice.actions;
-export default userSlice.reducer;
+export const { setLogin } = userSlice.actions;
+export const stateToken = (state: any) => state.user.token;
+export const stateId = (state: any) => state.user.id;
+export const stateAccount = (state: any) => state.user.account;
+
+export default userSlice;

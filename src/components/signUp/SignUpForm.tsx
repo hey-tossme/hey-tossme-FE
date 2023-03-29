@@ -118,6 +118,7 @@ export default function SignUpForm() {
                                         confirm={confirm}
                                         setConfirm={setConfirm}
                                         showModal={showModal}
+                                        registerEmail={registerEmail}
                                     />
                                 ) : null}
                             </>

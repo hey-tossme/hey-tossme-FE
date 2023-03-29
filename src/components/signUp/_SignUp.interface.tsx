@@ -2,6 +2,7 @@ export interface IConfirmController {
     confirm: boolean;
     setConfirm: React.Dispatch<React.SetStateAction<boolean>>;
     showModal: () => void;
+    registerEmail: string;
 }
 
 export interface IProfileFiles {

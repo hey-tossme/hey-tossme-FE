@@ -5,8 +5,8 @@ import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
 import OauthKakao from "./OauthKakao";
 import { requestLogin } from "../../api/auth/auth";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setLogin } from "../../store/modules/user";
+import { useAppDispatch } from "../../store/configureStore";
 
 export default function LoginForm() {
     const dispatch = useAppDispatch();
@@ -17,6 +17,7 @@ export default function LoginForm() {
     const handleLoginSubmit = async () => {
         try {
             let result = await requestLogin(email, password);
+            console.log(result);
             dispatch(
                 setLogin({
                     token: `bearer ${result.token}`,
