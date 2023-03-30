@@ -52,10 +52,13 @@ export const requestKakaoLogin = (code: string) => {
     });
 };
 
-export const requestLogout = (userId: number) => {
+export const requestLogout = (token: string, userId: number) => {
     customAxios({
         method: "post",
         url: `/v2/members/logout/${userId}`,
+        headers: {
+            Authorization: token,
+        },
     });
 };
 
@@ -71,11 +74,22 @@ export const requestResetPassword = (email: string) => {
 
 export const requestResetCheck = async (email: string, code: string) => {
     return await customAxios({
-        method: "get",
-        url: `/v2/members/reset-password`,
+        method: "post",
+        url: `/v2/members/reset-password/check`,
         data: {
             email: email,
             code: code,
+        },
+    });
+};
+
+export const requestChangePassword = async (email: string, password: string) => {
+    return await customAxios({
+        method: "patch",
+        url: `/v2/members/reset-password`,
+        data: {
+            email: email,
+            password: password,
         },
     });
 };

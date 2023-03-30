@@ -1,4 +1,5 @@
 import React from "react";
+import { requestLogout } from "../../api/auth/auth";
 import { useAppSelector } from "../../store/configureStore";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -6,12 +7,19 @@ import { HeaderButtonProps } from "./_Header.interface";
 
 export default function HeaderButton({ text, filled }: HeaderButtonProps) {
     const id = useAppSelector((state: any) => state.user.id);
+    const token = useAppSelector((state: any) => state.user.token);
     const [typeUrl, setTypeUrl] = useState<string>();
     const BUTTON_TYPE = {
         login: "/login",
         signup: "/signup",
         mypage: "/mypage",
         logout: "/",
+    };
+
+    const handleLogout = () => {
+        if (text === "로그아웃") {
+            requestLogout(token, id);
+        } else return;
     };
 
     useEffect(() => {
@@ -23,7 +31,10 @@ export default function HeaderButton({ text, filled }: HeaderButtonProps) {
 
     return (
         <Link to={typeUrl ? typeUrl : "/"}>
-            <button className={filled ? "header-btn btn-fill" : "header-btn btn-not-fill"}>
+            <button
+                className={filled ? "header-btn btn-fill" : "header-btn btn-not-fill"}
+                onClick={handleLogout}
+            >
                 {text}
             </button>
         </Link>
