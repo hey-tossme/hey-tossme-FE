@@ -1926,10 +1926,17 @@ body {
 .header-wrapper .info-container .theme-toggle-btn {
   transition: transform 0.3s;
   transform: rotate(0deg);
+  cursor: pointer;
 }
 .header-wrapper .info-container .theme-toggle-btn:active {
   transition: 0.3s;
   transform: rotate(45deg);
+}
+.header-wrapper .info-container .header-icon {
+  @apply dark:text-white;
+  width: 32px;
+  height: 32px;
+  color: #333333;
 }
 .header-wrapper .info-container .header-btn {
   @apply flex justify-center items-center w-[100px] h-[36px] rounded-[8px];

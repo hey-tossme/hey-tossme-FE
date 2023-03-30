@@ -6,7 +6,6 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 
 import notify from "./modules/notify";
-import dark from "./modules/dark";
 import search from "./modules/search";
 import chat from "./modules/chat";
 import modal from "./modules/modal";
@@ -14,7 +13,6 @@ import userSlice from "./modules/user";
 
 const reducers = combineReducers({
     notify: notify,
-    dark: dark,
     search: search,
     chat: chat,
     modal: modal,

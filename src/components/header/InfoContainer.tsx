@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
-import { setIsDark } from "../../store/modules/dark";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import { FaRegMoon, FaRegBell } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
 import HeaderButton from "./HeaderButton";
@@ -10,15 +9,14 @@ import { firebaseApp } from "../../firebase";
 
 export function InfoContainer() {
     const firebaseMessaging = firebaseApp.messaging();
-    const dispatch = useAppDispatch();
     const user = useAppSelector((state) => state.user);
-    const [dark, setDark] = useState(false);
+    const [dark, setDark] = useState<boolean>();
     const [isLogin, setIsLogin] = useState(true);
 
     firebaseMessaging.onMessage((payload: any) => {
-        const title = payload.data.title;
+        const title = payload.notification.title;
         const options = {
-            body: payload.data.body,
+            body: payload.notification.body,
         };
 
         console.log("Message received. title : ", title, "options : ", options);
@@ -40,13 +38,11 @@ export function InfoContainer() {
 
     const handleToggleDarkMode = () => {
         if (localStorage.getItem("theme") === "dark") {
-            dispatch(setIsDark({ dark: false }));
             localStorage.removeItem("theme");
             document.documentElement.classList.remove("dark");
             setDark(false);
         } else {
             document.documentElement.classList.add("dark");
-            dispatch(setIsDark({ dark: true }));
             localStorage.setItem("theme", "dark");
             setDark(true);
         }
@@ -57,16 +53,12 @@ export function InfoContainer() {
             {isLogin && (
                 <div className="notify-group">
                     <Link to="/notify">
-                        <FaRegBell size="32px" color={!dark ? "#333333" : "#ffffff"} />
+                        <FaRegBell className="header-icon" />
                     </Link>
                 </div>
             )}
-            <div className="theme-toggle-btn cursor-pointer" onClick={handleToggleDarkMode}>
-                {!dark ? (
-                    <FaRegMoon size="32px" color="#333333" />
-                ) : (
-                    <FiSun size="32px" color="#ffffff" />
-                )}
+            <div className="theme-toggle-btn" onClick={handleToggleDarkMode}>
+                {!dark ? <FaRegMoon className="header-icon" /> : <FiSun className="header-icon" />}
             </div>
             {!isLogin ? (
                 <>
