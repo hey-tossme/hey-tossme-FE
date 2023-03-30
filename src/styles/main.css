@@ -1989,8 +1989,20 @@ body {
 .notify-common-wrapper .notify-wrapper .notify-list .notify-item .delete-btn {
   @apply absolute flex top-0 right-0 mt-[12px] mr-[12px];
 }
+.notify-common-wrapper .notify-wrapper .notify-list .notify-item .delete-btn .close-btn {
+  @apply dark:text-white;
+  width: 20px;
+  height: 20px;
+  color: #333333;
+}
 .notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group {
   @apply flex items-center gap-[16px] mx-[32px];
+}
+.notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group .notify-icon .icon {
+  @apply dark:text-white;
+  width: 20px;
+  height: 20px;
+  color: #333333;
 }
 .notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group .notify-text {
   @apply text-[16px]  dark:text-white;

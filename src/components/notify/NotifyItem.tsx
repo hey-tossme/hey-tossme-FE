@@ -15,7 +15,6 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     const notifyRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const dark = useAppSelector((state) => state.dark);
     const notify = useAppSelector((state) => state.notify);
 
     useEffect(() => {
@@ -39,7 +38,7 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     }, [deleteBtnRef, notifyRef, targetItem]);
 
     useEffect(() => {
-        getAllProductList().then((response) => {
+        getAllProductList(0, 8).then((response) => {
             const itemId = item.itemId;
             const target = response.data.content.filter((item: any) => item.id === itemId);
             setTargetItem(target[0]);
@@ -62,16 +61,11 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     return (
         <div ref={notifyRef} onClick={handleRead} className="notify-item">
             <div ref={deleteBtnRef} onClick={handleDelete} className="delete-btn">
-                {dark.dark ? (
-                    <FiX size="20px" color="#ffffff" />
-                ) : (
-                    <FiX size="20px" color="#333333" />
-                )}
+                <FiX className="close-btn" />
             </div>
             <div className="notify-text-group">
                 <div className="notify-icon">
-                    {!isRead && dark.dark && <FaRegBell size="20px" color="#ffffff" />}
-                    {!isRead && !dark.dark && <FaRegBell size="20px" color="#333333" />}
+                    {!isRead && <FaRegBell className="icon" />}
                     {isRead && <FaRegBell size="20px" color="#A6A6A6" />}
                 </div>
                 {item.type === "transaction" && (
