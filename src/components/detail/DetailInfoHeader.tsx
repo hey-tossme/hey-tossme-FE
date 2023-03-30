@@ -8,8 +8,10 @@ import { customNullImg } from "../../hooks/utils";
 import { Link } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { getMakeRoomsAxios } from "../../api/chat/chat";
 
 export default function DetailInfoHeader({ item }: detailInfoProps) {
+    const token = useAppSelector((state) => state.user.token);
     const dispatch = useAppDispatch();
     const user = useAppSelector((state) => state.user);
     const chatId = useSelector((state: any) => state.chat.chatId);
@@ -27,7 +29,9 @@ export default function DetailInfoHeader({ item }: detailInfoProps) {
         axios.delete("");
     };
 
-    const openChatRoom = () => {
+    const openChatRoom = async () => {
+        const result = await getMakeRoomsAxios(item.id, token);
+        console.log(result);
         dispatch(setEnterChat());
         dispatch(setOpenChat());
         // 추후 교체

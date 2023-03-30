@@ -58,3 +58,24 @@ export const requestLogout = (userId: number) => {
         url: `/v2/members/logout/${userId}`,
     });
 };
+
+export const requestResetPassword = (email: string) => {
+    customAxios({
+        method: "post",
+        url: `/v2/members/reset-password`,
+        data: {
+            email: email,
+        },
+    });
+};
+
+export const requestResetCheck = async (email: string, code: string) => {
+    return await customAxios({
+        method: "get",
+        url: `/v2/members/reset-password`,
+        data: {
+            email: email,
+            code: code,
+        },
+    });
+};

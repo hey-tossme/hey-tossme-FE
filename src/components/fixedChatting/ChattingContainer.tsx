@@ -3,11 +3,13 @@ import axios from "axios";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import ChattingList from "./ChattingList";
 import ChattingRoom from "./ChattingRoom";
+import { getChatRoomsAxios } from "../../api/chat/chat";
 import { IChattingInfo } from "./_FixedChatting.interface";
 
 export default function ChattingContainer() {
-    const [chattingInfo, setChattingInfo] = useState<IChattingInfo[]>([]);
     const enterChatState = useAppSelector((state) => state.chat.enterChat);
+    const token = useAppSelector((state) => state.user.token);
+    const [chattingInfo, setChattingInfo] = useState<IChattingInfo[]>([]);
     const CHATTING_URL = "/fakeData/chatting.json";
 
     const getChattingListInfo = () => {
@@ -17,8 +19,14 @@ export default function ChattingContainer() {
         });
     };
 
+    const getChatRooms = async () => {
+        const result = await getChatRoomsAxios(token);
+        console.log(result);
+    };
+
     useEffect(() => {
         getChattingListInfo();
+        getChatRooms();
     }, []);
 
     return (
