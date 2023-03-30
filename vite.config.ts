@@ -17,5 +17,16 @@ export default ({ mode }) => {
                 },
             }),
         ],
+        server: {
+            proxy: {
+                "/api": {
+                    target: "http://20.214.139.103:8080",
+                    changeOrigin: true,
+                    rewrite: (path) => path.replace(/^\/api/, ""),
+                    secure: false,
+                    ws: true,
+                },
+            },
+        },
     };
 };

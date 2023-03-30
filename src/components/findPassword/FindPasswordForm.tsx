@@ -62,6 +62,7 @@ export default function FindPasswordForm() {
                         <ChangePasswordForm
                             errorMessage={errorMessage}
                             setErrorMessage={setErrorMessage}
+                            registerEmail={registerEmail}
                         />
                     ) : (
                         <>
