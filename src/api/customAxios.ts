@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+import { reissueToken } from "./user/user";
 
 const customAxios: AxiosInstance = axios.create({
     withCredentials: true,
@@ -12,13 +13,16 @@ customAxios.interceptors.request.use(
         return config;
     },
     (error) => {
-        //요청 에러가 발생했을 때 수행할 로직
-        console.log(error); //디버깅
+        if (error.response) {
+            if (error.response.status === 401) {
+                reissueToken();
+            }
+        }
+        console.log(Promise.reject(error));
         return Promise.reject(error);
     }
 );
 
-//응답 인터셉터 추가
 customAxios.interceptors.response.use(
     (response) => {
         //응답에 대한 로직 작성
@@ -28,8 +32,12 @@ customAxios.interceptors.response.use(
     },
 
     (error) => {
-        //응답 에러가 발생했을 때 수행할 로직
-        console.log(error); //디버깅
+        if (error.response) {
+            if (error.response.status === 401) {
+                reissueToken();
+            }
+        }
+        console.log(Promise.reject(error));
         return Promise.reject(error);
     }
 );

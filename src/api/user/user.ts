@@ -1,5 +1,21 @@
 import customAxios from "../customAxios";
-import axios from "axios";
+import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { stateToken } from "../../store/modules/user";
+
+export const reissueToken = async () => {
+    const USER_ID = useAppSelector((state) => state.user.id);
+    const dispatch = useAppDispatch();
+    const result = await customAxios({
+        method: "get",
+        url: `/v2/members/token/re-create/${USER_ID}`,
+    });
+    dispatch(
+        stateToken({
+            token: `bearer ${result.token}`,
+        })
+    );
+    return result;
+};
 
 export const getCurrentUserInfo = async (token: string) => {
     return await customAxios({
@@ -15,6 +31,26 @@ export const getKeywords = async (token: string) => {
     return await customAxios({
         method: "get",
         url: "/v1/keywords",
+        headers: {
+            Authorization: token,
+        },
+    });
+};
+
+export const deleteKeywords = async (token: string, keyword: string) => {
+    return await customAxios({
+        method: "delete",
+        url: `/v1/keywords/${keyword}`,
+        headers: {
+            Authorization: token,
+        },
+    });
+};
+
+export const postKeywords = async (token: string, keyword: string) => {
+    return await customAxios({
+        method: "post",
+        url: `v1/keywords?keyword=${keyword}`,
         headers: {
             Authorization: token,
         },
@@ -41,20 +77,22 @@ export const getUserBuyItem = async (token: string, pageNum: number, size: numbe
     });
 };
 
-// test code
-// export const getCurrentUserInfo = async (token: string) => {
-//     const URL = `http://20.214.139.103:8080/v1/members`;
-//     await axios
-//         .get(URL, {
-//             headers: {
-//                 Authorization: token,
-//             },
-//             withCredentials: true,
-//         })
-//         .then((res) => {
-//             console.log(res);
-//         })
-//         .catch((error) => {
-//             console.log(error);
-//         });
-// };
+export const changeProfile = async (
+    token: string,
+    imageUrl: string | null,
+    account: string | null,
+    bankName: string | null
+) => {
+    return await customAxios({
+        method: "patch",
+        url: `/v1/members`,
+        headers: {
+            Authorization: token,
+        },
+        data: {
+            imageUrl: imageUrl,
+            account: account,
+            bankName: bankName,
+        },
+    });
+};

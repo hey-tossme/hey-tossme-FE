@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import AccountConfirmedModal from "../@common/modal/AccountConfirmedModal";
 import ModalPortal from "../@common/modal/portal/ModalPortal";
 import { setModalOpen } from "../../store/modules/modal";
-import { ItemInfo } from "./_FixedChatting.interface";
+import { ItemType } from "./_FixedChatting.interface";
 
-export default function ChattingRoomBtnArea({ item }: ItemInfo) {
+export default function ChattingRoomBtnArea({ item }: ItemType) {
     const modalOpen = useSelector((state: any) => state.modal.modalOpen);
     const dispatch = useDispatch();
     const [accountTransferStatus, setAccountTransferStatus] = useState<boolean>(

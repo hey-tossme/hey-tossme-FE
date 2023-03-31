@@ -2,7 +2,7 @@ export interface UserInfo {
     id: number;
     email: string;
     name: string;
-    imageUrl: string;
+    imageURL: string;
     socialType: string | null;
     createdAt: string;
     status: string;
@@ -32,6 +32,8 @@ export interface KeywordInfo {
 
 export interface KeywordType {
     keyword: KeywordInfo;
+    sendKeyword: boolean;
+    setSendKeyword: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface GetUserAccount {

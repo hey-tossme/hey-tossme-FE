@@ -22,5 +22,4 @@ export const { setLogin } = userSlice.actions;
 export const stateToken = (state: any) => state.user.token;
 export const stateId = (state: any) => state.user.id;
 export const stateAccount = (state: any) => state.user.account;
-
 export default userSlice;

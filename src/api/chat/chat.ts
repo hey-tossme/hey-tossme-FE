@@ -19,3 +19,23 @@ export const getMakeRoomsAxios = async (itemId: number, token: string) => {
         },
     });
 };
+
+export const deleteRoomsAxios = async (roomId: number, token: string) => {
+    return await customAxios({
+        method: "delete",
+        url: `/v1/chat/rooms/${roomId}`,
+        headers: {
+            Authorization: token,
+        },
+    });
+};
+
+export const getMsgAxios = async (token: string, roomId: number) => {
+    return await customAxios({
+        method: "get",
+        url: `/v1/chat/${roomId}/messages`,
+        headers: {
+            Authorization: token,
+        },
+    });
+};

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import ProfileImageSelect from "./ProfileImageSelect";
 import UserAccount from "./UserAccount";
@@ -11,22 +10,13 @@ export default function UserInfoContainer() {
     const [files, setFiles] = useState<File | null>(null);
     const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
     const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
-    const USER_URL = "/fakeData/userinfo.json";
-
-    const getUserInfo = () => {
-        axios.get(USER_URL).then((res) => {
-            const response = res.data;
-            setUserInfo(response.data);
-        });
-    };
 
     const userInfoTest = async () => {
         const result = await getCurrentUserInfo(token);
-        console.log(result, "result");
+        setUserInfo(result.data);
     };
 
     useEffect(() => {
-        getUserInfo();
         userInfoTest();
     }, []);
 
@@ -42,7 +32,7 @@ export default function UserInfoContainer() {
                     <ProfileImageSelect
                         files={files}
                         setFiles={setFiles}
-                        imageSrc={imageSrc ? imageSrc : userInfo.imageUrl}
+                        imageSrc={imageSrc ? imageSrc : userInfo.imageURL}
                         setImageSrc={setImageSrc}
                     />
                     <div className="user-info-content">

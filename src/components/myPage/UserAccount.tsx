@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
+import { changeProfile } from "../../api/user/user";
 import { GetUserAccount } from "./_MyPage.interface";
 import { BsCreditCardFill, BsFillCaretDownFill } from "react-icons/bs";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
 
 export default function UserAccount({ getUserAccountInfo, bank, account }: GetUserAccount) {
+    const token = useAppSelector((state: any) => state.user.token);
+    const accountState = useAppSelector((state: any) => state.user.account);
     const componentRef = useRef<HTMLDivElement>(null);
     const [userAccount, setUserAccount] = useState<boolean>(!getUserAccountInfo);
+    const [accountNumber, setAccountNumber] = useState<string>("");
     const [userBankName, setUserBankName] = useState<string>("");
     const [showList, setShowList] = useState<boolean>(false);
 
@@ -36,6 +41,11 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
         setUserBankName(item);
     };
 
+    const confirmAccount = async () => {
+        const result = await changeProfile(token, null, accountNumber, userBankName);
+        console.log(result);
+    };
+
     useEffect(() => {
         const outsideClick: EventListenerOrEventListenerObject = (e: Event) => {
             const current = componentRef.current as HTMLDivElement;
@@ -49,7 +59,7 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
 
     return (
         <div className="user-account-check-container">
-            {userAccount ? (
+            {accountState !== "" ? (
                 <>
                     <div className="user-account-check">
                         <BsCreditCardFill className="user-account-check-icon" /> 판매자 등록 완료
@@ -96,9 +106,12 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
                                 type="text"
                                 className="account-form"
                                 placeholder="계좌번호를 입력해 주세요."
+                                onChange={(e) => setAccountNumber(e.target.value)}
                             />
                         </div>
-                        <button className="account-submit-btn">등록</button>
+                        <button className="account-submit-btn" onClick={confirmAccount}>
+                            등록
+                        </button>
                     </div>
                 </>
             )}

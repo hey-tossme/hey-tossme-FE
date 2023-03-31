@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { requestUploadImg } from "../../api/@common/image";
+import { changeProfile } from "../../api/user/user";
 import profile from "../../assets/images/profile-user.png";
 import imageCompression from "browser-image-compression";
 import { HiOutlinePlus } from "react-icons/hi";
@@ -19,6 +20,7 @@ export default function ProfileImageSelect({
             maxSizeMB: 2,
             maxWidthOrHeight: 300,
         };
+        // 최적화 코드 추후에 수정
         try {
             const compressedFile = await imageCompression(file, options);
             setFiles(compressedFile);
@@ -27,8 +29,10 @@ export default function ProfileImageSelect({
                 setImageSrc(result);
             });
             const imgFrm = new FormData();
-            imgFrm.append("file", compressedFile);
-            requestUploadImg(token, imgFrm);
+            imgFrm.append("file", file);
+            const result = await requestUploadImg(token, imgFrm);
+            console.log(result);
+            await changeProfile(token, result.data, null, null);
         } catch (error) {
             console.log(error);
         }

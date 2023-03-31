@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ChattingRoomBtnArea from "./ChattingRoomBtnArea";
 import { customNullItemImg, commaNums, date } from "../../hooks/utils";
-import { ItemInfo } from "./_FixedChatting.interface";
+import { ItemType } from "./_FixedChatting.interface";
 
-export default function ChattingRoomItemInfo({ item }: ItemInfo) {
+export default function ChattingRoomItemInfo({ item }: ItemType) {
     const [userState, setUserState] = useState<boolean>(false);
     const USER_ID = 1; // 임시 정보
 

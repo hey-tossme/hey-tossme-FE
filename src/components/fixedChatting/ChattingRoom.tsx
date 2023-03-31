@@ -7,7 +7,7 @@ import ChattingRoomItemInfo from "./ChattingRoomItemInfo";
 import ChattingRoomChatBox from "./ChattingRoomChatBox";
 import { ChattingInfoState, IChattingInfo } from "./_FixedChatting.interface";
 
-export default function ChattingRoom({ chattingInfo, setChattingInfo }: ChattingInfoState) {
+export default function ChattingRoom({ chattingInfo }: ChattingInfoState) {
     const [item, setItem] = useState<IChattingInfo | null>(null);
     const chatId = useSelector((state: any) => state.chat.chatId);
     const dispatch = useAppDispatch();
@@ -28,8 +28,8 @@ export default function ChattingRoom({ chattingInfo, setChattingInfo }: Chatting
                     <IoClose className="close-chatting-btn-icon" />
                 </button>
                 <div className="chatting-room-wrapper">
-                    {item ? <ChattingRoomItemInfo item={item} /> : null}
-                    <ChattingRoomChatBox />
+                    {item && <ChattingRoomItemInfo item={item} />}
+                    {item && <ChattingRoomChatBox item={item} />}
                 </div>
             </div>
         </div>
