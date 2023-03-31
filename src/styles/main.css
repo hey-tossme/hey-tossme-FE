@@ -316,7 +316,7 @@ body {
 .modal-background .modal-container {
   position: fixed;
   width: 400px;
-  height: 150px;
+  height: 180px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -333,6 +333,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.modal-background .modal-container .modal-wrapper .modal-contents {
+  text-align: center;
+  line-height: 1.4;
 }
 .modal-background .modal-container .modal-wrapper .modal-contents .account-confirm-btn {
   margin: 0 auto;
@@ -1288,6 +1292,12 @@ body {
   margin-bottom: 12px;
   animation: btnSlide 0.4s;
 }
+.fixed-btns-container .fixed-btns-wrapper .btns-item.go-to-write-btn:disabled {
+  background-color: #a6a6a6;
+}
+.fixed-btns-container .fixed-btns-wrapper .btns-item.go-to-write-btn:disabled:hover {
+  transform: none;
+}
 .fixed-btns-container .fixed-btns-wrapper .btns-item .go-to-write-btn-icon,
 .fixed-btns-container .fixed-btns-wrapper .btns-item .go-to-chat-btn-icon,
 .fixed-btns-container .fixed-btns-wrapper .btns-item .plus-btn-icon {
@@ -1602,18 +1612,33 @@ body {
 }
 .user-account-check-container .user-account-check {
   display: flex;
-  margin-top: 20px;
+  margin-top: 28px;
   margin-bottom: 8px;
+  font-size: 18px;
 }
 .user-account-check-container .user-account-check .user-account-check-icon {
+  margin-top: -4px;
   margin-right: 4px;
+  font-size: 28px;
+  color: #ec7357;
 }
 .user-account-check-container .user-account {
+  margin-top: 8px;
   display: flex;
+  font-size: 14px;
 }
 .user-account-check-container .user-account .text-bold {
   margin: 0 4px;
   font-weight: 600;
+}
+.user-account-check-container .user-account .user-account-btn {
+  margin-left: 8px;
+  margin-top: -2px;
+  border-radius: 8px;
+  color: white;
+  font-size: 12px;
+  padding: 4px;
+  background-color: #a6a6a6;
 }
 .user-account-check-container .flex {
   display: flex;

@@ -7,7 +7,7 @@ export interface UserInfo {
     createdAt: string;
     status: string;
     account: string;
-    bankname: string;
+    bankName: string;
 }
 
 export interface ItemInfo {
@@ -37,7 +37,8 @@ export interface KeywordType {
 }
 
 export interface GetUserAccount {
-    getUserAccountInfo: () => boolean;
     bank: string;
     account: string;
+    getAccount: boolean;
+    setGetAccount: React.Dispatch<React.SetStateAction<boolean>>;
 }

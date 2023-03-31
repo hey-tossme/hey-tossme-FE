@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setCloseChat, setLeaveChat } from "../../store/modules/chat";
 import { IoChevronBackOutline, IoClose } from "react-icons/io5";
-import ChattingRoomItemInfo from "./ChattingRoomItemInfo";
 import ChattingRoomChatBox from "./ChattingRoomChatBox";
 import { ChattingInfoState, IChattingInfo } from "./_FixedChatting.interface";
 
@@ -28,7 +27,6 @@ export default function ChattingRoom({ chattingInfo }: ChattingInfoState) {
                     <IoClose className="close-chatting-btn-icon" />
                 </button>
                 <div className="chatting-room-wrapper">
-                    {item && <ChattingRoomItemInfo item={item} />}
                     {item && <ChattingRoomChatBox item={item} />}
                 </div>
             </div>

@@ -10,7 +10,7 @@
     .modal-container {
         position: fixed;
         width: 400px;
-        height: 150px;
+        height: 180px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -28,6 +28,9 @@
             align-items: center;
 
             .modal-contents {
+                text-align: center;
+                line-height: 1.4;
+
                 .account-confirm-btn {
                     margin: 0 auto;
                     margin-top: 20px;

@@ -3,6 +3,8 @@ import ChattingRoomSendMsg from "./ChattingRoomSendMsg";
 import ChattingRoomReceiveMsg from "./ChattingRoomReceiveMsg";
 import ChattingRoomNewSendMsg from "./ChattingRoomNewSendMsg";
 import ChattingRoomNewReceiveMsg from "./ChattingRoomNewReceiveMsg";
+import ChattingRoomBtnArea from "./ChattingRoomBtnArea";
+import { customNullItemImg, commaNums, date } from "../../hooks/utils";
 import { IMessageInfo, NewMsgInfo } from "./_FixedChatting.interface";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import { getMsgAxios } from "../../api/chat/chat";
@@ -11,26 +13,18 @@ import { ItemType } from "./_FixedChatting.interface";
 import * as StompJs from "@stomp/stompjs";
 
 export default function ChattingRoomChatBox({ item }: ItemType) {
+    const USER_ID = useAppSelector((state) => state.user.id);
+    const [userState, setUserState] = useState<boolean>(item.seller.id === USER_ID);
     const [messageList, setMessageList] = useState<IMessageInfo[]>([]);
     const [newMsgList, setNewMsgList] = useState<NewMsgInfo[]>([]);
     const [chatMsg, setChatMsg] = useState<string>("");
     const scrollRef = useRef<HTMLDivElement>(null);
-    const USER_ID = useAppSelector((state) => state.user.id);
     const token = useAppSelector((state) => state.user.token);
-
-    const ITEM_HEIGHT = 56;
-    const ITEM_MARGIN = 12;
-    const LENGTH = messageList.length + newMsgList.length;
-    const MAX_HEIGHT = LENGTH * (ITEM_HEIGHT + ITEM_MARGIN);
-
     const client = useRef({});
 
     const connect = () => {
         client.current = new StompJs.Client({
             brokerURL: "ws://20.214.139.103:8080/ws",
-            debug: function (str) {
-                console.log(str);
-            },
             reconnectDelay: 5000,
             heartbeatIncoming: 4000,
             heartbeatOutgoing: 4000,
@@ -72,10 +66,28 @@ export default function ChattingRoomChatBox({ item }: ItemType) {
         setChatMsg("");
     };
 
+    const sendAccount = () => {
+        if (!client.current.connected) return;
+
+        client.current.publish({
+            destination: `/pub/chat.${item.id}.messages`,
+            body: JSON.stringify({
+                senderId: USER_ID,
+                userName: USER_ID === item.buyer.id ? item.buyer.name : item.seller.name,
+                profileUrl: USER_ID === item.buyer.id ? item.buyer.imageURL : item.seller.imageURL,
+                message:
+                    USER_ID === item.buyer.id
+                        ? `${item.buyer.bankName} ${item.buyer.account}`
+                        : `${item.seller.bankName} ${item.seller.account}`,
+            }),
+        });
+    };
+
     const getChattingMsgList = async () => {
         const result = await getMsgAxios(token, item.id);
         setMessageList(result.data);
     };
+
     useEffect(() => {
         connect();
 
@@ -108,13 +120,37 @@ export default function ChattingRoomChatBox({ item }: ItemType) {
 
     return (
         <>
+            <div className="item-info-container">
+                <img
+                    src={customNullItemImg(item.item.imageUrl)}
+                    alt={item.item.title}
+                    className="item-info-img"
+                />
+                <div className="item-info-content">
+                    <div className="item-info-content-inner">
+                        <div className="item-info-title">{item.item.title}</div>
+                        <div className="item-info-price">{commaNums(item.item.price)} 원</div>
+                        <div className="item-info-due-time">{date(item.item.dueTime)}</div>
+                    </div>
+                </div>
+                {userState ? (
+                    <ChattingRoomBtnArea item={item} sendAccount={sendAccount} />
+                ) : item.item.status === "DONE" ? (
+                    <div className="item-info-btn-area">
+                        <button className="confirmed-btn" disabled>
+                            거래 완료
+                        </button>
+                    </div>
+                ) : null}
+            </div>
             <div className="chat-box-container">
                 <div className="chat-box-list">
                     <div
                         className="chat-box-track"
                         ref={scrollRef}
                         style={{
-                            height: MAX_HEIGHT,
+                            height: "auto",
+                            padding: "12px 0",
                         }}
                     >
                         {messageList.map((message) =>
@@ -124,11 +160,11 @@ export default function ChattingRoomChatBox({ item }: ItemType) {
                                 <ChattingRoomReceiveMsg message={message} key={message.id} />
                             )
                         )}
-                        {newMsgList.map((msg) =>
+                        {newMsgList.map((msg, idx) =>
                             msg.senderId === USER_ID ? (
-                                <ChattingRoomNewSendMsg msg={msg} />
+                                <ChattingRoomNewSendMsg msg={msg} key={idx} />
                             ) : (
-                                <ChattingRoomNewReceiveMsg msg={msg} />
+                                <ChattingRoomNewReceiveMsg msg={msg} key={idx} />
                             )
                         )}
                     </div>

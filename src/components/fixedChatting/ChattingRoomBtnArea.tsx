@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import AccountConfirmedModal from "../@common/modal/AccountConfirmedModal";
 import ModalPortal from "../@common/modal/portal/ModalPortal";
 import { setModalOpen } from "../../store/modules/modal";
-import { ItemType } from "./_FixedChatting.interface";
+import { SendAccount } from "./_FixedChatting.interface";
 
-export default function ChattingRoomBtnArea({ item }: ItemType) {
+export default function ChattingRoomBtnArea({ item, sendAccount }: SendAccount) {
     const modalOpen = useSelector((state: any) => state.modal.modalOpen);
+
     const dispatch = useDispatch();
     const [accountTransferStatus, setAccountTransferStatus] = useState<boolean>(
         item.accountTransferStatus
@@ -14,6 +15,7 @@ export default function ChattingRoomBtnArea({ item }: ItemType) {
     const [tradeStatus, setTradeStatus] = useState<boolean>(false);
 
     const handleTransferStatus = () => {
+        sendAccount();
         setAccountTransferStatus(true);
     };
 
@@ -49,6 +51,7 @@ export default function ChattingRoomBtnArea({ item }: ItemType) {
                     <AccountConfirmedModal
                         tradeStatus={tradeStatus}
                         setTradeStatus={setTradeStatus}
+                        item={item}
                     />
                 </ModalPortal>
             ) : null}

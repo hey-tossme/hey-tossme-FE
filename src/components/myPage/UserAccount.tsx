@@ -1,14 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import ModalPortal from "../@common/modal/portal/ModalPortal";
+import SecessionModal from "../@common/modal/secessionModal";
 import { changeProfile } from "../../api/user/user";
-import { GetUserAccount } from "./_MyPage.interface";
-import { BsCreditCardFill, BsFillCaretDownFill } from "react-icons/bs";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
+import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { setLogin } from "../../store/modules/user";
+import { TbCreditCard } from "react-icons/tb";
+import { BsFillCaretDownFill } from "react-icons/bs";
+import { GetUserAccount } from "./_MyPage.interface";
 
-export default function UserAccount({ getUserAccountInfo, bank, account }: GetUserAccount) {
-    const token = useAppSelector((state: any) => state.user.token);
+export default function UserAccount({ bank, account, getAccount, setGetAccount }: GetUserAccount) {
+    const dispatch = useAppDispatch();
+    const user = useAppSelector((state: any) => state.user);
     const accountState = useAppSelector((state: any) => state.user.account);
     const componentRef = useRef<HTMLDivElement>(null);
-    const [userAccount, setUserAccount] = useState<boolean>(!getUserAccountInfo);
     const [accountNumber, setAccountNumber] = useState<string>("");
     const [userBankName, setUserBankName] = useState<string>("");
     const [showList, setShowList] = useState<boolean>(false);
@@ -42,8 +48,16 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
     };
 
     const confirmAccount = async () => {
-        const result = await changeProfile(token, null, accountNumber, userBankName);
+        const result = await changeProfile(user.token, null, accountNumber, userBankName);
         console.log(result);
+        dispatch(
+            setLogin({
+                token: user.token,
+                id: user.id,
+                account: result.data.account,
+            })
+        );
+        setGetAccount(true);
     };
 
     useEffect(() => {
@@ -57,19 +71,25 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
         };
     }, [componentRef]);
 
+    // const showModal = () => {
+    //     dispatch(setModalOpen());
+    //     setCodeActive(true);
+    // };
+
     return (
         <div className="user-account-check-container">
-            {accountState !== "" ? (
+            {accountState && getAccount ? (
                 <>
                     <div className="user-account-check">
-                        <BsCreditCardFill className="user-account-check-icon" /> 판매자 등록 완료
+                        <TbCreditCard className="user-account-check-icon" /> 판매자 등록 완료
                     </div>
                     <div className="user-account">
-                        등록된 계좌번호는
                         <div className="text-bold">
                             {bank} {account}
                         </div>
-                        입니다.
+                        <button className="user-account-btn" onClick={() => setGetAccount(false)}>
+                            계좌 변경
+                        </button>
                     </div>
                 </>
             ) : (

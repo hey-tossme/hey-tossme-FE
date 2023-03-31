@@ -39,3 +39,13 @@ export const getMsgAxios = async (token: string, roomId: number) => {
         },
     });
 };
+
+export const sendAccountAxios = async (token: string, itemId: number, userId: number) => {
+    return await customAxios({
+        method: "post",
+        url: `/v1/items/${itemId}/transaction-confirm?buyerId=${userId}`,
+        headers: {
+            Authorization: token,
+        },
+    });
+};

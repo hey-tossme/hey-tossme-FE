@@ -5,24 +5,24 @@ import { TbPencilMinus, TbMessageCircle } from "react-icons/tb";
 import { useNavigate } from "react-router";
 
 export default function FixedActiveBtn() {
-    const account = useAppSelector((state) => state.user.account);
+    const user = useAppSelector((state: any) => state.user);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const handleGoWritePage = () => {
-        navigate("/write");
+        user.account && navigate("/write");
     };
 
     return (
         <>
-            <button className="btns-item go-to-write-btn">
-                <TbPencilMinus className="go-to-write-btn-icon" onClick={handleGoWritePage} />
-            </button>
             <button
-                className="btns-item go-to-chat-btn"
-                onClick={() => dispatch(setOpenChat())}
-                disabled={account === ""}
+                className="btns-item go-to-write-btn"
+                disabled={!user.account}
+                onClick={handleGoWritePage}
             >
+                <TbPencilMinus className="go-to-write-btn-icon" />
+            </button>
+            <button className="btns-item go-to-chat-btn" onClick={() => dispatch(setOpenChat())}>
                 <TbMessageCircle className="go-to-chat-btn-icon" />
             </button>
         </>

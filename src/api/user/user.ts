@@ -1,20 +1,10 @@
 import customAxios from "../customAxios";
-import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
-import { stateToken } from "../../store/modules/user";
 
-export const reissueToken = async () => {
-    const USER_ID = useAppSelector((state) => state.user.id);
-    const dispatch = useAppDispatch();
-    const result = await customAxios({
+export const reissueToken = async (userId: number) => {
+    return await customAxios({
         method: "get",
-        url: `/v2/members/token/re-create/${USER_ID}`,
+        url: `/v2/members/token/re-create/${userId}`,
     });
-    dispatch(
-        stateToken({
-            token: `bearer ${result.token}`,
-        })
-    );
-    return result;
 };
 
 export const getCurrentUserInfo = async (token: string) => {

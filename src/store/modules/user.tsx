@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: { token: string; id: number; account: string } = {
+const initialState: { token: string; id: number; account: string | null } = {
     token: "",
     id: 0,
-    account: "",
+    account: null,
 };
 
 const userSlice = createSlice({
@@ -15,11 +15,11 @@ const userSlice = createSlice({
             state.id = action.payload.id;
             state.account = action.payload.account;
         },
+        setLogout(state, action) {
+            return initialState;
+        },
     },
 });
 
-export const { setLogin } = userSlice.actions;
-export const stateToken = (state: any) => state.user.token;
-export const stateId = (state: any) => state.user.id;
-export const stateAccount = (state: any) => state.user.account;
+export const { setLogin, setLogout } = userSlice.actions;
 export default userSlice;

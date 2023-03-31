@@ -12,12 +12,13 @@ export default function OauthRedirect() {
 
     const handleKakaoLogin = async () => {
         try {
-            let result = authorization && (await requestKakaoLogin(authorization));
+            let result: any = await requestKakaoLogin(authorization!);
+            console.log(result);
             dispatch(
                 setLogin({
                     token: `bearer ${result.token}`,
-                    id: result.data.id,
-                    account: result.data.account,
+                    // id: result.data.id ? result.data.id : "",
+                    // account: result.data.account,
                 })
             );
             navigate("/");
@@ -28,7 +29,7 @@ export default function OauthRedirect() {
 
     useEffect(() => {
         handleKakaoLogin();
-    }, []);
+    });
 
     return (
         <div style={{ display: "flex", justifyContent: "center", paddingTop: "200px" }}>

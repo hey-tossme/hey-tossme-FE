@@ -62,6 +62,11 @@ export interface ItemType {
     item: IChattingInfo;
 }
 
+export interface SendAccount {
+    item: IChattingInfo;
+    sendAccount: () => void;
+}
+
 export interface IMessageListInfo {
     message: IMessageInfo;
 }
@@ -78,6 +83,7 @@ export interface NewMsgType {
 }
 
 export interface ITradeModal {
+    item: IChattingInfo;
     tradeStatus: boolean;
     setTradeStatus: React.Dispatch<React.SetStateAction<boolean>>;
 }

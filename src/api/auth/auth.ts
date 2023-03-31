@@ -45,15 +45,15 @@ export const requestLogin = async (email: string, password: string, fcmToken: st
     });
 };
 
-export const requestKakaoLogin = (code: string) => {
-    customAxios({
+export const requestKakaoLogin = async (code: string) => {
+    return await customAxios({
         method: "get",
         url: `/v2/kakao/login?code=${code}`,
     });
 };
 
-export const requestLogout = (token: string, userId: number) => {
-    customAxios({
+export const requestLogout = async (token: string, userId: number) => {
+    return await customAxios({
         method: "post",
         url: `/v2/members/logout/${userId}`,
         headers: {
