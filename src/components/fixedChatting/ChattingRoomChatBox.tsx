@@ -125,6 +125,7 @@ export default function ChattingRoomChatBox({ item }: ItemType) {
                     src={customNullItemImg(item.item.imageUrl)}
                     alt={item.item.title}
                     className="item-info-img"
+                    loading="lazy"
                 />
                 <div className="item-info-content">
                     <div className="item-info-content-inner">

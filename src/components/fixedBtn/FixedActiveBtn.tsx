@@ -17,12 +17,17 @@ export default function FixedActiveBtn() {
         <>
             <button
                 className="btns-item go-to-write-btn"
+                aria-label="상품 등록"
                 disabled={!user.account}
                 onClick={handleGoWritePage}
             >
                 <TbPencilMinus className="go-to-write-btn-icon" />
             </button>
-            <button className="btns-item go-to-chat-btn" onClick={() => dispatch(setOpenChat())}>
+            <button
+                className="btns-item go-to-chat-btn"
+                aria-label="채팅창 열기"
+                onClick={() => dispatch(setOpenChat())}
+            >
                 <TbMessageCircle className="go-to-chat-btn-icon" />
             </button>
         </>

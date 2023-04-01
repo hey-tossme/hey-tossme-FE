@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import ModalPortal from "../@common/modal/portal/ModalPortal";
-import SecessionModal from "../@common/modal/secessionModal";
 import { changeProfile } from "../../api/user/user";
-import { useAppSelector } from "../../store/hooks/configureStore.hook";
-import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
 import { setLogin } from "../../store/modules/user";
 import { TbCreditCard } from "react-icons/tb";
 import { BsFillCaretDownFill } from "react-icons/bs";
@@ -70,11 +66,6 @@ export default function UserAccount({ bank, account, getAccount, setGetAccount }
             document.removeEventListener("mousedown", outsideClick);
         };
     }, [componentRef]);
-
-    // const showModal = () => {
-    //     dispatch(setModalOpen());
-    //     setCodeActive(true);
-    // };
 
     return (
         <div className="user-account-check-container">

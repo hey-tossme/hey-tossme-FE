@@ -48,6 +48,7 @@ export default function ProfileImageSelect({
                     src={imageSrc ? imageSrc : profile}
                     alt="profile-image"
                     className="profile-select-form-img"
+                    loading="lazy"
                 />
             </label>
             <input

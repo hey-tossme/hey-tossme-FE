@@ -15,11 +15,8 @@ const userSlice = createSlice({
             state.id = action.payload.id;
             state.account = action.payload.account;
         },
-        setLogout(state, action) {
-            return initialState;
-        },
     },
 });
 
-export const { setLogin, setLogout } = userSlice.actions;
+export const { setLogin } = userSlice.actions;
 export default userSlice;

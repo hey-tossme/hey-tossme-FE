@@ -11,7 +11,7 @@ import { listProps } from "./_Category.interface";
 export default function CategoryWrapper() {
     const searchType = useAppSelector((state) => state.search);
     const [items, setItems] = useState<listProps[] | null>(null);
-    const [page, setPage] = useState<Number>(1);
+    const [page, setPage] = useState<number>(1);
     console.log(searchType);
 
     useEffect(() => {

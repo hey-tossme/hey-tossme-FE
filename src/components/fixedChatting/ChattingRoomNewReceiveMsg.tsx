@@ -9,6 +9,7 @@ export default function ChattingRoomNewReceiveMsg({ msg }: NewMsgType) {
                 src={customNullImg(msg.profileUrl)}
                 alt={msg.userName}
                 className="main-chat-profile"
+                loading="lazy"
             />
             <div className="main-chat-item-right">
                 <div>

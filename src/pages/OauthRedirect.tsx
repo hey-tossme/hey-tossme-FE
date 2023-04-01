@@ -17,8 +17,8 @@ export default function OauthRedirect() {
             dispatch(
                 setLogin({
                     token: `bearer ${result.token}`,
-                    // id: result.data.id ? result.data.id : "",
-                    // account: result.data.account,
+                    id: result.data.id ? result.data.id : "",
+                    account: result.data.account,
                 })
             );
             navigate("/");

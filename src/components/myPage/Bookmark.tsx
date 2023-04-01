@@ -9,15 +9,16 @@ import { useAppSelector } from "../../store/hooks/configureStore.hook";
 export default function Bookmark() {
     const token = useAppSelector((state) => state.user.token);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
+    const [page, setPage] = useState<number>(1);
 
     const getUserBookmarkList = async () => {
-        const result = await getBookmarkList(token, 1, 8);
+        const result = await getBookmarkList(token, page, 8);
         setItemList(result.data.list.content);
     };
 
     useEffect(() => {
         getUserBookmarkList();
-    }, []);
+    }, [page]);
 
     return (
         <>
@@ -38,7 +39,7 @@ export default function Bookmark() {
                     </div>
                 </div>
             </div>
-            {/* <Pagination /> */}
+            <Pagination page={page} setPage={setPage} items={itemList} />
         </>
     );
 }

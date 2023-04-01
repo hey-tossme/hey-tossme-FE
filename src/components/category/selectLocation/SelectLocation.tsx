@@ -62,7 +62,7 @@ export default function SelectLocation() {
         <div ref={inputRef} className="search-bar-item">
             <IoLocationOutline className="item-icon" />
             <input
-                className="item-input location-input"
+                className="item-input location-input pointer"
                 type="text"
                 placeholder="지역을 선택해주세요."
                 onClick={handleShowLocationSelectBox}

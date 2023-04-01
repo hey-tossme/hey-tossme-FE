@@ -3,20 +3,21 @@ import CardItem from "../@common/product/CardItem";
 import Pagination from "../@common/product/Pagination";
 import { ItemInfo } from "./_MyPage.interface";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
-import { getUserBuyItem } from "../../api/user/user";
+import { getUserSellItem } from "../../api/user/user";
 
 export default function MyProducts() {
     const token = useAppSelector((state) => state.user.token);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
+    const [page, setPage] = useState<number>(1);
 
     const getUserProducts = async () => {
-        const result = await getUserBuyItem(token, 1, 8);
+        const result = await getUserSellItem(token, page, 8);
         setItemList(result.data.list.content);
     };
 
     useEffect(() => {
         getUserProducts();
-    }, []);
+    }, [page]);
 
     return (
         <>
@@ -29,7 +30,7 @@ export default function MyProducts() {
                     </div>
                 </div>
             </div>
-            {/* <Pagination /> */}
+            <Pagination page={page} setPage={setPage} items={itemList} />
         </>
     );
 }

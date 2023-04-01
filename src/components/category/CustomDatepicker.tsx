@@ -35,7 +35,7 @@ export default function CustomDatepicker() {
             locale={ko}
             dateFormat="yyyy-MM-dd"
             showPopperArrow={false}
-            className="item-input"
+            className="item-input pointer"
             isClearable
             placeholderText="예약일자를 선택해주세요."
             selected={startDate}

@@ -32,6 +32,7 @@ export default function ChattingListItem({ item, chatState, setChatState }: Item
                             src={customNullImg(item.seller.imageURL)}
                             alt={item.seller.name}
                             className="chatting-list-img"
+                            loading="lazy"
                         />
                         <div style={{ width: "100%", position: "relative" }}>
                             <div className="chatting-list-content">
@@ -39,6 +40,7 @@ export default function ChattingListItem({ item, chatState, setChatState }: Item
                                 <div className="chatting-list-recent-msg">{item.lastMessage}</div>
                             </div>
                             <button
+                                aria-label="채팅방 삭제"
                                 onClick={deleteChatItem}
                                 style={{ position: "absolute", top: "12px", right: "20px" }}
                             >
@@ -52,6 +54,7 @@ export default function ChattingListItem({ item, chatState, setChatState }: Item
                             src={customNullImg(item.buyer.imageURL)}
                             alt={item.buyer.name}
                             className="chatting-list-img"
+                            loading="lazy"
                         />
                         <div className="chatting-list-content">
                             <div className="chatting-list-name">{item.buyer.name}</div>

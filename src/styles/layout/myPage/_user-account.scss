@@ -6,6 +6,7 @@
         margin-top: 28px;
         margin-bottom: 8px;
         font-size: 18px;
+        @apply dark:text-white;
 
         .user-account-check-icon {
             margin-top: -4px;
@@ -19,6 +20,7 @@
         margin-top: 8px;
         display: flex;
         font-size: 14px;
+        @apply dark:text-white;
 
         .text-bold {
             margin: 0 4px;

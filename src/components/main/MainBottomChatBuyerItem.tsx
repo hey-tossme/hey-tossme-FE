@@ -11,7 +11,7 @@ export default function MainBottomChatBuyerItem({ contents }: IContents) {
                     <div className="main-chat-item-content">{contents}</div>
                 </div>
             </div>
-            <img src={profile} alt="판매자 프로필" className="main-chat-profile" />
+            <img src={profile} alt="판매자 프로필" className="main-chat-profile" loading="lazy" />
         </div>
     );
 }

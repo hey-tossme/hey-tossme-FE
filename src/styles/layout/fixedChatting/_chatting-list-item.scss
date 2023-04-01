@@ -38,6 +38,8 @@
 
         .chatting-list-recent-msg {
             font-size: $font-chat-desc;
+            width: 252px;
+            @include ellipsis;
         }
     }
 }

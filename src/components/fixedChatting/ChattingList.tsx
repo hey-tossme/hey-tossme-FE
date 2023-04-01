@@ -18,7 +18,11 @@ export default function ChattingList({ chattingInfo, chatState, setChatState }: 
     return (
         <>
             <div className="chatting-list-container">
-                <button className="close-chatting-btn" onClick={() => dispatch(setCloseChat())}>
+                <button
+                    className="close-chatting-btn"
+                    aria-label="채팅창 닫기"
+                    onClick={() => dispatch(setCloseChat())}
+                >
                     <IoClose className="close-chatting-btn-icon" />
                 </button>
                 <div

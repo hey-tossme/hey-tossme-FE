@@ -7,6 +7,16 @@ export const reissueToken = async (userId: number) => {
     });
 };
 
+export const deleteUser = (token: string) => {
+    customAxios({
+        method: "delete",
+        url: "/v1/members",
+        headers: {
+            Authorization: token,
+        },
+    });
+};
+
 export const getCurrentUserInfo = async (token: string) => {
     return await customAxios({
         method: "get",

@@ -15,6 +15,7 @@ export default function ChattingRoomNewSendMsg({ msg }: NewMsgType) {
                 src={customNullImg(msg.profileUrl)}
                 alt={msg.userName}
                 className="main-chat-profile"
+                loading="lazy"
             />
         </div>
     );

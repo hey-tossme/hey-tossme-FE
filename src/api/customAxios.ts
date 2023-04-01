@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosError } from "axios";
-import { setLogin, setLogout } from "../store/modules/user";
+import { setLogin } from "../store/modules/user";
 import { reissueToken } from "./user/user";
+import { requestLogout } from "./auth/auth";
 import store from "../store/configureStore";
 
 const customAxios: AxiosInstance = axios.create({
@@ -51,8 +52,15 @@ customAxios.interceptors.response.use(
             const originalResponse = await axios.request(error.config);
             return originalResponse.data;
         } else if (err.response?.status === 405) {
-            alert("인증이 만료되었습니다. 다시 로그인 해 주세요.");
-            store.dispatch(setLogout);
+            alert("로그아웃 되었습니다.");
+
+            store.dispatch(
+                setLogin({
+                    token: "",
+                    id: 0,
+                    account: null,
+                })
+            );
         }
         return Promise.reject(error);
     }
