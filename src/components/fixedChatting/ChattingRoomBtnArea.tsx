@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import AccountConfirmedModal from "../@common/modal/AccountConfirmedModal";
 import ModalPortal from "../@common/modal/portal/ModalPortal";
 import { setModalOpen } from "../../store/modules/modal";
+import { sendAccountAxios } from "../../api/chat/chat";
 import { SendAccount } from "./_FixedChatting.interface";
 
 export default function ChattingRoomBtnArea({ item, sendAccount }: SendAccount) {
+    const user = useAppSelector((state) => state.user);
     const modalOpen = useSelector((state: any) => state.modal.modalOpen);
 
     const dispatch = useDispatch();
@@ -16,6 +19,7 @@ export default function ChattingRoomBtnArea({ item, sendAccount }: SendAccount) 
 
     const handleTransferStatus = () => {
         sendAccount();
+        sendAccountAxios(user.token, item.id);
         setAccountTransferStatus(true);
     };
 

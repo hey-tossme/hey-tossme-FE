@@ -3,8 +3,8 @@ import { useAppSelector } from "../../../store/hooks/configureStore.hook";
 import { HiOutlineX } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { setModalClose } from "../../../store/modules/modal";
-import { sendAccountAxios } from "../../../api/chat/chat";
 import { ITradeModal } from "../../fixedChatting/_FixedChatting.interface";
+import { confirmSaleAxios } from "../../../api/chat/chat";
 
 export default function AccountConfirmedModal({ setTradeStatus, item }: ITradeModal) {
     const user = useAppSelector((state) => state.user);
@@ -16,8 +16,8 @@ export default function AccountConfirmedModal({ setTradeStatus, item }: ITradeMo
     };
 
     const handleTradeStatus = () => {
-        sendAccountAxios(user.token, item.id, user.id);
         closeModal();
+        confirmSaleAxios(user.token, item.item.id, item.buyer.id);
         setTradeStatus(true);
     };
 

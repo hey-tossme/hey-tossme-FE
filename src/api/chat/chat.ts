@@ -40,10 +40,20 @@ export const getMsgAxios = async (token: string, roomId: number) => {
     });
 };
 
-export const sendAccountAxios = async (token: string, itemId: number, userId: number) => {
+export const sendAccountAxios = async (token: string, roomId: number) => {
     return await customAxios({
         method: "post",
-        url: `/v1/items/${itemId}/transaction-confirm?buyerId=${userId}`,
+        url: `/v1/chat/rooms/${roomId}/account-share?status=1`,
+        headers: {
+            Authorization: token,
+        },
+    });
+};
+
+export const confirmSaleAxios = async (token: string, itemId: number, buyerId: number) => {
+    return await customAxios({
+        method: "post",
+        url: `/v1/items/${itemId}/transaction-confirm?buyer-id=${buyerId}`,
         headers: {
             Authorization: token,
         },
