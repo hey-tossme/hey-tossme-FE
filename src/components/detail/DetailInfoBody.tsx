@@ -1,20 +1,49 @@
 import React from "react";
-import { useState } from "react";
-import { detailInfoProps } from "./_detail.interface";
+import { useState, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore.hook";
+import { detailInfoBodyProps } from "./_detail.interface";
 import { commaNums, date } from "../../hooks/utils";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
-import { setBookmarkState } from "../../api/bookmark/bookmark";
-import { useAppSelector } from "../../store/hooks/configureStore.hook";
+import {
+    setBookmarkState,
+    deleteBookmarkState,
+    getBookmarkState,
+} from "../../api/bookmark/bookmark";
+import { setModalOpen } from "../../store/modules/modal";
 
-export default function DetailInfoBody({ item }: detailInfoProps) {
-    const [bookmark, setBookmark] = useState<boolean>();
+export default function DetailInfoBody({ item, page }: detailInfoBodyProps) {
     const user = useAppSelector((state) => state.user);
+    const [bookmark, setBookmark] = useState<boolean>(false);
+    const [isBookmarkItems, setIsBookmarkItems] = useState<any>();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        getBookmarkState(user.token, page, 8).then((response) => {
+            setIsBookmarkItems(response.data.content);
+        });
+    }, []);
+
+    useEffect(() => {
+        isBookmarkItems &&
+            isBookmarkItems.map((isBookmarkItem: any) => {
+                if (item.id === isBookmarkItem.itemId) {
+                    setBookmark(true);
+                }
+            });
+    }, [isBookmarkItems]);
 
     const handleSetBookmark = () => {
-        bookmark ? setBookmark(false) : setBookmark(true);
-        setBookmarkState(user.token, item.id).then((response) => {
-            console.log(response);
-        });
+        if (bookmark) {
+            deleteBookmarkState(user.token, item.id).then((response) => {
+                setBookmark(false);
+            });
+        } else {
+            setBookmarkState(user.token, item.id).then(() => {
+                setBookmark(true);
+            });
+        }
+
+        !user && dispatch(setModalOpen());
     };
 
     return (
