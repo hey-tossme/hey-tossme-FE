@@ -11,12 +11,10 @@ export const modalSlice = createSlice({
         setModalOpen(state) {
             state.modalOpen = true;
             document.body.style.overflow = "hidden";
-            console.log("모달 열림");
         },
         setModalClose(state) {
             state.modalOpen = false;
             document.body.style.overflow = "unset";
-            console.log("모달 닫음");
         },
     },
 });

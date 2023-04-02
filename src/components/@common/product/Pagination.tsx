@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks/configureStore.hook";
 import { PaginationProps } from "../../category/_Category.interface";
 
 export default function Pagination({ page, setPage, items }: PaginationProps) {

@@ -55,8 +55,8 @@ export const requestKakaoLogin = (code: string, fcmToken: string) => {
     });
 };
 
-export const requestLogout = (token: string, userId: number) => {
-    customAxios({
+export const requestLogout = async (token: string, userId: number) => {
+    return await customAxios({
         method: "post",
         url: `/v2/members/logout/${userId}`,
         headers: {

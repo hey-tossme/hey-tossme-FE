@@ -1,4 +1,8 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosError } from "axios";
+import { setLogin } from "../store/modules/user";
+import { reissueToken } from "./user/user";
+import { requestLogout } from "./auth/auth";
+import store from "../store/configureStore";
 
 const customAxios: AxiosInstance = axios.create({
     withCredentials: true,
@@ -7,29 +11,57 @@ const customAxios: AxiosInstance = axios.create({
 
 customAxios.interceptors.request.use(
     (config) => {
-        //요청을 보내기 전에 수행할 로직
         console.log(config);
         return config;
     },
     (error) => {
-        //요청 에러가 발생했을 때 수행할 로직
-        console.log(error); //디버깅
+        console.log(error);
         return Promise.reject(error);
     }
 );
 
-//응답 인터셉터 추가
 customAxios.interceptors.response.use(
     (response) => {
-        //응답에 대한 로직 작성
         const res = response.data;
         console.log(res);
         return res;
     },
 
-    (error) => {
-        //응답 에러가 발생했을 때 수행할 로직
-        console.log(error); //디버깅
+    async (error) => {
+        const err = error as AxiosError;
+
+        if (err.response?.status === 401) {
+            const data = err.response.data;
+
+            const user = store.getState().user;
+            const { token } = await reissueToken(user.id);
+
+            store.dispatch(
+                setLogin({
+                    token: `bearer ${token}`,
+                    id: user.id,
+                    account: user.account,
+                })
+            );
+
+            err.config.headers = {
+                "Content-Type": "application/json",
+                Authorization: `bearer ${token}`,
+            };
+
+            const originalResponse = await axios.request(error.config);
+            return originalResponse.data;
+        } else if (err.response?.status === 405) {
+            alert("로그아웃 되었습니다.");
+
+            store.dispatch(
+                setLogin({
+                    token: "",
+                    id: 0,
+                    account: null,
+                })
+            );
+        }
         return Promise.reject(error);
     }
 );

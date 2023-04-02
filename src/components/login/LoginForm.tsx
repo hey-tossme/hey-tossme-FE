@@ -39,7 +39,6 @@ export default function LoginForm() {
     const handleLoginSubmit = async () => {
         try {
             let result: any = await requestLogin(email, password, fcmToken);
-            console.log(result);
             dispatch(
                 setLogin({
                     token: `bearer ${result.token}`,

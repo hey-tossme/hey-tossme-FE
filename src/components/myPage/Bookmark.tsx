@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CardItem from "../@common/product/CardItem";
+import { getBookmarkList } from "../../api/bookmark/bookmark";
 import Pagination from "../@common/product/Pagination";
 import { ItemInfo } from "./_MyPage.interface";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
 
 export default function Bookmark() {
+    const token = useAppSelector((state) => state.user.token);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
-    const PRODUCT_URL = "/fakeData/product.json";
+    const [page, setPage] = useState<number>(1);
 
-    const getBookingList = () => {
-        axios.get(PRODUCT_URL).then((res) => {
-            const response = res.data;
-            setItemList(response.data.content);
-        });
+    const getUserBookmarkList = async () => {
+        const result = await getBookmarkList(token, page, 8);
+        setItemList(result.data.list.content);
     };
 
     useEffect(() => {
-        getBookingList();
-        console.log(itemList);
-    }, []);
+        getUserBookmarkList();
+    }, [page]);
 
     return (
         <>
@@ -39,7 +39,7 @@ export default function Bookmark() {
                     </div>
                 </div>
             </div>
-            <Pagination />
+            <Pagination page={page} setPage={setPage} items={itemList} />
         </>
     );
 }

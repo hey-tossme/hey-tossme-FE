@@ -10,6 +10,7 @@ export default function MyBookingCard({ item }: ItemType) {
                 src={customNullItemImg(item.imageUrl)}
                 alt={item.title}
                 className="booking-card-img"
+                loading="lazy"
             />
             <div className="booking-card-contents">
                 <div className="booking-card-info">

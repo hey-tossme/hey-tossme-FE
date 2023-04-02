@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
-import { useAppSelector } from "../../../store/hooks/configureStore.hook";
-import { HiOutlineX } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { setModalClose } from "../../../store/modules/modal";
-import { ITradeModal } from "../../fixedChatting/_FixedChatting.interface";
-import { confirmSaleAxios } from "../../../api/chat/chat";
+import { HiOutlineX } from "react-icons/hi";
+import { useAppSelector } from "../../../store/hooks/configureStore.hook";
+import { deleteUser } from "../../../api/user/user";
+import { setLogin } from "../../../store/modules/user";
 
-export default function AccountConfirmedModal({ setTradeStatus, item }: ITradeModal) {
-    const user = useAppSelector((state) => state.user);
+export default function SecessionModal() {
+    const token = useAppSelector((state) => state.user.token);
     const dispatch = useDispatch();
     const modalRef = useRef<HTMLDivElement>(null);
 
@@ -15,16 +15,20 @@ export default function AccountConfirmedModal({ setTradeStatus, item }: ITradeMo
         dispatch(setModalClose());
     };
 
-    const handleTradeStatus = () => {
-        closeModal();
-        confirmSaleAxios(user.token, item.item.id, item.buyer.id);
-        setTradeStatus(true);
-    };
-
     const modalOutSideClick = (e: any) => {
         if (modalRef.current === e.target) {
             closeModal();
         }
+    };
+
+    const handleSecessionUser = () => {
+        deleteUser(token);
+        setLogin({
+            token: "",
+            id: 0,
+            account: null,
+        });
+        closeModal();
     };
 
     return (
@@ -35,8 +39,9 @@ export default function AccountConfirmedModal({ setTradeStatus, item }: ITradeMo
                         <HiOutlineX className="close-modal-btn-icon" />
                     </button>
                     <div className="modal-contents">
-                        <div className="modal-desc">확인 버튼을 클릭하면 거래가 확정됩니다.</div>
-                        <button className="account-confirm-btn" onClick={handleTradeStatus}>
+                        <p>떠나신다니 아쉬워요.</p>
+                        <p>확인 버튼을 누르시면 회원 탈퇴가 진행됩니다.</p>
+                        <button className="account-confirm-btn" onClick={handleSecessionUser}>
                             확인
                         </button>
                     </div>

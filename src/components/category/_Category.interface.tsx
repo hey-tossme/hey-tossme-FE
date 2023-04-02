@@ -69,7 +69,7 @@ export interface listProps {
 }
 
 export interface PaginationProps {
-    page: Number;
-    setPage: React.Dispatch<React.SetStateAction<Number>>;
+    page: number;
+    setPage: React.Dispatch<React.SetStateAction<number>>;
     items: Array<listProps> | null;
 }

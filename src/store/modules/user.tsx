@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: { token: string; id: number; account: string } = {
+const initialState: { token: string; id: number; account: string | null } = {
     token: "",
     id: 0,
-    account: "",
+    account: null,
 };
 
 const userSlice = createSlice({
@@ -19,8 +19,4 @@ const userSlice = createSlice({
 });
 
 export const { setLogin } = userSlice.actions;
-export const stateToken = (state: any) => state.user.token;
-export const stateId = (state: any) => state.user.id;
-export const stateAccount = (state: any) => state.user.account;
-
 export default userSlice;

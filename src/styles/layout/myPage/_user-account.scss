@@ -3,20 +3,38 @@
 
     .user-account-check {
         display: flex;
-        margin-top: 20px;
+        margin-top: 28px;
         margin-bottom: 8px;
+        font-size: 18px;
+        @apply dark:text-white;
 
         .user-account-check-icon {
+            margin-top: -4px;
             margin-right: 4px;
+            font-size: 28px;
+            color: $color-primary;
         }
     }
 
     .user-account {
+        margin-top: 8px;
         display: flex;
+        font-size: 14px;
+        @apply dark:text-white;
 
         .text-bold {
             margin: 0 4px;
             font-weight: 600;
+        }
+
+        .user-account-btn {
+            margin-left: 8px;
+            margin-top: -2px;
+            border-radius: 8px;
+            color: white;
+            font-size: 12px;
+            padding: 4px;
+            background-color: $color-gray-400;
         }
     }
 

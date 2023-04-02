@@ -39,20 +39,51 @@ export interface IMessageInfo {
     message: string;
 }
 
+export interface NewMessageInfo {
+    id: number;
+    sender: ISellerInfo;
+    message: string;
+}
+
 export interface ChattingInfoState {
     chattingInfo: IChattingInfo[];
     setChattingInfo: React.Dispatch<React.SetStateAction<IChattingInfo[]>>;
+    chatState: boolean;
+    setChatState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface ItemInfo {
     item: IChattingInfo;
+    chatState: boolean;
+    setChatState: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface ItemType {
+    item: IChattingInfo;
+}
+
+export interface SendAccount {
+    item: IChattingInfo;
+    sendAccount: () => void;
 }
 
 export interface IMessageListInfo {
     message: IMessageInfo;
 }
 
+export interface NewMsgInfo {
+    message: string;
+    profileUrl: string;
+    senderId: number;
+    userName: string;
+}
+
+export interface NewMsgType {
+    msg: NewMsgInfo;
+}
+
 export interface ITradeModal {
+    item: IChattingInfo;
     tradeStatus: boolean;
     setTradeStatus: React.Dispatch<React.SetStateAction<boolean>>;
 }
