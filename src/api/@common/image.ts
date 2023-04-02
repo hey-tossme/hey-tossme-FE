@@ -1,8 +1,8 @@
 import axios from "axios";
 import customAxios from "../customAxios";
 
-export const requestUploadImg = (token: string, frm: FormData) => {
-    customAxios({
+export const requestUploadImg = async (token: string, frm: FormData) => {
+    return await customAxios({
         method: "POST",
         url: "/v1/image",
         headers: {

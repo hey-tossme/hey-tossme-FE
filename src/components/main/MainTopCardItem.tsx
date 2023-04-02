@@ -6,7 +6,7 @@ export default function MainTopCardItem({ item }: ICardItem) {
     return (
         <div className="main-top-card-item">
             <div className="main-top-card-item-inner">
-                <img src={item.img} alt={item.name} className="main-top-card-img" />
+                <img src={item.img} alt={item.name} className="main-top-card-img" loading="lazy" />
                 <div className="main-top-card-item-contents">
                     <div className="main-top-card-item-inner-top">
                         <div className="main-top-card-item-title">{item.name}</div>

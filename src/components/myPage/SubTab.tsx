@@ -21,7 +21,7 @@ export default function SubTab() {
     return (
         <>
             <div className="tab-wrapper">
-                <div className="tabs">
+                <ul className="tabs">
                     {tabList.map((tab) => (
                         <li
                             className={
@@ -33,7 +33,7 @@ export default function SubTab() {
                             {tab.name}
                         </li>
                     ))}
-                </div>
+                </ul>
             </div>
             <div className="tab-content-wrapper">{tabList[tabState].content}</div>
         </>

@@ -7,7 +7,9 @@ export default function DetailMap({ item }: detailMapProps) {
         <div className="detail-map-wrapper">
             <p className="map-title">위치</p>
             <Map latitude={item.latitude} longtitude={item.longtitude} />
-            <p className="address">{`${item.address}, ${item.addressDetail}`}</p>
+            <p className="address">
+                {item.addressDetail ? `${item.address}, ${item.addressDetail}` : item.address}
+            </p>
         </div>
     );
 }

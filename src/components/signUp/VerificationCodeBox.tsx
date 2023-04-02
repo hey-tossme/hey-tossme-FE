@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { HiOutlineShieldCheck } from "react-icons/hi";
-import { sendEmail, mailValidate } from "../../api/auth/auth";
 import { IConfirmController } from "./_SignUp.interface";
 
 export default function VerificationCodeBox({

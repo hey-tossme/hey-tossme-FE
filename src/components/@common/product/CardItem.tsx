@@ -44,7 +44,12 @@ export default function CardItem({ item }: cardItemProps) {
         <div ref={cardRef} className="card-item">
             {status === "done" ? <div className="sold-out-label">판매 완료</div> : null}
             <div className="item-img-area">
-                <img className="item-img" src={customNullItemImg(imageUrl)} alt="card-image"></img>
+                <img
+                    className="item-img"
+                    src={customNullItemImg(imageUrl)}
+                    alt="card-image"
+                    loading="lazy"
+                />
             </div>
             <div className="item-info-area">
                 <div className="item-info-header">

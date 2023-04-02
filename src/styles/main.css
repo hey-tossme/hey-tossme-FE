@@ -147,6 +147,7 @@ body {
   @apply dark:bg-color-gray-800;
   width: 100%;
   min-height: 100vh;
+  min-width: 1140px;
   padding-bottom: 120px;
 }
 
@@ -316,7 +317,7 @@ body {
 .modal-background .modal-container {
   position: fixed;
   width: 400px;
-  height: 150px;
+  height: 180px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -333,6 +334,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.modal-background .modal-container .modal-wrapper .modal-contents {
+  text-align: center;
+  line-height: 1.4;
 }
 .modal-background .modal-container .modal-wrapper .modal-contents .account-confirm-btn {
   margin: 0 auto;
@@ -1288,6 +1293,12 @@ body {
   margin-bottom: 12px;
   animation: btnSlide 0.4s;
 }
+.fixed-btns-container .fixed-btns-wrapper .btns-item.go-to-write-btn:disabled {
+  background-color: #a6a6a6;
+}
+.fixed-btns-container .fixed-btns-wrapper .btns-item.go-to-write-btn:disabled:hover {
+  transform: none;
+}
 .fixed-btns-container .fixed-btns-wrapper .btns-item .go-to-write-btn-icon,
 .fixed-btns-container .fixed-btns-wrapper .btns-item .go-to-chat-btn-icon,
 .fixed-btns-container .fixed-btns-wrapper .btns-item .plus-btn-icon {
@@ -1424,6 +1435,10 @@ body {
 }
 .chatting-list-item .chatting-list-content .chatting-list-recent-msg {
   font-size: 16px;
+  width: 252px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .item-info-container {
@@ -1602,18 +1617,35 @@ body {
 }
 .user-account-check-container .user-account-check {
   display: flex;
-  margin-top: 20px;
+  margin-top: 28px;
   margin-bottom: 8px;
+  font-size: 18px;
+  @apply dark:text-white;
 }
 .user-account-check-container .user-account-check .user-account-check-icon {
+  margin-top: -4px;
   margin-right: 4px;
+  font-size: 28px;
+  color: #ec7357;
 }
 .user-account-check-container .user-account {
+  margin-top: 8px;
   display: flex;
+  font-size: 14px;
+  @apply dark:text-white;
 }
 .user-account-check-container .user-account .text-bold {
   margin: 0 4px;
   font-weight: 600;
+}
+.user-account-check-container .user-account .user-account-btn {
+  margin-left: 8px;
+  margin-top: -2px;
+  border-radius: 8px;
+  color: white;
+  font-size: 12px;
+  padding: 4px;
+  background-color: #a6a6a6;
 }
 .user-account-check-container .flex {
   display: flex;
@@ -1891,6 +1923,7 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
+  min-width: 1140px;
   height: 120px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   z-index: 3;
@@ -2014,6 +2047,7 @@ body {
 }
 .category-wrapper .category-bar-group .category-bar-list .category-bar-item {
   @apply flex flex-col items-center justify-between h-[84px];
+  cursor: pointer;
 }
 .category-wrapper .category-bar-group .category-bar-list .category-bar-item .item-icon {
   @apply text-dark h-[60px] w-[60px] dark:text-light;
@@ -2090,7 +2124,8 @@ body {
   height: 18px;
   color: #333333;
 }
-.search-bar-group .search-bar-list .search-bar-item .item-input, .search-bar-group .search-bar-list .search-bar-item .item-input::placeholder {
+.search-bar-group .search-bar-list .search-bar-item .item-input,
+.search-bar-group .search-bar-list .search-bar-item .item-input::placeholder {
   margin-left: 40px;
   font-size: 14px;
   color: #a6a6a6;
@@ -2098,6 +2133,9 @@ body {
 .search-bar-group .search-bar-list .search-bar-item .item-input {
   @apply dark:text-white;
   color: #333333;
+}
+.search-bar-group .search-bar-list .search-bar-item .item-input.pointer {
+  cursor: pointer;
 }
 .search-bar-group .search-bar-list .search-bar-item .close-btn {
   width: 20px;
@@ -2412,7 +2450,7 @@ body {
 .detail-info-header-area .user-group .user-name {
   @apply dark:text-white;
   color: #333333;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
 }
 .detail-info-header-area .user-group .chat-btn {
@@ -2465,7 +2503,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 12px;
-  font-size: 40px;
+  font-size: 32px;
   font-weight: bold;
 }
 .detail-info-body-area .info-title-group .bookmark-btn-not-fill {
@@ -2482,19 +2520,20 @@ body {
 .detail-info-body-area .info-price {
   @apply dark:text-white;
   color: #333333;
-  font-size: 24px;
+  font-size: 18px;
   margin-bottom: 12px;
 }
 .detail-info-body-area .info-date {
   @apply dark:text-light;
   margin-bottom: 36px;
-  font-size: 24px;
+  font-size: 18px;
   color: #754f44;
 }
 .detail-info-body-area .info-desc {
   @apply dark:text-white;
   color: #333333;
-  font-size: 24px;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 .detail-map-wrapper {
@@ -2507,13 +2546,13 @@ body {
 .detail-map-wrapper .map-title {
   @apply dark:text-white;
   color: #333333;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
 }
 .detail-map-wrapper .address {
   @apply dark:text-white;
   color: #333333;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .detail-category-wrapper {
@@ -2527,7 +2566,7 @@ body {
 .detail-category-wrapper .category-title {
   @apply dark:text-white;
   color: #333333;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
 }
 .detail-category-wrapper .category-list {

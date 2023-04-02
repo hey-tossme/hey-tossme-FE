@@ -24,6 +24,7 @@ export default function UploadImg({ files, setFiles, imageSrc, setImageSrc }: up
                     src={imageSrc ? imageSrc : nullImg}
                     alt="profile-image"
                     className="upload-img"
+                    loading="lazy"
                 />
             </label>
             <input

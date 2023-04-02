@@ -1,10 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
+import { changeProfile } from "../../api/user/user";
+import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { setLogin } from "../../store/modules/user";
+import { TbCreditCard } from "react-icons/tb";
+import { BsFillCaretDownFill } from "react-icons/bs";
 import { GetUserAccount } from "./_MyPage.interface";
-import { BsCreditCardFill, BsFillCaretDownFill } from "react-icons/bs";
 
-export default function UserAccount({ getUserAccountInfo, bank, account }: GetUserAccount) {
+export default function UserAccount({ bank, account, getAccount, setGetAccount }: GetUserAccount) {
+    const dispatch = useAppDispatch();
+    const user = useAppSelector((state: any) => state.user);
+    const accountState = useAppSelector((state: any) => state.user.account);
     const componentRef = useRef<HTMLDivElement>(null);
-    const [userAccount, setUserAccount] = useState<boolean>(!getUserAccountInfo);
+    const [accountNumber, setAccountNumber] = useState<string>("");
     const [userBankName, setUserBankName] = useState<string>("");
     const [showList, setShowList] = useState<boolean>(false);
 
@@ -36,6 +43,19 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
         setUserBankName(item);
     };
 
+    const confirmAccount = async () => {
+        const result = await changeProfile(user.token, null, accountNumber, userBankName);
+        console.log(result);
+        dispatch(
+            setLogin({
+                token: user.token,
+                id: user.id,
+                account: result.data.account,
+            })
+        );
+        setGetAccount(true);
+    };
+
     useEffect(() => {
         const outsideClick: EventListenerOrEventListenerObject = (e: Event) => {
             const current = componentRef.current as HTMLDivElement;
@@ -49,17 +69,18 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
 
     return (
         <div className="user-account-check-container">
-            {userAccount ? (
+            {accountState && getAccount ? (
                 <>
                     <div className="user-account-check">
-                        <BsCreditCardFill className="user-account-check-icon" /> 판매자 등록 완료
+                        <TbCreditCard className="user-account-check-icon" /> 판매자 등록 완료
                     </div>
                     <div className="user-account">
-                        등록된 계좌번호는
                         <div className="text-bold">
                             {bank} {account}
                         </div>
-                        입니다.
+                        <button className="user-account-btn" onClick={() => setGetAccount(false)}>
+                            계좌 변경
+                        </button>
                     </div>
                 </>
             ) : (
@@ -96,9 +117,12 @@ export default function UserAccount({ getUserAccountInfo, bank, account }: GetUs
                                 type="text"
                                 className="account-form"
                                 placeholder="계좌번호를 입력해 주세요."
+                                onChange={(e) => setAccountNumber(e.target.value)}
                             />
                         </div>
-                        <button className="account-submit-btn">등록</button>
+                        <button className="account-submit-btn" onClick={confirmAccount}>
+                            등록
+                        </button>
                     </div>
                 </>
             )}

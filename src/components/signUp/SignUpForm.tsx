@@ -162,11 +162,11 @@ export default function SignUpForm() {
                     </button>
                 </Link>
             </div>
-            {modalOpen ? (
+            {modalOpen && (
                 <ModalPortal>
                     <CodeConfirmModal />
                 </ModalPortal>
-            ) : null}
+            )}
         </div>
     );
 }
