@@ -14,7 +14,7 @@ export default function CategoryWrapper() {
     const searchType = useAppSelector((state) => state.search);
     const modalOpen = useAppSelector((state) => state.modal.modalOpen);
     const [items, setItems] = useState<listProps[] | null>(null);
-    const [page, setPage] = useState<Number>(0);
+    const [page, setPage] = useState<number>(0);
 
     useEffect(() => {
         getProductList(searchType, page, 8).then((response) => {
