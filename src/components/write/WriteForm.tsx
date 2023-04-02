@@ -11,12 +11,15 @@ import ContentInput from "./ContentInput";
 import AddressInput from "./AddressInput";
 import DateSelect from "./DateSelect";
 import { editProduct, putProduct } from "../../api/product/product";
+import ModalPortal from "../@common/modal/portal/ModalPortal";
+import DateInputConfirmModal from "../@common/modal/DateInputConfirmModal";
 
 export default function WriteForm() {
     const navigate = useNavigate();
     const location = useLocation();
     const state = location.state as WriteNavigateProps;
     const token = useAppSelector((state) => state.user.token);
+    const modalOpen = useAppSelector((state) => state.modal.modalOpen);
     const [files, setFiles] = useState<File | null>(null);
     const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
     const [category, setCategory] = useState<string | null>(null);
@@ -109,6 +112,11 @@ export default function WriteForm() {
             <button type="button" className="enroll-btn" onClick={handlePutProduct}>
                 등록
             </button>
+            {modalOpen ? (
+                <ModalPortal>
+                    <DateInputConfirmModal />
+                </ModalPortal>
+            ) : null}
         </>
     );
 }
