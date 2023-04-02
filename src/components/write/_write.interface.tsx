@@ -1,3 +1,7 @@
+export interface WriteNavigateProps {
+    item: any;
+}
+
 export interface uploadImgProps {
     files: File | null;
     setFiles: React.Dispatch<React.SetStateAction<File | null>>;
@@ -37,6 +41,7 @@ export interface DateSelectProps {
     setDate: React.Dispatch<React.SetStateAction<string | null>>;
     time: string | null;
     setTime: React.Dispatch<React.SetStateAction<string | null>>;
+    state: any;
 }
 
 export interface CustomDatepickerProps {

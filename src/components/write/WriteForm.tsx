@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
+import { WriteNavigateProps } from "./_write.interface";
 import CategorySelect from "./CategorySelect";
 import UploadImg from "./UploadImg";
 import TitleInput from "./TitleInput";
@@ -7,9 +10,13 @@ import PriceInput from "./PriceInput";
 import ContentInput from "./ContentInput";
 import AddressInput from "./AddressInput";
 import DateSelect from "./DateSelect";
-import axios from "axios";
+import { editProduct, putProduct } from "../../api/product/product";
 
 export default function WriteForm() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const state = location.state as WriteNavigateProps;
+    const token = useAppSelector((state) => state.user.token);
     const [files, setFiles] = useState<File | null>(null);
     const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
     const [category, setCategory] = useState<string | null>(null);
@@ -19,7 +26,7 @@ export default function WriteForm() {
     const [address, setAddress] = useState<string | null>(null);
     const [addressDetail, setAddressDetail] = useState<string | null>(null);
     const [date, setDate] = useState<string | null>(null);
-    const [time, setTime] = useState<string | null>(null);
+    const [time, setTime] = useState<string | null>("00:00");
     const [totalDate, setTotalDate] = useState<string | null>(null);
 
     const axiosBody = {
@@ -34,15 +41,51 @@ export default function WriteForm() {
     };
 
     useEffect(() => {
+        console.log(time);
         date && setTotalDate(date);
-        date && time && setTotalDate(`${date}-${time}`);
+        date && time && setTotalDate(`${date}-${time.split(":").join("-")}`);
     }, [date, time]);
 
-    console.log(axiosBody);
+    useEffect(() => {
+        if (state !== null) {
+            const time = state.item.dueTime.split("T")[1];
+            const count = time.split(":").length - 1;
 
-    const handleEnroll = () => {
-        axios.post("/items", axiosBody);
+            if (count == 2) {
+                const timeArr = time.split(":");
+                timeArr.pop();
+                setTime(timeArr.join(":"));
+            } else {
+                const timeArr = time.split(":");
+                setTime(timeArr.join(":"));
+            }
+
+            setImageSrc(state.item.imageUrl);
+            setCategory(state.item.category);
+            setTitle(state.item.title);
+            setContent(state.item.contents);
+            setAddress(state.item.address);
+            setAddressDetail(state.item.addressDetail);
+            setPrice(state.item.price);
+            setDate(state.item.dueTime.split("T")[0]);
+            console.log(state.item);
+        }
+    }, [state]);
+
+    const handlePutProduct = () => {
+        if (state !== null) {
+            console.log(state.item.id);
+            editProduct(token, axiosBody, state.item.id).then(() => {
+                navigate("/category");
+            });
+        } else {
+            putProduct(token, axiosBody).then(() => {
+                navigate("/category");
+            });
+        }
     };
+
+    console.log(axiosBody);
 
     return (
         <>
@@ -62,8 +105,8 @@ export default function WriteForm() {
                 setAddress={setAddress}
                 setAddressDetail={setAddressDetail}
             />
-            <DateSelect date={date} setDate={setDate} time={time} setTime={setTime} />
-            <button type="button" className="enroll-btn" onClick={handleEnroll}>
+            <DateSelect date={date} setDate={setDate} time={time} setTime={setTime} state={state} />
+            <button type="button" className="enroll-btn" onClick={handlePutProduct}>
                 등록
             </button>
         </>

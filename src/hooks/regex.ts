@@ -15,6 +15,6 @@ export const removeWhitespace = (text: string) => {
 };
 
 export const validateTime = (time: string) => {
-    const regex = /^([1-9]|[01][0-2]):([0-5][0-9])$/;
+    const regex = /^([0][0-9]|[1][0-2]):([0-5][0-9])$/;
     return regex.test(time);
 };
