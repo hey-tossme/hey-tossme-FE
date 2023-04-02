@@ -39,6 +39,10 @@
         .notify-group {
             @apply relative;
 
+            .header-icon {
+                cursor: pointer;
+            }
+
             .new-notify {
                 @apply absolute top-[1px] right-[2px];
                 width: 12px;
