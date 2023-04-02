@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import { FaRegMoon, FaRegBell } from "react-icons/fa";
@@ -12,6 +12,8 @@ export function InfoContainer() {
     const user = useAppSelector((state) => state.user);
     const [dark, setDark] = useState<boolean>();
     const [isLogin, setIsLogin] = useState(true);
+    const [isNew, setIsNew] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     firebaseMessaging.onMessage((payload: any) => {
         const title = payload.notification.title;
@@ -20,6 +22,7 @@ export function InfoContainer() {
         };
 
         console.log("Message received. title : ", title, "options : ", options);
+        setIsNew(true);
         navigator.serviceWorker.ready.then((registration) => {
             registration.showNotification(title, options);
         });
@@ -35,6 +38,11 @@ export function InfoContainer() {
     useEffect(() => {
         !user.token ? setIsLogin(false) : setIsLogin(true);
     }, [user]);
+
+    const handleGoNotify = () => {
+        navigate("/notify");
+        setIsNew(false);
+    };
 
     const handleToggleDarkMode = () => {
         if (localStorage.getItem("theme") === "dark") {
@@ -52,9 +60,8 @@ export function InfoContainer() {
         <div className="info-container">
             {isLogin && (
                 <div className="notify-group">
-                    <Link to="/notify">
-                        <FaRegBell className="header-icon" />
-                    </Link>
+                    <FaRegBell className="header-icon" onClick={handleGoNotify} />
+                    {isNew && <div className="new-notify"></div>}
                 </div>
             )}
             <div className="theme-toggle-btn" onClick={handleToggleDarkMode}>

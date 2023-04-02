@@ -6,22 +6,38 @@ import { useAppDispatch, useAppSelector } from "../store/hooks/configureStore.ho
 import { setList } from "../store/modules/notify";
 
 export default function Notify() {
-    const dispatch = useAppDispatch();
-    const notify = useAppSelector((state) => state.notify);
     const [notifyList, setNotifyList] = useState<Array<NotifyType> | null>(null);
     const [newList, setNewList] = useState<Array<NotifyType>>();
     const [existingList, setExistingList] = useState<Array<NotifyType>>();
+    const notify = useAppSelector((state) => state.notify);
+    const token = useAppSelector((state) => state.user.token);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        getNotify(setNotifyList).then((response) => {
-            dispatch(setList(response));
+        getNotify(token).then((response) => {
+            setNotifyList(response.data);
         });
     }, []);
 
     useEffect(() => {
+        dispatch(setList(notifyList));
+    }, [notifyList]);
+
+    console.log(notify);
+
+    // useEffect(() => {
+    //     if (notifyList !== null) {
+    //         const newList = notifyList.filter((item) => !item.readOrNot);
+    //         const existingList = notifyList.filter((item) => item.readOrNot);
+    //         setNewList(newList);
+    //         setExistingList(existingList);
+    //     }
+    // }, [notifyList]);
+
+    useEffect(() => {
         if (notify) {
-            const newList = notify.filter((item) => !item.readOrNot);
-            const existingList = notify.filter((item) => item.readOrNot);
+            const newList = notify.filter((item: any) => !item.readOrNot);
+            const existingList = notify.filter((item: any) => item.readOrNot);
             setNewList(newList);
             setExistingList(existingList);
         }

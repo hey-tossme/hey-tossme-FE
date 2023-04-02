@@ -6,7 +6,7 @@ import { deleteList, updateReadList } from "../../store/modules/notify";
 import { FiX } from "react-icons/fi";
 import { FaRegBell } from "react-icons/fa";
 import { NotifyItemProps } from "./_Notify.interface";
-import { getAllProductList } from "../../api/category/product";
+import { getAllProductList } from "../../api/product/product";
 import { deleteNotify, patchNotify } from "../../api/notify/notify";
 
 export default function NotifyItem({ isRead, item }: NotifyItemProps) {
@@ -16,6 +16,7 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const notify = useAppSelector((state) => state.notify);
+    const token = useAppSelector((state) => state.user.token);
 
     useEffect(() => {
         const deleteBtnClick: EventListenerOrEventListenerObject = (e: Event) => {
@@ -46,12 +47,12 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     }, []);
 
     const handleDelete = async () => {
-        deleteNotify(item.id);
+        deleteNotify(token, item.id);
         dispatch(deleteList(item));
     };
 
     const handleRead = async () => {
-        patchNotify(item.id);
+        patchNotify(token, item.id);
         dispatch(updateReadList(item));
     };
 

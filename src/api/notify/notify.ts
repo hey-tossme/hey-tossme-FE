@@ -1,47 +1,39 @@
-import axios from "axios";
+import customAxios from "../customAxios";
 import { NotifyType } from "../../components/notify/_Notify.interface";
 
-export const getNotify = async (
-    setNotifyList: React.Dispatch<React.SetStateAction<Array<NotifyType> | null>>
-) => {
-    const URL = `http://20.214.139.103:8080/v1/notification`;
-    const fakeURL = "../../public/fakeData/notification.json";
-
-    return await axios
-        .get(fakeURL, { withCredentials: true })
-        .then((response) => {
-            setNotifyList(response.data.data);
-            return response.data.data;
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+export const getNotify = async (token: string) => {
+    return await customAxios({
+        method: "GET",
+        url: "v1/notification",
+        headers: {
+            Authorization: token,
+        },
+    });
 };
 
-export const deleteNotify = async (id: Number) => {
-    const URL = `http://20.214.139.103:8080/v1/notification?notification-id=${id}`;
-    const fakeURL = "../../public/fakeData/notification.json";
-
-    return await axios
-        .delete(fakeURL, { withCredentials: true })
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+export const deleteNotify = async (token: string, id: Number) => {
+    return await customAxios({
+        method: "DELETE",
+        url: `v1/notification/${id}`,
+        headers: {
+            Authorization: token,
+        },
+        data: {
+            notificationId: id,
+        },
+    });
 };
 
-export const patchNotify = async (id: Number) => {
-    const URL = `http://20.214.139.103:8080/v1/notification-id=${id}`;
-    const fakeURL = "../../public/fakeData/notification.json";
-
-    return await axios
-        .patch(fakeURL, { readOrNot: true }, { withCredentials: true })
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+export const patchNotify = async (token: string, id: Number) => {
+    return await customAxios({
+        method: "PATCH",
+        url: `v1/notification/${id}`,
+        headers: {
+            Authorization: token,
+        },
+        data: {
+            notificationId: id,
+            readOrNot: true,
+        },
+    });
 };
