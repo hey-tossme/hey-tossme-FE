@@ -60,6 +60,8 @@ export interface CardItemProps {
     item: listProps;
     page: Number;
     id: number;
+    bookmark: boolean | null;
+    setBookmark: React.Dispatch<React.SetStateAction<boolean | null>>;
 }
 
 export interface listProps {
@@ -69,6 +71,7 @@ export interface listProps {
     price: number;
     dueTime: string;
     address: string;
+    addressDetail: string;
     status: string;
 }
 

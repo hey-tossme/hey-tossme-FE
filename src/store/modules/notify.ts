@@ -21,8 +21,12 @@ export const notifySlice = createSlice({
                 target.readOrNot = true;
             }
         },
+
+        resetList: () => {
+            return initialState;
+        },
     },
 });
 
 export default notifySlice.reducer;
-export const { setList, deleteList, updateReadList } = notifySlice.actions;
+export const { setList, deleteList, updateReadList, resetList } = notifySlice.actions;

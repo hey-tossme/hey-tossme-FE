@@ -18,20 +18,33 @@ export default function LoginForm() {
     const firebaseMessaging = firebaseApp.messaging();
 
     useEffect(() => {
-        firebaseMessaging
-            .requestPermission()
-            .then(() => {
-                return firebaseMessaging.getToken({
+        firebaseMessaging.requestPermission().then(function () {
+            firebaseMessaging
+                .getToken({
                     vapidKey: import.meta.env.VITE_FIREBASE_VAPIDKEY,
+                })
+                .then(function (token: any) {
+                    setFcmToken(token);
+                    console.log(token);
+                })
+                .catch(function (error: any) {
+                    console.log("FCM Error : ", error);
                 });
-            })
-            .then(function (token: any) {
-                setFcmToken(token);
-                console.log(token);
-            })
-            .catch(function (error: any) {
-                console.log("FCM Error : ", error);
-            });
+        });
+
+        firebaseMessaging.onTokenRefresh(function () {
+            firebaseMessaging
+                .getToken({
+                    vapidKey: import.meta.env.VITE_FIREBASE_VAPIDKEY,
+                })
+                .then(function (token: any) {
+                    setFcmToken(token);
+                    console.log(token);
+                })
+                .catch(function (error: any) {
+                    console.log("FCM Error : ", error);
+                });
+        });
     }, []);
 
     const handleLoginSubmit = async () => {

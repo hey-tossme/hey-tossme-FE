@@ -4,11 +4,15 @@ import { useAppSelector } from "../../store/configureStore";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HeaderButtonProps } from "./_Header.interface";
+import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { resetList } from "../../store/modules/notify";
 
 export default function HeaderButton({ text, filled }: HeaderButtonProps) {
     const id = useAppSelector((state: any) => state.user.id);
     const token = useAppSelector((state: any) => state.user.token);
     const [typeUrl, setTypeUrl] = useState<string>();
+    const dispatch = useAppDispatch();
+
     const BUTTON_TYPE = {
         login: "/login",
         signup: "/signup",
@@ -19,6 +23,7 @@ export default function HeaderButton({ text, filled }: HeaderButtonProps) {
     const handleLogout = () => {
         if (text === "로그아웃") {
             requestLogout(token, id);
+            dispatch(resetList());
         } else return;
     };
 
