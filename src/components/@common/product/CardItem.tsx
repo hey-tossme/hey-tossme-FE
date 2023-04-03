@@ -71,7 +71,7 @@ export default function CardItem({ item, page, id, bookmark, setBookmark }: Card
                 <div className="item-info-header">
                     <p className="item-info-title">{title}</p>
                     <div ref={bookmarkRef} className="bookmark-btn-wrapper">
-                        {state ? (
+                        {bookmark || state ? (
                             <BsBookmarkFill className="bookmark-btn" />
                         ) : (
                             <BsBookmark className="bookmark-btn" />

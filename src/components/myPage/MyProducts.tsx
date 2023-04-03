@@ -8,6 +8,7 @@ import { PaginationType } from "./_MyPage.interface";
 
 export default function MyProducts({ page, setPage }: PaginationType) {
     const token = useAppSelector((state) => state.user.token);
+    const [bookmark, setBookmark] = useState<boolean>(false);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
     const [totalPage, setTotalPage] = useState<number>(0);
 
@@ -27,7 +28,14 @@ export default function MyProducts({ page, setPage }: PaginationType) {
                 <div className="my-products-card-wrapper">
                     <div className="my-products-card-list">
                         {itemList.map((item) => (
-                            <CardItem key={item.id} item={item} page={page} id={item.id} />
+                            <CardItem
+                                key={item.id}
+                                item={item}
+                                page={page}
+                                id={item.id}
+                                bookmark={bookmark}
+                                setBookmark={setBookmark}
+                            />
                         ))}
                     </div>
                 </div>
