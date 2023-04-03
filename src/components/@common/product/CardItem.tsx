@@ -70,7 +70,7 @@ export default function CardItem({ item, page }: CardItemProps) {
 
     return (
         <div ref={cardRef} className="card-item">
-            {status === "done" ? <div className="sold-out-label">판매 완료</div> : null}
+            {status === "DONE" && <div className="sold-out-label">판매 완료</div>}
             <div className="item-img-area">
                 <img
                     className="item-img"

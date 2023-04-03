@@ -9,7 +9,7 @@ import { setItems } from "../../store/modules/search";
 import { getProductList } from "../../api/product/product";
 import { CategoryBarProps } from "./_Category.interface";
 
-export default function CategoryBar({ setItem }: CategoryBarProps) {
+export default function CategoryBar({ setItem, setPage, setCategory }: CategoryBarProps) {
     const dispatch = useAppDispatch();
     const searchType: any = useAppSelector((state) => state.search);
 
@@ -24,7 +24,9 @@ export default function CategoryBar({ setItem }: CategoryBarProps) {
         dispatch(setItems({ category: null, startDue: null, endDue: null }));
     }, []);
 
-    const handleGetCategory = (e: React.MouseEvent) => {
+    const handleGetCategory = (e: React.MouseEvent, idx: number) => {
+        setCategory(idx);
+        setPage(0);
         const target = e.currentTarget as HTMLLIElement;
         const list = document.querySelectorAll(".category-bar-item");
         const icon = target.childNodes[0] as HTMLImageElement;
@@ -65,43 +67,29 @@ export default function CategoryBar({ setItem }: CategoryBarProps) {
         });
     }, [searchType.category]);
 
+    const categoryProps = [
+        { id: "all", name: "전체보기", icon: IoGrid },
+        { id: "accommodation", name: "숙박", icon: FaHome },
+        { id: "restaurant", name: "레스토랑", icon: MdRestaurant },
+        { id: "beauty", name: "미용실", icon: MdFace3 },
+        { id: "concert", name: "전시공연", icon: RiGalleryFill },
+        { id: "activity", name: "액티비티", icon: MdOutdoorGrill },
+        { id: "deadline", name: "마감임박", icon: MdBrowseGallery },
+    ];
+
     return (
         <div className="category-bar-group">
             <ul className="category-bar-list">
-                <li className="category-bar-item" id="all" onClick={handleGetCategory}>
-                    <IoGrid className="item-icon" />
-                    <span className="item-text">전체보기</span>
-                </li>
-
-                <li className="category-bar-item" id="accommodation" onClick={handleGetCategory}>
-                    <FaHome className="item-icon home" />
-                    <span className="item-text">숙박</span>
-                </li>
-
-                <li className="category-bar-item" id="restaurant" onClick={handleGetCategory}>
-                    <MdRestaurant className="item-icon" />
-                    <span className="item-text">레스토랑</span>
-                </li>
-
-                <li className="category-bar-item" id="beauty" onClick={handleGetCategory}>
-                    <MdFace3 className="item-icon beauty" />
-                    <span className="item-text">미용실</span>
-                </li>
-
-                <li className="category-bar-item" id="concert" onClick={handleGetCategory}>
-                    <RiGalleryFill className="item-icon concert" />
-                    <span className="item-text">전시공연</span>
-                </li>
-
-                <li className="category-bar-item" id="activity" onClick={handleGetCategory}>
-                    <MdOutdoorGrill className="item-icon activity" />
-                    <span className="item-text">액티비티</span>
-                </li>
-
-                <li className="category-bar-item" id="deadline" onClick={handleGetCategory}>
-                    <MdBrowseGallery className="item-icon" />
-                    <span className="item-text">마감임박</span>
-                </li>
+                {categoryProps.map((item, index) => (
+                    <li
+                        className="category-bar-item"
+                        id={item.id}
+                        onClick={(e) => handleGetCategory(e, index)}
+                    >
+                        <item.icon className="item-icon" />
+                        <span className="item-text">{item.name}</span>
+                    </li>
+                ))}
             </ul>
         </div>
     );

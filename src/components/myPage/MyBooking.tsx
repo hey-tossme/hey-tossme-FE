@@ -4,15 +4,17 @@ import Pagination from "../@common/product/Pagination";
 import { ItemInfo } from "./_MyPage.interface";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import { getUserBuyItem } from "../../api/user/user";
+import { PaginationType } from "./_MyPage.interface";
 
-export default function MyBooking() {
+export default function MyBooking({ page, setPage }: PaginationType) {
     const token = useAppSelector((state) => state.user.token);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
-    const [page, setPage] = useState<number>(1);
+    const [totalPage, setTotalPage] = useState<number>(0);
 
     const getUserBooking = async () => {
         const result = await getUserBuyItem(token, page, 4);
         setItemList(result.data.list.content);
+        setTotalPage(result.data.totalPages);
     };
 
     useEffect(() => {
@@ -28,7 +30,7 @@ export default function MyBooking() {
                     ))}
                 </div>
             </div>
-            <Pagination page={page} setPage={setPage} items={itemList} />
+            <Pagination page={page} setPage={setPage} items={itemList} totalPage={totalPage} />
         </>
     );
 }

@@ -14,7 +14,7 @@ import * as StompJs from "@stomp/stompjs";
 
 export default function ChattingRoomChatBox({ item }: ItemType) {
     const USER_ID = useAppSelector((state) => state.user.id);
-    const [userState, setUserState] = useState<boolean>(item.seller.id !== USER_ID);
+    const [userState, setUserState] = useState<boolean>(item.seller.id === USER_ID);
     const [messageList, setMessageList] = useState<IMessageInfo[]>([]);
     const [newMsgList, setNewMsgList] = useState<NewMsgInfo[]>([]);
     const [chatMsg, setChatMsg] = useState<string>("");

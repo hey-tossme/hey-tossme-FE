@@ -13,21 +13,33 @@ import LoginConfirmModal from "../@common/modal/LoginConfirmModal";
 export default function CategoryWrapper() {
     const searchType = useAppSelector((state) => state.search);
     const modalOpen = useAppSelector((state) => state.modal.modalOpen);
-    const [items, setItems] = useState<listProps[] | null>(null);
+    const [category, setCategory] = useState<number>(1);
+    const [items, setItems] = useState<listProps[]>([]);
+    const [totalPage, setTotalPage] = useState<number>(0);
     const [page, setPage] = useState<number>(0);
 
+    const getItems = async () => {
+        const result = await getProductList(searchType, page, 8);
+        setItems(result.data.content);
+        setTotalPage(result.data.totalPages);
+    };
+
     useEffect(() => {
-        getProductList(searchType, page, 8).then((response) => {
-            setItems(response.data.content);
-        });
-    }, [page]);
+        getItems();
+        console.log(items);
+    }, [page, category]);
 
     return (
         <>
-            <CategoryBar setItem={setItems} />
+            <CategoryBar
+                setItem={setItems}
+                category={category}
+                setCategory={setCategory}
+                setPage={setPage}
+            />
             <SearchBar setItems={setItems} />
             <CardList items={items} page={page} />
-            <Pagination page={page} setPage={setPage} items={items} />
+            <Pagination page={page} setPage={setPage} items={items} totalPage={totalPage} />
             {modalOpen ? (
                 <ModalPortal>
                     <LoginConfirmModal />

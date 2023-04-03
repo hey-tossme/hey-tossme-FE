@@ -19,7 +19,8 @@ export default function Detail() {
     const state = location.state as detailNavigateProps;
 
     useEffect(() => {
-        getDetailProduct(state.item.id).then((response) => {
+        const itemId = location.pathname.replace("/detail/", "");
+        getDetailProduct(+itemId).then((response) => {
             setItem(response.data);
         });
     }, []);

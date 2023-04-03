@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, AxiosError } from "axios";
 import { setLogin } from "../store/modules/user";
 import { reissueToken } from "./user/user";
-import { requestLogout } from "./auth/auth";
 import store from "../store/configureStore";
 
 const customAxios: AxiosInstance = axios.create({
