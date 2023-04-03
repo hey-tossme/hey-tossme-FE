@@ -15,7 +15,7 @@ export default function PriceInput({ price, setPrice }: PriceInputProps) {
     const handleSetPriceType = (e: React.FocusEvent) => {
         const target = e.target as HTMLInputElement;
         if (price !== null) {
-            target.value = `${commaNums(price)}원`;
+            target.value = `${commaNums(price)}`;
         }
     };
 
@@ -26,7 +26,7 @@ export default function PriceInput({ price, setPrice }: PriceInputProps) {
     useEffect(() => {
         const current = ref.current as HTMLInputElement;
         if (defaultPrice) {
-            current.value = `${commaNums(defaultPrice)}원`;
+            current.value = `${commaNums(defaultPrice)}`;
         }
     }, [defaultPrice]);
 
