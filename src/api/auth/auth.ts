@@ -45,13 +45,10 @@ export const requestLogin = async (email: string, password: string, fcmToken: st
     });
 };
 
-export const requestKakaoLogin = (code: string, fcmToken: string) => {
-    customAxios({
+export const requestKakaoLogin = async (code: string) => {
+    return await customAxios({
         method: "get",
         url: `/v2/kakao/login?code=${code}`,
-        data: {
-            fcmToken: fcmToken,
-        },
     });
 };
 
@@ -61,38 +58,6 @@ export const requestLogout = async (token: string, userId: number) => {
         url: `/v2/members/logout/${userId}`,
         headers: {
             Authorization: token,
-        },
-    });
-};
-
-// export const requestResetPassword = (email: string) => {
-//     customAxios({
-//         method: "post",
-//         url: `/v2/members/reset-password`,
-//         data: {
-//             email: email,
-//         },
-//     });
-// };
-
-// export const requestResetCheck = async (email: string, code: string) => {
-//     return await customAxios({
-//         method: "post",
-//         url: `/v2/members/reset-password/check`,
-//         data: {
-//             email: email,
-//             code: code,
-//         },
-//     });
-// };
-
-export const requestChangePassword = async (email: string, password: string) => {
-    return await customAxios({
-        method: "patch",
-        url: `/v2/members/reset-password`,
-        data: {
-            email: email,
-            password: password,
         },
     });
 };
@@ -109,11 +74,22 @@ export const requestResetPassword = (email: string) => {
 
 export const requestResetCheck = async (email: string, code: string) => {
     return await customAxios({
-        method: "get",
-        url: `/v2/members/reset-password`,
+        method: "post",
+        url: `/v2/members/reset-password/check`,
         data: {
             email: email,
             code: code,
+        },
+    });
+};
+
+export const requestChangePassword = async (email: string, password: string) => {
+    return await customAxios({
+        method: "patch",
+        url: `/v2/members/reset-password`,
+        data: {
+            email: email,
+            password: password,
         },
     });
 };
