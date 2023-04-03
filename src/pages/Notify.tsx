@@ -23,17 +23,6 @@ export default function Notify() {
         dispatch(setList(notifyList));
     }, [notifyList]);
 
-    console.log(notify);
-
-    // useEffect(() => {
-    //     if (notifyList !== null) {
-    //         const newList = notifyList.filter((item) => !item.readOrNot);
-    //         const existingList = notifyList.filter((item) => item.readOrNot);
-    //         setNewList(newList);
-    //         setExistingList(existingList);
-    //     }
-    // }, [notifyList]);
-
     useEffect(() => {
         if (notify) {
             const newList = notify.filter((item: any) => !item.readOrNot);

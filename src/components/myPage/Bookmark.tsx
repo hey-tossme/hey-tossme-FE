@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import CardItem from "../@common/product/CardItem";
 import { getBookmarkState } from "../../api/bookmark/bookmark";
 import Pagination from "../@common/product/Pagination";
 import { ItemInfo } from "./_MyPage.interface";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
+import { PaginationType } from "./_MyPage.interface";
 
-export default function Bookmark() {
+export default function Bookmark({ page, setPage }: PaginationType) {
     const token = useAppSelector((state) => state.user.token);
+    const [totalPage, setTotalPage] = useState<number>(0);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
-    const [page, setPage] = useState<number>(1);
 
     const getUserBookmarkList = async () => {
         const result = await getBookmarkState(token, page, 8);
         setItemList(result.data.content);
+        setTotalPage(result.data.totalPages);
     };
 
     useEffect(() => {
@@ -29,17 +30,16 @@ export default function Bookmark() {
                         style={{
                             width: "1044px",
                             display: "flex",
-                            justifyContent: "space-between",
                             flexWrap: "wrap",
                         }}
                     >
                         {itemList.map((item) => (
-                            <CardItem item={item} key={item.id} page={page} />
+                            <CardItem item={item} key={item.id} id={item.itemId} page={page} />
                         ))}
                     </div>
                 </div>
             </div>
-            <Pagination page={page} setPage={setPage} items={itemList} />
+            <Pagination page={page} setPage={setPage} items={itemList} totalPage={totalPage} />
         </>
     );
 }

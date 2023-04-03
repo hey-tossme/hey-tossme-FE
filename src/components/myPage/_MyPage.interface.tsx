@@ -12,6 +12,7 @@ export interface UserInfo {
 
 export interface ItemInfo {
     id: number;
+    itemId: number;
     imageUrl: string;
     title: string;
     price: number;
@@ -41,4 +42,9 @@ export interface GetUserAccount {
     account: string;
     getAccount: boolean;
     setGetAccount: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface PaginationType {
+    page: number;
+    setPage: React.Dispatch<React.SetStateAction<number>>;
 }

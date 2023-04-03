@@ -17,9 +17,7 @@ export default function MyBookingCard({ item }: ItemType) {
                     <div className="booking-card-title">{item.title}</div>
                     <div className="booking-card-price">{commaNums(item.price)} 원</div>
                     <div className="booking-card-date">{date(item.dueTime)}</div>
-                    <div className="booking-card-place">
-                        {item.address} {item.addressDetail}
-                    </div>
+                    <div className="booking-card-place">{item.address}</div>
                 </div>
                 <div className="booking-card-btn-area">
                     <Link to={`/detail/${item.id}`} state={{ item: item }}>

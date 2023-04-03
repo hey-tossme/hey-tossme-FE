@@ -34,10 +34,10 @@ export default function DetailInfoHeader({ item }: detailInfoHeaderProps) {
     };
 
     const openChatRoom = async () => {
-        await getMakeRoomsAxios(item.id, token);
+        const result = await getMakeRoomsAxios(item.id, token);
+        dispatch(setChatId(result.data.id));
         dispatch(setEnterChat());
         dispatch(setOpenChat());
-        dispatch(setChatId(chatId));
     };
 
     return (

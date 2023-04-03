@@ -15,16 +15,14 @@ export default function LoginForm() {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [fcmToken, setFcmToken] = useState<string>("");
+    const firebaseMessaging = firebaseApp.messaging();
 
     useEffect(() => {
-        const firebaseMessaging = firebaseApp.messaging();
-
         firebaseMessaging
             .requestPermission()
             .then(() => {
-                return firebaseMessaging.getToken(firebaseMessaging, {
-                    vapidKey:
-                        "BIniR9YstJOEKxIflD9vEUdGjNi7Z3_h1k5gXduQVNNxq-_i0BH-vTTWGcFRBPmxxA9yhvPRNs9xmVbdBHdeDkE",
+                return firebaseMessaging.getToken({
+                    vapidKey: import.meta.env.VITE_FIREBASE_VAPIDKEY,
                 });
             })
             .then(function (token: any) {

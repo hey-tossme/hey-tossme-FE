@@ -41,21 +41,25 @@ export interface renderCustomHeaderProps {
 }
 
 export interface CategoryBarProps {
-    setItem: React.Dispatch<React.SetStateAction<listProps[] | null>>;
+    setItem: React.Dispatch<React.SetStateAction<listProps[]>>;
+    category: number;
+    setPage: React.Dispatch<React.SetStateAction<number>>;
+    setCategory: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface SearchBarProps {
-    setItems: React.Dispatch<React.SetStateAction<listProps[] | null>>;
+    setItems: React.Dispatch<React.SetStateAction<listProps[]>>;
 }
 
 export interface CardListProps {
-    items: Array<listProps> | null;
-    page: Number;
+    items: Array<listProps>;
+    page: number;
 }
 
 export interface CardItemProps {
     item: listProps;
     page: Number;
+    id: number;
 }
 
 export interface listProps {
@@ -69,6 +73,7 @@ export interface listProps {
 }
 
 export interface PaginationProps {
+    totalPage: number;
     page: number;
     setPage: React.Dispatch<React.SetStateAction<number>>;
     items: Array<listProps> | null;

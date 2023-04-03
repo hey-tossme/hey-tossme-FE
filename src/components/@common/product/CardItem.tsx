@@ -24,10 +24,9 @@ export default function CardItem({ item, page }: CardItemProps) {
 
     useEffect(() => {
         getBookmarkState(user.token, page, 8).then((response) => {
-            console.log(response);
             setIsBookmarkItems(response.data.content);
         });
-    }, []);
+    }, [bookmark]);
 
     useEffect(() => {
         isBookmarkItems &&
@@ -58,7 +57,7 @@ export default function CardItem({ item, page }: CardItemProps) {
 
     const handleSetBookmark = () => {
         if (bookmark) {
-            deleteBookmarkState(user.token, item.id).then((response) => {
+            deleteBookmarkState(user.token, item.id).then(() => {
                 setBookmark(false);
             });
         } else {
@@ -71,7 +70,7 @@ export default function CardItem({ item, page }: CardItemProps) {
 
     return (
         <div ref={cardRef} className="card-item">
-            {status === "done" ? <div className="sold-out-label">판매 완료</div> : null}
+            {status === "DONE" && <div className="sold-out-label">판매 완료</div>}
             <div className="item-img-area">
                 <img
                     className="item-img"

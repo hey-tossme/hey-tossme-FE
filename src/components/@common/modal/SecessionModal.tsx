@@ -7,7 +7,7 @@ import { deleteUser } from "../../../api/user/user";
 import { setLogin } from "../../../store/modules/user";
 
 export default function SecessionModal() {
-    const token = useAppSelector((state) => state.user.token);
+    const user = useAppSelector((state) => state.user);
     const dispatch = useDispatch();
     const modalRef = useRef<HTMLDivElement>(null);
 
@@ -22,12 +22,14 @@ export default function SecessionModal() {
     };
 
     const handleSecessionUser = () => {
-        deleteUser(token);
-        setLogin({
-            token: "",
-            id: 0,
-            account: null,
-        });
+        deleteUser(user.token);
+        dispatch(
+            setLogin({
+                token: "",
+                id: 0,
+                account: null,
+            })
+        );
         closeModal();
     };
 

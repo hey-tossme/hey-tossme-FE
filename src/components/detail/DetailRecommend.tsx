@@ -20,7 +20,7 @@ export default function DetailRecommend({ category }: detailRecommendProps) {
             <div className="category-list">
                 {cardList &&
                     cardList.map((item) => {
-                        return <CardItem key={item.id} item={item} page={0} />;
+                        return <CardItem key={item.id} item={item} page={0} id={item.id} />;
                     })}
             </div>
         </div>

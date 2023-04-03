@@ -26,7 +26,7 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
             } else {
                 const notifyCurrent = notifyRef.current as HTMLDivElement;
                 if (notifyCurrent && notifyCurrent.contains(e.target as Node)) {
-                    item.type !== "transaction"
+                    item.type !== "DEAL"
                         ? navigate(`/detail/${item.itemId}`, { state: { item: targetItem } })
                         : navigate("/notify");
                 }
@@ -69,18 +69,19 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
                     {!isRead && <FaRegBell className="icon" />}
                     {isRead && <FaRegBell size="20px" color="#A6A6A6" />}
                 </div>
-                {item.type === "transaction" && (
+                {item.type === "DEAL" && targetItem && (
                     <p className="notify-text">
-                        <span className="title">{item.title}</span>에 대한 거래가 완료되었습니다.
+                        <span className="title">{targetItem.title}</span>에 대한 거래가
+                        완료되었습니다.
                     </p>
                 )}
-                {item.type === "bookmark" && (
+                {item.type === "BOOKMARK" && targetItem && (
                     <p className="notify-text">
-                        내가 올린 <span className="title">{item.title}</span> 상품이 다른 사용자의
-                        위시 리스트에 등록되었습니다.
+                        내가 올린 <span className="title">{targetItem.title}</span> 상품이 다른
+                        사용자의 위시 리스트에 등록되었습니다.
                     </p>
                 )}
-                {item.type === "keyword" && (
+                {item.type === "KEYWORD" && (
                     <p className="notify-text">
                         내가 등록한 관심 키워드와 관련된 상품이 게시되었습니다. 지금 확인해 보세요!
                     </p>

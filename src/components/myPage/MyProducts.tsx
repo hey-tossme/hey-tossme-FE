@@ -4,15 +4,17 @@ import Pagination from "../@common/product/Pagination";
 import { ItemInfo } from "./_MyPage.interface";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import { getUserSellItem } from "../../api/user/user";
+import { PaginationType } from "./_MyPage.interface";
 
-export default function MyProducts() {
+export default function MyProducts({ page, setPage }: PaginationType) {
     const token = useAppSelector((state) => state.user.token);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
-    const [page, setPage] = useState<number>(1);
+    const [totalPage, setTotalPage] = useState<number>(0);
 
     const getUserProducts = async () => {
         const result = await getUserSellItem(token, page, 8);
         setItemList(result.data.list.content);
+        setTotalPage(result.data.totalPages);
     };
 
     useEffect(() => {
@@ -25,12 +27,12 @@ export default function MyProducts() {
                 <div className="my-products-card-wrapper">
                     <div className="my-products-card-list">
                         {itemList.map((item) => (
-                            <CardItem key={item.id} item={item} />
+                            <CardItem key={item.id} item={item} page={page} id={item.id} />
                         ))}
                     </div>
                 </div>
             </div>
-            <Pagination page={page} setPage={setPage} items={itemList} />
+            <Pagination page={page} setPage={setPage} items={itemList} totalPage={totalPage} />
         </>
     );
 }

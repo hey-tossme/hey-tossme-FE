@@ -56,9 +56,18 @@ export default function ChattingListItem({ item, chatState, setChatState }: Item
                             className="chatting-list-img"
                             loading="lazy"
                         />
-                        <div className="chatting-list-content">
-                            <div className="chatting-list-name">{item.buyer.name}</div>
-                            <div className="chatting-list-recent-msg">{item.lastMessage}</div>
+                        <div style={{ width: "100%", position: "relative" }}>
+                            <div className="chatting-list-content">
+                                <div className="chatting-list-name">{item.buyer.name}</div>
+                                <div className="chatting-list-recent-msg">{item.lastMessage}</div>
+                            </div>
+                            <button
+                                aria-label="채팅방 삭제"
+                                onClick={deleteChatItem}
+                                style={{ position: "absolute", top: "12px", right: "20px" }}
+                            >
+                                <RiDeleteBack2Fill style={{ fontSize: "24px", color: "#ec7357" }} />
+                            </button>
                         </div>
                     </>
                 )}
