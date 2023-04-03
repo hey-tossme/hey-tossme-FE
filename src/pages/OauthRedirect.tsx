@@ -12,21 +12,33 @@ export default function OauthRedirect() {
     let authorization = new URL(window.location.href).searchParams.get("code");
 
     const handleKakaoLogin = async (fcmToken: string) => {
-        try {
-            let result: any =
-                authorization && fcmToken && (await requestKakaoLogin(authorization, fcmToken));
-            result &&
-                dispatch(
-                    setLogin({
-                        token: `bearer ${result.token}`,
-                        id: result.data.id,
-                        account: result.data.account,
-                    })
-                );
-            navigate("/");
-        } catch (error) {
-            console.log(error);
-        }
+        authorization &&
+            requestKakaoLogin(authorization, fcmToken).then((response) => {
+                console.log(response);
+                // dispatch(
+                //     setLogin({
+                //         token: `bearer ${response.token}`,
+                //         id: result.data.id,
+                //         account: result.data.account,
+                //     })
+                // );
+            });
+        // try {
+        //     let result: any =
+        //         authorization && fcmToken && (await requestKakaoLogin(authorization, fcmToken));
+        //     result && console.log(result);
+        //     result &&
+        //         dispatch(
+        //             setLogin({
+        //                 token: `bearer ${result.token}`,
+        //                 id: result.data.id,
+        //                 account: result.data.account,
+        //             })
+        //         );
+        //     // navigate("/");
+        // } catch (error) {
+        //     console.log(error);
+        // }
     };
 
     useEffect(() => {
@@ -35,9 +47,8 @@ export default function OauthRedirect() {
         firebaseMessaging
             .requestPermission()
             .then(() => {
-                return firebaseMessaging.getToken(firebaseMessaging, {
-                    vapidKey:
-                        "BIniR9YstJOEKxIflD9vEUdGjNi7Z3_h1k5gXduQVNNxq-_i0BH-vTTWGcFRBPmxxA9yhvPRNs9xmVbdBHdeDkE",
+                return firebaseMessaging.getToken({
+                    vapidKey: import.meta.env.VITE_FIREBASE_VAPIDKEY,
                 });
             })
             .then(function (token: any) {

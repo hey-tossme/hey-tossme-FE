@@ -7,6 +7,7 @@ export default function Pagination({ page, setPage, items }: PaginationProps) {
     useEffect(() => {
         if (items) {
             const totalCount = items.length;
+            console.log(totalCount);
             const totalPageNums = Math.ceil(totalCount / 8);
             const arr = new Array(totalPageNums).fill("");
             setTotalPageNums(arr);
