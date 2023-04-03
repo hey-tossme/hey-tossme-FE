@@ -40,11 +40,6 @@ export default function CategoryWrapper() {
             <SearchBar setItems={setItems} />
             <CardList items={items} page={page} />
             <Pagination page={page} setPage={setPage} items={items} totalPage={totalPage} />
-            {modalOpen ? (
-                <ModalPortal>
-                    <LoginConfirmModal />
-                </ModalPortal>
-            ) : null}
         </>
     );
 }

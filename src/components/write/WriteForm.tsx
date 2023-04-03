@@ -112,11 +112,6 @@ export default function WriteForm() {
             <button type="button" className="enroll-btn" onClick={handlePutProduct}>
                 등록
             </button>
-            {modalOpen ? (
-                <ModalPortal>
-                    <DateInputConfirmModal />
-                </ModalPortal>
-            ) : null}
         </>
     );
 }

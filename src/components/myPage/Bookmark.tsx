@@ -10,6 +10,7 @@ export default function Bookmark({ page, setPage }: PaginationType) {
     const token = useAppSelector((state) => state.user.token);
     const [totalPage, setTotalPage] = useState<number>(0);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
+    const [bookmark, setBookmark] = useState<boolean>(true);
 
     const getUserBookmarkList = async () => {
         const result = await getBookmarkState(token, page, 8);
@@ -19,7 +20,7 @@ export default function Bookmark({ page, setPage }: PaginationType) {
 
     useEffect(() => {
         getUserBookmarkList();
-    }, [page]);
+    }, [page, bookmark]);
 
     return (
         <>
@@ -34,7 +35,14 @@ export default function Bookmark({ page, setPage }: PaginationType) {
                         }}
                     >
                         {itemList.map((item) => (
-                            <CardItem item={item} key={item.id} id={item.itemId} page={page} />
+                            <CardItem
+                                item={item}
+                                key={item.id}
+                                id={item.itemId}
+                                page={page}
+                                bookmark={bookmark}
+                                setBookmark={setBookmark}
+                            />
                         ))}
                     </div>
                 </div>

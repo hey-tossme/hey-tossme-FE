@@ -38,11 +38,6 @@ export default function Detail() {
                     <DetailRecommend category={item.category} />
                 </>
             )}
-            {modalOpen ? (
-                <ModalPortal>
-                    <LoginConfirmModal />
-                </ModalPortal>
-            ) : null}
         </div>
     );
 }
