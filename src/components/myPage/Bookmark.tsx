@@ -20,6 +20,8 @@ export default function Bookmark() {
         getUserBookmarkList();
     }, [page]);
 
+    console.log(page);
+
     return (
         <>
             <div className="bookmark-card-container">

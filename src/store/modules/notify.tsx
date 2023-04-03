@@ -7,10 +7,7 @@ export const notifySlice = createSlice({
     initialState,
     reducers: {
         setList: (state, action) => {
-            if ((action.payload = [])) {
-                return initialState;
-            }
-            return [...action.payload];
+            return action.payload;
         },
 
         deleteList: (state, action) => {

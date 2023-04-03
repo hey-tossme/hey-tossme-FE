@@ -9,5 +9,6 @@ interface ImportMeta {
         VITE_FIREBASE_MESSAING_SENDER_ID: string;
         VITE_FIREBASE_APP_ID: string;
         VITE_FIREBASE_MEASUREMENT_ID: string;
+        VITE_FIREBASE_VAPIDKEY: string;
     };
 }

@@ -24,10 +24,9 @@ export default function CardItem({ item, page }: CardItemProps) {
 
     useEffect(() => {
         getBookmarkState(user.token, page, 8).then((response) => {
-            console.log(response);
             setIsBookmarkItems(response.data.content);
         });
-    }, []);
+    }, [bookmark]);
 
     useEffect(() => {
         isBookmarkItems &&
@@ -58,7 +57,7 @@ export default function CardItem({ item, page }: CardItemProps) {
 
     const handleSetBookmark = () => {
         if (bookmark) {
-            deleteBookmarkState(user.token, item.id).then((response) => {
+            deleteBookmarkState(user.token, item.id).then(() => {
                 setBookmark(false);
             });
         } else {
