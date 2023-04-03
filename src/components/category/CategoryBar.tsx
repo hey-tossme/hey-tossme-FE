@@ -83,6 +83,7 @@ export default function CategoryBar({ setItem, setPage, setCategory }: CategoryB
                 {categoryProps.map((item, index) => (
                     <li
                         className="category-bar-item"
+                        id={item.id}
                         key={item.id}
                         onClick={(e) => handleGetCategory(e, index)}
                     >
