@@ -2,40 +2,29 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/configureStore.hook";
 import { useNavigate } from "react-router-dom";
-import { setModalOpen } from "../../../store/modules/modal";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { CardItemProps } from "../../category/_Category.interface";
 import { customNullItemImg, commaNums, date } from "../../../hooks/utils";
-import {
-    deleteBookmarkState,
-    getBookmarkState,
-    setBookmarkState,
-} from "../../../api/bookmark/bookmark";
+import { deleteBookmarkState, setBookmarkState } from "../../../api/bookmark/bookmark";
 
-export default function CardItem({ item, page, id }: CardItemProps) {
-    const { imageUrl, title, price, dueTime, address, status } = item;
+export default function CardItem({ item, page, id, bookmark, setBookmark }: CardItemProps) {
+    const { imageUrl, title, price, dueTime, address, addressDetail, status } = item;
     const user = useAppSelector((state) => state.user);
-    const [isBookmarkItems, setIsBookmarkItems] = useState<any>();
-    const [bookmark, setBookmark] = useState<boolean>();
+    const bookmarkList = useAppSelector((state) => state.bookmark);
     const bookmarkRef = useRef<HTMLDivElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
+    const [state, setState] = useState<boolean>();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
-        getBookmarkState(user.token, page, 8).then((response) => {
-            setIsBookmarkItems(response.data.content);
-        });
-    }, [bookmark]);
-
-    useEffect(() => {
-        isBookmarkItems &&
-            isBookmarkItems.map((isBookmarkItem: any) => {
-                if (item.id === isBookmarkItem.itemId) {
-                    setBookmark(true);
+        bookmarkList &&
+            bookmarkList.map((bookmarkItem: any) => {
+                if (item.id === bookmarkItem.itemId) {
+                    setState(true);
                 }
             });
-    }, [isBookmarkItems]);
+    }, [bookmarkList]);
 
     useEffect(() => {
         const bookMarkClick: EventListenerOrEventListenerObject = (e: Event) => {
@@ -45,7 +34,7 @@ export default function CardItem({ item, page, id }: CardItemProps) {
             } else {
                 const cardCurrent = cardRef.current as HTMLDivElement;
                 if (cardCurrent && cardCurrent.contains(e.target as Node)) {
-                    navigate(`/detail/${id}`, { state: { item: item, page: page } });
+                    navigate(`/detail/${id}`, { state: { item: item.id, page: page } });
                 }
             }
         };
@@ -53,19 +42,18 @@ export default function CardItem({ item, page, id }: CardItemProps) {
         return () => {
             document.removeEventListener("mousedown", bookMarkClick);
         };
-    }, [bookmarkRef, cardRef, bookmark]);
+    }, [bookmarkRef, cardRef, state]);
 
     const handleSetBookmark = () => {
-        if (bookmark) {
+        if (state) {
             deleteBookmarkState(user.token, item.id).then(() => {
-                setBookmark(false);
+                setState(false);
             });
         } else {
             setBookmarkState(user.token, item.id).then(() => {
-                setBookmark(true);
+                setState(true);
             });
         }
-        !user && dispatch(setModalOpen());
     };
 
     return (
@@ -83,7 +71,7 @@ export default function CardItem({ item, page, id }: CardItemProps) {
                 <div className="item-info-header">
                     <p className="item-info-title">{title}</p>
                     <div ref={bookmarkRef} className="bookmark-btn-wrapper">
-                        {bookmark ? (
+                        {state ? (
                             <BsBookmarkFill className="bookmark-btn" />
                         ) : (
                             <BsBookmark className="bookmark-btn" />
@@ -92,7 +80,9 @@ export default function CardItem({ item, page, id }: CardItemProps) {
                 </div>
                 <p className="item-info-price">{commaNums(price)}원</p>
                 <p className="item-info-duedate">{date(dueTime)}</p>
-                <p className="item-info-address">{address}</p>
+                <p className="item-info-address">
+                    {address} {addressDetail}
+                </p>
             </div>
         </div>
     );

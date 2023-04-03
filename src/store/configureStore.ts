@@ -10,6 +10,7 @@ import search from "./modules/search";
 import chat from "./modules/chat";
 import modal from "./modules/modal";
 import userSlice from "./modules/user";
+import bookmark from "./modules/bookmark";
 
 const reducers = combineReducers({
     notify: notify,
@@ -17,6 +18,7 @@ const reducers = combineReducers({
     chat: chat,
     modal: modal,
     user: userSlice.reducer,
+    bookmark: bookmark,
 });
 
 // config 작성
