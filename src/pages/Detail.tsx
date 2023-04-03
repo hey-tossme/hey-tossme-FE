@@ -8,12 +8,9 @@ import DetailMap from "../components/detail/DetailMap";
 import DetailRecommend from "../components/detail/DetailRecommend";
 import { detailNavigateProps } from "../components/detail/_detail.interface";
 import { useAppSelector } from "../store/hooks/configureStore.hook";
-import ModalPortal from "../components/@common/modal/portal/ModalPortal";
-import LoginConfirmModal from "../components/@common/modal/LoginConfirmModal";
 import { getDetailProduct } from "../api/product/product";
 
 export default function Detail() {
-    const modalOpen = useAppSelector((state) => state.modal.modalOpen);
     const [item, setItem] = useState<any>();
     const location = useLocation();
     const state = location.state as detailNavigateProps;

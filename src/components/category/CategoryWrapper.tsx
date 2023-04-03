@@ -7,12 +7,9 @@ import { useState } from "react";
 import { getProductList } from "../../api/product/product";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import { listProps } from "./_Category.interface";
-import ModalPortal from "../@common/modal/portal/ModalPortal";
-import LoginConfirmModal from "../@common/modal/LoginConfirmModal";
 
 export default function CategoryWrapper() {
     const searchType = useAppSelector((state) => state.search);
-    const modalOpen = useAppSelector((state) => state.modal.modalOpen);
     const [category, setCategory] = useState<number>(1);
     const [items, setItems] = useState<listProps[]>([]);
     const [totalPage, setTotalPage] = useState<number>(0);

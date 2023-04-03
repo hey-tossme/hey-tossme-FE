@@ -12,9 +12,9 @@ export default function MyBooking({ page, setPage }: PaginationType) {
     const [totalPage, setTotalPage] = useState<number>(0);
 
     const getUserBooking = async () => {
-        const result = await getUserBuyItem(token, page, 4);
+        const result = await getUserBuyItem(token, page, 8);
         setItemList(result.data.list.content);
-        setTotalPage(result.data.totalPages);
+        setTotalPage(result.data.list.totalPages);
     };
 
     useEffect(() => {
