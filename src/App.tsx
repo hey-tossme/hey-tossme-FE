@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./styles/main.css";
+import { useAppSelector } from "./store/hooks/configureStore.hook";
 import Main from "./pages/Main";
 import Login from "./pages/Login";
 import OauthRedirect from "./pages/OauthRedirect";
@@ -12,18 +13,15 @@ import Notify from "./pages/Notify";
 import Category from "./pages/Category";
 import Detail from "./pages/Detail";
 import Write from "./pages/Write";
-import sendFCMTokenFuc from "./utils/fcm";
-import { useEffect } from "react";
+import "./styles/main.css";
 
 export default function App() {
-    useEffect(() => {
-        sendFCMTokenFuc(), [];
-    });
+    const getLoginState = useAppSelector((state) => state.user.token);
 
     return (
         <BrowserRouter>
             <Header />
-            <FixedBtn />
+            {getLoginState !== "" && <FixedBtn />}
             <Routes>
                 <Route path="/" element={<Main />}></Route>
                 <Route path="/login" element={<Login />}></Route>

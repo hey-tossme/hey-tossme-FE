@@ -11,6 +11,7 @@
     position: fixed;
     top: 0;
     width: 100%;
+    min-width: 1140px;
     height: 120px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     z-index: 3;
@@ -38,6 +39,10 @@
         .notify-group {
             @apply relative;
 
+            .header-icon {
+                cursor: pointer;
+            }
+
             .new-notify {
                 @apply absolute top-[1px] right-[2px];
                 width: 12px;
@@ -51,11 +56,19 @@
         .theme-toggle-btn {
             transition: transform 0.3s;
             transform: rotate(0deg);
+            cursor: pointer;
         }
 
         .theme-toggle-btn:active {
             transition: 0.3s;
             transform: rotate(45deg);
+        }
+
+        .header-icon {
+            @apply dark:text-white;
+            width: 32px;
+            height: 32px;
+            color: $color-gray-800;    
         }
 
         .header-btn {

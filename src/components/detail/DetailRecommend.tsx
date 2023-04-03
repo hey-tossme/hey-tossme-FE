@@ -2,25 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { detailRecommendProps } from "./_detail.interface";
 import CardItem from "../@common/product/CardItem";
+import { getProductList } from "../../api/product/product";
 
 export default function DetailRecommend({ category }: detailRecommendProps) {
-    const PRODUCTS_URL = "/fakeData/product.json";
     const [cardList, setCardList] = useState<Array<any> | null>();
+    const axiosParams = { category: category };
 
     useEffect(() => {
-        axios
-            .get(PRODUCTS_URL, {
-                params: {
-                    category: category,
-                },
-            })
-            .then((res) => {
-                const copyList = [];
-                for (let i = 0; i < 6; i++) {
-                    copyList.push(res.data.data.content[i]);
-                }
-                setCardList(copyList);
-            });
+        getProductList(axiosParams, 0, 6).then((response) => {
+            setCardList(response.data.content);
+        });
     }, [category]);
 
     return (
@@ -29,7 +20,7 @@ export default function DetailRecommend({ category }: detailRecommendProps) {
             <div className="category-list">
                 {cardList &&
                     cardList.map((item) => {
-                        return <CardItem key={item.id} item={item} />;
+                        return <CardItem key={item.id} item={item} page={0} id={item.id} />;
                     })}
             </div>
         </div>

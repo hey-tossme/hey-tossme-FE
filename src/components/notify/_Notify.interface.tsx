@@ -2,6 +2,11 @@ export interface NotifyProps {
     getIsNew: (answer: boolean) => void;
 }
 
+export interface NotifyNavigateProps {
+    isNew: boolean;
+    setIsNew: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export interface NotifyType {
     id: number;
     itemId: number;

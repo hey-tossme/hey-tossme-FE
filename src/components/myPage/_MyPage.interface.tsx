@@ -2,16 +2,17 @@ export interface UserInfo {
     id: number;
     email: string;
     name: string;
-    imageUrl: string;
+    imageURL: string;
     socialType: string | null;
     createdAt: string;
     status: string;
     account: string;
-    bankname: string;
+    bankName: string;
 }
 
 export interface ItemInfo {
     id: number;
+    itemId: number;
     imageUrl: string;
     title: string;
     price: number;
@@ -32,10 +33,18 @@ export interface KeywordInfo {
 
 export interface KeywordType {
     keyword: KeywordInfo;
+    sendKeyword: boolean;
+    setSendKeyword: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface GetUserAccount {
-    getUserAccountInfo: () => boolean;
     bank: string;
     account: string;
+    getAccount: boolean;
+    setGetAccount: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface PaginationType {
+    page: number;
+    setPage: React.Dispatch<React.SetStateAction<number>>;
 }

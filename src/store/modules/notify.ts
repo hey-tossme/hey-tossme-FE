@@ -7,22 +7,26 @@ export const notifySlice = createSlice({
     initialState,
     reducers: {
         setList: (state, action) => {
-            return [...state, ...action.payload];
+            return action.payload;
         },
 
         deleteList: (state, action) => {
-            return state.filter((item) => item.id !== action.payload.id);
+            return state.filter((item: any) => item.id !== action.payload.id);
         },
 
         updateReadList: (state, action) => {
             const { id } = action.payload;
-            const target = state.find((item) => item.id === id);
+            const target = state.find((item: any) => item.id === id);
             if (target) {
                 target.readOrNot = true;
             }
+        },
+
+        resetList: () => {
+            return initialState;
         },
     },
 });
 
 export default notifySlice.reducer;
-export const { setList, deleteList, updateReadList } = notifySlice.actions;
+export const { setList, deleteList, updateReadList, resetList } = notifySlice.actions;

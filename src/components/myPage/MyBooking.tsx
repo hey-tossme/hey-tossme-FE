@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import MyBookingCard from "./MyBookingCard";
 import Pagination from "../@common/product/Pagination";
 import { ItemInfo } from "./_MyPage.interface";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
+import { getUserBuyItem } from "../../api/user/user";
+import { PaginationType } from "./_MyPage.interface";
 
-export default function MyBooking() {
+export default function MyBooking({ page, setPage }: PaginationType) {
+    const token = useAppSelector((state) => state.user.token);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
-    const PRODUCT_URL = "/fakeData/product.json";
+    const [totalPage, setTotalPage] = useState<number>(0);
 
-    const getBookingList = () => {
-        axios.get(PRODUCT_URL).then((res) => {
-            const response = res.data;
-            setItemList(response.data.content);
-        });
+    const getUserBooking = async () => {
+        const result = await getUserBuyItem(token, page, 8);
+        setItemList(result.data.list.content);
+        setTotalPage(result.data.list.totalPages);
     };
 
     useEffect(() => {
-        getBookingList();
-        console.log(itemList);
-    }, []);
+        getUserBooking();
+    }, [page]);
 
     return (
         <>
@@ -29,7 +30,7 @@ export default function MyBooking() {
                     ))}
                 </div>
             </div>
-            <Pagination />
+            <Pagination page={page} setPage={setPage} items={itemList} totalPage={totalPage} />
         </>
     );
 }

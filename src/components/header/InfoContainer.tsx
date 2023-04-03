@@ -1,44 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
-import axios from "axios";
-import { setList } from "../../store/modules/notify";
-import { NotifyType } from "../notify/_Notify.interface";
-import { setIsDark } from "../../store/modules/dark";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import { FaRegMoon, FaRegBell } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
 import HeaderButton from "./HeaderButton";
 import { firebaseApp } from "../../firebase";
 
 export function InfoContainer() {
-    const dispatch = useAppDispatch();
-    const notify = useAppSelector((state) => state.notify);
-    const [notifyList, setNotifyList] = useState<Array<NotifyType>>();
-    const [dark, setDark] = useState(false);
-    const [isLogin, setIsLogin] = useState(true);
     const firebaseMessaging = firebaseApp.messaging();
+    const user = useAppSelector((state) => state.user);
+    const [dark, setDark] = useState<boolean>();
+    const [isLogin, setIsLogin] = useState(true);
+    const [isNew, setIsNew] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     firebaseMessaging.onMessage((payload: any) => {
         const title = payload.notification.title;
         const options = {
             body: payload.notification.body,
         };
+
         console.log("Message received. title : ", title, "options : ", options);
+        setIsNew(true);
         navigator.serviceWorker.ready.then((registration) => {
             registration.showNotification(title, options);
         });
     });
 
     useEffect(() => {
-        try {
-            axios.get("/fakeData/notification.json").then((res) => {
-                setNotifyList(res.data.data);
-            });
-        } catch (err) {
-            console.log("error");
-        }
-
         if (localStorage.getItem("theme") === "dark") {
             document.documentElement.classList.add("dark");
             setDark(true);
@@ -46,25 +36,21 @@ export function InfoContainer() {
     }, []);
 
     useEffect(() => {
-        if (notifyList) {
-            dispatch(setList(notifyList));
-        }
-    }, [notifyList]);
+        !user.token ? setIsLogin(false) : setIsLogin(true);
+    }, [user]);
 
-    // useEffect(() => {
-    //     const newNotify = notify.filter((item) => item.readOrNot === false);
-    //     newNotify && newNotify.length ? setIsRead(false) : setIsRead(true);
-    // }, [notify]);
+    const handleGoNotify = () => {
+        navigate("/notify");
+        setIsNew(false);
+    };
 
     const handleToggleDarkMode = () => {
         if (localStorage.getItem("theme") === "dark") {
-            dispatch(setIsDark({ dark: false }));
             localStorage.removeItem("theme");
             document.documentElement.classList.remove("dark");
             setDark(false);
         } else {
             document.documentElement.classList.add("dark");
-            dispatch(setIsDark({ dark: true }));
             localStorage.setItem("theme", "dark");
             setDark(true);
         }
@@ -74,17 +60,12 @@ export function InfoContainer() {
         <div className="info-container">
             {isLogin && (
                 <div className="notify-group">
-                    <Link to="/notify">
-                        <FaRegBell size="32px" color={!dark ? "#333333" : "#ffffff"} />
-                    </Link>
+                    <FaRegBell className="header-icon" onClick={handleGoNotify} />
+                    {isNew && <div className="new-notify"></div>}
                 </div>
             )}
-            <div className="theme-toggle-btn cursor-pointer" onClick={handleToggleDarkMode}>
-                {!dark ? (
-                    <FaRegMoon size="32px" color="#333333" />
-                ) : (
-                    <FiSun size="32px" color="#ffffff" />
-                )}
+            <div className="theme-toggle-btn" onClick={handleToggleDarkMode}>
+                {!dark ? <FaRegMoon className="header-icon" /> : <FiSun className="header-icon" />}
             </div>
             {!isLogin ? (
                 <>

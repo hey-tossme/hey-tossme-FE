@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { mapProps } from "./_detail.interface";
 
-export default function Map({ latitude, longtitude }: mapProps) {
+export default function Map({ latitude, longitude }: mapProps) {
     const { kakao } = window;
 
     useEffect(() => {
         const container = document.getElementById("customMap");
         const options = {
-            center: new kakao.maps.LatLng(latitude, longtitude),
+            center: new kakao.maps.LatLng(latitude, longitude),
             level: 3,
         };
         const map = new kakao.maps.Map(container, options);
@@ -15,7 +15,7 @@ export default function Map({ latitude, longtitude }: mapProps) {
             map: map,
             position: options.center,
         });
-    }, [latitude, longtitude]);
+    }, [latitude, longitude]);
 
     return (
         <div className="w-[770px] inline-block">

@@ -1,13 +1,62 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import spinner from "../assets/images/loading-icon.gif";
+import { requestKakaoLogin } from "../api/auth/auth";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../store/hooks/configureStore.hook";
+import { setLogin } from "../store/modules/user";
+import { firebaseApp } from "../firebase";
 
 export default function OauthRedirect() {
-    const [code, setCode] = useState<string | null>("");
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     let authorization = new URL(window.location.href).searchParams.get("code");
 
+    const handleKakaoLogin = async (fcmToken: string) => {
+        authorization &&
+            requestKakaoLogin(authorization, fcmToken).then((response) => {
+                console.log(response);
+                // dispatch(
+                //     setLogin({
+                //         token: `bearer ${response.token}`,
+                //         id: result.data.id,
+                //         account: result.data.account,
+                //     })
+                // );
+            });
+        // try {
+        //     let result: any =
+        //         authorization && fcmToken && (await requestKakaoLogin(authorization, fcmToken));
+        //     result && console.log(result);
+        //     result &&
+        //         dispatch(
+        //             setLogin({
+        //                 token: `bearer ${result.token}`,
+        //                 id: result.data.id,
+        //                 account: result.data.account,
+        //             })
+        //         );
+        //     // navigate("/");
+        // } catch (error) {
+        //     console.log(error);
+        // }
+    };
+
     useEffect(() => {
-        setCode(authorization);
-        console.log(code);
+        const firebaseMessaging = firebaseApp.messaging();
+
+        firebaseMessaging
+            .requestPermission()
+            .then(() => {
+                return firebaseMessaging.getToken({
+                    vapidKey: import.meta.env.VITE_FIREBASE_VAPIDKEY,
+                });
+            })
+            .then(function (token: any) {
+                handleKakaoLogin(token);
+            })
+            .catch(function (error: any) {
+                console.log("FCM Error : ", error);
+            });
     }, []);
 
     return (

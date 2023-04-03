@@ -24,8 +24,11 @@ export default function CustomDatepicker({ date, setDate }: CustomDatepickerProp
     };
 
     useEffect(() => {
-        setStartDate(null);
-    }, []);
+        if (date) {
+            const target = new Date(date);
+            setStartDate(target);
+        }
+    }, [date]);
 
     return (
         <DatePicker

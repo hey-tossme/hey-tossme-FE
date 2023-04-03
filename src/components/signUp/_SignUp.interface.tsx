@@ -1,7 +1,12 @@
+import { AxiosResponse } from "axios";
+
 export interface IConfirmController {
+    confirmCode: (email: string, code: string) => Promise<AxiosResponse<any, any>>;
+    defaultEvent: (email: string) => void;
     confirm: boolean;
     setConfirm: React.Dispatch<React.SetStateAction<boolean>>;
     showModal: () => void;
+    registerEmail: string;
 }
 
 export interface IProfileFiles {

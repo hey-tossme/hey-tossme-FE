@@ -1,45 +1,43 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore.hook";
 import { setOpenChat, setEnterChat, setChatId } from "../../store/modules/chat";
-import { detailInfoProps } from "./_detail.interface";
+import { detailInfoHeaderProps } from "./_detail.interface";
 import { customNullImg } from "../../hooks/utils";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { getMakeRoomsAxios } from "../../api/chat/chat";
+import { deleteProduct } from "../../api/product/product";
 
-export default function DetailInfoHeader({ item }: detailInfoProps) {
-    const dispatch = useAppDispatch();
+export default function DetailInfoHeader({ item }: detailInfoHeaderProps) {
+    const user = useAppSelector((state) => state.user);
+    const token = useAppSelector((state) => state.user.token);
     const chatId = useSelector((state: any) => state.chat.chatId);
-    const [userInfo, setUserInfo] = useState({ name: "신짱구", imageUrl: "" });
+    const [userInfo, setUserInfo] = useState({ name: "", imageUrl: "" });
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        axios
-            .get("/members", {
-                headers: {
-                    Authorization: `accessToken`,
-                },
-            })
-            .then((res) => {
-                setUserInfo(res.data);
-            });
-    }, []);
+        setUserInfo({ name: item.seller.name, imageUrl: item.seller.imageUrl });
+    }, [item]);
 
-    const handleEditItem = () => {
-        axios.patch("");
+    const handleGoEdit = () => {
+        console.log(item);
+        navigate(`/edit/${item.id}`, { state: { item: item } });
     };
 
     const handleDeleteItem = () => {
-        axios.delete("");
+        deleteProduct(user.token, item.id);
+        navigate("/category");
     };
 
-    const openChatRoom = () => {
+    const openChatRoom = async () => {
+        const result = await getMakeRoomsAxios(item.id, token);
+        dispatch(setChatId(result.data.id));
         dispatch(setEnterChat());
         dispatch(setOpenChat());
-        // 추후 교체
-        dispatch(setChatId(item.id));
-        console.log(chatId);
     };
 
     return (
@@ -51,16 +49,17 @@ export default function DetailInfoHeader({ item }: detailInfoProps) {
                     채팅하기
                 </button>
             </div>
-            <div className="action-group">
-                <Link to={`/edit/${item.id}`}>
-                    <button className="action-btn" onClick={handleEditItem}>
-                        <FiEdit className="action-icon" />
+            {user.id === item.seller.id && (
+                <div className="action-group">
+                    <button className="action-btn" onClick={handleGoEdit}>
+                        <FiEdit className="edit-icon" />
                     </button>
-                </Link>
-                <button className="action-btn" onClick={handleDeleteItem}>
-                    <RiDeleteBinLine className="action-icon" />
-                </button>
-            </div>
+
+                    <button className="action-btn" onClick={handleDeleteItem}>
+                        <RiDeleteBinLine className="delete-icon" />
+                    </button>
+                </div>
+            )}
         </div>
     );
 }

@@ -1,7 +1,7 @@
 .category-wrapper {
     @apply flex flex-col items-center relative top-[120px] mb-[54px] bg-white dark:bg-color-gray-800;
     color: $color-gray-800;
-    
+
     .category-bar-group {
         height: 100px;
         margin-top: 88px;
@@ -11,6 +11,7 @@
 
             .category-bar-item {
                 @apply flex flex-col items-center justify-between h-[84px];
+                cursor: pointer;
 
                 .item-icon {
                     @apply text-dark h-[60px] w-[60px] dark:text-light;
@@ -43,8 +44,8 @@
                     }
                 }
 
-                .item-icon.active { 
-                    color: $color-primary;   
+                .item-icon.active {
+                    color: $color-primary;
                 }
 
                 .item-text {
@@ -54,7 +55,7 @@
 
                     &.active {
                         @apply dark:text-white;
-                        color: $color-gray-800
+                        color: $color-gray-800;
                     }
                 }
             }

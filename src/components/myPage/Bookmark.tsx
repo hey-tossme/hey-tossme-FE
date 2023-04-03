@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import CardItem from "../@common/product/CardItem";
+import { getBookmarkState } from "../../api/bookmark/bookmark";
 import Pagination from "../@common/product/Pagination";
 import { ItemInfo } from "./_MyPage.interface";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
+import { PaginationType } from "./_MyPage.interface";
 
-export default function Bookmark() {
+export default function Bookmark({ page, setPage }: PaginationType) {
+    const token = useAppSelector((state) => state.user.token);
+    const [totalPage, setTotalPage] = useState<number>(0);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
-    const PRODUCT_URL = "/fakeData/product.json";
+    const [bookmark, setBookmark] = useState<boolean>(true);
 
-    const getBookingList = () => {
-        axios.get(PRODUCT_URL).then((res) => {
-            const response = res.data;
-            setItemList(response.data.content);
-        });
+    const getUserBookmarkList = async () => {
+        const result = await getBookmarkState(token, page, 8);
+        setItemList(result.data.content);
+        setTotalPage(result.data.totalPages);
     };
 
     useEffect(() => {
-        getBookingList();
-        console.log(itemList);
-    }, []);
+        getUserBookmarkList();
+    }, [page, bookmark]);
 
     return (
         <>
@@ -29,17 +31,23 @@ export default function Bookmark() {
                         style={{
                             width: "1044px",
                             display: "flex",
-                            justifyContent: "space-between",
                             flexWrap: "wrap",
                         }}
                     >
                         {itemList.map((item) => (
-                            <CardItem item={item} key={item.id} />
+                            <CardItem
+                                item={item}
+                                key={item.id}
+                                id={item.itemId}
+                                page={page}
+                                bookmark={bookmark}
+                                setBookmark={setBookmark}
+                            />
                         ))}
                     </div>
                 </div>
             </div>
-            <Pagination />
+            <Pagination page={page} setPage={setPage} items={itemList} totalPage={totalPage} />
         </>
     );
 }

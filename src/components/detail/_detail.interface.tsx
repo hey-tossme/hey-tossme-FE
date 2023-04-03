@@ -1,15 +1,21 @@
 import { listProps } from "../category/_Category.interface";
 
-export interface detailLocationProps {
+export interface detailNavigateProps {
     item: any;
+    page: Number;
 }
 
 export interface detailImgProps {
     url: string;
 }
 
-export interface detailInfoProps {
+export interface detailInfoHeaderProps {
     item: any;
+}
+
+export interface detailInfoBodyProps {
+    item: any;
+    page: Number;
 }
 
 export interface detailMapProps {
@@ -18,7 +24,7 @@ export interface detailMapProps {
 
 export interface mapProps {
     latitude: Number;
-    longtitude: Number;
+    longitude: Number;
 }
 
 export interface detailRecommendProps {

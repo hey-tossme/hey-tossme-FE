@@ -1,9 +1,16 @@
 import React, { useState, useCallback } from "react";
+import { requestChangePassword } from "../../api/auth/auth";
+import { useNavigate } from "react-router-dom";
 import { HiOutlineLockClosed } from "react-icons/hi";
 import { removeWhitespace, validatePassword } from "../../hooks/regex";
 import { IErrorMsg } from "./_FindPassword.interface";
 
-export default function ChangePasswordForm({ errorMessage, setErrorMessage }: IErrorMsg) {
+export default function ChangePasswordForm({
+    errorMessage,
+    setErrorMessage,
+    registerEmail,
+}: IErrorMsg) {
+    const navigate = useNavigate();
     const [registerPassword, setRegisterPassword] = useState<string>("");
     const [passwordConfirm, setPasswordConfirm] = useState<string>("");
     const [isPasswordConfirm, setIsPasswordConfirm] = useState<boolean>(false);
@@ -33,8 +40,10 @@ export default function ChangePasswordForm({ errorMessage, setErrorMessage }: IE
         [registerPassword]
     );
 
-    // const submitChangePassword = () => {
-    // };
+    const submitChangePassword = () => {
+        requestChangePassword(registerEmail, registerPassword);
+        navigate("/login");
+    };
 
     return (
         <>
@@ -59,7 +68,7 @@ export default function ChangePasswordForm({ errorMessage, setErrorMessage }: IE
             <button
                 className="confirm-pw-btn"
                 disabled={registerPassword === "" || !isPasswordConfirm}
-                // onClick={submitChangePassword}
+                onClick={submitChangePassword}
             >
                 변경하기
             </button>
