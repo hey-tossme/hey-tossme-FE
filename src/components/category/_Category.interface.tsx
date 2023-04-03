@@ -61,7 +61,7 @@ export interface CardItemProps {
     page: Number;
     id: number;
     bookmark: boolean | null;
-    setBookmark: React.Dispatch<React.SetStateAction<boolean | null>>;
+    setBookmark: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface listProps {

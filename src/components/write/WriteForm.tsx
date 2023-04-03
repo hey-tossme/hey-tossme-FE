@@ -129,11 +129,6 @@ export default function WriteForm() {
             >
                 등록
             </button>
-            {modalOpen ? (
-                <ModalPortal>
-                    <DateInputConfirmModal />
-                </ModalPortal>
-            ) : null}
         </>
     );
 }
