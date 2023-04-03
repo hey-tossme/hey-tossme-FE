@@ -50,10 +50,12 @@ export interface SearchBarProps {
 
 export interface CardListProps {
     items: Array<listProps> | null;
+    page: Number;
 }
 
-export interface cardItemProps {
+export interface CardItemProps {
     item: listProps;
+    page: Number;
 }
 
 export interface listProps {

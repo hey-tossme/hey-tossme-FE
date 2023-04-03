@@ -34,10 +34,17 @@
         align-items: center;
         gap: 24px;
 
-        .action-icon {
+        .edit-icon {
             width: 32px;
             height: 32px;
             @include dark-mode-text;
         }
+
+        .delete-icon {
+            width: 36px;
+            height: 36px;
+            @include dark-mode-text;
+        }
+        
     }
 }

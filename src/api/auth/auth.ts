@@ -45,10 +45,13 @@ export const requestLogin = async (email: string, password: string, fcmToken: st
     });
 };
 
-export const requestKakaoLogin = async (code: string) => {
-    return await customAxios({
+export const requestKakaoLogin = (code: string, fcmToken: string) => {
+    customAxios({
         method: "get",
         url: `/v2/kakao/login?code=${code}`,
+        data: {
+            fcmToken: fcmToken,
+        },
     });
 };
 
@@ -62,26 +65,26 @@ export const requestLogout = async (token: string, userId: number) => {
     });
 };
 
-export const requestResetPassword = (email: string) => {
-    customAxios({
-        method: "post",
-        url: `/v2/members/reset-password`,
-        data: {
-            email: email,
-        },
-    });
-};
+// export const requestResetPassword = (email: string) => {
+//     customAxios({
+//         method: "post",
+//         url: `/v2/members/reset-password`,
+//         data: {
+//             email: email,
+//         },
+//     });
+// };
 
-export const requestResetCheck = async (email: string, code: string) => {
-    return await customAxios({
-        method: "post",
-        url: `/v2/members/reset-password/check`,
-        data: {
-            email: email,
-            code: code,
-        },
-    });
-};
+// export const requestResetCheck = async (email: string, code: string) => {
+//     return await customAxios({
+//         method: "post",
+//         url: `/v2/members/reset-password/check`,
+//         data: {
+//             email: email,
+//             code: code,
+//         },
+//     });
+// };
 
 export const requestChangePassword = async (email: string, password: string) => {
     return await customAxios({

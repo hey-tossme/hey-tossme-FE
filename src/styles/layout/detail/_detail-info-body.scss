@@ -12,24 +12,25 @@
         align-items: center;
         justify-content: space-between;
         width: inherit;
+        margin-bottom: 12px;
+        line-height: 45px;
 
         .info-title {
             @include dark-mode-text;
             @include ellipsis;
-            margin-bottom: 12px;
             font-size: $font-detail-title;
             font-weight: bold;
         }
 
         .bookmark-btn-not-fill {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             color: $color-primary;
         }
 
         .bookmark-btn-fill {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             @include bookmark-btn-fill;
         }
     }

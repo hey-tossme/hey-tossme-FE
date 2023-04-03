@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import LocationItem from "./LocationItem";
 import { IoCloseCircleSharp } from "react-icons/io5";
-import { getLocationList } from "../../../api/category/location";
+import { getLocationList } from "../../../api/product/location";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks/configureStore.hook";
 import { setItems } from "../../../store/modules/search";
 

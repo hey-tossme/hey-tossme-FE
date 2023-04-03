@@ -3,15 +3,19 @@ import { DateSelectProps } from "./_write.interface";
 import CustomDatepicker from "./CustomDatepicker";
 import { RxTriangleDown } from "react-icons/rx";
 import { validateTime } from "../../hooks/regex";
+import { useAppDispatch } from "../../store/hooks/configureStore.hook";
+import { setModalOpen } from "../../store/modules/modal";
 
-export default function DateSelect({ date, setDate, time, setTime }: DateSelectProps) {
+export default function DateSelect({ date, setDate, time, setTime, state }: DateSelectProps) {
     const [isShow, setIsShow] = useState<boolean>(false);
     const [toggle, setToggle] = useState<string>("오전");
     const [error, setError] = useState<string>();
+    const [defaultTime, setDefaultTime] = useState<string | null>();
     const componentRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const timeRef = useRef<HTMLInputElement>(null);
     const MORN_AFN_LIST = ["오전", "오후"];
+    const dispatch = useAppDispatch();
 
     const handleShowList = () => {
         setIsShow(true);
@@ -19,8 +23,21 @@ export default function DateSelect({ date, setDate, time, setTime }: DateSelectP
 
     const handleSetToggle = (e: React.MouseEvent) => {
         const target = e.target as HTMLDivElement;
+        const dateInput = document.querySelector(".date-select-item") as HTMLInputElement;
+
         setIsShow(false);
-        setToggle(target.innerText);
+
+        if (!dateInput.value) return dispatch(setModalOpen());
+        if (target.innerText === "오전") {
+            const hour = Number(time?.split(":")[0]) - 12;
+            setToggle("오전");
+            hour < 10
+                ? setTime(`0${hour}:${time?.split(":")[1]}`)
+                : setTime(`${Number(time?.split(":")[0]) - 12}:${time?.split(":")[1]}`);
+        } else {
+            setToggle("오후");
+            setTime(`${Number(time?.split(":")[0]) + 12}:${time?.split(":")[1]}`);
+        }
     };
 
     const handlePhoneChange = (e: any) => {
@@ -39,14 +56,16 @@ export default function DateSelect({ date, setDate, time, setTime }: DateSelectP
                 default:
                     break;
             }
-
             result += value[i];
         }
-
         timeRef.current!.value = result;
-
-        setTime(e.target.value);
         setError(validateTime(e.target.value) ? "" : "올바른 시간 양식이 아닙니다.");
+
+        if (validateTime(e.target.value)) {
+            toggle === "오전" && setTime(result);
+            toggle === "오후" &&
+                setTime(`${Number(result?.split(":")[0]) + 12}:${result?.split(":")[1]}`);
+        }
     };
 
     useEffect(() => {
@@ -68,13 +87,45 @@ export default function DateSelect({ date, setDate, time, setTime }: DateSelectP
     }, [componentRef]);
 
     useEffect(() => {
-        toggle === "오전" && setTime(`${Number(time?.split("-")[0]) - 12}-${time?.split("-")[1]}`);
-        toggle === "오후" && setTime(`${Number(time?.split("-")[0]) + 12}-${time?.split("-")[1]}`);
-    }, [toggle]);
+        if (state !== null) {
+            const timeArr = state.item.dueTime.split("T")[1];
+            const count = timeArr.split(":").length - 1;
+            let result = "";
+
+            if (count == 2) {
+                const arr = timeArr.split(":");
+                arr.pop();
+                result += arr.join(":");
+            } else {
+                const arr = timeArr.split(":");
+                result += arr.join(":");
+            }
+
+            console.log(result, time);
+            if (time == result) {
+                setDefaultTime(result);
+            }
+        }
+    }, [time]);
 
     useEffect(() => {
-        setTime(null);
-    }, []);
+        if (!defaultTime) return;
+        console.log(defaultTime);
+        const timeCurrent = timeRef.current as HTMLInputElement;
+        if (defaultTime) {
+            if (Number(defaultTime.split(":")[0]) < 12) {
+                timeCurrent.value = defaultTime.split(":").join(":");
+                setToggle("오전");
+                setDefaultTime(null);
+            } else {
+                const timeArr = defaultTime.split(":");
+                timeArr[0] = `0${Number(timeArr[0]) - 12}`;
+                timeCurrent.value = timeArr.join(":");
+                setToggle("오후");
+                setDefaultTime(null);
+            }
+        }
+    }, [defaultTime]);
 
     return (
         <>

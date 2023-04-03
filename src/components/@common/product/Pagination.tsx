@@ -24,7 +24,7 @@ export default function Pagination({ page, setPage, items }: PaginationProps) {
 
         targetPage.classList.add("active");
 
-        setPage(Number(targetPage.innerText));
+        setPage(Number(targetPage.innerText) - 1);
     };
 
     return (

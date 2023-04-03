@@ -7,16 +7,19 @@ export const notifySlice = createSlice({
     initialState,
     reducers: {
         setList: (state, action) => {
-            return [...state, ...action.payload];
+            if ((action.payload = [])) {
+                return initialState;
+            }
+            return [...action.payload];
         },
 
         deleteList: (state, action) => {
-            return state.filter((item) => item.id !== action.payload.id);
+            return state.filter((item: any) => item.id !== action.payload.id);
         },
 
         updateReadList: (state, action) => {
             const { id } = action.payload;
-            const target = state.find((item) => item.id === id);
+            const target = state.find((item: any) => item.id === id);
             if (target) {
                 target.readOrNot = true;
             }

@@ -29,6 +29,7 @@ export default function LoginForm() {
             })
             .then(function (token: any) {
                 setFcmToken(token);
+                console.log(token);
             })
             .catch(function (error: any) {
                 console.log("FCM Error : ", error);

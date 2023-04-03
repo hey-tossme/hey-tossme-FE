@@ -6,12 +6,12 @@ import { RiGalleryFill } from "react-icons/ri";
 import { dashDate } from "../../hooks/utils";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore.hook";
 import { setItems } from "../../store/modules/search";
-import { getProductList } from "../../api/category/product";
+import { getProductList } from "../../api/product/product";
 import { CategoryBarProps } from "./_Category.interface";
 
 export default function CategoryBar({ setItem }: CategoryBarProps) {
     const dispatch = useAppDispatch();
-    const searchType = useAppSelector((state) => state.search);
+    const searchType: any = useAppSelector((state) => state.search);
 
     useEffect(() => {
         const allShow = document.querySelector(".category-bar-item");
@@ -57,11 +57,13 @@ export default function CategoryBar({ setItem }: CategoryBarProps) {
             endDate.setMinutes(0);
             dispatch(setItems({ startDue: dashDate(today), endDue: dashDate(endDate) }));
         }
-
-        getProductList(searchType, 1, 8).then((response) => {
-            setItems(response.data.content);
-        });
     };
+
+    useEffect(() => {
+        getProductList(searchType, 0, 8).then((response) => {
+            setItem(response.data.content);
+        });
+    }, [searchType.category]);
 
     return (
         <div className="category-bar-group">

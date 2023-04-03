@@ -1948,6 +1948,9 @@ body {
 .header-wrapper .info-container .notify-group {
   @apply relative;
 }
+.header-wrapper .info-container .notify-group .header-icon {
+  cursor: pointer;
+}
 .header-wrapper .info-container .notify-group .new-notify {
   @apply absolute top-[1px] right-[2px];
   width: 12px;
@@ -1959,10 +1962,17 @@ body {
 .header-wrapper .info-container .theme-toggle-btn {
   transition: transform 0.3s;
   transform: rotate(0deg);
+  cursor: pointer;
 }
 .header-wrapper .info-container .theme-toggle-btn:active {
   transition: 0.3s;
   transform: rotate(45deg);
+}
+.header-wrapper .info-container .header-icon {
+  @apply dark:text-white;
+  width: 32px;
+  height: 32px;
+  color: #333333;
 }
 .header-wrapper .info-container .header-btn {
   @apply flex justify-center items-center w-[100px] h-[36px] rounded-[8px];
@@ -2015,8 +2025,20 @@ body {
 .notify-common-wrapper .notify-wrapper .notify-list .notify-item .delete-btn {
   @apply absolute flex top-0 right-0 mt-[12px] mr-[12px];
 }
+.notify-common-wrapper .notify-wrapper .notify-list .notify-item .delete-btn .close-btn {
+  @apply dark:text-white;
+  width: 20px;
+  height: 20px;
+  color: #333333;
+}
 .notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group {
   @apply flex items-center gap-[16px] mx-[32px];
+}
+.notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group .notify-icon .icon {
+  @apply dark:text-white;
+  width: 20px;
+  height: 20px;
+  color: #333333;
 }
 .notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group .notify-text {
   @apply text-[16px]  dark:text-white;
@@ -2474,9 +2496,15 @@ body {
   align-items: center;
   gap: 24px;
 }
-.detail-info-header-area .action-group .action-icon {
+.detail-info-header-area .action-group .edit-icon {
   width: 32px;
   height: 32px;
+  @apply dark:text-white;
+  color: #333333;
+}
+.detail-info-header-area .action-group .delete-icon {
+  width: 36px;
+  height: 36px;
   @apply dark:text-white;
   color: #333333;
 }
@@ -2495,6 +2523,8 @@ body {
   align-items: center;
   justify-content: space-between;
   width: inherit;
+  margin-bottom: 12px;
+  line-height: 45px;
 }
 .detail-info-body-area .info-title-group .info-title {
   @apply dark:text-white;
@@ -2502,18 +2532,17 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: 12px;
   font-size: 32px;
   font-weight: bold;
 }
 .detail-info-body-area .info-title-group .bookmark-btn-not-fill {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   color: #ec7357;
 }
 .detail-info-body-area .info-title-group .bookmark-btn-fill {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   color: #ec7357;
   cursor: pointer;
 }

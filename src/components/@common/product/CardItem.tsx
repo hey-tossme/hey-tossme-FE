@@ -1,19 +1,42 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
-import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks/configureStore.hook";
 import { useNavigate } from "react-router-dom";
-import { cardItemProps } from "../../category/_Category.interface";
+import { setModalOpen } from "../../../store/modules/modal";
+import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
+import { CardItemProps } from "../../category/_Category.interface";
 import { customNullItemImg, commaNums, date } from "../../../hooks/utils";
-import { useAppSelector } from "../../../store/hooks/configureStore.hook";
-import { setBookmarkState } from "../../../api/bookmark/bookmark";
+import {
+    deleteBookmarkState,
+    getBookmarkState,
+    setBookmarkState,
+} from "../../../api/bookmark/bookmark";
 
-export default function CardItem({ item }: cardItemProps) {
+export default function CardItem({ item, page }: CardItemProps) {
     const { id, imageUrl, title, price, dueTime, address, status } = item;
+    const user = useAppSelector((state) => state.user);
+    const [isBookmarkItems, setIsBookmarkItems] = useState<any>();
     const [bookmark, setBookmark] = useState<boolean>();
     const bookmarkRef = useRef<HTMLDivElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const user = useAppSelector((state) => state.user);
+
+    useEffect(() => {
+        getBookmarkState(user.token, page, 8).then((response) => {
+            console.log(response);
+            setIsBookmarkItems(response.data.content);
+        });
+    }, []);
+
+    useEffect(() => {
+        isBookmarkItems &&
+            isBookmarkItems.map((isBookmarkItem: any) => {
+                if (item.id === isBookmarkItem.itemId) {
+                    setBookmark(true);
+                }
+            });
+    }, [isBookmarkItems]);
 
     useEffect(() => {
         const bookMarkClick: EventListenerOrEventListenerObject = (e: Event) => {
@@ -23,7 +46,7 @@ export default function CardItem({ item }: cardItemProps) {
             } else {
                 const cardCurrent = cardRef.current as HTMLDivElement;
                 if (cardCurrent && cardCurrent.contains(e.target as Node)) {
-                    navigate(`/detail/${id}`, { state: { item: item } });
+                    navigate(`/detail/${id}`, { state: { item: item, page: page } });
                 }
             }
         };
@@ -34,10 +57,16 @@ export default function CardItem({ item }: cardItemProps) {
     }, [bookmarkRef, cardRef, bookmark]);
 
     const handleSetBookmark = () => {
-        bookmark ? setBookmark(false) : setBookmark(true);
-        setBookmarkState(user.token, id).then((response) => {
-            console.log(response);
-        });
+        if (bookmark) {
+            deleteBookmarkState(user.token, item.id).then((response) => {
+                setBookmark(false);
+            });
+        } else {
+            setBookmarkState(user.token, item.id).then(() => {
+                setBookmark(true);
+            });
+        }
+        !user && dispatch(setModalOpen());
     };
 
     return (
@@ -64,7 +93,7 @@ export default function CardItem({ item }: cardItemProps) {
                 </div>
                 <p className="item-info-price">{commaNums(price)}원</p>
                 <p className="item-info-duedate">{date(dueTime)}</p>
-                <p className="item-info-address">제주특별자치도 제주시 공항로 2</p>
+                <p className="item-info-address">{address}</p>
             </div>
         </div>
     );

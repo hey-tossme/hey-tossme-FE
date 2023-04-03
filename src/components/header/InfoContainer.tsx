@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../../store/hooks/configureStore.hook";
-import { setIsDark } from "../../store/modules/dark";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import { FaRegMoon, FaRegBell } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
 import HeaderButton from "./HeaderButton";
@@ -10,18 +9,20 @@ import { firebaseApp } from "../../firebase";
 
 export function InfoContainer() {
     const firebaseMessaging = firebaseApp.messaging();
-    const dispatch = useAppDispatch();
     const user = useAppSelector((state) => state.user);
-    const [dark, setDark] = useState(false);
+    const [dark, setDark] = useState<boolean>();
     const [isLogin, setIsLogin] = useState(true);
+    const [isNew, setIsNew] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     firebaseMessaging.onMessage((payload: any) => {
-        const title = payload.data.title;
+        const title = payload.notification.title;
         const options = {
-            body: payload.data.body,
+            body: payload.notification.body,
         };
 
         console.log("Message received. title : ", title, "options : ", options);
+        setIsNew(true);
         navigator.serviceWorker.ready.then((registration) => {
             registration.showNotification(title, options);
         });
@@ -38,15 +39,18 @@ export function InfoContainer() {
         !user.token ? setIsLogin(false) : setIsLogin(true);
     }, [user]);
 
+    const handleGoNotify = () => {
+        navigate("/notify");
+        setIsNew(false);
+    };
+
     const handleToggleDarkMode = () => {
         if (localStorage.getItem("theme") === "dark") {
-            dispatch(setIsDark({ dark: false }));
             localStorage.removeItem("theme");
             document.documentElement.classList.remove("dark");
             setDark(false);
         } else {
             document.documentElement.classList.add("dark");
-            dispatch(setIsDark({ dark: true }));
             localStorage.setItem("theme", "dark");
             setDark(true);
         }
@@ -56,17 +60,12 @@ export function InfoContainer() {
         <div className="info-container">
             {isLogin && (
                 <div className="notify-group">
-                    <Link to="/notify">
-                        <FaRegBell size="32px" color={!dark ? "#333333" : "#ffffff"} />
-                    </Link>
+                    <FaRegBell className="header-icon" onClick={handleGoNotify} />
+                    {isNew && <div className="new-notify"></div>}
                 </div>
             )}
-            <div className="theme-toggle-btn cursor-pointer" onClick={handleToggleDarkMode}>
-                {!dark ? (
-                    <FaRegMoon size="32px" color="#333333" />
-                ) : (
-                    <FiSun size="32px" color="#ffffff" />
-                )}
+            <div className="theme-toggle-btn" onClick={handleToggleDarkMode}>
+                {!dark ? <FaRegMoon className="header-icon" /> : <FiSun className="header-icon" />}
             </div>
             {!isLogin ? (
                 <>
