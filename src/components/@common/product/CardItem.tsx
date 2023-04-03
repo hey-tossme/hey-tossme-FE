@@ -12,8 +12,8 @@ import {
     setBookmarkState,
 } from "../../../api/bookmark/bookmark";
 
-export default function CardItem({ item, page }: CardItemProps) {
-    const { id, imageUrl, title, price, dueTime, address, status } = item;
+export default function CardItem({ item, page, id }: CardItemProps) {
+    const { imageUrl, title, price, dueTime, address, status } = item;
     const user = useAppSelector((state) => state.user);
     const [isBookmarkItems, setIsBookmarkItems] = useState<any>();
     const [bookmark, setBookmark] = useState<boolean>();
