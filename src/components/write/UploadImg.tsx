@@ -1,29 +1,36 @@
-import React, { useEffect, useState } from "react";
 import { requestUploadImg } from "../../api/@common/image";
 import nullImg from "../../assets/images/default-image.png";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
+import imageCompression from "browser-image-compression";
 import { uploadImgProps } from "./_write.interface";
 
 export default function UploadImg({ files, setFiles, imageSrc, setImageSrc }: uploadImgProps) {
     const token = useAppSelector((state) => state.user.token);
-    const [request, setRequest] = useState();
-    const onUpload = (e: any) => {
+    const onUpload = async (e: any) => {
         const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        setFiles(e.target.files[0]);
+        const options = {
+            maxSizeMB: 2,
+            maxWidthOrHeight: 900,
+        };
 
-        const imgFrm = new FormData();
-        imgFrm.append("file", file);
-        requestUploadImg(token, imgFrm).then((response) => {
-            setImageSrc(response.data);
-        });
+        try {
+            const compressedFile = await imageCompression(file, options);
+            const resizingFile = new File([compressedFile], file.name, { type: file.type });
+            setFiles(resizingFile);
 
-        return new Promise<void>((resolve) => {
-            reader.onload = () => {
-                resolve();
-            };
-        });
+            const promise = imageCompression.getDataUrlFromFile(compressedFile);
+            promise.then((result) => {
+                setImageSrc(result);
+            });
+
+            const imgFrm = new FormData();
+            imgFrm.append("file", resizingFile);
+            requestUploadImg(token, imgFrm).then((response) => {
+                setImageSrc(response.data);
+            });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (

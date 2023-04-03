@@ -60,9 +60,13 @@ export const postKeywords = async (token: string, keyword: string) => {
 export const getUserSellItem = async (token: string, pageNum: number, size: number) => {
     return await customAxios({
         method: "get",
-        url: `/v1/items/complete/sell?page-num=${pageNum}&size=${size}`,
+        url: `/v1/items/complete/sell`,
         headers: {
             Authorization: token,
+        },
+        params: {
+            pageNum: pageNum,
+            size: size,
         },
     });
 };
@@ -70,9 +74,13 @@ export const getUserSellItem = async (token: string, pageNum: number, size: numb
 export const getUserBuyItem = async (token: string, pageNum: number, size: number) => {
     return await customAxios({
         method: "get",
-        url: `/v1/items/complete/buy?page-num=${pageNum}&size=${size}`,
+        url: `/v1/items/complete/buy`,
         headers: {
             Authorization: token,
+        },
+        params: {
+            pageNum: pageNum,
+            size: size,
         },
     });
 };

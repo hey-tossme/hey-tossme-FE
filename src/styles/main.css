@@ -2451,6 +2451,7 @@ body {
   width: 776px;
   height: 500px;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .detail-info-header-area {

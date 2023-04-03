@@ -31,6 +31,7 @@ export default function WriteForm() {
     const [date, setDate] = useState<string | null>(null);
     const [time, setTime] = useState<string | null>("00:00");
     const [totalDate, setTotalDate] = useState<string | null>(null);
+    const [disabled, setDisabled] = useState<boolean>(true);
 
     const axiosBody = {
         category: category,
@@ -42,6 +43,17 @@ export default function WriteForm() {
         addressDetail: addressDetail,
         imageUrl: imageSrc,
     };
+
+    useEffect(() => {
+        setDisabled(
+            category === null ||
+                title === null ||
+                price === null ||
+                content === null ||
+                address === null ||
+                date === null
+        );
+    }, [category, price, title, content, address, date]);
 
     useEffect(() => {
         console.log(time);
@@ -109,7 +121,12 @@ export default function WriteForm() {
                 setAddressDetail={setAddressDetail}
             />
             <DateSelect date={date} setDate={setDate} time={time} setTime={setTime} state={state} />
-            <button type="button" className="enroll-btn" onClick={handlePutProduct}>
+            <button
+                type="button"
+                className="enroll-btn"
+                onClick={handlePutProduct}
+                disabled={disabled}
+            >
                 등록
             </button>
             {modalOpen ? (

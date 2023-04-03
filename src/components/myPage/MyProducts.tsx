@@ -14,7 +14,8 @@ export default function MyProducts({ page, setPage }: PaginationType) {
     const getUserProducts = async () => {
         const result = await getUserSellItem(token, page, 8);
         setItemList(result.data.list.content);
-        setTotalPage(result.data.totalPages);
+        setTotalPage(result.data.list.totalPages);
+        console.log(result);
     };
 
     useEffect(() => {

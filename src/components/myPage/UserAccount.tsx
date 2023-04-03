@@ -120,7 +120,11 @@ export default function UserAccount({ bank, account, getAccount, setGetAccount }
                                 onChange={(e) => setAccountNumber(e.target.value)}
                             />
                         </div>
-                        <button className="account-submit-btn" onClick={confirmAccount}>
+                        <button
+                            className="account-submit-btn"
+                            onClick={confirmAccount}
+                            disabled={accountNumber === ""}
+                        >
                             등록
                         </button>
                     </div>

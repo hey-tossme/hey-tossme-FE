@@ -20,18 +20,17 @@ export default function ProfileImageSelect({
             maxSizeMB: 2,
             maxWidthOrHeight: 300,
         };
-        // 최적화 코드 추후에 수정
         try {
             const compressedFile = await imageCompression(file, options);
-            setFiles(compressedFile);
+            const resizingFile = new File([compressedFile], file.name, { type: file.type });
+            setFiles(resizingFile);
             const promise = imageCompression.getDataUrlFromFile(compressedFile);
             promise.then((result) => {
                 setImageSrc(result);
             });
             const imgFrm = new FormData();
-            imgFrm.append("file", file);
+            imgFrm.append("file", resizingFile);
             const result = await requestUploadImg(token, imgFrm);
-            console.log(result);
             await changeProfile(token, result.data, null, null);
         } catch (error) {
             console.log(error);
