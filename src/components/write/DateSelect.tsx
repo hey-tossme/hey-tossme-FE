@@ -101,7 +101,6 @@ export default function DateSelect({ date, setDate, time, setTime, state }: Date
                 result += arr.join(":");
             }
 
-            console.log(result, time);
             if (time == result) {
                 setDefaultTime(result);
             }
@@ -110,7 +109,6 @@ export default function DateSelect({ date, setDate, time, setTime, state }: Date
 
     useEffect(() => {
         if (!defaultTime) return;
-        console.log(defaultTime);
         const timeCurrent = timeRef.current as HTMLInputElement;
         if (defaultTime) {
             if (Number(defaultTime.split(":")[0]) < 12) {

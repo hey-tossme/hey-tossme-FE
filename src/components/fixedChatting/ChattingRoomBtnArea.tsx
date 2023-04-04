@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../store/hooks/configureStore.hook";
-import AccountConfirmedModal from "../@common/modal/AccountConfirmedModal";
-import ModalPortal from "../@common/modal/portal/ModalPortal";
-import { setModalOpen } from "../../store/modules/modal";
+import AccountConfirmedModal from "./AccountConfirmedModal";
 import { sendAccountAxios } from "../../api/chat/chat";
 import { SendAccount } from "./_FixedChatting.interface";
 
 export default function ChattingRoomBtnArea({ item, sendAccount }: SendAccount) {
     const user = useAppSelector((state) => state.user);
-    const modalOpen = useSelector((state: any) => state.modal.modalOpen);
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-    const dispatch = useDispatch();
     const [accountTransferStatus, setAccountTransferStatus] = useState<boolean>(
         item.accountTransferStatus
     );
@@ -24,7 +21,7 @@ export default function ChattingRoomBtnArea({ item, sendAccount }: SendAccount) 
     };
 
     const showModal = () => {
-        dispatch(setModalOpen());
+        setModalOpen(true);
     };
 
     return (
@@ -51,13 +48,13 @@ export default function ChattingRoomBtnArea({ item, sendAccount }: SendAccount) 
                 )}
             </div>
             {modalOpen ? (
-                <ModalPortal>
-                    <AccountConfirmedModal
-                        tradeStatus={tradeStatus}
-                        setTradeStatus={setTradeStatus}
-                        item={item}
-                    />
-                </ModalPortal>
+                <AccountConfirmedModal
+                    tradeStatus={tradeStatus}
+                    setTradeStatus={setTradeStatus}
+                    item={item}
+                    modalOpen={modalOpen}
+                    setModalOpen={setModalOpen}
+                />
             ) : null}
         </>
     );

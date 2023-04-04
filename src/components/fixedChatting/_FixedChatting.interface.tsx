@@ -86,4 +86,6 @@ export interface ITradeModal {
     item: IChattingInfo;
     tradeStatus: boolean;
     setTradeStatus: React.Dispatch<React.SetStateAction<boolean>>;
+    modalOpen: boolean;
+    setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

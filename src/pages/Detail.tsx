@@ -7,7 +7,6 @@ import DetailInfoHeader from "../components/detail/DetailInfoHeader";
 import DetailMap from "../components/detail/DetailMap";
 import DetailRecommend from "../components/detail/DetailRecommend";
 import { detailNavigateProps } from "../components/detail/_detail.interface";
-import { useAppSelector } from "../store/hooks/configureStore.hook";
 import { getDetailProduct } from "../api/product/product";
 
 export default function Detail() {
@@ -21,8 +20,6 @@ export default function Detail() {
             setItem(response.data);
         });
     }, []);
-
-    console.log(item);
 
     return (
         <div className="detail-wrapper">
