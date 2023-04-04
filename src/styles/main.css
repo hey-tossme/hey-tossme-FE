@@ -2638,6 +2638,7 @@ body {
   color: #333333;
   height: 300px;
   outline: 0;
+  line-height: 1.5;
 }
 .write-wrapper .enroll-btn {
   background-color: #ec7357;
