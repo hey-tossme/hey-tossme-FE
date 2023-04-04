@@ -1,18 +1,22 @@
 import React, { useRef } from "react";
-import { useAppSelector } from "../../../store/hooks/configureStore.hook";
+import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import { HiOutlineX } from "react-icons/hi";
 import { useDispatch } from "react-redux";
-import { setModalClose } from "../../../store/modules/modal";
-import { ITradeModal } from "../../fixedChatting/_FixedChatting.interface";
-import { confirmSaleAxios } from "../../../api/chat/chat";
+import { setModalClose } from "../../store/modules/modal";
+import { ITradeModal } from "./_FixedChatting.interface";
+import { confirmSaleAxios } from "../../api/chat/chat";
 
-export default function AccountConfirmedModal({ setTradeStatus, item }: ITradeModal) {
+export default function AccountConfirmedModal({
+    setTradeStatus,
+    item,
+    modalOpen,
+    setModalOpen,
+}: ITradeModal) {
     const user = useAppSelector((state) => state.user);
-    const dispatch = useDispatch();
     const modalRef = useRef<HTMLDivElement>(null);
 
     const closeModal = () => {
-        dispatch(setModalClose());
+        setModalOpen(false);
     };
 
     const handleTradeStatus = () => {
@@ -23,7 +27,7 @@ export default function AccountConfirmedModal({ setTradeStatus, item }: ITradeMo
 
     const modalOutSideClick = (e: any) => {
         if (modalRef.current === e.target) {
-            closeModal();
+            setModalOpen(false);
         }
     };
 

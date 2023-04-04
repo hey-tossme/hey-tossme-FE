@@ -47,4 +47,6 @@ export interface GetUserAccount {
 export interface PaginationType {
     page: number;
     setPage: React.Dispatch<React.SetStateAction<number>>;
+    tabState: number;
+    setTabState: React.Dispatch<React.SetStateAction<number>>;
 }

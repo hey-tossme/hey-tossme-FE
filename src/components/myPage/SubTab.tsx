@@ -9,9 +9,42 @@ export default function SubTab() {
     const [page, setPage] = useState<number>(0);
 
     const tabList = [
-        { id: 0, name: "내 예약 확인", content: <MyBooking page={page} setPage={setPage} /> },
-        { id: 1, name: "업로드한 상품", content: <MyProducts page={page} setPage={setPage} /> },
-        { id: 2, name: "북마크한 상품", content: <Bookmark page={page} setPage={setPage} /> },
+        {
+            id: 0,
+            name: "내 예약 확인",
+            content: (
+                <MyBooking
+                    page={page}
+                    setPage={setPage}
+                    tabState={tabState}
+                    setTabState={setTabState}
+                />
+            ),
+        },
+        {
+            id: 1,
+            name: "업로드한 상품",
+            content: (
+                <MyProducts
+                    page={page}
+                    setPage={setPage}
+                    tabState={tabState}
+                    setTabState={setTabState}
+                />
+            ),
+        },
+        {
+            id: 2,
+            name: "북마크한 상품",
+            content: (
+                <Bookmark
+                    page={page}
+                    setPage={setPage}
+                    tabState={tabState}
+                    setTabState={setTabState}
+                />
+            ),
+        },
         { id: 3, name: "관심 키워드 등록", content: <Keywords /> },
     ];
 

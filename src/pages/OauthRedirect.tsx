@@ -12,33 +12,15 @@ export default function OauthRedirect() {
     let authorization = new URL(window.location.href).searchParams.get("code");
 
     const handleKakaoLogin = async (fcmToken: string) => {
-        authorization &&
-            requestKakaoLogin(authorization, fcmToken).then((response) => {
-                console.log(response);
-                // dispatch(
-                //     setLogin({
-                //         token: `bearer ${response.token}`,
-                //         id: result.data.id,
-                //         account: result.data.account,
-                //     })
-                // );
-            });
-        // try {
-        //     let result: any =
-        //         authorization && fcmToken && (await requestKakaoLogin(authorization, fcmToken));
-        //     result && console.log(result);
-        //     result &&
-        //         dispatch(
-        //             setLogin({
-        //                 token: `bearer ${result.token}`,
-        //                 id: result.data.id,
-        //                 account: result.data.account,
-        //             })
-        //         );
-        //     // navigate("/");
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        const result = await requestKakaoLogin(authorization!, fcmToken);
+        dispatch(
+            setLogin({
+                token: `bearer ${result.token}`,
+                id: result.data.id,
+                account: result.data.account,
+            })
+        );
+        navigate("/");
     };
 
     useEffect(() => {

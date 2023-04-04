@@ -24,7 +24,6 @@ export default function DetailInfoHeader({ item }: detailInfoHeaderProps) {
     }, [item]);
 
     const handleGoEdit = () => {
-        console.log(item);
         navigate(`/edit/${item.id}`, { state: { item: item } });
     };
 
