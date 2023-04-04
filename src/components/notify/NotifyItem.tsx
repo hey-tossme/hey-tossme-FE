@@ -24,13 +24,8 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
             } else {
                 const notifyCurrent = notifyRef.current as HTMLDivElement;
                 if (notifyCurrent && notifyCurrent.contains(e.target as Node)) {
-                    if (item.type !== "DEAL") {
-                        handleRead();
-                        navigate(`/detail/${item.itemId}`, { state: { item: item.itemId } });
-                    } else {
-                        handleRead();
-                        navigate(`/detail/${item.itemId}`, { state: { item: item.itemId } });
-                    }
+                    handleRead();
+                    navigate(`/detail/${item.itemId}`, { state: { item: item.itemId } });
                 }
             }
         };
@@ -41,13 +36,13 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     }, [deleteBtnRef, notifyRef]);
 
     const handleDelete = async () => {
-        deleteNotify(token, item.id);
         dispatch(deleteList(item));
+        deleteNotify(token, item.id);
     };
 
     const handleRead = async () => {
-        patchNotify(token, item.id);
         dispatch(updateReadList(item));
+        patchNotify(token, item.id);
     };
 
     return (

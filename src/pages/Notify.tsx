@@ -4,12 +4,14 @@ import NotifyContainer from "../components/notify/NotifyContainer";
 import { NotifyType } from "../components/notify/_Notify.interface";
 import { useAppDispatch, useAppSelector } from "../store/hooks/configureStore.hook";
 import { setList } from "../store/modules/notify";
+import { isNewNotification } from "../store/modules/notify";
 
 export default function Notify() {
     const [notifyList, setNotifyList] = useState<Array<NotifyType> | null>(null);
     const [newList, setNewList] = useState<Array<NotifyType>>();
     const [existingList, setExistingList] = useState<Array<NotifyType>>();
-    const notify = useAppSelector((state) => state.notify);
+    const notify = useAppSelector((state) => state.notify.notify);
+    const isNew = useAppSelector((state) => state.notify.isNew);
     const token = useAppSelector((state) => state.user.token);
     const dispatch = useAppDispatch();
 
@@ -31,6 +33,10 @@ export default function Notify() {
             setExistingList(existingList);
         }
     }, [notify]);
+
+    useEffect(() => {
+        newList !== undefined && newList.length === 0 && dispatch(isNewNotification(false));
+    }, [newList]);
 
     return (
         <div className="notify-common-wrapper dark:bg-color-gray-800">

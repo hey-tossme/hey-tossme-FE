@@ -1,3 +1,8 @@
+export interface NotifyStateProps {
+    isNew: boolean;
+    notify: any;
+}
+
 export interface NotifyProps {
     getIsNew: (answer: boolean) => void;
 }
@@ -29,4 +34,8 @@ export interface NotifyListProps {
 export interface NotifyItemProps {
     isRead: boolean;
     item: NotifyType;
+}
+
+export interface NotifyNavigateProps {
+    setIsNew: React.Dispatch<React.SetStateAction<boolean>>;
 }
