@@ -11,7 +11,7 @@ import {
 } from "../../api/bookmark/bookmark";
 import { setModalOpen } from "../../store/modules/modal";
 
-export default function DetailInfoBody({ item, page }: detailInfoBodyProps) {
+export default function DetailInfoBody({ item }: detailInfoBodyProps) {
     const user = useAppSelector((state) => state.user);
     const bookmarkList = useAppSelector((state) => state.bookmark);
     const [bookmark, setBookmark] = useState<boolean>(false);

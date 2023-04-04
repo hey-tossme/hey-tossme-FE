@@ -6,20 +6,26 @@ import DetailInfoBody from "../components/detail/DetailInfoBody";
 import DetailInfoHeader from "../components/detail/DetailInfoHeader";
 import DetailMap from "../components/detail/DetailMap";
 import DetailRecommend from "../components/detail/DetailRecommend";
-import { detailNavigateProps } from "../components/detail/_detail.interface";
 import { getDetailProduct } from "../api/product/product";
 
 export default function Detail() {
     const [item, setItem] = useState<any>();
     const location = useLocation();
-    const state = location.state as detailNavigateProps;
+    const itemId = location.pathname.replace("/detail/", "");
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
     useEffect(() => {
-        const itemId = location.pathname.replace("/detail/", "");
         getDetailProduct(+itemId).then((response) => {
             setItem(response.data);
         });
     }, []);
+
+    useEffect(() => {
+        scrollToTop();
+    }, [itemId]);
 
     return (
         <div className="detail-wrapper">
@@ -27,7 +33,7 @@ export default function Detail() {
                 <>
                     <DetailImg url={item.imageUrl} />
                     <DetailInfoHeader item={item} />
-                    <DetailInfoBody item={item} page={state.page} />
+                    <DetailInfoBody item={item} />
                     <DetailMap item={item} />
                     <DetailRecommend category={item.category} />
                 </>

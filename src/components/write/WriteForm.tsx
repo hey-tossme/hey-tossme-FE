@@ -41,6 +41,14 @@ export default function WriteForm() {
         imageUrl: imageSrc,
     };
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    useEffect(() => {
+        scrollToTop();
+    }, []);
+
     useEffect(() => {
         setDisabled(
             category === null ||

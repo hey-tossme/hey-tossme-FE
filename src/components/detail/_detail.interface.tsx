@@ -15,7 +15,6 @@ export interface detailInfoHeaderProps {
 
 export interface detailInfoBodyProps {
     item: any;
-    page: Number;
 }
 
 export interface detailMapProps {
