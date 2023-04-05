@@ -43,15 +43,15 @@ export function InfoContainer() {
     }, [user]);
 
     useEffect(() => {
-        getNewNotify();
-    }, [isNew]);
+        isLogin && getNewNotify();
+    }, [isNew, isLogin]);
 
     const getNewNotify = () => {
         getNotify(user.token).then((response) => {
             const notify = response.data;
-            if (notify.includes((item: any) => item.readOrNot === false)) {
-                dispatch(isNewNotification(true));
-            }
+            notify.map((item: any) => {
+                item.readOrNot === false ? dispatch(isNewNotification(true)) : null;
+            });
         });
     };
 
