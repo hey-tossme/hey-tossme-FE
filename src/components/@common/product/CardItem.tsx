@@ -33,7 +33,7 @@ export default function CardItem({ item, page, id, bookmark }: CardItemProps) {
             } else {
                 const cardCurrent = cardRef.current as HTMLDivElement;
                 if (cardCurrent && cardCurrent.contains(e.target as Node)) {
-                    navigate(`/detail/${id}`, { state: { item: item.id, page: page } });
+                    navigate(`/detail/${id}`);
                 }
             }
         };

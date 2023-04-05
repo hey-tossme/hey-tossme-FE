@@ -34,7 +34,7 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
                 }
             }
         };
-        document.addEventListener("mousedown", deleteBtnClick);
+        // document.addEventListener("mousedown", deleteBtnClick);
         return () => {
             document.removeEventListener("mousedown", deleteBtnClick);
         };

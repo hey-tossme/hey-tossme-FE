@@ -23,7 +23,6 @@ export default function CategoryWrapper() {
 
     useEffect(() => {
         getItems();
-        console.log(items);
     }, [page, category]);
 
     return (
