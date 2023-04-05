@@ -13,7 +13,10 @@ export const notifySlice = createSlice({
         },
 
         deleteList: (state, action) => {
-            state.notify.filter((item: any) => item.id !== action.payload.id);
+            return {
+                isNew: state.isNew,
+                notify: state.notify.filter((item: any) => item.id !== action.payload),
+            };
         },
 
         updateReadList: (state, action) => {

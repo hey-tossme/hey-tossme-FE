@@ -26,6 +26,7 @@ export default function Notify() {
     }, [notifyList]);
 
     useEffect(() => {
+        console.log(notify);
         if (notify) {
             const newList = notify.filter((item: any) => !item.readOrNot);
             const existingList = notify.filter((item: any) => item.readOrNot);
@@ -37,6 +38,8 @@ export default function Notify() {
     useEffect(() => {
         newList !== undefined && newList.length === 0 && dispatch(isNewNotification(false));
     }, [newList]);
+
+    console.log(notify);
 
     return (
         <div className="notify-common-wrapper dark:bg-color-gray-800">
