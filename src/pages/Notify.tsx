@@ -26,7 +26,6 @@ export default function Notify() {
     }, [notifyList]);
 
     useEffect(() => {
-        console.log(notify);
         if (notify) {
             const newList = notify.filter((item: any) => !item.readOrNot);
             const existingList = notify.filter((item: any) => item.readOrNot);
