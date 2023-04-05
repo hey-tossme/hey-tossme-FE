@@ -6,7 +6,6 @@ import { RiGalleryFill } from "react-icons/ri";
 import { dashDate } from "../../hooks/utils";
 import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore.hook";
 import { setItems } from "../../store/modules/search";
-import { getProductList } from "../../api/product/product";
 import { CategoryBarProps } from "./_Category.interface";
 
 export default function CategoryBar({ setItem, setPage, setCategory }: CategoryBarProps) {
@@ -60,12 +59,6 @@ export default function CategoryBar({ setItem, setPage, setCategory }: CategoryB
             dispatch(setItems({ startDue: dashDate(today), endDue: dashDate(endDate) }));
         }
     };
-
-    useEffect(() => {
-        getProductList(searchType, 0, 8).then((response) => {
-            setItem(response.data.content);
-        });
-    }, [searchType.category]);
 
     const categoryProps = [
         { id: "all", name: "전체보기", icon: IoGrid },
