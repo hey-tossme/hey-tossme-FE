@@ -13,7 +13,7 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     const notifyRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const notify = useAppSelector((state) => state.notify);
+    const notify = useAppSelector((state) => state.notify.notify);
     const token = useAppSelector((state) => state.user.token);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
                 const notifyCurrent = notifyRef.current as HTMLDivElement;
                 if (notifyCurrent && notifyCurrent.contains(e.target as Node)) {
                     handleRead();
-                    navigate(`/detail/${item.itemId}`, { state: { item: item.itemId } });
+                    navigate(`/detail/${item.itemId}`);
                 }
             }
         };
@@ -36,21 +36,18 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     }, [deleteBtnRef, notifyRef]);
 
     const handleDelete = async () => {
-        console.log("dd");
-        deleteNotify(token, item.id).then(() => {
-            dispatch(deleteList(item));
-        });
+        dispatch(deleteList(item.id));
+        deleteNotify(token, item.id);
     };
 
     const handleRead = async () => {
-        patchNotify(token, item.id).then(() => {
-            dispatch(updateReadList(item));
-        });
+        dispatch(updateReadList(item));
+        patchNotify(token, item.id);
     };
 
     return (
         <div ref={notifyRef} className="notify-item">
-            <div ref={deleteBtnRef} onClick={handleDelete} className="delete-btn">
+            <div ref={deleteBtnRef} className="delete-btn">
                 <FiX className="close-btn" />
             </div>
             <div className="notify-text-group">
