@@ -36,13 +36,16 @@ export default function NotifyItem({ isRead, item }: NotifyItemProps) {
     }, [deleteBtnRef, notifyRef]);
 
     const handleDelete = async () => {
-        dispatch(deleteList(item));
-        deleteNotify(token, item.id);
+        console.log("dd");
+        deleteNotify(token, item.id).then(() => {
+            dispatch(deleteList(item));
+        });
     };
 
     const handleRead = async () => {
-        dispatch(updateReadList(item));
-        patchNotify(token, item.id);
+        patchNotify(token, item.id).then(() => {
+            dispatch(updateReadList(item));
+        });
     };
 
     return (
