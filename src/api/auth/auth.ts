@@ -48,10 +48,10 @@ export const requestLogin = async (email: string, password: string, fcmToken: st
 export const requestKakaoLogin = async (code: string, fcmToken: string) => {
     return await customAxios({
         method: "get",
-        url: `/v2/kakao/login?code=${code}`,
-        data: {
-            fcmToken: fcmToken,
-        },
+        url: `/v2/kakao/login?code=${code}&fcmToken=${fcmToken}`,
+        // data: {
+        //     fcmToken: fcmToken,
+        // },
     });
 };
 

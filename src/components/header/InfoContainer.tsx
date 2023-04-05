@@ -14,7 +14,7 @@ export function InfoContainer() {
     const user = useAppSelector((state) => state.user);
     const isNew = useAppSelector((state) => state.notify.isNew);
     const [dark, setDark] = useState<boolean>();
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState<boolean>(false);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
@@ -44,7 +44,11 @@ export function InfoContainer() {
 
     useEffect(() => {
         isLogin && getNewNotify();
-    }, [isNew, isLogin]);
+    }, [isNew]);
+
+    useEffect(() => {
+        isLogin && getNewNotify();
+    }, [isLogin]);
 
     const getNewNotify = () => {
         getNotify(user.token).then((response) => {
@@ -70,8 +74,6 @@ export function InfoContainer() {
             setDark(true);
         }
     };
-
-    console.log(isNew);
 
     return (
         <div className="info-container">
