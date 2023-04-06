@@ -126,11 +126,26 @@ spring.rabbitmq.host: app_name2
 
 ## 🚀 Team 흑염룡🐲🔥
 
+
+<a href="https://www.notion.so/trustmitt/Hey-Toss-me-8f477431f2ee42dcb7d34e70dd41cedb"><img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"/></a>
+
+
 |<img src="https://user-images.githubusercontent.com/111720709/230309092-b2850872-eed5-4220-b8ef-5418819b0b8d.jpg" width="120"/><br/>BE 이보미 <a href="https://github.com/lee-bomi">GitHub</a>|<img src="https://user-images.githubusercontent.com/111720709/230309112-e1625d7f-16b3-49d6-8bb3-a18ff75f7b0a.png" width="120"/><br/>BE 최웅준 <a href="https://github.com/bearjun05">GitHub</a>|<img src="https://user-images.githubusercontent.com/111720709/230309107-9b78021f-41ed-4aeb-b169-c3c8200d1e1e.jpg" width="120"/><br/>BE 허진혁 <a href="https://github.com/Jin-hyeok2">GitHub</a>|<img src="https://user-images.githubusercontent.com/111720709/230309102-14c56a20-cb52-4da4-a463-fd678865a090.jpg" width="120"/><br/>FE 박주경 <a href="https://github.com/trustmitt">GitHub</a>|<img src="https://user-images.githubusercontent.com/111720709/230309098-a2c05a53-753f-424d-b1a6-5e53a1b0cb87.jpg" width="120"/><br/>FE 김규리 <a href="https://github.com/rangggu">GitHub</a>|
 |:---:|:---:|:---:|:---:|:---:|
 
 
+## 🚀 파트 배분
 
+> BE
 
+**보미** 토큰 인증, FCM 알림, 북마크, 키워드, 알림 기능
 
+**웅준** 소셜 로그인, 이미지 업로드, 회원가입, 로그인
 
+**진혁** 채팅 기능, 상품 및 거래 내역 관리, 배포
+
+> FE
+
+**주경** 회원가입, 로그인, 비밀번호 찾기, 마이페이지, 메인 컴포넌트, 채팅 컴포넌트 UI 구현 및 기능 연동, 이미지 최적화, PWA 적용, 프론트 배포
+
+**규리** 헤더 컴포넌트, 카테고리 페이지, 상품 디테일, 글쓰기 페이지 UI 구현 및 기능 연동
