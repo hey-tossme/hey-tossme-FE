@@ -2021,6 +2021,7 @@ body {
   height: 108px;
   border: 1px solid #dbdbdb;
   border-radius: 8px;
+  cursor: pointer;
 }
 .notify-common-wrapper .notify-wrapper .notify-list .notify-item .delete-btn {
   @apply absolute flex top-0 right-0 mt-[12px] mr-[12px];
@@ -2030,6 +2031,7 @@ body {
   width: 20px;
   height: 20px;
   color: #333333;
+  cursor: pointer;
 }
 .notify-common-wrapper .notify-wrapper .notify-list .notify-item .notify-text-group {
   @apply flex items-center gap-[16px] mx-[32px];
@@ -2638,6 +2640,7 @@ body {
   color: #333333;
   height: 300px;
   outline: 0;
+  line-height: 1.5;
 }
 .write-wrapper .enroll-btn {
   background-color: #ec7357;

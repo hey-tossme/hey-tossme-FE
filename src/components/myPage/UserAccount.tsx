@@ -45,7 +45,6 @@ export default function UserAccount({ bank, account, getAccount, setGetAccount }
 
     const confirmAccount = async () => {
         const result = await changeProfile(user.token, null, accountNumber, userBankName);
-        console.log(result);
         dispatch(
             setLogin({
                 token: user.token,

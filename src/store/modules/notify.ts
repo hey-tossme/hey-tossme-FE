@@ -1,22 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { NotifyStateProps } from "../../components/notify/_Notify.interface";
 
-const initialState: Array<any> = [];
+const initialState: NotifyStateProps = { isNew: false, notify: [] };
 
 export const notifySlice = createSlice({
     name: "notify",
     initialState,
     reducers: {
         setList: (state, action) => {
-            return action.payload;
+            state.notify = action.payload;
+            return state;
         },
 
         deleteList: (state, action) => {
-            return state.filter((item: any) => item.id !== action.payload.id);
+            return {
+                isNew: state.isNew,
+                notify: state.notify.filter((item: any) => item.id !== action.payload),
+            };
         },
 
         updateReadList: (state, action) => {
             const { id } = action.payload;
-            const target = state.find((item: any) => item.id === id);
+            const target = state.notify.find((item: any) => item.id === id);
             if (target) {
                 target.readOrNot = true;
             }
@@ -25,8 +30,13 @@ export const notifySlice = createSlice({
         resetList: () => {
             return initialState;
         },
+
+        isNewNotification: (state, action) => {
+            state.isNew = action.payload;
+        },
     },
 });
 
 export default notifySlice.reducer;
-export const { setList, deleteList, updateReadList, resetList } = notifySlice.actions;
+export const { setList, deleteList, updateReadList, resetList, isNewNotification } =
+    notifySlice.actions;

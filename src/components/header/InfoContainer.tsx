@@ -1,19 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useAppSelector } from "../../store/hooks/configureStore.hook";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/configureStore.hook";
 import { FaRegMoon, FaRegBell } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
 import HeaderButton from "./HeaderButton";
 import { firebaseApp } from "../../firebase";
+import { getNotify } from "../../api/notify/notify";
+import { isNewNotification } from "../../store/modules/notify";
 
 export function InfoContainer() {
     const firebaseMessaging = firebaseApp.messaging();
     const user = useAppSelector((state) => state.user);
+    const isNew = useAppSelector((state) => state.notify.isNew);
     const [dark, setDark] = useState<boolean>();
-    const [isLogin, setIsLogin] = useState(true);
-    const [isNew, setIsNew] = useState<boolean>(false);
+    const [isLogin, setIsLogin] = useState<boolean>(false);
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     firebaseMessaging.onMessage((payload: any) => {
         const title = payload.notification.title;
@@ -22,7 +25,7 @@ export function InfoContainer() {
         };
 
         console.log("Message received. title : ", title, "options : ", options);
-        setIsNew(true);
+        dispatch(isNewNotification(true));
         navigator.serviceWorker.ready.then((registration) => {
             registration.showNotification(title, options);
         });
@@ -39,9 +42,25 @@ export function InfoContainer() {
         !user.token ? setIsLogin(false) : setIsLogin(true);
     }, [user]);
 
+    useEffect(() => {
+        isLogin && getNewNotify();
+    }, [isNew]);
+
+    useEffect(() => {
+        isLogin && getNewNotify();
+    }, [isLogin]);
+
+    const getNewNotify = () => {
+        getNotify(user.token).then((response) => {
+            const notify = response.data;
+            notify.map((item: any) => {
+                item.readOrNot === false ? dispatch(isNewNotification(true)) : null;
+            });
+        });
+    };
+
     const handleGoNotify = () => {
         navigate("/notify");
-        setIsNew(false);
     };
 
     const handleToggleDarkMode = () => {

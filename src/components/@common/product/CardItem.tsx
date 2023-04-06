@@ -1,20 +1,19 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks/configureStore.hook";
+import { useAppSelector } from "../../../store/hooks/configureStore.hook";
 import { useNavigate } from "react-router-dom";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { CardItemProps } from "../../category/_Category.interface";
 import { customNullItemImg, commaNums, date } from "../../../hooks/utils";
 import { deleteBookmarkState, setBookmarkState } from "../../../api/bookmark/bookmark";
 
-export default function CardItem({ item, page, id, bookmark, setBookmark }: CardItemProps) {
+export default function CardItem({ item, page, id, bookmark }: CardItemProps) {
     const { imageUrl, title, price, dueTime, address, addressDetail, status } = item;
     const user = useAppSelector((state) => state.user);
     const bookmarkList = useAppSelector((state) => state.bookmark);
     const bookmarkRef = useRef<HTMLDivElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
     const [state, setState] = useState<boolean>();
-    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -34,7 +33,7 @@ export default function CardItem({ item, page, id, bookmark, setBookmark }: Card
             } else {
                 const cardCurrent = cardRef.current as HTMLDivElement;
                 if (cardCurrent && cardCurrent.contains(e.target as Node)) {
-                    navigate(`/detail/${id}`, { state: { item: item.id, page: page } });
+                    navigate(`/detail/${id}`);
                 }
             }
         };

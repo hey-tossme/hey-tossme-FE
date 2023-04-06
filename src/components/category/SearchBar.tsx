@@ -8,10 +8,14 @@ import { SearchBarProps } from "./_Category.interface";
 export default function SearchBar({ setItems }: SearchBarProps) {
     const searchType = useAppSelector((state) => state.search);
 
-    const handleGetSearchResult = () => {
+    const getItems = () => {
         getProductList(searchType, 0, 8).then((response) => {
             setItems(response.data.content);
         });
+    };
+
+    const getFilterItems = () => {
+        getItems();
     };
 
     return (
@@ -21,7 +25,7 @@ export default function SearchBar({ setItems }: SearchBarProps) {
                 <SelectPeriod />
                 <SelectKeyword />
             </div>
-            <button onClick={handleGetSearchResult} className="search-btn">
+            <button onClick={getFilterItems} className="search-btn">
                 검색
             </button>
         </div>

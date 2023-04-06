@@ -49,7 +49,7 @@ export default function LoginForm() {
 
     const handleLoginSubmit = async () => {
         try {
-            console.log(fcmToken);
+            console.log(fcmToken, "test");
             let result: any = await requestLogin(email, password, fcmToken);
             dispatch(
                 setLogin({

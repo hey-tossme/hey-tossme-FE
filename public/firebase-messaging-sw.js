@@ -14,21 +14,3 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
-// self.addEventListener("push", function(event) {
-//   const title = event.data.title;
-//   const options = {
-//       body: event.data.body,
-//   };
-
-//   console.log(event)
-//   console.log("Message received. title : ", title, "options : ", options);
-//   event.waitUntil(self.registration.showNotification(title, options))
-
-//   self.addEventListener("notificationclick", function (event) {
-//     console.log("notification click");
-//     const url = "/notify";
-//     event.notification.close();
-//     event.waitUntil(clients.openWindow(url));
-//   });
-// })
-

@@ -6,22 +6,24 @@ import { useAppSelector } from "../../store/hooks/configureStore.hook";
 import { getUserSellItem } from "../../api/user/user";
 import { PaginationType } from "./_MyPage.interface";
 
-export default function MyProducts({ page, setPage }: PaginationType) {
+export default function MyProducts({ page, setPage, tabState }: PaginationType) {
     const token = useAppSelector((state) => state.user.token);
+    const bookmarkList = useAppSelector((state) => state.bookmark);
     const [bookmark, setBookmark] = useState<boolean>(false);
     const [itemList, setItemList] = useState<ItemInfo[]>([]);
     const [totalPage, setTotalPage] = useState<number>(0);
+    const itemId = bookmarkList.map((item) => item.id);
 
     const getUserProducts = async () => {
         const result = await getUserSellItem(token, page, 8);
         setItemList(result.data.list.content);
         setTotalPage(result.data.list.totalPages);
-        console.log(result);
     };
 
     useEffect(() => {
         getUserProducts();
-    }, [page]);
+        console.log(itemId);
+    }, [page, tabState]);
 
     return (
         <>
@@ -34,7 +36,7 @@ export default function MyProducts({ page, setPage }: PaginationType) {
                                 item={item}
                                 page={page}
                                 id={item.id}
-                                bookmark={bookmark}
+                                bookmark={itemId.includes(item.id) && true}
                                 setBookmark={setBookmark}
                             />
                         ))}

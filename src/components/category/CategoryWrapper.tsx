@@ -21,9 +21,13 @@ export default function CategoryWrapper() {
         setTotalPage(result.data.totalPages);
     };
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     useEffect(() => {
         getItems();
-        console.log(items);
+        scrollToTop();
     }, [page, category]);
 
     return (

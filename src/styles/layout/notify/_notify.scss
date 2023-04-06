@@ -17,6 +17,7 @@
                 height: 108px;
                 border: 1px solid $color-gray-200;
                 border-radius: 8px;
+                cursor: pointer;
     
                 .delete-btn {
                     @apply absolute flex top-0 right-0 mt-[12px] mr-[12px];
@@ -26,6 +27,7 @@
                         width: 20px;
                         height: 20px;
                         color: $color-gray-800;
+                        cursor: pointer;
                     }
                 }
     

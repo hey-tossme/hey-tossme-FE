@@ -11,36 +11,28 @@ import {
 } from "../../api/bookmark/bookmark";
 import { setModalOpen } from "../../store/modules/modal";
 
-export default function DetailInfoBody({ item, page }: detailInfoBodyProps) {
+export default function DetailInfoBody({ item }: detailInfoBodyProps) {
     const user = useAppSelector((state) => state.user);
+    const bookmarkList = useAppSelector((state) => state.bookmark);
     const [bookmark, setBookmark] = useState<boolean>(false);
-    const [isBookmarkItems, setIsBookmarkItems] = useState<any>();
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        getBookmarkState(user.token, page, 8).then((response) => {
-            setIsBookmarkItems(response.data.content);
-        });
-    }, []);
-
-    useEffect(() => {
-        isBookmarkItems &&
-            isBookmarkItems.map((isBookmarkItem: any) => {
-                if (item.id === isBookmarkItem.itemId) {
+        bookmarkList &&
+            bookmarkList.map((bookmarkItem: any) => {
+                if (item.id === bookmarkItem.itemId) {
                     setBookmark(true);
                 }
             });
-    }, [isBookmarkItems]);
+    }, [bookmarkList]);
 
     const handleSetBookmark = () => {
         if (bookmark) {
-            deleteBookmarkState(user.token, item.id).then((response) => {
-                setBookmark(false);
-            });
+            setBookmark(false);
+            deleteBookmarkState(user.token, item.id);
         } else {
-            setBookmarkState(user.token, item.id).then(() => {
-                setBookmark(true);
-            });
+            setBookmark(true);
+            setBookmarkState(user.token, item.id);
         }
 
         !user && dispatch(setModalOpen());
