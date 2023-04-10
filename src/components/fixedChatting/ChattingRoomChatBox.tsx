@@ -20,7 +20,7 @@ export default function ChattingRoomChatBox({ item }: ItemType) {
     const [chatMsg, setChatMsg] = useState<string>("");
     const scrollRef = useRef<HTMLDivElement>(null);
     const token = useAppSelector((state) => state.user.token);
-    const client = useRef({});
+    const client = useRef<any>({});
 
     const connect = () => {
         client.current = new StompJs.Client({
@@ -44,7 +44,7 @@ export default function ChattingRoomChatBox({ item }: ItemType) {
     };
 
     const subscribe = () => {
-        client.current.subscribe(`/exchange/chat.exchange/room.${item.id}`, (body) => {
+        client.current.subscribe(`/exchange/chat.exchange/room.${item.id}`, (body: any) => {
             const json_body = JSON.parse(body.body);
             setNewMsgList((_chat_list) => [..._chat_list, json_body]);
         });

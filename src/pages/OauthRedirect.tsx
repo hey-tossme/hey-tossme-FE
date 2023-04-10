@@ -12,7 +12,7 @@ export default function OauthRedirect() {
     let authorization = new URL(window.location.href).searchParams.get("code");
 
     const handleKakaoLogin = async (fcmToken: string) => {
-        const result = await requestKakaoLogin(authorization!, fcmToken);
+        const result: any = await requestKakaoLogin(authorization!, fcmToken);
         dispatch(
             setLogin({
                 token: `bearer ${result.token}`,

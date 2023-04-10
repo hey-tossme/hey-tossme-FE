@@ -6,7 +6,7 @@ export default function sendFCMTokenFuc() {
     firebaseMessaging
         .requestPermission()
         .then(() => {
-            return firebaseMessaging.getToken(firebaseMessaging, {
+            return firebaseMessaging.getToken({
                 vapidKey:
                     "BIniR9YstJOEKxIflD9vEUdGjNi7Z3_h1k5gXduQVNNxq-_i0BH-vTTWGcFRBPmxxA9yhvPRNs9xmVbdBHdeDkE",
             });
