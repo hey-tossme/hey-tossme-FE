@@ -9,7 +9,6 @@ import { setModalOpen } from "../../store/modules/modal";
 export default function DateSelect({ date, setDate, time, setTime, state }: DateSelectProps) {
     const [isShow, setIsShow] = useState<boolean>(false);
     const [toggle, setToggle] = useState<string>("오전");
-    const [error, setError] = useState<string>();
     const [defaultTime, setDefaultTime] = useState<string | null>();
     const componentRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -24,7 +23,6 @@ export default function DateSelect({ date, setDate, time, setTime, state }: Date
     const handleSetToggle = (e: React.MouseEvent) => {
         const target = e.target as HTMLDivElement;
         const dateInput = document.querySelector(".date-select-item") as HTMLInputElement;
-
         setIsShow(false);
 
         if (!dateInput.value) return dispatch(setModalOpen());
@@ -40,7 +38,7 @@ export default function DateSelect({ date, setDate, time, setTime, state }: Date
         }
     };
 
-    const handlePhoneChange = (e: any) => {
+    const handleTimeChange = (e: any) => {
         const value = timeRef.current!.value.replace(/\D+/g, "");
         const timeLength = 4;
 
@@ -59,7 +57,6 @@ export default function DateSelect({ date, setDate, time, setTime, state }: Date
             result += value[i];
         }
         timeRef.current!.value = result;
-        setError(validateTime(e.target.value) ? "" : "올바른 시간 양식이 아닙니다.");
 
         if (validateTime(e.target.value)) {
             toggle === "오전" && setTime(result);
@@ -163,12 +160,11 @@ export default function DateSelect({ date, setDate, time, setTime, state }: Date
                         className="time-input-item"
                         type="text"
                         placeholder="00:00"
-                        onChange={handlePhoneChange}
+                        onChange={handleTimeChange}
                         ref={timeRef}
                     />
                 </div>
             </div>
-            {error !== "" && <p className="error-message">{error}</p>}
         </>
     );
 }

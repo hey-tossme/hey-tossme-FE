@@ -103,8 +103,6 @@ export default function WriteForm() {
         }
     };
 
-    console.log(axiosBody);
-
     return (
         <>
             <UploadImg

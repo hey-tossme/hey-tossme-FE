@@ -24,15 +24,12 @@ export default function ProfileImageSelect({
             const compressedFile = await imageCompression(file, options);
             const resizingFile = new File([compressedFile], file.name, { type: file.type });
             setFiles(resizingFile);
-
             const promise = imageCompression.getDataUrlFromFile(compressedFile);
             promise.then((result) => {
                 setImageSrc(result);
             });
-
             const imgFrm = new FormData();
             imgFrm.append("file", resizingFile);
-
             const result = await requestUploadImg(token, imgFrm);
             await changeProfile(token, result.data, null, null);
         } catch (error) {
