@@ -25,10 +25,9 @@ export default function LoginForm() {
                 })
                 .then(function (token: any) {
                     setFcmToken(token);
-                    console.log(token);
                 })
                 .catch(function (error: any) {
-                    console.log("FCM Error : ", error);
+                    return error;
                 });
         });
 
@@ -39,17 +38,15 @@ export default function LoginForm() {
                 })
                 .then(function (token: any) {
                     setFcmToken(token);
-                    console.log(token);
                 })
                 .catch(function (error: any) {
-                    console.log("FCM Error : ", error);
+                    return error;
                 });
         });
     }, []);
 
     const handleLoginSubmit = async () => {
         try {
-            console.log(fcmToken, "test");
             let result: any = await requestLogin(email, password, fcmToken);
             dispatch(
                 setLogin({
@@ -60,10 +57,7 @@ export default function LoginForm() {
             );
             navigate("/");
         } catch (error) {
-            if (error == 400) {
-                alert("확인쓰");
-            }
-            console.log(error);
+            return error;
         }
     };
 

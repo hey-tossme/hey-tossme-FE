@@ -24,7 +24,6 @@ export function InfoContainer() {
             body: payload.notification.body,
         };
 
-        console.log("Message received. title : ", title, "options : ", options);
         dispatch(isNewNotification(true));
         navigator.serviceWorker.ready.then((registration) => {
             registration.showNotification(title, options);

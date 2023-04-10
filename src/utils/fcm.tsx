@@ -12,10 +12,9 @@ export default function sendFCMTokenFuc() {
             });
         })
         .then(function (token: any) {
-            console.log(token);
-            // 토큰 post api 요청
+            return token;
         })
         .catch(function (error: any) {
-            console.log("FCM Error : ", error);
+            return error;
         });
 }

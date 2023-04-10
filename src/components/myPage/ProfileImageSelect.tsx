@@ -33,7 +33,7 @@ export default function ProfileImageSelect({
             const result = await requestUploadImg(token, imgFrm);
             await changeProfile(token, result.data, null, null);
         } catch (error) {
-            console.log(error);
+            return error;
         }
     };
 

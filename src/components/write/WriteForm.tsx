@@ -92,7 +92,6 @@ export default function WriteForm() {
 
     const handlePutProduct = () => {
         if (state !== null) {
-            console.log(state.item.id);
             editProduct(token, axiosBody, state.item.id).then(() => {
                 navigate("/category");
             });

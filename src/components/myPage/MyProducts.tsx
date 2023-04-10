@@ -22,7 +22,6 @@ export default function MyProducts({ page, setPage, tabState }: PaginationType) 
 
     useEffect(() => {
         getUserProducts();
-        console.log(itemId);
     }, [page, tabState]);
 
     return (
