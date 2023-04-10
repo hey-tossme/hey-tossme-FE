@@ -28,12 +28,13 @@ customAxios.interceptors.response.use(
 
     async (error) => {
         const err = error as AxiosError;
+        const errConfig: any = err.config;
 
         if (err.response?.status === 401) {
             const data = err.response.data;
 
             const user = store.getState().user;
-            const { token } = await reissueToken(user.id);
+            const { token }: any = await reissueToken(user.id);
 
             store.dispatch(
                 setLogin({
@@ -43,7 +44,7 @@ customAxios.interceptors.response.use(
                 })
             );
 
-            err.config.headers = {
+            errConfig.headers = {
                 "Content-Type": "application/json",
                 Authorization: `bearer ${token}`,
             };

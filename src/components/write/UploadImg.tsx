@@ -41,6 +41,7 @@ export default function UploadImg({ imageSrc, setImageSrc }: uploadImgProps) {
                     alt="profile-image"
                     className="upload-img"
                     loading="lazy"
+                    style={{ objectFit: "cover" }}
                 />
             </label>
             <input

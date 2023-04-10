@@ -30,7 +30,7 @@ export default function VerificationCodeBox({
     };
 
     const confileCode = async () => {
-        const result = await confirmCode(registerEmail, code);
+        const result: any = await confirmCode(registerEmail, code);
         if (result.message === "successfully authorized") {
             setConfirm(true);
         }

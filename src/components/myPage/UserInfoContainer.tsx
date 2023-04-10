@@ -8,11 +8,13 @@ import { setModalOpen } from "../../store/modules/modal";
 import UserAccount from "./UserAccount";
 import { UserInfo } from "./_MyPage.interface";
 import { getCurrentUserInfo } from "../../api/user/user";
+import { useNavigate } from "react-router-dom";
 
 export default function UserInfoContainer() {
     const modalOpen = useSelector((state: any) => state.modal.modalOpen);
     const dispatch = useDispatch();
     const token = useAppSelector((state) => state.user.token);
+    const navigate = useNavigate();
     const [files, setFiles] = useState<File | null>(null);
     const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
     const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
@@ -29,6 +31,7 @@ export default function UserInfoContainer() {
 
     const showModal = () => {
         dispatch(setModalOpen());
+        navigate("/");
     };
 
     return (

@@ -10,7 +10,6 @@ export default function CardList({ items, page }: CardListProps) {
     const token = useAppSelector((state) => state.user.token);
     const [bookmark, setBookmark] = useState<boolean>(false);
     const dispatch = useAppDispatch();
-    const bookmarkList = useAppSelector((state) => state.bookmark);
 
     useEffect(() => {
         getBookmarkState(token, page, 8).then((response) => {
