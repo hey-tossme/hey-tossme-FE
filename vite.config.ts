@@ -19,7 +19,7 @@ export default ({ mode }) => {
         ],
         server: {
             proxy: {
-                "/api": {
+                "/proxy": {
                     target: "http://20.214.139.103:8080",
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/api/, ""),

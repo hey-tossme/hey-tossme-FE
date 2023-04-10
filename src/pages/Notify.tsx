@@ -38,8 +38,6 @@ export default function Notify() {
         newList !== undefined && newList.length === 0 && dispatch(isNewNotification(false));
     }, [newList]);
 
-    console.log(notify);
-
     return (
         <div className="notify-common-wrapper dark:bg-color-gray-800">
             <div className="notify-wrapper">

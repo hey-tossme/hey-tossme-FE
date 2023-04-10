@@ -5,7 +5,7 @@ import store from "../store/configureStore";
 
 const customAxios: AxiosInstance = axios.create({
     withCredentials: true,
-    baseURL: "/api",
+    baseURL: "/proxy",
 });
 
 customAxios.interceptors.request.use(

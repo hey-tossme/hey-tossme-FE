@@ -37,7 +37,7 @@ export default function OauthRedirect() {
                 handleKakaoLogin(token);
             })
             .catch(function (error: any) {
-                console.log("FCM Error : ", error);
+                return error;
             });
     }, []);
 
